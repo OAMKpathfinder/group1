@@ -1,0 +1,159 @@
+insert into users VALUES(1,'test1@email.com','password1');
+insert into users VALUES(2,'test2@email.com','password2');
+insert into users VALUES(3,'test3@email.com','password3');
+insert into users VALUES(4,'test4@email.com','password4');
+insert into users VALUES(5,'test5@email.com','password5');
+
+
+insert into homeProperties VALUES(1,1,'historic building A');
+insert into groundFloor VALUES(1,1,random(),random(),'materialA',cast(cast(random() as integer) as boolean));
+insert into outerWall Values(1,1,random(),random(),'materialA',cast(cast(random() as integer) as boolean));
+insert into roofConstruction Values(1,1,random(),random(),'materialA',cast(cast(random() as integer) as boolean));
+insert into windowAll Values(1,1);
+insert into windowSingle Values(1,1,random(),random(),'materialA',random(),'lobby B',cast(cast(random() as integer) as boolean));
+insert into windowSingle Values(100,1,random(),random(),'materialF',random(),'lobby A',cast(cast(random() as integer) as boolean));
+insert into doors Values(1,1);
+insert into door Values(1,1,random(),random(),'materialA',random(),'main',cast(cast(random() as integer) as boolean));
+insert into bridges Values(1,1,random(),random(),random(),random(),cast(cast(random() as integer) as boolean));
+insert into others Values(1,1,random(),random(),cast(cast(random() as integer) as boolean));
+
+
+insert into homeProperties VALUES(11,1,'historic building B');
+insert into groundFloor VALUES(2,11,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into outerWall Values(2,11,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into roofConstruction Values(2,11,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into windowAll Values(2,11);
+insert into windowSingle Values(2,2,random(),random(),'materialB',random(),'main A',cast(cast(random() as integer) as boolean));
+insert into doors Values(2,11);
+insert into door Values(2,2,random(),random(),'materialB',random(),'main A',cast(cast(random() as integer) as boolean));
+insert into bridges Values(2,11,random(),random(),random(),random(),cast(cast(random() as integer) as boolean));
+insert into others Values(2,11,random(),random(),cast(cast(random() as integer) as boolean));
+
+
+
+insert into homeProperties VALUES(111,1,'historic building C');
+insert into groundFloor VALUES(3,111,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into outerWall Values(3,111,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into roofConstruction Values(3,111,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into windowAll Values(3,111);
+insert into windowSingle Values(3,3,random(),random(),'materialB',random(),'main',cast(cast(random() as integer) as boolean));
+insert into doors Values(3,111);
+insert into door Values(3,3,random(),random(),'materialB',random(),'main',cast(cast(random() as integer) as boolean));
+insert into bridges Values(3,111,random(),random(),random(),random(),cast(cast(random() as integer) as boolean));
+insert into others Values(3,111,random(),random(),cast(cast(random() as integer) as boolean));
+
+
+insert into homeProperties VALUES(2,2,'old building A');
+insert into groundFloor VALUES(4,2,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into outerWall Values(4,2,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into roofConstruction Values(4,2,random(),random(),'materialC',cast(cast(random() as integer) as boolean));
+insert into windowAll Values(4,2);
+insert into windowSingle Values(4,4,random(),random(),'materialC',random(),'lobby',cast(cast(random() as integer) as boolean));
+insert into doors Values(4,2);
+insert into door Values(4,4,random(),random(),'materialB',random(),'lobby',cast(cast(random() as integer) as boolean));
+insert into bridges Values(4,2,random(),random(),random(),random(),cast(cast(random() as integer) as boolean));
+insert into others Values(4,2,random(),random(),cast(cast(random() as integer) as boolean));
+
+
+insert into homeProperties VALUES(22,2,'old building B');
+insert into groundFloor VALUES(5,22,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into outerWall Values(5,22,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into roofConstruction Values(5,22,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into windowAll Values(5,22);
+insert into windowSingle Values(5,5,random(),random(),'materialB',random(),'main',cast(cast(random() as integer) as boolean));
+insert into doors Values(5,22);
+insert into door Values(5,5,random(),random(),'materialB',random(),'main',cast(cast(random() as integer) as boolean));
+insert into bridges Values(5,22,random(),random(),random(),random(),cast(cast(random() as integer) as boolean));
+insert into others Values(5,22,random(),random(),cast(cast(random() as integer) as boolean));
+
+
+
+insert into homeProperties VALUES(3,3,'old building C');
+insert into groundFloor VALUES(6,3,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into outerWall Values(6,3,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into roofConstruction Values(6,3,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into windowAll Values(6,3);
+insert into windowSingle Values(6,6,random(),random(),'materialB',random(),'main',cast(cast(random() as integer) as boolean));
+insert into doors Values(6,3);
+insert into door Values(6,6,random(),random(),'materialB',random(),'main',cast(cast(random() as integer) as boolean));
+insert into bridges Values(6,3,random(),random(),random(),random(),cast(cast(random() as integer) as boolean));
+insert into others Values(6,3,random(),random(),cast(cast(random() as integer) as boolean));
+
+
+insert into homeProperties VALUES(33,3,'historic building D');
+insert into groundFloor VALUES(7,33,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into outerWall Values(7,33,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into roofConstruction Values(7,33,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into windowAll Values(7,33);
+insert into windowSingle Values(7,7,random(),random(),'materialB',random(),'main',cast(cast(random() as integer) as boolean));
+insert into doors Values(7,33);
+insert into door Values(7,7,random(),random(),'materialB',random(),'side',cast(cast(random() as integer) as boolean));
+insert into bridges Values(7,33,random(),random(),random(),random(),cast(cast(random() as integer) as boolean));
+insert into others Values(7,33,random(),random(),cast(cast(random() as integer) as boolean));
+
+
+insert into homeProperties VALUES(4,4,'old building E');
+insert into groundFloor VALUES(8,4,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into outerWall Values(8,4,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into roofConstruction Values(8,4,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into windowAll Values(8,4);
+insert into windowSingle Values(8,8,random(),random(),'materialB',random(),'lobby, side',cast(cast(random() as integer) as boolean));
+insert into doors Values(8,4);
+insert into door Values(8,8,random(),random(),'materialB',random(),'lobby, west',cast(cast(random() as integer) as boolean));
+insert into bridges Values(8,4,random(),random(),random(),random(),cast(cast(random() as integer) as boolean));
+insert into others Values(8,4,random(),random(),cast(cast(random() as integer) as boolean));
+
+
+
+insert into homeProperties VALUES(44,4,'historic building F');
+insert into groundFloor VALUES(9,44,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into outerWall Values(9,44,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into roofConstruction Values(9,44,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into windowAll Values(9,44);
+insert into windowSingle Values(9,9,random(),random(),'materialB',random(),'Main',cast(cast(random() as integer) as boolean));
+insert into doors Values(9,44);
+insert into door Values(9,9,random(),random(),'materialB',random(),'Main',cast(cast(random() as integer) as boolean));
+insert into bridges Values(9,44,random(),random(),random(),random(),cast(cast(random() as integer) as boolean));
+insert into others Values(9,44,random(),random(),cast(cast(random() as integer) as boolean));
+
+
+insert into homeProperties VALUES(5,5,'building G');
+insert into groundFloor VALUES(10,5,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into outerWall Values(10,5,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into roofConstruction Values(10,5,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into windowAll Values(10,5);
+insert into windowSingle Values(10,10,random(),random(),'materialB',random(),'Main lobby, 1st floor',cast(cast(random() as integer) as boolean));
+insert into doors Values(10,5);
+insert into door Values(10,10,random(),random(),'materialB',random(),'Front Door',cast(cast(random() as integer) as boolean));
+insert into bridges Values(10,5,random(),random(),random(),random(),cast(cast(random() as integer) as boolean));
+insert into others Values(10,5,random(),random(),cast(cast(random() as integer) as boolean));
+
+
+insert into homeProperties VALUES(55,5,'historic building H');
+insert into groundFloor VALUES(11,55,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into outerWall Values(11,55,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into roofConstruction Values(11,55,random(),random(),'materialB',cast(cast(random() as integer) as boolean));
+insert into windowAll Values(11,55);
+insert into windowSingle Values(11,11,random(),random(),'materialB',random(),'Window Living Room A',cast(cast(random() as integer) as boolean));
+insert into doors Values(11,55);
+insert into door Values(11,11,random(),random(),'materialB',random(),'Main Door',cast(cast(random() as integer) as boolean));
+insert into bridges Values(11,55,random(),random(),random(),random(),cast(cast(random() as integer) as boolean));
+insert into others Values(11,55,random(),random(),cast(cast(random() as integer) as boolean));
+
+;;
+Testing inserted dummy data
+;;
+select * from homeProperties;
+select * from roofConstruction;
+select * from outerWall;
+select * from windowSingle;
+select * from door;
+select * from groundFloor;
+select * from others;
+select * from bridges;
+
+;;;
+deleting all rows in selected table
+TRUNCATE tb;
+DELETE FROM tb;
+;;;

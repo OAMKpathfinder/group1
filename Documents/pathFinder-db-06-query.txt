@@ -1,0 +1,93 @@
+CREATE TABLE users(
+id INT,
+email varchar(255),
+password varchar(255),
+PRIMARY KEY (id));
+
+CREATE TABLE homeProperties(
+id INT,
+owner INT REFERENCES users(id) ON DELETE CASCADE,
+name varchar(255),
+PRIMARY KEY (id));
+
+CREATE TABLE others(
+id INT,
+properties INT REFERENCES homeProperties(id) ON DELETE CASCADE,
+hjoht DOUBLE PRECISION,
+cost DOUBLE PRECISION,
+pipe BOOLEAN,
+PRIMARY KEY (id));
+
+CREATE TABLE groundFloor(
+id INT,
+properties INT REFERENCES homeProperties(id) ON DELETE CASCADE,
+uValue  DOUBLE PRECISION,
+area DOUBLE PRECISION,
+materials varchar(255),
+protected BOOLEAN,
+PRIMARY KEY (id));
+
+CREATE TABLE outerWall(
+id INT,
+properties INT REFERENCES homeProperties(id) ON DELETE CASCADE,
+uValue DOUBLE PRECISION,
+area DOUBLE PRECISION,
+materials varchar(255),
+protected BOOLEAN,
+PRIMARY KEY (id));
+
+CREATE TABLE roofConstruction(
+id INT,
+properties INT REFERENCES homeProperties(id) ON DELETE CASCADE,
+uValue DOUBLE PRECISION,
+area DOUBLE PRECISION,
+materials varchar(255),
+protected BOOLEAN,
+PRIMARY KEY (id));
+
+CREATE TABLE windowAll(
+id INT,
+properties INT REFERENCES homeProperties(id) ON DELETE CASCADE,
+PRIMARY KEY (id));
+
+CREATE TABLE doors(
+id INT,
+properties INT REFERENCES homeProperties(id) ON DELETE CASCADE,
+PRIMARY KEY (id));
+
+CREATE TABLE windowSingle(
+id INT,
+windowAll INT REFERENCES windowAll(id) ON DELETE CASCADE,
+uValue DOUBLE PRECISION,
+area DOUBLE PRECISION,
+materials varchar(255),
+bridgeValue DOUBLE PRECISION,
+name varchar(255),
+protected BOOLEAN,
+PRIMARY KEY (id));
+
+CREATE TABLE door(
+id INT,
+doors INT REFERENCES doors(id) ON DELETE CASCADE,
+uValue DOUBLE PRECISION,
+area DOUBLE PRECISION,
+materials varchar(255),
+bridgeValue DOUBLE PRECISION,
+name varchar(255),
+protected BOOLEAN,
+PRIMARY KEY (id));
+
+CREATE TABLE bridges(
+id INt,
+properties INT REFERENCES homeProperties(id) ON DELETE CASCADE,
+outerWallToOuterWall DOUBLE PRECISION,
+outerWallToRoof DOUBLE PRECISION,
+outerWallToMiddleBasement DOUBLE PRECISION,
+outerWallToGroundFloor DOUBLE PRECISION,
+protected BOOLEAN,
+PRIMARY KEY (id));
+
+
+;;;For deleting all tables considering the relationship
+DROP TABLE bridges, door, doors, groundFloor, others, outerWall, roofConstruction, windowSingle, windowAll, homeProperties, users;
+;;;,for double checking table relationship, \d homeProperties might give info especially about 
