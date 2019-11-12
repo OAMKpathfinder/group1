@@ -9,7 +9,13 @@ router.post('/', (req, res) => {
         } else {
             res.json(req.body)
         }
-    })
+  })
+});
+var DELETE = require('./DELETE');
+var del = new DELETE();
+
+router.delete('/:id', (req,res,next) => {
+    del.deleteBasic(bridges,req,res)
 });
 
 module.exports = router;

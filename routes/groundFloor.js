@@ -12,4 +12,10 @@ router.post('/', (req, res) => {
     })
 });
 
+var DELETE = require('./DELETE');
+var del = new DELETE();
+
+router.delete('/:id', (req,res,next) => {
+    del.deleteBasic(groundFloor,req,res)
+});
 module.exports = router;

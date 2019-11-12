@@ -1,4 +1,5 @@
 var db = require('../database');
+let deleteQuery = 'DELETE FROM outerWall where id = $1';
 var outerWall = {
 
     add: (outerWall, callback) => {
@@ -7,7 +8,11 @@ var outerWall = {
             outerWall.materials, outerWall.protected],
             callback
         );
+    },
+    delete: (id, callback) => {
+        return db.query(deleteQuery, [id] ,callback);
     }
 
 }
+
 module.exports = outerWall;

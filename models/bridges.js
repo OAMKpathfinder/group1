@@ -1,4 +1,5 @@
 var db = require('../database');
+let deleteQuery = 'DELETE FROM bridges where id = $1';
 var bridges = {
 
     add: (bridges, callback) => {
@@ -7,7 +8,11 @@ var bridges = {
             bridges.outerWallToMiddleBasement, bridges.outerWallToGroundFloor, bridges.protected],
             callback
         );
+    },
+    delete: (id, callback) => {
+        return db.query(deleteQuery, [id] ,callback);
     }
 
 }
+
 module.exports = bridges;

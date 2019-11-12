@@ -1,4 +1,5 @@
 var db = require('../database');
+let deleteQuery = 'DELETE FROM door where id = $1';
 var door = {
 
     add: (door, callback) => {
@@ -7,7 +8,10 @@ var door = {
             door.name, door.protected],
             callback
         );
+    },
+    delete: (id, callback) => {
+        return db.query(deleteQuery, [id] ,callback);
     }
-
 }
+
 module.exports = door;

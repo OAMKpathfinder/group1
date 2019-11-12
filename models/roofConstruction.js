@@ -1,4 +1,5 @@
 var db = require('../database');
+let deleteQuery = 'DELETE FROM roofConstruction where id = $1';
 var roofConstruction = {
 
     add: (roofConstruction, callback) => {
@@ -7,7 +8,11 @@ var roofConstruction = {
             roofConstruction.area, roofConstruction.materials, roofConstruction.protected],
             callback
         );
+    },
+    delete: (id, callback) => {
+        return db.query(deleteQuery, [id] ,callback);
     }
 
 }
+
 module.exports = roofConstruction;
