@@ -1,30 +1,41 @@
 let express = require('express');
 let app = express();
 let cors = require('cors');
+let cookieParser = require('cookie-parser');
 
 const path = require('path');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-/**
- * For the cors policy, lazy implementation which is not including header
- * separately, using one dependency "cors"
- * 
- * Which means that if we wanted to use API test in different url,
- * we need to allow cors policy by uncommenting it
- * 
- * Remember to get rid of this in production
- */
 app.use(cors());
 
-var homePropertiesRouter = require('./routes/homeProperties');
-app.use('/homeProperties', homePropertiesRouter);
+var bridges = require('./routes/bridges');  
+app.use('/bridges', bridges);
 
-var outerWallRouter = require('./routes/outerWall');
-app.use('/outerWall', outerWallRouter);
+var door = require('./routes/door');  
+app.use('/door', door);
 
+var groundFloor = require('./routes/groundFloor');  
+app.use('/groundFloor', groundFloor);
+
+var homeProperties = require('./routes/homeProperties');  
+app.use('/homeProperties', homeProperties);
+
+var others = require('./routes/others');  
+app.use('/others', others);
+
+var outerWall = require('./routes/outerWall');   
+app.use('/outerWall', outerWall);
+
+var roofConstruction = require('./routes/roofConstruction');   
+app.use('/roofConstruction', roofConstruction);
+
+var windowSingle = require('./routes/windowSingle');
+app.use('/windowSingle', windowSingle);
+
+var users = require('./routes/users');
+app.use('/users', users);
 
 app.use(express.static(path.join(__dirname, 'dist/PathFinder')));
 
@@ -42,9 +53,3 @@ require('dotenv').config()
 app.listen( process.env.SERVER_PORT || port, () =>
   console.log('server running on localhost:3000')
 );
-/**
- * Error handler
- */
-app.use((req, res, next) => {
-    next(createError(404));
-});
