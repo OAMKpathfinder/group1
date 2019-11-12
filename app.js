@@ -1,8 +1,9 @@
+let express = require('express');
+let app = express();
+let cors = require('cors');
 
-var express = require('express');
-var app = express();
 const path = require('path');
-
+const port = 3000;
 
 /**
  * For the cors policy, lazy implementation which is not including header
@@ -10,20 +11,25 @@ const path = require('path');
  * 
  * Remember to get rid of this in production
  */
-// app.use(cors());
+app.use(cors());
 
-app.use(express.static(__dirname + '/assets'));
-app.use(express.static(path.join(__dirname, 'dist/PathFinder')));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/PathFinder/index.html'));
+// app.use(express.static(__dirname + '/assets'));
+// app.use(express.static(path.join(__dirname, 'dist/PathFinder')));
+
+// app.get('*', (req, res) => {
+//     // res.sendFile(path.join(__dirname, 'dist/PathFinder/index.html'));
+// });
+
+/**
+ * Error handler
+ */
+app.use((req, res, next) => {
+    next(createError(404));
 });
+  
 
 
-//Port might be specified here directly or separately from external env file setting etc
-var port = 3000;
-
-
-app.listen(port, function() {
+app.listen(port, () => {
     console.log('Server listening on port: ' + port);
 });
