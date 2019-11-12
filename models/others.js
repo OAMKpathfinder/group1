@@ -8,9 +8,19 @@ var others = {
             callback
         );
     },
+
     delete: (id, callback) => {
         return db.query(deleteQuery, [id] ,callback);
-    }
-}
+    },
 
+  //Update - requires others id
+  updateOthers: (id, others, callback) => {
+    //TODO validation
+    return db.query(
+      "update others set hjoht = $1, cost = $2, pipe = $3 where id = $4",
+      [others.hjoht, others.cost, others.pipe, id],
+      callback
+    );
+  },
+};
 module.exports = others;

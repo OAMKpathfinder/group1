@@ -11,7 +11,25 @@ var door = {
     },
     delete: (id, callback) => {
         return db.query(deleteQuery, [id] ,callback);
-    }
-}
+    },
+  //Update - requires door id
+  updateDoor: (id, door, callback) => {
+    //TODO validation
+    return db.query(
+      "update door set uValue = $1, area = $2, materials = $3, bridgeValue = $4, \
+      name = $5, protected = $6 where id = $7",
+      [
+        door.uValue,
+        door.area,
+        door.materials,
+        door.bridgeValue,
+        door.name,
+        door.protected,
+        id
+      ],
+      callback
+    );
+  },
+};
 
 module.exports = door;
