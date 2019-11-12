@@ -8,10 +8,23 @@ var homeProperties = {
             callback
         );
     },
+
     delete: (id, callback) => {
         return db.query(deleteQuery, [id] ,callback);
-    }
+    },
 
-}
-
-module.exports = homeProperties;
+   //Update - requires homeProperties id
+   updateHomeProperties: (id, homeProperties, callback) => {
+     //TODO validation
+     return db.query(
+       "update homeProperties set owner = $1, name = $2  where id = $3",
+       [
+         homeProperties.owner,
+         homeProperties.name,
+         id
+       ],
+       callback
+     );
+   },
+ };
+ module.exports = homeProperties;
