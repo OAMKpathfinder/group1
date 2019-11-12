@@ -1,12 +1,10 @@
 let express = require('express');
 let app = express();
 let cors = require('cors');
-
 const path = require('path');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 /**
  * For the cors policy, lazy implementation which is not including header
@@ -25,8 +23,32 @@ app.use('/homeProperties', homePropertiesRouter);
 var outerWallRouter = require('./routes/outerWall');
 app.use('/outerWall', outerWallRouter);
 
+var doorRouter = require('./routes/door');
+app.use('/door', doorRouter);
 
-app.use(express.static(path.join(__dirname, 'dist/PathFinder')));
+var doorsRouter = require('./routes/doors');
+app.use('/doors', doorsRouter);
+
+var roofConRouter = require('./routes/roofConstruction');
+app.use('/roofCon', roofConRouter);
+
+var windowSingleRouter = require('./routes/windowSingle');
+app.use('/windowSingle', windowSingleRouter);
+
+var windowAllRouter = require('./routes/windowAll');
+app.use('/windowAll', windowAllRouter);
+
+var bridgesRouter = require('./routes/bridges');
+app.use('/bridges', bridgesRouter);
+
+var groundFloorRouter = require('./routes/groundFloor');
+app.use('/groundFloor', groundFloorRouter);
+
+var usersRouter = require('./routes/users');
+app.use('/users', usersRouter);
+
+var othersRouter = require('./routes/others');
+app.use('/others', othersRouter);
 
 // app.use(express.static(__dirname + '/assets'));
 // app.use(express.static(path.join(__dirname, 'dist/PathFinder')));
@@ -39,12 +61,12 @@ app.use(express.static(path.join(__dirname, 'dist/PathFinder')));
 var port = 3000;
 require('dotenv').config()
 
-app.listen( process.env.SERVER_PORT || port, () =>
+app.listen(process.env.SERVER_PORT || port, () =>
   console.log('server running on localhost:3000')
 );
 /**
  * Error handler
  */
-app.use((req, res, next) => {
-    next(createError(404));
-});
+// app.use((req, res, next) => {
+//     next(createError(404));
+// });
