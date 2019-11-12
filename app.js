@@ -1,6 +1,7 @@
+let express = require('express');
+let app = express();
+let cors = require('cors');
 
-var express = require('express');
-var app = express();
 const path = require('path');
 
 app.use(express.json());
@@ -16,7 +17,7 @@ app.use(cookieParser());
  * 
  * Remember to get rid of this in production
  */
-// app.use(cors());
+app.use(cors());
 
 var homePropertiesRouter = require('./routes/homeProperties');
 app.use('/homeProperties', homePropertiesRouter);
@@ -27,10 +28,12 @@ app.use('/outerWall', outerWallRouter);
 
 app.use(express.static(path.join(__dirname, 'dist/PathFinder')));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/PathFinder/index.html'));
-});
+// app.use(express.static(__dirname + '/assets'));
+// app.use(express.static(path.join(__dirname, 'dist/PathFinder')));
 
+// app.get('*', (req, res) => {
+//     // res.sendFile(path.join(__dirname, 'dist/PathFinder/index.html'));
+// });
 
 //Port might be specified here directly or separately from external env file setting etc
 var port = 3000;
@@ -39,3 +42,9 @@ require('dotenv').config()
 app.listen( process.env.SERVER_PORT || port, () =>
   console.log('server running on localhost:3000')
 );
+/**
+ * Error handler
+ */
+app.use((req, res, next) => {
+    next(createError(404));
+});
