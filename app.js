@@ -1,7 +1,6 @@
 let express = require('express');
 let app = express();
-// let cors = require('cors');
-
+let cors = require('cors');
 const path = require('path');
 
 app.use(express.json());
@@ -62,6 +61,6 @@ app.get('*', (req, res) => {
 var port = 3000;
 require('dotenv').config()
 
-app.listen( process.env.SERVER_PORT || port, () =>
+app.listen(process.env.SERVER_PORT || port, () =>
   console.log('server running on localhost:3000')
 );
