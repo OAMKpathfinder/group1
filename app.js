@@ -56,7 +56,7 @@ var expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(session({
     secret: process.env.SESSION_SECRET,
     name: process.env.SESSION_NAME,
-    keys: [SESSION_SECRET.SESSION_KEY1, process.env.SESSION_KEY2],
+    keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2],
     cookie: {
         secure: true,
         httpOnly: true,

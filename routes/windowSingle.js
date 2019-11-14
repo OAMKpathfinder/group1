@@ -4,6 +4,33 @@ var windowSingle = require('../models/windowSingle');
 var DELETE = require('./DELETE');
 var del = new DELETE();
 
+//Get - requires windowSingle id for single or no param for all
+router.get("/:windowSingle_id?", function(req, res, next) {
+  if(req.params.windowSingle_id){
+    windowSingle.get(req.params.windowSingle_id, function(err, rows) {
+      if (err) {
+        res.json(err);
+      } else if (rows.rowCount == 0 ){
+          res.send("No results found")
+      }
+      else {
+        res.json(rows.rows[0]);
+      }
+    });
+  }else{
+    windowSingle.getAll(function(err, rows) {
+      if (err) {
+        res.json(err);
+      } else if (rows.rowCount == 0 ){
+          res.send("No results found")
+      }
+      else {
+        res.json(rows.rows);
+      }
+    });
+  }
+});
+
 router.post('/', (req, res) => {
     windowSingle.add(req.body, (err, count) => {
         if (err) {
@@ -32,4 +59,5 @@ router.put("/:windowSingle_id", function(req, res, next) {
     }
   );
 });
+
 module.exports = router;
