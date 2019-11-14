@@ -56,7 +56,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(session({
 //     secret: process.env.SESSION_SECRET,
 //     name: process.env.SESSION_NAME,
-//     keys: [process.env.SESSION_SECRET, process.env.SESSION_KEY1, process.env.SESSION_KEY2],
+//     keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2],
 //     cookie: {
 //         secure: true,
 //         httpOnly: true,
@@ -65,7 +65,6 @@ app.use(express.urlencoded({ extended: false }));
 //         expires: expiryDate
 //     }
 // }))
-
 //Till here, some securities
 
 

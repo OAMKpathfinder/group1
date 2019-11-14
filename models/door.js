@@ -1,6 +1,14 @@
-var db = require('../database');
-let deleteQuery = 'DELETE FROM door where id = $1';
+var db = require("../database");
+let deleteQuery = "DELETE FROM door where id = $1";
 var door = {
+
+  get: (door_id, callback) => {
+    return db.query("select * from door where id = $1", [door_id], callback);
+  },
+
+  getAll: callback => {
+    return db.query("select * from door", callback);
+  },
 
   add: (door, callback) => {
     return db.query('insert into door(doors,uValue,area,materials,bridgeValue, \
@@ -10,11 +18,11 @@ var door = {
       callback
     );
   },
-    
+
   delete: (id, callback) => {
     return db.query(deleteQuery, [id], callback);
   },
-    
+
   //Update - requires door id
   updateDoor: (id, door, callback) => {
     //TODO validation
@@ -32,7 +40,7 @@ var door = {
       ],
       callback
     );
-  },
+  }
 };
 
 module.exports = door;

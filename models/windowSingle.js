@@ -1,6 +1,18 @@
-var db = require('../database');
-let deleteQuery = 'DELETE FROM windowSingle where id = $1';
+var db = require("../database");
+let deleteQuery = "DELETE FROM windowSingle where id = $1";
 var windowSingle = {
+  
+  get: (windowSingle_id, callback) => {
+    return db.query(
+      "select * from windowSingle where id = $1",
+      [windowSingle_id],
+      callback
+    );
+  },
+
+  getAll: callback => {
+    return db.query("select * from windowSingle", callback);
+  },
 
 	add: (windowSingle, callback) => {
 		return db.query('insert into windowSingle(windowAll,uValue,area, \
@@ -10,11 +22,9 @@ var windowSingle = {
 			callback
 		);
 	},
-  
 	delete: (id, callback) => {
 		return db.query(deleteQuery, [id], callback);
 	},
-    
   //Update - requires windowSingle id
   updateWindowSingle: function(id, windowSingle, callback) {
     //TODO validation
@@ -32,7 +42,7 @@ var windowSingle = {
       ],
       callback
     );
-  },    
+  }
 };
 
 module.exports = windowSingle;
