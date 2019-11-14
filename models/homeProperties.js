@@ -1,30 +1,38 @@
 var db = require('../database');
+//queries defined here to use below models
 let deleteQuery = 'DELETE FROM homeProperties where id = $1';
+let getAllQuery = 'SELECT * FROM homeProperties';
+let getByIdQuery = 'SELECT * FROM homeProperties where id=$1';
 var homeProperties = {
-
-    add: (homeProperties, callback) => {
-        db.query('insert into homeProperties values($1,$2,$3)',
-            [homeProperties.id, homeProperties.owner, homeProperties.name],
-            callback
-        );
-    },
-
-    delete: (id, callback) => {
-        return db.query(deleteQuery, [id] ,callback);
-    },
-
-   //Update - requires homeProperties id
-   updateHomeProperties: (id, homeProperties, callback) => {
-     //TODO validation
-     return db.query(
-       "update homeProperties set owner = $1, name = $2  where id = $3",
-       [
-         homeProperties.owner,
-         homeProperties.name,
-         id
-       ],
-       callback
-     );
-   },
+  //Get request model, all the rows and by id is defined here
+  getAll:(callback) => {
+    return db.query(getAllQuery, callback);
+  },
+  getById:(id, callback) => {
+    return db.query(getByIdQuery, [id], callback);
+  },
+  add: (homeProperties, callback) => {
+      db.query('insert into homeProperties values($1,$2,$3)',
+          [homeProperties.id, homeProperties.owner, homeProperties.name],
+          callback
+      );
+  },
+  //DELETE request model, by id
+  delete: (id, callback) => {
+      return db.query(deleteQuery, [id] ,callback);
+  },
+  //Update - requires homeProperties id
+  updateHomeProperties: (id, homeProperties, callback) => {
+    //TODO validation
+    return db.query(
+      "update homeProperties set owner = $1, name = $2  where id = $3",
+      [
+        homeProperties.owner,
+        homeProperties.name,
+        id
+      ],
+      callback
+    );
+  },
  };
  module.exports = homeProperties;
