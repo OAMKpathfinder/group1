@@ -4,6 +4,7 @@ let deleteQuery = 'DELETE FROM bridges where id = $1';
 let getAllQuery = 'SELECT * FROM bridges';
 let getByIdQuery = 'SELECT * FROM bridges where id=$1';
 var bridges = {
+  
     //Get request model, all the rows and by id is defined here
     getAll:(callback) => {
       return db.query(getAllQuery, callback);
@@ -11,18 +12,28 @@ var bridges = {
     getById:(id, callback) => {
       return db.query(getByIdQuery, [id], callback);
     },
-    add: (bridges, callback) => {
-        return db.query('insert into bridges values($1,$2,$3,$4,$5,$6,$7)',
-            [bridges.id, bridges.properties, bridges.outerWallToOuterWall, bridges.outerWallToRoof,
-            bridges.outerWallToMiddleBasement, bridges.outerWallToGroundFloor, bridges.protected],
-            callback
-        );
-    },
-    //DELETE request model, by id
-    delete: (id, callback) => {
-        return db.query(deleteQuery, [id] ,callback);
-    },
-    updateBridge: (id, bridges, callback) => {
+
+	add: (bridges, callback) => {
+		return db.query('insert into bridges(properties, outerWallToOuterWall, \
+            outerWallToRoof, outerWallToMiddleBasement, outerWallToGroundFloor, \
+            protected) values($1,$2,$3,$4,$5,$6)',
+			[
+        bridges.properties,
+        bridges.outerWallToOuterWall,
+        bridges.outerWallToRoof,
+        bridges.outerWallToMiddleBasement, 
+        bridges.outerWallToGroundFloor, 
+        bridges.protected
+      ],
+			callback
+		);
+	},
+  
+	delete: (id, callback) => {
+		return db.query(deleteQuery, [id], callback);
+	},
+
+  updateBridge: (id, bridges, callback) => {
     //TODO validation
       return db.query(
         "update bridges set outerWallToOuterWall = $1, outerWallToRoof = $2, \
@@ -39,4 +50,5 @@ var bridges = {
       );
     },
 };
+
 module.exports = bridges;
