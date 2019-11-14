@@ -1,6 +1,17 @@
 var db = require('../database');
+//queries defined here to use below models
 let deleteQuery = 'DELETE FROM roofConstruction where id = $1';
+let getAllQuery = 'SELECT * FROM roofConstruction';
+let getByIdQuery = 'SELECT * FROM roofConstruction where id=$1';
+
 var roofConstruction = {
+  //Get request model, all the rows and by id is defined here
+  getAll:(callback) => {
+    return db.query(getAllQuery, callback);
+  },
+  getById:(id, callback) => {
+    return db.query(getByIdQuery, [id], callback);
+  },
 
 	add: (roofConstruction, callback) => {
 		return db.query('insert into roofconstruction(properties,uValue,area, \
@@ -19,7 +30,7 @@ var roofConstruction = {
   updateRoofConstruction: (id, roofConstruction, callback) => {
     //TODO validation
     return db.query(
-      "update outerWall set uValue = $1, area = $2, materials = $3, \
+      "update roofConstruction set uValue = $1, area = $2, materials = $3, \
         protected = $4 where id = $5",
       [
         roofConstruction.uValue,

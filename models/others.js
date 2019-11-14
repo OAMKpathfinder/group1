@@ -1,7 +1,18 @@
 var db = require('../database');
+//queries defined here to use below models
 let deleteQuery = 'DELETE FROM others where id = $1';
+let getAllQuery = 'SELECT * FROM others';
+let getByIdQuery = 'SELECT * FROM others where id=$1';
 var others = {
 
+  //Get request model, all the rows and by id is defined here
+  getAll:(callback) => {
+    return db.query(getAllQuery, callback);
+  },
+  
+  getById:(id, callback) => {
+    return db.query(getByIdQuery, [id], callback);
+  },
 
 	add: (others, callback) => {
 		db.query('insert into others(properties,hjoht,cost,pipe) values($1,$2,$3,$4)',

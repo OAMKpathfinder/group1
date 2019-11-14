@@ -1,9 +1,20 @@
 var db = require('../database');
+//queries defined here to use below models
 let deleteQuery = 'DELETE FROM users where id = $1';
+let getAllQuery = 'SELECT * FROM users';
+let getByIdQuery = 'SELECT * FROM users where id=$1';
 var users = {
 
+  //Get request model, all the rows and by id is defined here
+  getAll:(callback) => {
+    return db.query(getAllQuery, callback);
+  },
+  getById:(id, callback) => {
+    return db.query(getByIdQuery, [id], callback);
+  },
+
 	add: (users, callback) => {
-		db.query('insert into users values($1,$2)',
+		db.query('insert into users(email, password) values($1,$2)',
 			[users.email, users.password],
 			callback
 		);

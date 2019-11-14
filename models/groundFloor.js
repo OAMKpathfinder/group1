@@ -1,6 +1,18 @@
 var db = require('../database');
+//queries defined here to use below models
 let deleteQuery = 'DELETE FROM groundFloor where id = $1';
+let getAllQuery = 'SELECT * FROM groundFloor'
+let getByIdQuery = 'SELECT * FROM groundFloor where id=$1'
 var groundFloor = {
+  
+  //Get request model, all the rows and by id is defined here
+  getAll:(callback) => {
+    return db.query(getAllQuery, callback);
+  },
+  
+  getById:(id, callback) => {
+    return db.query(getByIdQuery, [id], callback);
+  },
 
   add: (groundFloor, callback) => {
     db.query('insert into groundFloor(properties,uValue,area,materials, \

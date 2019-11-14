@@ -1,7 +1,17 @@
-
 var db = require('../database');
+//queries defined here to use below models
 let deleteQuery = 'DELETE FROM outerWall where id = $1';
+let getAllQuery = 'SELECT * FROM outerWall';
+let getByIdQuery = 'SELECT * FROM outerWall where id=$1';
+
 var outerWall = {
+  //Get request model, all the rows and by id is defined here
+  getAll:(callback) => {
+    return db.query(getAllQuery, callback);
+  },
+  getById:(id, callback) => {
+    return db.query(getByIdQuery, [id], callback);
+  },
 
 	add: (outerWall, callback) => {
 		db.query('insert into outerWall(properties,uValue,area, \

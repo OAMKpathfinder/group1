@@ -1,6 +1,17 @@
 var db = require('../database');
+//queries defined here to use below models
 let deleteQuery = 'DELETE FROM bridges where id = $1';
+let getAllQuery = 'SELECT * FROM bridges';
+let getByIdQuery = 'SELECT * FROM bridges where id=$1';
 var bridges = {
+  
+    //Get request model, all the rows and by id is defined here
+    getAll:(callback) => {
+      return db.query(getAllQuery, callback);
+    },
+    getById:(id, callback) => {
+      return db.query(getByIdQuery, [id], callback);
+    },
 
 	add: (bridges, callback) => {
 		return db.query('insert into bridges(properties, outerWallToOuterWall, \
