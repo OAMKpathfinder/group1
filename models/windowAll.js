@@ -14,6 +14,11 @@ var windowAll = {
     return db.query("select * from windowAll", callback);
   },
 
+	delete: (id, callback) => {
+		return db.query(deleteQuery, [id], callback);
+	}
+},
+
   getAllSingles: (windowAll_id, callback) => {
     return db.query(
       "SELECT windowSingle.* FROM windowAll FULL OUTER JOIN windowSingle ON \
@@ -23,17 +28,13 @@ var windowAll = {
     );
   },
 
-  add: (windowAll, callback) => {
-    return db.query(
-      "insert into windowall values($1,$2)",
-      [windowAll.id, windowAll.properties],
-      callback
-    );
-  },
+	add: (windowAll, callback) => {
+		return db.query('insert into windowall(properties) values($1)',
+			[windowAll.properties],
+			callback
+		);
+	},
 
-  delete: (id, callback) => {
-    return db.query(deleteQuery, [id], callback);
-  }
 };
 
 module.exports = windowAll;

@@ -14,26 +14,17 @@ var windowSingle = {
     return db.query("select * from windowSingle", callback);
   },
 
-  add: (windowSingle, callback) => {
-    return db.query(
-      "insert into windowSingle values($1,$2,$3,$4,$5,$6,$7,$8)",
-      [
-        windowSingle.id,
-        windowSingle.windowAll,
-        windowSingle.uValue,
-        windowSingle.area,
-        windowSingle.materials,
-        windowSingle.bridgeValue,
-        windowSingle.name,
-        windowSingle.protected
-      ],
-      callback
-    );
-  },
-  delete: (id, callback) => {
-    return db.query(deleteQuery, [id], callback);
-  },
-
+	add: (windowSingle, callback) => {
+		return db.query('insert into windowSingle(windowAll,uValue,area, \
+            materials,bridgeValue,name,protected) values($1,$2,$3,$4,$5,$6,$7)',
+			[windowSingle.windowAll, windowSingle.uValue, windowSingle.area,
+			windowSingle.materials, windowSingle.bridgeValue, windowSingle.name, windowSingle.protected],
+			callback
+		);
+	},
+	delete: (id, callback) => {
+		return db.query(deleteQuery, [id], callback);
+	},
   //Update - requires windowSingle id
   updateWindowSingle: function(id, windowSingle, callback) {
     //TODO validation
