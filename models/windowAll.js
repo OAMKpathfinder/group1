@@ -16,9 +16,8 @@ var windowAll = {
 
 	delete: (id, callback) => {
 		return db.query(deleteQuery, [id], callback);
-	}
-},
-
+  },
+  
   getAllSingles: (windowAll_id, callback) => {
     return db.query(
       "SELECT windowSingle.* FROM windowAll FULL OUTER JOIN windowSingle ON \
