@@ -7,8 +7,8 @@ const path = require('path');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// let cookieParser = require('cookie-parser');
-// app.use(cookieParser());
+let cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 /**
  * For the cors policy, lazy implementation which is not including header
@@ -19,8 +19,8 @@ app.use(express.urlencoded({ extended: false }));
  *
  * Remember to get rid of this in production
  */
-// let cors = require('cors');
-// app.use(cors());
+let cors = require('cors');
+app.use(cors());
 
 //Some security baisc
 //TODO
@@ -41,8 +41,8 @@ app.use(express.urlencoded({ extended: false }));
  * frameguard sets the X-Frame-Options header to provide clickjacking protection.
  * xssFilter sets X-XSS-Protection to enable the Cross-site scripting (XSS) filter in most recent web browsers.
  */
-// var helmet = require('helmet');
-// app.use(helmet());
+var helmet = require('helmet');
+app.use(helmet());
 
 /**
  * From here setting some secure setting for cookies & session
@@ -51,20 +51,20 @@ app.use(express.urlencoded({ extended: false }));
  * The security issue posed is similar to X-Powered-By: 
  * a potential attacker can use it to fingerprint the server and target attacks accordingly.
  */
-// var session = require('cookie-session');
-// var expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
-// app.use(session({
-//     secret: process.env.SESSION_SECRET,
-//     name: process.env.SESSION_NAME,
-//     keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2],
-//     cookie: {
-//         secure: true,
-//         httpOnly: true,
-//         domain: process.env.SESSION_DOMAIN,
-//         path: process.env.SESSION_PATH,
-//         expires: expiryDate
-//     }
-// }))
+var session = require('cookie-session');
+var expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    name: process.env.SESSION_NAME,
+    keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2],
+    cookie: {
+        secure: true,
+        httpOnly: true,
+        domain: process.env.SESSION_DOMAIN,
+        path: process.env.SESSION_PATH,
+        expires: expiryDate
+    }
+}))
 //Till here, some securities
 
 
@@ -119,6 +119,8 @@ app.use('/windowAll', windowAllRouter);
 var windowSingleRouter = require('./routes/windowSingle');
 app.use('/windowSingle', windowSingleRouter);
 
+
+//Here we define URL path for front-end, static files, which is built with angular as wildcard
 app.use(express.static(path.join(__dirname, 'dist/PathFinder')));
 
 app.get('*', (req, res) => {
