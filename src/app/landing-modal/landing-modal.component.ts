@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material'
 
 @Component({
   selector: 'app-landing-modal',
@@ -8,10 +8,10 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 })
 export class LandingModalComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<LandingModalComponent>) { }
+  constructor() { }
 
-  close() {
-    this.dialogRef.close();
+  alarm() {
+    alert("CIA is on the way..")
   }
 
   ngOnInit() {

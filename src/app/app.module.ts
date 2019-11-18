@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
+import { MatButtonModule, MatDialogModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
 
 @NgModule({
@@ -15,12 +15,25 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
     LandingComponent,
     LandingModalComponent
   ],
+  /**
+   * If you are getting an error about entry component, add the code below ;)
+   */
+  entryComponents: [
+    LandingModalComponent
+  ],
+  // exports: [
+  //   LandingModalComponent
+  // ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
