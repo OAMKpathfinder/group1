@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PathFinder';
+  constructor(){
+  }
+  el2: string = 'el2';
+  el3: string = 'el3';
+
+  title1: string = 'PathFinder1';
+  title2: string = 'PathFinder2';
+  title3: string = 'PathFinder3';
+
+  subTitle1 : string = 'subTitle1';
+  subTitle2 : string = 'subTitle2';
+  subTitle3 : string = 'subTitle3';
+  
+  lorem ="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 }
