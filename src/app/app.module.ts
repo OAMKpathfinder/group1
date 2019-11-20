@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { InputWindowsComponent } from './input-windows/input-windows.component';
 import { InputFormComponent } from './input-form/input-form.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { StepperComponent } from './stepper/stepper.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputWindowsComponent,
     InputFormComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    StepperComponent
   ],
   imports: [
     BrowserModule,
