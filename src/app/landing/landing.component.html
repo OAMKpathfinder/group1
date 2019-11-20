@@ -1,0 +1,32 @@
+<!-- [ngStyle]="{'background': getUrl()}" -->
+<div class="landingContainer">
+  <div class="titleContainer">
+    <h1 class="landingTitle">{{title}}</h1>
+    <button class="startBtn" id="startBtn" for="modal1" (click)="openDialog()">Get Started</button>
+  </div>
+  <footer class="infoContainer">
+    <div class="descContainer">
+      <div class="singleDesc">
+        <span>
+          <fa-icon [icon]="faHome"></fa-icon>
+          <h4>Information</h4>
+          <p>Let us know the details of your building</p>
+        </span>
+      </div>
+      <div class="singleDesc">
+        <span>
+          <fa-icon [icon]="faCalculator"></fa-icon>
+          <h4>Calculations</h4>
+          <p>Just input the values and we do the calculations for you</p>
+        </span>
+      </div>
+      <div class="singleDesc">
+        <span>
+          <fa-icon [icon]="faLeaf"></fa-icon>
+          <h4>Efficiency</h4>
+          <p>Get suggestions on how to increase energy efficiency based on your building</p>
+        </span>
+      </div>
+    </div>
+  </footer>
+</div>

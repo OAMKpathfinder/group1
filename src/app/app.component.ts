@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -25,4 +26,6 @@ export class AppComponent {
   //phase for used to name the breadcrumb and referring the li to assign/remove active class
   ids = ["el1","el2","el3"];
   phases = ["phase1","phase2","phase3"];
+
+  title = 'PathFinder';
 }
