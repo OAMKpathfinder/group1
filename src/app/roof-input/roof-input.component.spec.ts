@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputFormComponent } from './input-form.component';
+import { RoofInputComponent } from './roof-input.component';
 
-describe('InputFormComponent', () => {
-  let component: InputFormComponent;
-  let fixture: ComponentFixture<InputFormComponent>;
+describe('RoofInputComponent', () => {
+  let component: RoofInputComponent;
+  let fixture: ComponentFixture<RoofInputComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputFormComponent ]
+      declarations: [ RoofInputComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InputFormComponent);
+    fixture = TestBed.createComponent(RoofInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
