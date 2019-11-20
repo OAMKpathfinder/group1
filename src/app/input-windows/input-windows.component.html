@@ -1,0 +1,24 @@
+<section class="one-page" *ngIf="id">
+    <div class="border">
+        <div *ngIf="title" class="margin-left-bit margin-top-bit title">
+            {{title}}
+        </div>
+        <div class="margin-top-bit margin-bottom-bit">
+            <div class="container">
+                <div *ngIf="subTitle" class="subTitle">
+                    {{subTitle}}
+                </div>
+                <div *ngIf="desc">
+                    <p>
+                        {{desc}}
+                    </p>
+                </div>
+                <div>
+                    Here might come input forms
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isThereNext" class="arrow" (click)="scrollToOther()"></div>
+</section>
+

@@ -1,1 +1,13 @@
 <app-landing></app-landing>
+<div class="container-fluid container-total">
+    <div class="row container-row">
+        <div class="col-md-1 container-left">
+            <app-breadcrumb [ids]="ids" [phases]="phases"></app-breadcrumb>
+        </div>
+        <main class="col-md-11 container-right">
+            <app-input-windows id="el1" [next]="el2" [title]="title1" [subTitle]="subTitle1" [desc]="lorem" [isThereNext]=true></app-input-windows>
+            <app-input-windows id="el2" [next]="el3" [title]="title2" [subTitle]="subTitle2" [desc]="lorem" [isThereNext]=true></app-input-windows>
+            <app-input-windows id="el3" [next]="" [title]="title3" [subTitle]="subTitle1" [desc]="lorem" [isThereNext]=false></app-input-windows>
+        </main>
+    </div>
+</div>
