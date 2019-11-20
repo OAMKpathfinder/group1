@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material'
 
 @Component({
@@ -6,12 +6,15 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material'
   templateUrl: './landing-modal.component.html',
   styleUrls: ['./landing-modal.component.css']
 })
-export class LandingModalComponent implements OnInit {
+export class LandingModalComponent implements OnInit { 
+
+  public message: string;
 
   constructor() { }
 
-  alarm() {
-    alert("CIA is on the way..")
+  nope() {
+    this.message = "Nope";
+    alert(this.message);
   }
 
   ngOnInit() {

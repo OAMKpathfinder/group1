@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { faLeaf } from '@fortawesome/free-solid-svg-icons';
+import { faLeaf, faHome, faCalculator } from '@fortawesome/free-solid-svg-icons';
 import { LandingModalComponent } from '../landing-modal/landing-modal.component';
 import { MatDialog } from '@angular/material';
 
@@ -10,17 +10,16 @@ import { MatDialog } from '@angular/material';
 })
 export class LandingComponent implements OnInit {
   faLeaf = faLeaf;
+  faHome = faHome;
+  faCalculator = faCalculator;
   title = "PathFinder";
 
   constructor(public dialog: MatDialog) {}
 
-  /**
-   * Some fitting picture to 
-   * getUrl function
-   */
-  getUrl() {
-    return "url()";
-  }
+ 
+  // getUrl() {
+  //   return "url('https://cn.opendesktop.org/img/9/f/a/2/212c15ff6f9c7ea433330f629e4618469949.jpg')";
+  // }
   openDialog() {
     this.dialog.open(LandingModalComponent);
   }
