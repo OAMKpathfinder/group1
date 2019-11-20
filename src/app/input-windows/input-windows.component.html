@@ -13,17 +13,15 @@
                         {{desc}}
                     </p>
                 </div>
-                <div *ngIf="inputForms">
-                    <div *ngFor="let inputForm of inputForms">
-                        <app-input-form></app-input-form>
-                    </div>
-                    <!-- <app-option-app [value1]="options.value1" [value2]="options.value2" [value3]="options.value3" [type1]="options.typeA" [type2]="options.typeB" [type3]="options.typeC"></app-option-app> -->
+                <div>
+                    Here might come input forms
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div *ngIf="isThereNext" class="arrow2" (click)="scrollToOther()">&#8595;&#8659;&#11167;&#11117;&#11123;&#11143;&#11163;&#11182;&#8681;&#11015;</div> -->
-    <div *ngIf="isThereNext" class="arrow" (click)="scrollToOther()"></div>
-    <!-- <div *ngIf="isThereNext" class="triangle" (click)="scrollToOther()"></div> -->
+    <div *ngIf="isThereNext" class="arrow2" (click)="scrollToOther()">&#8595;&#8659;&#11167;&#11117;&#11123;&#11143;&#11163;&#11182;&#8681;</div>
+    <div *ngIf="isThereNext" class="arrow2" (click)="scrollToOther()">&#11015;</div>
+    <!-- <div *ngIf="isThereNext" class="arrow" (click)="scrollToOther()"></div> -->
+    <div *ngIf="isThereNext" class="triangle" (click)="scrollToOther()"></div>
 </section>
 

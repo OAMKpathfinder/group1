@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, AfterViewInit, ViewChildren, Directive } from '@angular/core';
-import { InputFormComponent } from '../input-form/input-form.component';
+import { Component, Input, OnInit, AfterViewInit, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-input-windows',
@@ -8,7 +7,6 @@ import { InputFormComponent } from '../input-form/input-form.component';
 })
 
 export class InputWindowsComponent implements OnInit, AfterViewInit{
-  @ViewChildren(InputFormComponent) inputFormComponent: InputFormComponent[];
   
   @Input () public id: string;
   @Input () public next: string;
@@ -16,7 +14,6 @@ export class InputWindowsComponent implements OnInit, AfterViewInit{
   @Input () public subTitle: string;
   @Input () public desc: string;
   @Input () public isThereNext: boolean;
-  @Input () public inputForms: InputFormComponent[];
 
   constructor(){
   }
