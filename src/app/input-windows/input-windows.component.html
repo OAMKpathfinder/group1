@@ -14,7 +14,10 @@
                     </p>
                 </div>
                 <div>
-                    Here might come input forms
+                    <button *ngIf=" type =='ground' "  mat-raised-button (click)="openGroundDialog()">Add Ground</button>
+                    <button *ngIf=" type =='door' " mat-raised-button (click)="openDoorDialog()">Add a Door</button>
+                    <button *ngIf=" type =='bridge' " mat-raised-button (click)="openBridgeDialog()">Add a Bridge</button>
+                    <button *ngIf=" type =='window' " mat-raised-button (click)="openWindowDialog()">Add a Window</button>
                 </div>
             </div>
         </div>

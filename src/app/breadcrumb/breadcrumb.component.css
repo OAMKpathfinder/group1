@@ -18,14 +18,13 @@
 .round-circle{
     border: 1px solid black;
     border-radius: 50%;
-    width: 4vw;
-    height: 4vw;
+    width: 4.5vw;
+    height: 4.5vw;
 }
 
 .sticky{
     position: fixed;
     z-index: 1000;
-    width: 100%;
 }
 
 li{
@@ -57,8 +56,9 @@ a:active{
 }
 
 .bc{
-    height: 3vw;
-    line-height: 3vw;
+    font-size: 1em;
+    height: 4vw;
+    line-height: 4vw;
     text-align: center;
 }
 span {
