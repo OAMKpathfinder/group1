@@ -35,15 +35,15 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
     LandingComponent,
     LandingModalComponent
   ],
-  entryComponents: [
-    LandingModalComponent
-  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+    MatFormFieldModule
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -53,12 +53,7 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
     WallInputComponent,
     GroundInputComponent,
     OthersInputComponent,
-    FontAwesomeModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatInputModule,
-    MatFormFieldModule
+    LandingModalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
