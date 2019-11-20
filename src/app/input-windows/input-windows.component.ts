@@ -1,9 +1,9 @@
-import { Component, Input, OnInit, AfterViewInit, ViewChildren } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { WindowsInputComponent } from '../windows-input/windows-input.component';
 import { DoorsInputComponent } from '../doors-input/doors-input.component';
 import { BridgeInputComponent } from '../bridge-input/bridge-input.component';
 import { GroundInputComponent } from '../ground-input/ground-input.component';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-input-windows',
@@ -11,7 +11,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
   styleUrls: ['./input-windows.component.css']
 })
 
-export class InputWindowsComponent implements OnInit, AfterViewInit{
+export class InputWindowsComponent{
   
   @Input () public id: string;
   @Input () public next: string;
@@ -23,14 +23,9 @@ export class InputWindowsComponent implements OnInit, AfterViewInit{
 
   constructor(public dialog: MatDialog){
   }
-  ngOnInit(){
-  }
-  ngAfterViewInit(){
-  }
 
+  //Smoothly scroll down to target div
   scrollToOther(): void{
-    console.log("called")
-    console.log(document.getElementById(this.next))
     if(document.getElementById(this.next)){
       document.getElementById(this.next).scrollIntoView({ block: 'end',  behavior: 'smooth' });
     }

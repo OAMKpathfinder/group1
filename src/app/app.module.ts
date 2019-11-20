@@ -11,7 +11,6 @@ import { GroundInputComponent } from './ground-input/ground-input.component';
 import { BridgeInputComponent } from './bridge-input/bridge-input.component';
 import { WallInputComponent } from './wall-input/wall-input.component';
 import { InputWindowsComponent } from './input-windows/input-windows.component';
-import { InputFormComponent } from './input-form/input-form.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { LandingComponent } from './landing/landing.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -30,7 +29,6 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
     BridgeInputComponent,
     WallInputComponent,
     InputWindowsComponent,
-    InputFormComponent,
     BreadcrumbComponent,
     LandingComponent,
     LandingModalComponent
