@@ -3,6 +3,8 @@
   <div class="titleContainer">
     <h1 class="landingTitle">{{title}}</h1>
     <button class="startBtn" id="startBtn" for="modal1" (click)="openDialog()">Get Started</button>
+    <br>
+    <a [routerLink]="['/mainpage']" routerLinkActive="router-link-active" >Proceed without login</a>
   </div>
   <footer class="infoContainer">
     <div class="descContainer">

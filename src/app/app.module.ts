@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { WindowsInputComponent } from './windows-input/windows-input.component';
 import { DoorsInputComponent } from './doors-input/doors-input.component';
@@ -18,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatDialogModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 @NgModule({
   declarations: [
@@ -33,17 +35,22 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
     InputFormComponent,
     BreadcrumbComponent,
     LandingComponent,
-    LandingModalComponent
-  ],
-  entryComponents: [
-    LandingModalComponent
+    LandingModalComponent,
+    MainpageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    RouterModule
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -53,12 +60,8 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
     WallInputComponent,
     GroundInputComponent,
     OthersInputComponent,
-    FontAwesomeModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatInputModule,
-    MatFormFieldModule
+    LandingComponent,
+    LandingModalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
