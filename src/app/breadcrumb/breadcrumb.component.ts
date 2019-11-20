@@ -19,7 +19,8 @@ export class BreadcrumbComponent implements OnInit {
     for(let i = 0; i<this.ids.length; i++){
       this.properties.push({
         "id":this.ids[i],
-        "phase":this.phases[i]
+        "phase":this.phases[i],
+        "numbering": i+1
       });
     }
 

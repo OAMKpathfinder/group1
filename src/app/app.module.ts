@@ -18,6 +18,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatDialogModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,12 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
     MatButtonModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatBadgeModule
   ],
   entryComponents: [
     WindowsInputComponent,

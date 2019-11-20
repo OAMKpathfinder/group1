@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { WindowsInputComponent } from '../windows-input/windows-input.component';
+import { DoorsInputComponent } from '../doors-input/doors-input.component';
+import { BridgeInputComponent } from '../bridge-input/bridge-input.component';
+import { GroundInputComponent } from '../ground-input/ground-input.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-stepper',
@@ -9,18 +12,37 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class StepperComponent implements OnInit {
 
-  isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  @Input() properties: string[];
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(public dialog: MatDialog){
+  }
 
-  ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+  ngOnInit(){
+  }
+
+  //Input Dialogs 
+  openWindowDialog(): void {
+    const dialogRef = this.dialog.open(WindowsInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+  }
+  openDoorDialog(): void {
+    const dialogRef = this.dialog.open(DoorsInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openBridgeDialog(): void {
+    const dialogRef = this.dialog.open(BridgeInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openGroundDialog(): void {
+    const dialogRef = this.dialog.open(GroundInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
     });
   }
 
