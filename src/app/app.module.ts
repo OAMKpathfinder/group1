@@ -17,8 +17,9 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { LandingComponent } from './landing/landing.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatDialogModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import { MatButtonModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainpageComponent } from './mainpage/mainpage.component';
 
 @NgModule({
@@ -45,11 +46,14 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     MatDialogModule,
     MatButtonModule,
     FontAwesomeModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatInputModule,
     MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,    
+    MatRadioModule,
+    MatSlideToggleModule,
+    MatOptionModule,
+    MatSelectModule,
     RouterModule
   ],
   entryComponents: [
@@ -58,10 +62,14 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     RoofInputComponent,
     BridgeInputComponent,
     WallInputComponent,
+    InputWindowsComponent,
+    InputFormComponent,
+    BreadcrumbComponent,
     GroundInputComponent,
     OthersInputComponent,
     LandingComponent,
-    LandingModalComponent
+    LandingModalComponent,
+    MainpageComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

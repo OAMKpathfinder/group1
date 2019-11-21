@@ -1,0 +1,12 @@
+/* ::ng-deep is need to override Material bootstrap */
+
+/* Making space between radio buttons */
+::ng-deep .mat-radio-label-content {
+   margin-right: 15px;
+}
+
+
+/* TODO
+ 1. Align buttons to bottom of modal
+ 2. Align items in the center */
+
