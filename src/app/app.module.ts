@@ -16,8 +16,9 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { LandingComponent } from './landing/landing.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatDialogModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import { MatButtonModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,15 +36,21 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
     LandingComponent,
     LandingModalComponent
   ],
-  entryComponents: [
-    LandingModalComponent
-  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    FontAwesomeModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,    
+    MatRadioModule,
+    MatSlideToggleModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -53,12 +60,7 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
     WallInputComponent,
     GroundInputComponent,
     OthersInputComponent,
-    FontAwesomeModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatInputModule,
-    MatFormFieldModule
+    LandingModalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

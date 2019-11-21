@@ -1,10 +1,59 @@
-<h2 mat-dialog-title>Windows Inputs</h2>
+<mat-dialog-content [formGroup]="windowForm">
+  <mat-form-field>
+    <input
+      mat-dialog-title
+      matInput
+      placeholder="Window Name"
+      formControlName="name"
+    />
+  </mat-form-field>
 
-<mat-dialog-content>
-   <p>This is where the inputs are</p>
+  <p>Do you know the uValue?</p>
+
+  <mat-radio-group formControlName="uKnown" (change)="onChange($event)">
+    <mat-radio-button value="true">Yes</mat-radio-button>
+    <mat-radio-button value="false">No</mat-radio-button>
+  </mat-radio-group>
+
+  <br />
+
+  <mat-form-field *ngIf="uKnown && interaction">
+    <input matInput placeholder="uValue" formControlName="uValue" />
+    <span matSuffix>W/m²K</span>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="!uKnown && interaction">
+    <mat-select placeholder="Material" formControlName="material">
+      <mat-option value="wood">wood</mat-option>
+      <mat-option value="glass">glass</mat-option>
+      <mat-option value="foo">foo</mat-option>
+      <mat-option value="bar">bar</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="!uKnown && interaction">
+    <input matInput placeholder="Area" formControlName="area" />
+    <span matSuffix>m²</span>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="interaction">
+    <input matInput placeholder="Bridge Value" formControlName="bridge" />
+    <span matSuffix>W/m²K</span>
+  </mat-form-field>
+
+  <p *ngIf="interaction">Is this window listed/protected?</p>
+  <mat-radio-group *ngIf="interaction" formControlName="protected">
+    <mat-radio-button value="true">Yes</mat-radio-button>
+    <mat-radio-button value="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br />
 </mat-dialog-content>
 
 <mat-dialog-actions>
-   <button mat-button mat-dialog-close>Cancel</button>
-   <button mat-raised-button (click)="saveWindow()">Save</button>
+  <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
+    Close
+  </button>
+  <button class="mat-raised-button mat-primary" (click)="saveWindow()" [disabled]="!windowForm.valid">
+    Save
+  </button>
 </mat-dialog-actions>
