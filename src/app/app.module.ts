@@ -34,12 +34,8 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     InputWindowsComponent,
     BreadcrumbComponent,
     LandingComponent,
-<<<<<<< HEAD
-    LandingModalComponent
-=======
     LandingModalComponent,
     MainpageComponent
->>>>>>> master
   ],
   imports: [
     BrowserModule,
@@ -47,11 +43,6 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
-<<<<<<< HEAD
-    BrowserAnimationsModule,
-    FontAwesomeModule,
-    MatFormFieldModule
-=======
     FontAwesomeModule,
     MatFormFieldModule,
     MatInputModule,
@@ -62,7 +53,6 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     MatOptionModule,
     MatSelectModule,
     RouterModule
->>>>>>> master
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -71,17 +61,12 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     BridgeInputComponent,
     WallInputComponent,
     InputWindowsComponent,
-    InputFormComponent,
     BreadcrumbComponent,
     GroundInputComponent,
     OthersInputComponent,
-<<<<<<< HEAD
-    LandingModalComponent
-=======
     LandingComponent,
     LandingModalComponent,
     MainpageComponent
->>>>>>> master
   ],
   providers: [],
   bootstrap: [AppComponent]
