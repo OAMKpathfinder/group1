@@ -19,6 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { APIService } from './api-service.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatRadioModule,
     MatSlideToggleModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -62,7 +65,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     OthersInputComponent,
     LandingModalComponent
   ],
-  providers: [],
+  providers: [ APIService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

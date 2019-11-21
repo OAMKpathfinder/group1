@@ -23,7 +23,7 @@
   </mat-form-field>
 
   <mat-form-field *ngIf="!uKnown && interaction">
-    <mat-select placeholder="Material" formControlName="material">
+    <mat-select placeholder="Material" formControlName="materials">
       <mat-option value="wood">wood</mat-option>
       <mat-option value="glass">glass</mat-option>
       <mat-option value="foo">foo</mat-option>
@@ -37,7 +37,7 @@
   </mat-form-field>
 
   <mat-form-field *ngIf="interaction">
-    <input matInput placeholder="Bridge Value" formControlName="bridge" />
+    <input matInput placeholder="Bridge Value" formControlName="bridgeValue" />
     <span matSuffix>W/m²K</span>
   </mat-form-field>
 
