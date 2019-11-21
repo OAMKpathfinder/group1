@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { WindowsInputComponent } from './windows-input/windows-input.component';
 import { DoorsInputComponent } from './doors-input/doors-input.component';
@@ -19,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InputFormComponent,
     BreadcrumbComponent,
     LandingComponent,
-    LandingModalComponent
+    LandingModalComponent,
+    MainpageComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatRadioModule,
     MatSlideToggleModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    RouterModule
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -58,9 +62,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RoofInputComponent,
     BridgeInputComponent,
     WallInputComponent,
+    InputWindowsComponent,
+    InputFormComponent,
+    BreadcrumbComponent,
     GroundInputComponent,
     OthersInputComponent,
-    LandingModalComponent
+    LandingComponent,
+    LandingModalComponent,
+    MainpageComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
