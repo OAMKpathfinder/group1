@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { WindowsInputComponent } from './windows-input/windows-input.component';
 import { DoorsInputComponent } from './doors-input/doors-input.component';
@@ -15,8 +16,10 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { LandingComponent } from './landing/landing.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatDialogModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import { MatButtonModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,12 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
     InputWindowsComponent,
     BreadcrumbComponent,
     LandingComponent,
+<<<<<<< HEAD
     LandingModalComponent
+=======
+    LandingModalComponent,
+    MainpageComponent
+>>>>>>> master
   ],
   imports: [
     BrowserModule,
@@ -39,9 +47,22 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
+<<<<<<< HEAD
     BrowserAnimationsModule,
     FontAwesomeModule,
     MatFormFieldModule
+=======
+    FontAwesomeModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,    
+    MatRadioModule,
+    MatSlideToggleModule,
+    MatOptionModule,
+    MatSelectModule,
+    RouterModule
+>>>>>>> master
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -49,9 +70,18 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
     RoofInputComponent,
     BridgeInputComponent,
     WallInputComponent,
+    InputWindowsComponent,
+    InputFormComponent,
+    BreadcrumbComponent,
     GroundInputComponent,
     OthersInputComponent,
+<<<<<<< HEAD
     LandingModalComponent
+=======
+    LandingComponent,
+    LandingModalComponent,
+    MainpageComponent
+>>>>>>> master
   ],
   providers: [],
   bootstrap: [AppComponent]
