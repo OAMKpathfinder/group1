@@ -12,8 +12,8 @@ import { GroundInputComponent } from './ground-input/ground-input.component';
 import { BridgeInputComponent } from './bridge-input/bridge-input.component';
 import { WallInputComponent } from './wall-input/wall-input.component';
 import { InputWindowsComponent } from './input-windows/input-windows.component';
-import { InputFormComponent } from './input-form/input-form.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { StepperComponent } from './stepper/stepper.component';
 import { LandingComponent } from './landing/landing.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -23,7 +23,6 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { APIService } from './api-service.service';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,8 +34,8 @@ import { APIService } from './api-service.service';
     BridgeInputComponent,
     WallInputComponent,
     InputWindowsComponent,
-    InputFormComponent,
     BreadcrumbComponent,
+    StepperComponent,
     LandingComponent,
     LandingModalComponent,
     MainpageComponent
@@ -56,7 +55,7 @@ import { APIService } from './api-service.service';
     MatSlideToggleModule,
     MatOptionModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
     RouterModule
   ],
   entryComponents: [
@@ -66,7 +65,6 @@ import { APIService } from './api-service.service';
     BridgeInputComponent,
     WallInputComponent,
     InputWindowsComponent,
-    InputFormComponent,
     BreadcrumbComponent,
     GroundInputComponent,
     OthersInputComponent,

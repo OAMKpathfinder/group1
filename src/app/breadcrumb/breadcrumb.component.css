@@ -1,3 +1,8 @@
+@import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+.to-left{
+
+}
+
 .margin-top-bit{
     margin-top: 2vw;
 }
@@ -16,16 +21,15 @@
 }
 
 .round-circle{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 50%;
-    width: 4vw;
-    height: 4vw;
+    width: 24px;
+    height: 24px;
 }
 
 .sticky{
     position: fixed;
     z-index: 1000;
-    width: 100%;
 }
 
 li{
@@ -49,16 +53,24 @@ a:hover{
     text-decoration: none;
 }
 a:active{
-
+    color:black;
 }
 
+.numbering{
+    border: 0.3vw solid grey;
+    border-radius: 100%;
+    color: white;
+    background-color: gray;
+}
 .active{
-    background-color: lightgreen;
+    border: 0.3vw solid blueviolet;
+    background-color: blueviolet;
 }
 
 .bc{
-    height: 3vw;
-    line-height: 3vw;
+    font-size: 1em;
+    height: 4vw;
+    line-height: 4vw;
     text-align: center;
 }
 span {
