@@ -1,0 +1,15 @@
+@import '../windows-input/windows-input.component.css';
+.mat-radio-group{
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+.mat-radio-btn{
+    margin: 5px;
+}
+
+.input-form-title{
+    font-size: larger;
+    margin-bottom: 1vw;
+}

@@ -3,6 +3,7 @@ import { WindowsInputComponent } from '../windows-input/windows-input.component'
 import { DoorsInputComponent } from '../doors-input/doors-input.component';
 import { BridgeInputComponent } from '../bridge-input/bridge-input.component';
 import { GroundInputComponent } from '../ground-input/ground-input.component';
+import { WallInputComponent } from '../wall-input/wall-input.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
@@ -53,6 +54,12 @@ export class InputWindowsComponent{
     }
     openGroundDialog(): void {
       const dialogRef = this.dialog.open(GroundInputComponent, {});
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed ', result);
+      });
+    }
+    openWallDialog(): void {
+      const dialogRef = this.dialog.open(WallInputComponent, {});
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed ', result);
       });

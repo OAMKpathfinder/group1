@@ -1,9 +1,9 @@
-<div class="container-fluid container-total" [@simpleFadeAnimation]="'in'">
-  <div class="row container-row">
-      <div class="col-md-1 container-left">
+<div class="container-fluid" [@simpleFadeAnimation]="'in'">
+  <div class="row">
+      <div class="col-sm-2">
           <app-breadcrumb [ids]="ids" [phases]="phases"></app-breadcrumb>
       </div>
-      <main class="col-md-11 container-right">
+      <main class="col-md-9">
           <app-input-windows [properties] = "properties" ></app-input-windows>
       </main>
   </div>
