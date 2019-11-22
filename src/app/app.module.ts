@@ -15,12 +15,14 @@ import { InputWindowsComponent } from './input-windows/input-windows.component';
 import { InputFormComponent } from './input-form/input-form.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { LandingComponent } from './landing/landing.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MainpageComponent } from './mainpage/mainpage.component';
+import { HttpClientModule } from '@angular/common/http';
+import { APIService } from './api-service.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     MatSlideToggleModule,
     MatOptionModule,
     MatSelectModule,
+    HttpClientModule
     RouterModule
   ],
   entryComponents: [
@@ -71,7 +74,7 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     LandingModalComponent,
     MainpageComponent
   ],
-  providers: [],
+  providers: [ APIService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
