@@ -17,6 +17,7 @@ export class WallInputComponent implements OnInit {
   area: string = '';
   protected: string = '';
   interaction: boolean = false;
+
   constructor(
     private APIService: APIService,
     private fb: FormBuilder,
@@ -31,7 +32,6 @@ export class WallInputComponent implements OnInit {
         'area': [null],
         'protected': [null, Validators.required]
       });
-    
     }
 
   onChange(event: any) {
@@ -42,16 +42,14 @@ export class WallInputComponent implements OnInit {
     } else { }
   }
   
-
   onCancel(): void {
     this.dialogRef.close();
   }
 
   saveWall(): void {
-    
+
   }
   
-
   ngOnInit() {
   }
 

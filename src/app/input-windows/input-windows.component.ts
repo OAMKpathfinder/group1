@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material';
 @Component({
   selector: 'app-input-windows',
   templateUrl: './input-windows.component.html',
-  styleUrls: ['./input-windows.component.css']
+  styleUrls: ['./input-windows.component.css'],
 })
 
 export class InputWindowsComponent{
@@ -33,36 +33,36 @@ export class InputWindowsComponent{
     }
   }
 
-    //Input Dialogs 
-    openWindowDialog(): void {
-      const dialogRef = this.dialog.open(WindowsInputComponent, {});
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed ', result);
-      });
-    }
-    openDoorDialog(): void {
-      const dialogRef = this.dialog.open(DoorsInputComponent, {});
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed ', result);
-      });
-    }
-    openBridgeDialog(): void {
-      const dialogRef = this.dialog.open(BridgeInputComponent, {});
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed ', result);
-      });
-    }
-    openGroundDialog(): void {
-      const dialogRef = this.dialog.open(GroundInputComponent, {});
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed ', result);
-      });
-    }
-    openWallDialog(): void {
-      const dialogRef = this.dialog.open(WallInputComponent, {});
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed ', result);
-      });
-    }
+  //Input Dialogs 
+  openWindowDialog(): void {
+    const dialogRef = this.dialog.open(WindowsInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openDoorDialog(): void {
+    const dialogRef = this.dialog.open(DoorsInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openBridgeDialog(): void {
+    const dialogRef = this.dialog.open(BridgeInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openGroundDialog(): void {
+    const dialogRef = this.dialog.open(GroundInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openWallDialog(): void {
+    const dialogRef = this.dialog.open(WallInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
 
 }

@@ -6,11 +6,6 @@ import {
   animate,
   transition
 } from '@angular/animations';
-import { MatDialog } from '@angular/material';
-import { WindowsInputComponent } from '../windows-input/windows-input.component';
-import { DoorsInputComponent } from '../doors-input/doors-input.component';
-import { BridgeInputComponent } from '../bridge-input/bridge-input.component';
-import { GroundInputComponent } from '../ground-input/ground-input.component';
 
 @Component({
   selector: 'app-mainpage',
@@ -61,7 +56,6 @@ import { GroundInputComponent } from '../ground-input/ground-input.component';
 
       // transition from "visible" to "hidden" similarly
       transition('visible => hidden', animate('300ms ease-out'))
-
     ]),
 
   ]
@@ -70,20 +64,12 @@ export class MainpageComponent implements OnInit {
 
   lorem = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 
-  el1: string = 'el1';
-  el2: string = 'el2';
-  el3: string = 'el3';
-
-  els = ["location", "floor", "outerwall", "roof", "doors", "windows", "others"];
-
-  // properties: string[] = ["location", "ground", "outerwall", "roof", "door", "window", "others"];
-
   properties: object[] = [
     {
       "property" : "location", "title": "location & periods", "sub": "sub title", "desc": this.lorem, "type": "location", "id":"location-id"
     },
     {
-      "property" : "floor", "title": "floor", "sub": "sub title", "desc": this.lorem, "type": "floor", "id":"floor-id"
+      "property" : "ground", "title": "ground", "sub": "floor", "desc": this.lorem, "type": "ground", "id":"floor-id"
     },
     {
       "property" : "outerwall", "title": "outerwall", "sub": "sub title", "desc": this.lorem, "type": "outerwall", "id":"outerwall-id"
@@ -102,50 +88,17 @@ export class MainpageComponent implements OnInit {
     },
   ]
 
-  title1: string = 'PathFinder1';
-  title2: string = 'PathFinder2';
-  title3: string = 'PathFinder3';
-
-  subTitle1: string = 'subTitle1';
-  subTitle2: string = 'subTitle2';
-  subTitle3: string = 'subTitle3';
-
-
   //breadcrumb required 2 Inputs, id for referring the div "height" (from top and next div top?)
   //phase for used to name the breadcrumb and referring the li to assign/remove active class
   ids = ["location-id", "floor-id", "outerwall-id", "roof-id", "doors-id", "windows-id", "others-id"];
   phases = ["location", "floor", "outerwall", "roof", "doors", "windows", "others"];
 
   
-  constructor(private dialog: MatDialog) { }
-
-  //Input Dialogs 
-  openWindowDialog(): void {
-    const dialogRef = this.dialog.open(WindowsInputComponent, {});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ', result);
-    });
-  }
-  openDoorDialog(): void {
-    const dialogRef = this.dialog.open(DoorsInputComponent, {});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ', result);
-    });
-  }
-  openBridgeDialog(): void {
-    const dialogRef = this.dialog.open(BridgeInputComponent, {});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ', result);
-    });
-  }
-  openGroundDialog(): void {
-    const dialogRef = this.dialog.open(GroundInputComponent, {});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ', result);
-    });
+  constructor(){
   }
 
-  ngOnInit() {
+
+  ngOnInit(){
   }
 
 }
