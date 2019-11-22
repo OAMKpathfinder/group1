@@ -1,27 +1,27 @@
-<section class="one-page" *ngIf="id">
-    <div class="border">
-        <div *ngIf="title" class="margin-left-bit margin-top-bit title">
-            {{title}}
+<section *ngFor="let property of properties; let i = index; let l = count" class="one-page">
+    <div id="{{ property.id }}" class="border">
+        <div *ngIf="property.title" class="margin-left-bit margin-top-bit title">
+            {{ property.title }}
         </div>
         <div class="margin-top-bit margin-bottom-bit">
             <div class="container">
-                <div *ngIf="subTitle" class="subTitle">
-                    {{subTitle}}
+                <div *ngIf="property.sub" class="subTitle">
+                    {{ property.sub }}
                 </div>
-                <div *ngIf="desc">
+                <div *ngIf="property.desc">
                     <p>
-                        {{desc}}
+                        {{ property.desc }}
                     </p>
                 </div>
                 <div>
-                    <button *ngIf=" type =='ground' "  mat-raised-button (click)="openGroundDialog()">Add Ground</button>
-                    <button *ngIf=" type =='door' " mat-raised-button (click)="openDoorDialog()">Add a Door</button>
-                    <button *ngIf=" type =='bridge' " mat-raised-button (click)="openBridgeDialog()">Add a Bridge</button>
-                    <button *ngIf=" type =='window' " mat-raised-button (click)="openWindowDialog()">Add a Window</button>
+                    <button *ngIf=" property.type =='ground' "  mat-raised-button (click)="openGroundDialog()">Add Ground</button>
+                    <button *ngIf=" property.type =='door' " mat-raised-button (click)="openDoorDialog()">Add a Door</button>
+                    <button *ngIf=" property.type =='bridge' " mat-raised-button (click)="openBridgeDialog()">Add a Bridge</button>
+                    <button *ngIf=" property.type =='window' " mat-raised-button (click)="openWindowDialog()">Add a Window</button>
                 </div>
             </div>
         </div>
     </div>
-    <div *ngIf="isThereNext" class="arrow" (click)="scrollToOther()"></div>
+    <div *ngIf="i != (l-1)" class="arrow" (click)="scrollToOther(i)"></div>
 </section>
 

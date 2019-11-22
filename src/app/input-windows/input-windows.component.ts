@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material';
 
 export class InputWindowsComponent{
   
+  @Input () public properties: object[];
   @Input () public id: string;
   @Input () public next: string;
   @Input () public title: string;
@@ -25,9 +26,9 @@ export class InputWindowsComponent{
   }
 
   //Smoothly scroll down to target div
-  scrollToOther(): void{
-    if(document.getElementById(this.next)){
-      document.getElementById(this.next).scrollIntoView({ block: 'end',  behavior: 'smooth' });
+  scrollToOther(index:number): void{
+    if(document.getElementById(this.properties[index+1]["id"])){
+      document.getElementById(this.properties[index+1]["id"]).scrollIntoView({ block: 'end',  behavior: 'smooth' });
     }
   }
 
