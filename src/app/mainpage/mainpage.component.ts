@@ -80,25 +80,25 @@ export class MainpageComponent implements OnInit {
 
   properties: object[] = [
     {
-      "property" : "location", "title": "location & periods", "sub": "sub title", "desc": this.lorem, "type": "location", "id":"el1"
+      "property" : "location", "title": "location & periods", "sub": "sub title", "desc": this.lorem, "type": "location", "id":"location-id"
     },
     {
-      "property" : "floor", "title": "floor", "sub": "sub title", "desc": this.lorem, "type": "floor", "id":"el2"
+      "property" : "floor", "title": "floor", "sub": "sub title", "desc": this.lorem, "type": "floor", "id":"floor-id"
     },
     {
-      "property" : "outerwall", "title": "outerwall", "sub": "sub title", "desc": this.lorem, "type": "outerwall", "id":"el3"
+      "property" : "outerwall", "title": "outerwall", "sub": "sub title", "desc": this.lorem, "type": "outerwall", "id":"outerwall-id"
     },
     {
-      "property" : "roof", "title": "roof", "sub": "sub title", "desc": this.lorem, "type": "roof", "id":"el4"
+      "property" : "roof", "title": "roof", "sub": "sub title", "desc": this.lorem, "type": "roof", "id":"roof-id"
     },
     {
-      "property" : "door", "title": "door", "sub": "sub title", "desc": this.lorem, "type": "door", "id":"el5"
+      "property" : "door", "title": "door", "sub": "sub title", "desc": this.lorem, "type": "door", "id":"doors-id"
     },
     {
-      "property" : "window", "title": "window", "sub": "sub title", "desc": this.lorem, "type": "window", "id":"el6"
+      "property" : "window", "title": "window", "sub": "sub title", "desc": this.lorem, "type": "window", "id":"windows-id"
     },
     {
-      "property" : "others", "title": "others", "sub": "sub title", "desc": this.lorem, "type": "others", "id":"el7"
+      "property" : "others", "title": "others", "sub": "sub title", "desc": this.lorem, "type": "others", "id":"others-id"
     },
   ]
 
@@ -113,7 +113,7 @@ export class MainpageComponent implements OnInit {
 
   //breadcrumb required 2 Inputs, id for referring the div "height" (from top and next div top?)
   //phase for used to name the breadcrumb and referring the li to assign/remove active class
-  ids = ["location", "floor", "outerwall", "roof", "doors", "windows", "others"];
+  ids = ["location-id", "floor-id", "outerwall-id", "roof-id", "doors-id", "windows-id", "others-id"];
   phases = ["location", "floor", "outerwall", "roof", "doors", "windows", "others"];
 
   

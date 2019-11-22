@@ -33,7 +33,7 @@ export class BreadcrumbComponent implements OnInit {
           let top = document.getElementById(this.ids[j]).offsetTop;
           let nextTop = total
           let height = nextTop - top;
-          if(current >= top && current < (top + height ) ){
+          if(current >= top && current <= (top + height ) ){
             for(let k = 0; k<this.phases.length;k++){
               if(j==k){
                 document.getElementById(this.phases[k]).classList.add("active");
@@ -48,7 +48,7 @@ export class BreadcrumbComponent implements OnInit {
           let top = document.getElementById(this.ids[j]).offsetTop;
           let nextTop = document.getElementById(this.ids[j+1]).offsetTop;
           let height = nextTop - top;
-          if(current >= top && current < (top + height ) ){
+          if(current >= top && current <= (top + height ) ){
             for(let k = 0; k<this.phases.length;k++){
               if(j==k){
                 document.getElementById(this.phases[k]).classList.add("active");

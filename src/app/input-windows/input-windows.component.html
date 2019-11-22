@@ -1,5 +1,5 @@
-<section *ngFor="let property of properties; let i = index; let l = count" class="one-page">
-    <div id="{{ property.id }}" class="border">
+<section *ngFor="let property of properties; let i = index; let l = count" class="one-page" id="{{ property.id }}">
+    <div class="border">
         <div *ngIf="property.title" class="margin-left-bit margin-top-bit title">
             {{ property.title }}
         </div>
