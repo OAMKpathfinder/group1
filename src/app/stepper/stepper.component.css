@@ -1,6 +1,0 @@
-@import '../input-windows/input-windows.component.css';
-@import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
-
-.mat-horizontal-stepper-header-container{
-    background-color:yellow;
-}

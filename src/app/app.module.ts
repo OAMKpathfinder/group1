@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -13,7 +12,6 @@ import { BridgeInputComponent } from './bridge-input/bridge-input.component';
 import { WallInputComponent } from './wall-input/wall-input.component';
 import { InputWindowsComponent } from './input-windows/input-windows.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
-import { StepperComponent } from './stepper/stepper.component';
 import { LandingComponent } from './landing/landing.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -35,7 +33,6 @@ import { APIService } from './api-service.service';
     WallInputComponent,
     InputWindowsComponent,
     BreadcrumbComponent,
-    StepperComponent,
     LandingComponent,
     LandingModalComponent,
     MainpageComponent
