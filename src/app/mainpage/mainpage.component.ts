@@ -66,7 +66,7 @@ export class MainpageComponent implements OnInit {
 
   properties: object[] = [
     {
-      "property" : "location", "title": "location & periods", "sub": "sub title", "desc": this.lorem, "type": "location", "id":"location-id"
+      "property" : "property", "title": "location & era", "sub": "sub title", "desc": this.lorem, "type": "property", "id":"property-id"
     },
     {
       "property" : "ground", "title": "ground", "sub": "floor", "desc": this.lorem, "type": "ground", "id":"floor-id"
@@ -90,8 +90,8 @@ export class MainpageComponent implements OnInit {
 
   //breadcrumb required 2 Inputs, id for referring the div "height" (from top and next div top?)
   //phase for used to name the breadcrumb and referring the li to assign/remove active class
-  ids = ["location-id", "floor-id", "outerwall-id", "roof-id", "doors-id", "windows-id", "others-id"];
-  phases = ["location", "floor", "outerwall", "roof", "doors", "windows", "others"];
+  ids = ["property-id", "floor-id", "outerwall-id", "roof-id", "doors-id", "windows-id", "others-id"];
+  phases = ["property", "floor", "outerwall", "roof", "doors", "windows", "others"];
 
   
   constructor(){

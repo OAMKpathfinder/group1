@@ -21,6 +21,7 @@ import { LandingModalComponent } from './landing-modal/landing-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { APIService } from './api-service.service';
+import { PropertyInputComponent } from './property-input/property-input.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { APIService } from './api-service.service';
     BreadcrumbComponent,
     LandingComponent,
     LandingModalComponent,
-    MainpageComponent
+    MainpageComponent,
+    PropertyInputComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,8 @@ import { APIService } from './api-service.service';
     OthersInputComponent,
     LandingComponent,
     LandingModalComponent,
-    MainpageComponent
+    MainpageComponent,
+    PropertyInputComponent
   ],
   providers: [ APIService ],
   bootstrap: [AppComponent]

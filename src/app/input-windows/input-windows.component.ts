@@ -4,6 +4,7 @@ import { DoorsInputComponent } from '../doors-input/doors-input.component';
 import { BridgeInputComponent } from '../bridge-input/bridge-input.component';
 import { GroundInputComponent } from '../ground-input/ground-input.component';
 import { WallInputComponent } from '../wall-input/wall-input.component';
+import { PropertyInputComponent } from '../property-input/property-input.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
@@ -15,13 +16,6 @@ import { MatDialog } from '@angular/material';
 export class InputWindowsComponent{
   
   @Input () public properties: object[];
-  @Input () public id: string;
-  @Input () public next: string;
-  @Input () public title: string;
-  @Input () public subTitle: string;
-  @Input () public desc: string;
-  @Input () public type: string;
-  @Input () public isThereNext: boolean;
 
   constructor(public dialog: MatDialog){
   }
@@ -60,6 +54,12 @@ export class InputWindowsComponent{
   }
   openWallDialog(): void {
     const dialogRef = this.dialog.open(WallInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openPropertyDialog(): void {
+    const dialogRef = this.dialog.open(PropertyInputComponent, {});
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed ', result);
     });

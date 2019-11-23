@@ -14,11 +14,12 @@
                     </p>
                 </div>
                 <div>
-                    <button *ngIf=" property.type =='ground' "  mat-raised-button (click)="openGroundDialog()">Add Ground</button>
+                    <button *ngIf=" property.type =='property' "  mat-raised-button (click)="openPropertyDialog()">Add a Property</button>
+                    <button *ngIf=" property.type =='ground' "  mat-raised-button (click)="openGroundDialog()">Add a Ground</button>
                     <button *ngIf=" property.type =='door' " mat-raised-button (click)="openDoorDialog()">Add a Door</button>
                     <button *ngIf=" property.type =='bridge' " mat-raised-button (click)="openBridgeDialog()">Add a Bridge</button>
-                    <button *ngIf=" property.type =='window' " mat-raised-button (click)="openWindowDialog()">Add a Window</button>
-                    <button *ngIf=" property.type =='outerwall' " mat-raised-button (click)="openWallDialog()">Add a Outer Wall</button>
+                    <button *ngIf=" property.type =='window' " mat-raised-button (click)="openWindowDialog()">Add an Window</button>
+                    <button *ngIf=" property.type =='outerwall' " mat-raised-button (click)="openWallDialog()">Add an Outer Wall</button>
                 </div>
             </div>
         </div>
