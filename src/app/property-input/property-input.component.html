@@ -11,13 +11,34 @@
     <br/>
     
     <mat-form-field>
-      <mat-select placeholder="Country" formControlName="country">
-        <mat-option value="fin">Finland</mat-option>
-        <mat-option value="isl">Iceland</mat-option>
-        <mat-option value="irl">Ireland</mat-option>
-        <mat-option value="nir">Northern Ireland</mat-option>
-        <mat-option value="sct">Scotland</mat-option>
-        <mat-option value="swe">Sweden</mat-option>
+      <mat-label><fa-icon [icon]="faGlobeEurope"></fa-icon></mat-label>
+      <mat-select formControlName="country" [(value)]="selected">
+        <mat-option value="fin">
+            <mat-icon value="fin" name="fin" svgIcon="flag-fin"></mat-icon>
+        </mat-option>
+        <mat-option value="isl">
+            <mat-icon value="isl" name="isl" svgIcon="flag-isl"></mat-icon>
+        </mat-option>
+        <mat-option value="irl">
+            <mat-icon value="irl" name="irl" svgIcon="flag-irl"></mat-icon>
+        </mat-option>
+        <mat-option value="nir">
+            <mat-icon value="nir" name="nir" svgIcon="flag-nir"></mat-icon>
+        </mat-option>
+        <mat-option value="sct">
+            <mat-icon value="sct" name="sct" svgIcon="flag-sct"></mat-icon>
+        </mat-option>
+        <mat-option value="swe">
+            <mat-icon value="swe" name="swe" svgIcon="flag-swe"></mat-icon>
+        </mat-option>
+        <mat-select-trigger>
+            <mat-icon *ngIf="selected == 'fin'" value="fin" name="fin" svgIcon="flag-fin"></mat-icon>
+            <mat-icon *ngIf="selected == 'isl'" value="isl" name="isl" svgIcon="flag-isl"></mat-icon>
+            <mat-icon *ngIf="selected == 'irl'" value="irl" name="irl" svgIcon="flag-irl"></mat-icon>
+            <mat-icon *ngIf="selected == 'nir'" value="nir" name="nir" svgIcon="flag-nir"></mat-icon>
+            <mat-icon *ngIf="selected == 'sct'" value="sct" name="sct" svgIcon="flag-sct"></mat-icon>
+            <mat-icon *ngIf="selected == 'swe'" value="swe" name="swe" svgIcon="flag-swe"></mat-icon>
+        </mat-select-trigger>
       </mat-select>
     </mat-form-field>
     
