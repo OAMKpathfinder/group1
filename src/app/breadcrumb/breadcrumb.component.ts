@@ -14,6 +14,12 @@ export class BreadcrumbComponent implements OnInit {
 
   constructor() { }
 
+  scrollTo(id:string): void{
+    if(document.getElementById(id)){
+      document.getElementById(id).scrollIntoView({ block: 'start',  behavior: 'smooth' });
+    }
+  }
+
   ngOnInit() {
 
     for(let i = 0; i<this.ids.length; i++){

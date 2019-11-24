@@ -1,5 +1,7 @@
 @import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
-
+.to-left{
+    text-align: left;
+}
 .margin-top-bit{
     margin-top: 2vw;
 }
@@ -54,8 +56,8 @@ a:active{
 }
 
 .numbering{
-    border: 0.3vw solid grey;
-    border-radius: 100%;
+    border: 0.4vw solid grey;
+    border-radius: 70%;
     color: white;
     background-color: gray;
 }
@@ -65,10 +67,11 @@ a:active{
 }
 
 .bc{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1em;
     height: 4vw;
     line-height: 4vw;
-    text-align: center;
+    text-align: left;
 }
 span {
     display: inline-block;
