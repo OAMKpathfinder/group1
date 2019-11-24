@@ -3,6 +3,13 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'some-auth-token-if-we-set'
+  })
+};
+
 export interface windowSingle {
   name: string,
   id: number,
@@ -11,6 +18,13 @@ export interface windowSingle {
   area: number,
   materials: string,
   bridgeValue: number,
+  protected: boolean
+}
+export interface GroundFloor {
+  id: number,
+  uValue: number,
+  area: number,
+  materials: string,
   protected: boolean
 }
 
@@ -22,6 +36,7 @@ export class APIService {
 
   //BaseURL will need updated when moving from Localhost
   baseURL = "http://localhost:3000"
+  groundUrl: string = this.baseURL + "/groundFloor";
 
   //GET METHODS
 
@@ -42,6 +57,13 @@ export class APIService {
     return this.http.post<windowSingle>(`${this.baseURL}/windowSingle`, singleWindow, { 
       headers: new HttpHeaders({ 'Content-Type': 'application/json', }) 
     }).pipe(catchError(this.handleError));
+  }
+
+  addGroundFloor(groundFloor: GroundFloor): Observable<GroundFloor>{
+    return this.http.post<GroundFloor>(this.groundUrl, groundFloor, httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
   }
 
 

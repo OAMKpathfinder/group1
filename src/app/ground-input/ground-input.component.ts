@@ -47,7 +47,11 @@ export class GroundInputComponent implements OnInit {
   }
 
   saveGround(): void {
-
+    this.dialogRef.close();
+    this.APIService.addGroundFloor(this.groundForm.value)
+    .subscribe(data => {
+      console.log(data)
+    });
   }
 
   ngOnInit() {
