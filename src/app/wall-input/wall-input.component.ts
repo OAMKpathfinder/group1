@@ -48,7 +48,11 @@ export class WallInputComponent implements OnInit {
   }
 
   saveWall(): void {
-    
+    this.dialogRef.close();
+    this.APIService.addOuterWall(this.wallForm.value)
+      .subscribe(data => {
+        console.log(data)
+      });
   }
   
 
