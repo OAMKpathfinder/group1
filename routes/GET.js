@@ -31,4 +31,15 @@ module.exports = class GET{
             res.send("Invalid parameter requested!");
         }
     }
+    getIdByName(model, req, res){
+        model.getIdByName(req.params.name,(err, rows) => {
+            if(err){
+                console.log(err);
+                res.json(err);
+            }
+            else{
+                res.json(rows.rows);
+            }
+        });
+    }
 };

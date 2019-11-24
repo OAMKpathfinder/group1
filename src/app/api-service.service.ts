@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'some-auth-token-if-we-set'
+    // 'Authorization': 'some-auth-token-if-we-set'
   })
 };
 
@@ -20,7 +20,7 @@ export interface windowSingle {
   bridgeValue: number,
   protected: boolean
 }
-export interface property {
+export interface Property {
   name: string,
   country: string,
   era: number
@@ -30,12 +30,30 @@ export interface property {
 
 export class APIService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient){}
+  private propertyId: number = null;
 
   //BaseURL will need updated when moving from Localhost
   baseURL = "http://localhost:3000"
   propertyUrl: string = this.baseURL + "/homeProperties";
+  propertyIdByNameUrl: string = this.propertyUrl + "/name/";
   //GET METHODS
+
+  getPropertyIdByName(name:string){
+    return this.http.get(this.propertyIdByNameUrl + name)
+    .subscribe(res => {
+      console.log("get ID",res);
+      this.setPropertyId(res[0].id);
+    })
+  }
+
+  getPropertyId(): number{
+    return this.propertyId;
+  }
+
+  setPropertyId(id:number): void{
+    this.propertyId = id;
+  }
 
   //Returns all single windows
   getAllWindowSingle() {
@@ -57,13 +75,12 @@ export class APIService {
   }
 
   //Inserts property
-  addProperty(property: property): Observable<property>{
-    return this.http.post<property>(this.propertyUrl, property, httpOptions)
+  addProperty(property: Property): Observable<Property>{
+    return this.http.post<Property>(this.propertyUrl, property, httpOptions)
     .pipe(
       catchError(this.handleError)
     );
   }
-
 
   // UPDATE METHODS
 

@@ -61,8 +61,14 @@ export class PropertyInputComponent implements OnInit {
   saveProperty() : void{
     this.dialogRef.close();
     this.APIService.addProperty(this.propertyForm.value)
-    .subscribe(data =>{
-      console.log(data)
+    .subscribe(res =>{
+      console.log(res);
+      if(res){
+        this.APIService.getPropertyIdByName(res.name);
+      }
+      else{
+        console.log("Might POST request failed, no any response got! in the property input component");
+      }
     });
   }
 
