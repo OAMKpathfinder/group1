@@ -52,7 +52,12 @@ export class APIService {
     return this.http.get(this.propertyIdByNameUrl + name)
     .subscribe(res => {
       console.log("get ID",res);
-      this.setPropertyId(res[0].id);
+      if(res["error"]){
+        console.log(res["error"])
+      }
+      else{
+        this.setPropertyId(res[0].id);
+      }
     })
   }
 
