@@ -25,6 +25,13 @@ export interface Property {
   country: string,
   era: number
 }
+export interface GroundFloor {
+  id: number,
+  uValue: number,
+  area: number,
+  materials: string,
+  protected: boolean
+}
 
 @Injectable()
 
@@ -37,6 +44,8 @@ export class APIService {
   baseURL = "http://localhost:3000"
   propertyUrl: string = this.baseURL + "/homeProperties";
   propertyIdByNameUrl: string = this.propertyUrl + "/name/";
+  groundUrl: string = this.baseURL + "/groundFloor";
+
   //GET METHODS
 
   getPropertyIdByName(name:string){
@@ -77,6 +86,10 @@ export class APIService {
   //Inserts property
   addProperty(property: Property): Observable<Property>{
     return this.http.post<Property>(this.propertyUrl, property, httpOptions)
+  }
+
+  addGroundFloor(groundFloor: GroundFloor): Observable<GroundFloor>{
+    return this.http.post<GroundFloor>(this.groundUrl, groundFloor, httpOptions)
     .pipe(
       catchError(this.handleError)
     );
