@@ -57,9 +57,13 @@ export class PropertyInputComponent implements OnInit {
   onCancel(): void {
     this.dialogRef.close();
   }
-
+  
   saveProperty() : void{
-    
+    this.dialogRef.close();
+    this.APIService.addProperty(this.propertyForm.value)
+    .subscribe(data =>{
+      console.log(data)
+    });
   }
 
   ngOnInit() {
