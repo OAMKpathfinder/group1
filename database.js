@@ -4,9 +4,9 @@ const Pool = require('pg').Pool
 const connection = new Pool({
     user: "postgres",
     host:  "localhost",
-    database: "DummyPF",
-    password: "wasd",
-    port: "5432",
+    database: "pathfinder",
+    password: "admin123",
+    port: "8000",
 });
 
 module.exports = connection;

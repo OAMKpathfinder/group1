@@ -56,7 +56,7 @@ import { APIService } from './api-service.service';
     MatSlideToggleModule,
     MatOptionModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
     RouterModule
   ],
   entryComponents: [
