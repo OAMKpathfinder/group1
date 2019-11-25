@@ -28,6 +28,9 @@ router.get('/:id?', (req,res,next) => {
     get.getAll(homeProperties,req,res);
   }
 });
+router.get('/name/:name', (req,res,next) => {
+  get.getIdByName(homeProperties,req,res);
+});
 
 //Update - requires homeProperties id
 router.put("/:homeProperties_id", function(req, res, next) {

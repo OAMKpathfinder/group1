@@ -1,0 +1,72 @@
+<mat-dialog-content [formGroup]="propertyForm">
+    <mat-form-field>
+      <input
+        mat-dialog-title
+        matInput
+        placeholder="Property Name"
+        formControlName="name"
+      />
+    </mat-form-field>
+  
+    <br/>
+    
+    <mat-form-field>
+      <mat-label><fa-icon [icon]="faGlobeEurope"></fa-icon></mat-label>
+      <mat-select formControlName="country" [(value)]="selected">
+        <mat-option value="fin">
+            <mat-icon value="fin" name="fin" svgIcon="flag-fin"></mat-icon>
+        </mat-option>
+        <mat-option value="isl">
+            <mat-icon value="isl" name="isl" svgIcon="flag-isl"></mat-icon>
+        </mat-option>
+        <mat-option value="irl">
+            <mat-icon value="irl" name="irl" svgIcon="flag-irl"></mat-icon>
+        </mat-option>
+        <mat-option value="nir">
+            <mat-icon value="nir" name="nir" svgIcon="flag-nir"></mat-icon>
+        </mat-option>
+        <mat-option value="sct">
+            <mat-icon value="sct" name="sct" svgIcon="flag-sct"></mat-icon>
+        </mat-option>
+        <mat-option value="swe">
+            <mat-icon value="swe" name="swe" svgIcon="flag-swe"></mat-icon>
+        </mat-option>
+        <mat-select-trigger>
+            <mat-icon *ngIf="selected == 'fin'" value="fin" name="fin" svgIcon="flag-fin"></mat-icon>
+            <mat-icon *ngIf="selected == 'isl'" value="isl" name="isl" svgIcon="flag-isl"></mat-icon>
+            <mat-icon *ngIf="selected == 'irl'" value="irl" name="irl" svgIcon="flag-irl"></mat-icon>
+            <mat-icon *ngIf="selected == 'nir'" value="nir" name="nir" svgIcon="flag-nir"></mat-icon>
+            <mat-icon *ngIf="selected == 'sct'" value="sct" name="sct" svgIcon="flag-sct"></mat-icon>
+            <mat-icon *ngIf="selected == 'swe'" value="swe" name="swe" svgIcon="flag-swe"></mat-icon>
+        </mat-select-trigger>
+      </mat-select>
+    </mat-form-field>
+    
+    <br/>
+    
+    <mat-form-field>
+      <mat-select placeholder="era" formControlName="era">
+        <mat-option value=1900>1900's</mat-option>
+        <mat-option value="1910">1910's</mat-option>
+        <mat-option value="1920">1920's</mat-option>
+        <mat-option value="1930">1930's</mat-option>
+        <mat-option value="1940">1940's</mat-option>
+        <mat-option value="1950">1950's</mat-option>
+        <mat-option value="1960">1960's</mat-option>
+        <mat-option value="1970">1970's</mat-option>
+        <mat-option value="1980">1980's</mat-option>
+        <mat-option value="1990">1990's</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+  </mat-dialog-content>
+  
+  <mat-dialog-actions>
+    <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
+      Close
+    </button>
+    <button class="mat-raised-button mat-primary" (click)="saveProperty()" [disabled]="!propertyForm.valid">
+      Save
+    </button>
+  </mat-dialog-actions>
+  

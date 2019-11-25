@@ -1,11 +1,10 @@
-<div *ngIf="ids.length > 0" class="sticky">
-    <div *ngFor="let property of properties">
+<div *ngIf="ids.length > 0" class="sticky text-uppercase">
+    <div class="to-left" *ngFor="let property of properties">
         <a href="#{{property.id}}">
-            <li id="{{property.phase}}" class="round-circle margin-bit-all">
+            <li id="" class="margin-bit-all">
                 <div class="bc">
-                    <span>
-                        {{ property.phase }}
-                    </span>
+                    <span id="{{property.phase}}" class="numbering">{{ property.numbering }}</span>
+                    {{ property.phase }}
                 </div>
             </li>
         </a>

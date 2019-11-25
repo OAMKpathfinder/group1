@@ -1,31 +1,68 @@
-import { Component, Input, OnInit, AfterViewInit, ViewChildren } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { WindowsInputComponent } from '../windows-input/windows-input.component';
+import { DoorsInputComponent } from '../doors-input/doors-input.component';
+import { BridgeInputComponent } from '../bridge-input/bridge-input.component';
+import { GroundInputComponent } from '../ground-input/ground-input.component';
+import { WallInputComponent } from '../wall-input/wall-input.component';
+import { PropertyInputComponent } from '../property-input/property-input.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-input-windows',
   templateUrl: './input-windows.component.html',
-  styleUrls: ['./input-windows.component.css']
+  styleUrls: ['./input-windows.component.css'],
 })
 
-export class InputWindowsComponent implements OnInit, AfterViewInit{
+export class InputWindowsComponent{
   
-  @Input () public id: string;
-  @Input () public next: string;
-  @Input () public title: string;
-  @Input () public subTitle: string;
-  @Input () public desc: string;
-  @Input () public isThereNext: boolean;
+  @Input () public properties: object[];
 
-  constructor(){
-  }
-  ngOnInit(){
-  }
-  ngAfterViewInit(){
+  constructor(public dialog: MatDialog){
   }
 
-  scrollToOther(){
-    if(document.getElementById(this.next)){
-      document.getElementById(this.next).scrollIntoView({ block: 'end',  behavior: 'smooth' });
+  //Smoothly scroll down to target div
+  scrollToOther(index:number): void{
+    if(document.getElementById(this.properties[index+1]["id"])){
+      document.getElementById(this.properties[index+1]["id"]).scrollIntoView({ block: 'end',  behavior: 'smooth' });
     }
+  }
+
+  //Input Dialogs 
+  openWindowDialog(): void {
+    const dialogRef = this.dialog.open(WindowsInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openDoorDialog(): void {
+    const dialogRef = this.dialog.open(DoorsInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openBridgeDialog(): void {
+    const dialogRef = this.dialog.open(BridgeInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openGroundDialog(): void {
+    const dialogRef = this.dialog.open(GroundInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openWallDialog(): void {
+    const dialogRef = this.dialog.open(WallInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openPropertyDialog(): void {
+    const dialogRef = this.dialog.open(PropertyInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
   }
 
 }
