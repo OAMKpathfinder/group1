@@ -6,6 +6,12 @@
     overflow-x: hidden; */
 }
 
+@media(max-width: 770px){
+    .one-page{
+
+    }
+}
+
 .border{
     border: solid black 1px;
     margin-bottom: 1vw;
