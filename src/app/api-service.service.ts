@@ -26,7 +26,12 @@ export interface Property {
   era: number
 }
 export interface GroundFloor {
-  id: number,
+  uValue: number,
+  area: number,
+  materials: string,
+  protected: boolean
+}
+export interface OuterWall {
   uValue: number,
   area: number,
   materials: string,
@@ -45,6 +50,7 @@ export class APIService {
   propertyUrl: string = this.baseURL + "/homeProperties";
   propertyIdByNameUrl: string = this.propertyUrl + "/name/";
   groundUrl: string = this.baseURL + "/groundFloor";
+  outerWallUrl: string = this.baseURL + "/outerWall";
 
   //GET METHODS
 
@@ -95,10 +101,14 @@ export class APIService {
 
   addGroundFloor(groundFloor: GroundFloor): Observable<GroundFloor>{
     return this.http.post<GroundFloor>(this.groundUrl, groundFloor, httpOptions)
+  }
+  addOuterWall(outerWall: OuterWall): Observable<OuterWall>{
+    return this.http.post<OuterWall>(this.outerWallUrl, outerWall, httpOptions)
     .pipe(
       catchError(this.handleError)
     );
   }
+
 
   // UPDATE METHODS
 
