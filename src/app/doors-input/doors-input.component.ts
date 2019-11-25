@@ -47,7 +47,6 @@ export class DoorsInputComponent implements OnInit {
     ) {
       this.interaction = true;
       this.uKnown = event.value == "true" ? true : false;
-    } else {
     }
   }
 

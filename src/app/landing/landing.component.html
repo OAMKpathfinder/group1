@@ -5,8 +5,9 @@
     <button class="startBtn" id="startBtn" for="modal1" (click)="openDialog()">Get Started</button>
     <br>
     <a [routerLink]="['/mainpage']" routerLinkActive="router-link-active" >Proceed without login</a>
+    <!-- <button (click)="scrollTo()">Scroll</button> -->
   </div>
-  <footer class="infoContainer">
+  <section class="infoContainer">
     <div class="descContainer">
       <div class="singleDesc">
         <span>
@@ -30,5 +31,24 @@
         </span>
       </div>
     </div>
-  </footer>
+  </section>
+</div>
+<div>
+  <section class="infoGrid" id="gridderino">
+    <div>
+      <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081" width="50%" alt="4house">
+    </div>
+    <div>
+      <p>Giving us information about your house will help us in tracking you down and keeping you hostage.</p>
+    </div>
+    <div>
+      <p>We Do ThE cALcuLatIOns fOR yUO</p>
+    </div>
+    <div>
+      <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081g" width="50%">
+    </div>
+  </section>
+  <div style="text-align:center;margin-bottom: 20px;">
+    <a [routerLink]="['/mainpage']" routerLinkActive="router-link-active" class="linkStart">Start</a>
+  </div>
 </div>

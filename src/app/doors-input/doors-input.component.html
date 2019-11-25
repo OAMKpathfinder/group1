@@ -21,7 +21,7 @@
     <mat-select placeholder="Material" formControlName="materials">
       <mat-option value="standard">rEguLAR dOoR</mat-option>
       <mat-option value="fiberglass">fiberglass</mat-option>
-      <mat-option value="Titanium">Titanium</mat-option>
+      <mat-option value="titanium">Titanium</mat-option>
       <mat-option value="plywood">plywood</mat-option>
    </mat-select>
   </mat-form-field>
@@ -30,7 +30,7 @@
     <input matInput placeholder="Area" formControlName="area" />
     <span matSuffix>m²</span>
   </mat-form-field>
-
+  <br>
   <mat-form-field *ngIf="interaction">
     <input matInput placeholder="Bridge Value" formControlName="bridgeValue" />
     <span matSuffix>W/m²K</span>

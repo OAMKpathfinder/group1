@@ -1,7 +1,7 @@
 <mat-dialog-content [formGroup]="roofForm">
 
   <p>Do you know the uValue?</p>
-
+  <button (click)="initArr()">test</button>
   <mat-radio-group formControlName="uKnown" (change)="onChange($event)">
     <mat-radio-button value="true">Yes</mat-radio-button>
     <mat-radio-button value="false">No</mat-radio-button>

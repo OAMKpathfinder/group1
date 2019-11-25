@@ -6,6 +6,7 @@ import { GroundInputComponent } from '../ground-input/ground-input.component';
 import { WallInputComponent } from '../wall-input/wall-input.component';
 import { PropertyInputComponent } from '../property-input/property-input.component';
 import { MatDialog } from '@angular/material';
+import { RoofInputComponent } from '../roof-input/roof-input.component';
 
 @Component({
   selector: 'app-input-windows',
@@ -36,6 +37,12 @@ export class InputWindowsComponent{
   }
   openDoorDialog(): void {
     const dialogRef = this.dialog.open(DoorsInputComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ', result);
+    });
+  }
+  openRoofDialog(): void {
+    const dialogRef = this.dialog.open(RoofInputComponent, {});
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed ', result);
     });

@@ -17,6 +17,7 @@ export class RoofInputComponent implements OnInit {
   area: string = "";
   protected: boolean = false;
   interaction: boolean = false;
+  testi: number = 50;
   constructor(
     private APIService: APIService,
     private fb: FormBuilder,
@@ -44,8 +45,17 @@ export class RoofInputComponent implements OnInit {
     ) {
       this.interaction = true;
       this.uKnown = event.value == "true" ? true : false;
-    } else {
     }
+  }
+
+  initArr() {
+    this.APIService.getRoofs().subscribe(
+      data => {
+        let ar = new Array(data)
+        // let vika = ar.pop()
+        console.log(ar.pop())
+      }
+    )
   }
 
   /**
@@ -58,6 +68,13 @@ export class RoofInputComponent implements OnInit {
       console.log(data);
     });
   }
+
+  // testRoof() {
+  //   this.APIService.getRoofs().subscribe(data => {
+  //     let ar = new Array(data)
+  //     console.log(ar)
+  //   })
+  // }
 
   onCancel(): void {
     this.dialogRef.close();
