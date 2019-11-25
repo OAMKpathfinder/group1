@@ -41,6 +41,7 @@ export interface OuterWall {
   materials: string,
   protected: boolean
 }
+
 export interface door {
   name: string;
   id: number;
@@ -60,17 +61,18 @@ export interface roofConstruction {
   protected: boolean;
 }
 export interface others {
-  id: number;
-  properties: number;
-  hjoht: number;
+   id: number;
+   properties: number;
+   hjoht: number;
   cost: number;
-  pipe: boolean;
-}
+   pipe: boolean;
+  }
 
 @Injectable()
 export class APIService {
   constructor(private http: HttpClient) { }
   private propertyId: number = null;
+
   //BaseURL will need updated when moving from Localhost
   baseURL = "http://localhost:3000"
   propertyUrl: string = this.baseURL + "/homeProperties";
@@ -81,6 +83,7 @@ export class APIService {
 
 
   //GET METHODS
+
   getPropertyIdByName(name: string) {
     return this.http.get(this.propertyIdByNameUrl + name)
       .subscribe(res => {
@@ -185,12 +188,11 @@ export class APIService {
   }
 
   addOthers(Others: others): Observable<others> {
-    return this.http.post<others>(this.othersUrl, Others, httpOptions)
-    .pipe(
-      catchError(this.handleError)
-    );
-  }
-
+       return this.http.post<others>(this.othersUrl, Others, httpOptions)
+         .pipe(
+           catchError(this.handleError)
+         );
+         }
   // UPDATE METHODS
 
   // DELETE METHODS

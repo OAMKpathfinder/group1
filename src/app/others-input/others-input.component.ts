@@ -11,7 +11,7 @@ import { APIService } from '../api-service.service'
 export class OthersInputComponent {
   //Initialising form variables
   othersForm: FormGroup;
-  cost: number; 
+  cost: number;
   hjoht: number;
   pipe: boolean = false;
 
@@ -35,10 +35,9 @@ export class OthersInputComponent {
     this.dialogRef.close();
     //Here is the form result to send to the API
     this.APIService.addOthers(this.othersForm.value)
-    .subscribe(data => {
-      console.log(data)
-    });
-
+      .subscribe(data => {
+        console.log(data)
+      });
   }
 
   //Canceling the inputs and closing window
