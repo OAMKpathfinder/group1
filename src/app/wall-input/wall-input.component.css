@@ -1,8 +1,7 @@
 @import '../windows-input/windows-input.component.css';
 .mat-radio-group{
     display: flex;
-    flex-direction: row;
-    /* flex-direction: column; */
+    flex-direction: column;
     margin: 15px 0;
   }
   
