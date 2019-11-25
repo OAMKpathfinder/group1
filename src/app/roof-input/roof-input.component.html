@@ -1,1 +1,45 @@
-<p>roof-input works!</p>
+<mat-dialog-content [formGroup]="roofForm">
+
+  <p>Do you know the uValue?</p>
+
+  <mat-radio-group formControlName="uKnown" (change)="onChange($event)">
+    <mat-radio-button value="true">Yes</mat-radio-button>
+    <mat-radio-button value="false">No</mat-radio-button>
+  </mat-radio-group>
+
+  <br />
+
+  <mat-form-field *ngIf="uKnown && interaction">
+    <input matInput placeholder="uValue" formControlName="uValue" />
+    <span matSuffix>W/m²K</span>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="!uKnown && interaction">
+    <mat-select placeholder="Material" formControlName="materials">
+      <mat-option value="roof">roof</mat-option>
+      <mat-option value="roof">materials</mat-option>
+      <mat-option value="roof">here</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="!uKnown && interaction">
+    <input matInput placeholder="Area" formControlName="area" />
+    <span matSuffix>m²</span>
+  </mat-form-field>
+
+  <p *ngIf="interaction">Is this roof listed/protected?</p>
+  <mat-radio-group *ngIf="interaction" formControlName="protected">
+    <mat-radio-button value="true">Yes</mat-radio-button>
+    <mat-radio-button value="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br />
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
+    Close
+  </button>
+  <button class="mat-raised-button mat-primary" (click)="saveRoof()" [disabled]="!roofForm.valid">
+    Save
+  </button>
+</mat-dialog-actions>
