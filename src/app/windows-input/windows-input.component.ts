@@ -21,7 +21,6 @@ export class WindowsInputComponent implements OnInit {
   bridgeValue: number;
   interaction: boolean = false;
 
-
   constructor(
     private APIService: APIService,
     private fb: FormBuilder,
@@ -65,7 +64,6 @@ export class WindowsInputComponent implements OnInit {
     this.dialogRef.close();
   }
 
- 
   ngOnInit(): void {
   //Testing GET 
   // this.APIService.getAllWindowSingle().subscribe(

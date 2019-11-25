@@ -9,7 +9,7 @@ import { catchError } from "rxjs/operators";
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type': 'application/json',
     // 'Authorization': 'some-auth-token-if-we-set'
   })
 };
@@ -41,7 +41,6 @@ export interface OuterWall {
   materials: string,
   protected: boolean
 }
-
 export interface door {
   name: string;
   id: number;
@@ -52,7 +51,6 @@ export interface door {
   bridgeValue: number;
   protected: boolean;
 }
-
 export interface roofConstruction {
   id: number;
   properties: number;
@@ -61,41 +59,46 @@ export interface roofConstruction {
   materials: string;
   protected: boolean;
 }
-
+export interface others {
+  id: number;
+  properties: number;
+  hjoht: number;
+  cost: number;
+  pipe: boolean;
+}
 
 @Injectable()
 export class APIService {
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) { }
   private propertyId: number = null;
-
   //BaseURL will need updated when moving from Localhost
   baseURL = "http://localhost:3000"
   propertyUrl: string = this.baseURL + "/homeProperties";
   propertyIdByNameUrl: string = this.propertyUrl + "/name/";
   groundUrl: string = this.baseURL + "/groundFloor";
   outerWallUrl: string = this.baseURL + "/outerWall";
+  othersUrl: string = this.baseURL + "/others";
 
 
   //GET METHODS
-
-  getPropertyIdByName(name:string){
+  getPropertyIdByName(name: string) {
     return this.http.get(this.propertyIdByNameUrl + name)
-    .subscribe(res => {
-      console.log("get ID",res);
-      if(res["error"]){
-        console.log(res["error"])
-      }
-      else{
-        this.setPropertyId(res[0].id);
-      }
-    })
+      .subscribe(res => {
+        console.log("get ID", res);
+        if (res["error"]) {
+          console.log(res["error"])
+        }
+        else {
+          this.setPropertyId(res[0].id);
+        }
+      })
   }
 
-  getPropertyId(): number{
+  getPropertyId(): number {
     return this.propertyId;
   }
 
-  setPropertyId(id:number): void{
+  setPropertyId(id: number): void {
     this.propertyId = id;
   }
 
@@ -152,7 +155,7 @@ export class APIService {
     return this.http
       .post<door>(`${this.baseURL}/door`, singleDoor, {
         headers: new HttpHeaders({
-          "Content-Type":"application/json"
+          "Content-Type": "application/json"
         })
       }).pipe(catchError(this.handleError));
   }
@@ -167,15 +170,22 @@ export class APIService {
   }
 
   //Inserts property
-  addProperty(property: Property): Observable<Property>{
+  addProperty(property: Property): Observable<Property> {
     return this.http.post<Property>(this.propertyUrl, property, httpOptions)
   }
 
-  addGroundFloor(groundFloor: GroundFloor): Observable<GroundFloor>{
+  addGroundFloor(groundFloor: GroundFloor): Observable<GroundFloor> {
     return this.http.post<GroundFloor>(this.groundUrl, groundFloor, httpOptions)
   }
-  addOuterWall(outerWall: OuterWall): Observable<OuterWall>{
+  addOuterWall(outerWall: OuterWall): Observable<OuterWall> {
     return this.http.post<OuterWall>(this.outerWallUrl, outerWall, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  addOthers(Others: others): Observable<others> {
+    return this.http.post<others>(this.othersUrl, Others, httpOptions)
     .pipe(
       catchError(this.handleError)
     );

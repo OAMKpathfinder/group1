@@ -20,6 +20,7 @@
                     <button *ngIf=" property.type =='bridge' " mat-raised-button (click)="openBridgeDialog()">Add a Bridge</button>
                     <button *ngIf=" property.type =='window' " mat-raised-button (click)="openWindowDialog()">Add an Window</button>
                     <button *ngIf=" property.type =='outerwall' " mat-raised-button (click)="openWallDialog()">Add an Outer Wall</button>
+                    <button *ngIf=" property.type =='others' " mat-raised-button (click)="openOthersDialog()">Enter Other Information</button>
                 </div>
             </div>
         </div>
