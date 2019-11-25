@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputFormComponent } from './input-form.component';
+import { PropertyInputComponent } from './property-input.component';
 
-describe('InputFormComponent', () => {
-  let component: InputFormComponent;
-  let fixture: ComponentFixture<InputFormComponent>;
+describe('PropertyInputComponent', () => {
+  let component: PropertyInputComponent;
+  let fixture: ComponentFixture<PropertyInputComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputFormComponent ]
+      declarations: [ PropertyInputComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InputFormComponent);
+    fixture = TestBed.createComponent(PropertyInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -14,12 +14,19 @@ export class BreadcrumbComponent implements OnInit {
 
   constructor() { }
 
+  scrollTo(id:string): void{
+    if(document.getElementById(id)){
+      document.getElementById(id).scrollIntoView({ block: 'start',  behavior: 'smooth' });
+    }
+  }
+
   ngOnInit() {
 
     for(let i = 0; i<this.ids.length; i++){
       this.properties.push({
         "id":this.ids[i],
-        "phase":this.phases[i]
+        "phase":this.phases[i],
+        "numbering": i+1
       });
     }
 
@@ -32,7 +39,7 @@ export class BreadcrumbComponent implements OnInit {
           let top = document.getElementById(this.ids[j]).offsetTop;
           let nextTop = total
           let height = nextTop - top;
-          if(current >= top && current < (top + height ) ){
+          if(current >= top && current <= (top + height ) ){
             for(let k = 0; k<this.phases.length;k++){
               if(j==k){
                 document.getElementById(this.phases[k]).classList.add("active");
@@ -47,7 +54,7 @@ export class BreadcrumbComponent implements OnInit {
           let top = document.getElementById(this.ids[j]).offsetTop;
           let nextTop = document.getElementById(this.ids[j+1]).offsetTop;
           let height = nextTop - top;
-          if(current >= top && current < (top + height ) ){
+          if(current >= top && current <= (top + height ) ){
             for(let k = 0; k<this.phases.length;k++){
               if(j==k){
                 document.getElementById(this.phases[k]).classList.add("active");
