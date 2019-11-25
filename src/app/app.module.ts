@@ -13,6 +13,7 @@ import { BridgeInputComponent } from './bridge-input/bridge-input.component';
 import { WallInputComponent } from './wall-input/wall-input.component';
 import { InputWindowsComponent } from './input-windows/input-windows.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { StepperComponent } from './stepper/stepper.component';
 import { LandingComponent } from './landing/landing.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,6 +21,8 @@ import { MatButtonModule, MatRadioModule, MatDialogModule, MatSlideToggleModule,
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     WallInputComponent,
     InputWindowsComponent,
     BreadcrumbComponent,
+    StepperComponent,
     LandingComponent,
     LandingModalComponent,
     MainpageComponent
@@ -52,7 +56,11 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     MatSlideToggleModule,
     MatOptionModule,
     MatSelectModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatBadgeModule
   ],
   entryComponents: [
     WindowsInputComponent,
