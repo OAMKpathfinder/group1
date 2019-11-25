@@ -1,11 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { trigger, state, style, animate, transition } from "@angular/animations";
-import { MatDialog } from "@angular/material";
-import { WindowsInputComponent } from "../windows-input/windows-input.component";
-import { DoorsInputComponent } from "../doors-input/doors-input.component";
-import { BridgeInputComponent } from "../bridge-input/bridge-input.component";
-import { GroundInputComponent } from "../ground-input/ground-input.component";
-import { RoofInputComponent } from '../roof-input/roof-input.component';
 
 @Component({
    selector: "app-mainpage",
@@ -65,7 +59,7 @@ import { RoofInputComponent } from '../roof-input/roof-input.component';
       ]),
    ]
 })
-export class MainpageComponent {
+export class MainpageComponent implements OnInit {
    el2: string = "el2";
    el3: string = "el3";
 
@@ -100,6 +94,39 @@ export class MainpageComponent {
    ids = ["property-id", "floor-id", "outerwall-id", "roof-id", "doors-id", "windows-id", "others-id"];
    phases = ["property", "floor", "outerwall", "roof", "doors", "windows", "others"];
 
-   constructor() { }
+   constructor(){
+   }
+   ngOnInit(){
+      window.addEventListener("load", e=>{
+         this.checkScreen();
+      });
+      window.addEventListener("mousemove", e=>{
+         this.checkScreen();
+      });
+      window.addEventListener("resize", e=>{
+         this.checkScreen();
+      });
+   }
+   checkScreen(): void{
+      let smallScreenId = "screen_sm";
+      let maxWidth = 770;
+      if( window.innerWidth <= maxWidth ){
+         if(document.getElementById(smallScreenId)){
+            if(document.getElementById(smallScreenId).classList.contains("col-sm-2")){
+               document.getElementById(smallScreenId).classList.remove("col-sm-2");
+               document.getElementById(smallScreenId).classList.add("col");
+            }
+         }
+      }
+      else{
+         if(document.getElementById(smallScreenId)){
+            if(document.getElementById(smallScreenId).classList.contains("col")){
+               document.getElementById(smallScreenId).classList.remove("col");
+               document.getElementById(smallScreenId).classList.add("col-sm-2");
+            }
+         }
+         
+      }
+   }
 
 };

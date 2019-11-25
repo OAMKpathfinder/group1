@@ -1,10 +1,10 @@
-<div *ngIf="ids.length > 0" class="sticky text-uppercase">
+<div *ngIf="ids.length > 0" class="sticky">
     <div class="" *ngFor="let property of properties">
         <div class="property-id" id="{{property.id}}-class" (click)="scrollTo(property.id)">
             <li id="" class="margin-bit-all">
                 <div class="bc">
-                    <span id="{{property.phase}}" class="numbering">{{ property.numbering }}</span>
-                    {{ property.phase }}
+                    <span id="{{property.phase}}" class="badge badge-secondary">{{ property.numbering }}</span>
+                    {{ property.phaseToUpperCase }}
                 </div>
             </li>
         </div>

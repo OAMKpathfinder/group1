@@ -39,6 +39,7 @@ export class BreadcrumbComponent implements OnInit {
       this.properties.push({
         "id":this.ids[i],
         "phase":this.phases[i],
+        "phaseToUpperCase":this.phases[i].toUpperCase(),
         "numbering": i+1
       });
     }

@@ -1,4 +1,5 @@
 @import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+@import '../../assets/css/app.css';
 .one-page{
     width: 100%;
     height: 100vh;
@@ -7,15 +8,15 @@
 }
 
 @media(max-width: 770px){
-    .one-page{
-
-    }
+    /* .one-page{
+        height: 200vh;
+    } */
 }
 
 .border{
     border: solid black 1px;
-    margin-bottom: 1vw;
-    margin-top: 1vw;
+    margin-bottom: 1em;
+    margin-top: 1em;
 }
 
 .float-left{
@@ -35,20 +36,20 @@
 }
 
 .container{
-    margin: 2vw;
+    margin: 2em;
 }
 
 .margin-top-bit{
-    margin-top: 1vw;
+    margin-top: 0.5em;
 }
 .margin-bottom-bit{
-    margin-bottom: 1vw;
+    margin-bottom: 0.5em;
 }
 .margin-left-bit{
-    margin-left: 1vw;
+    margin-left: 0.5em;
 }
 .margin-right-bit{
-    margin-right: 1vw;
+    margin-right: 0.5em;
 }
 
 .be-center{
