@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormBuilder, FormGroup, Validators, FormsModule, NgForm } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { APIService } from '../api-service.service'
 
 @Component({
@@ -13,72 +13,98 @@ export class WindowsInputComponent implements OnInit {
   //Initialising form variables
   windowForm: FormGroup;
   name: string = '';
-  uKnown: boolean = false;
+  uKnown: string;
   uValue: number;
   materials: string = '';
   area: string = '';
   protected: string = '';
   bridgeValue: number;
   interaction: boolean = false;
-
+  uCheck: boolean;
 
   constructor(
     private APIService: APIService,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<WindowsInputComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-
+    let namePattern = '[a-zA-z0-9()_ -]*';
+    let numberPattern = "^[0-9.]*";
     //Initialising form and validation 
-    //TODO further validation  
     this.windowForm = fb.group({
-      'name': [null, Validators.required],
+      'name': [null, [Validators.required, Validators.pattern(namePattern)]],
       'uKnown': [null, Validators.required],
       'uValue': [null],
       'materials': [null],
       'area': [null],
-      'bridgeValue': [null, Validators.required],
+      'bridgeValue': [null, [Validators.required, Validators.pattern(numberPattern)]],
       'protected': [null, Validators.required]
     });
   }
-
   //Checking if radio button checked and showing valid options
-  onChange(event: any) {
-    if (typeof event.source.name !== undefined &&
-      /mat-radio-group/i.test(event.source.name)) {
+  onChange(uRadio: boolean, event: any) {
+    if (uRadio) {
       this.interaction = true;
-      this.uKnown = event.value == 'true' ? true : false;
+      this.uKnown = event.value;
+      this.uCheck = event.value == 'true' ? true : false
     } else { }
+    try {
+      //Saving form state
+      localStorage.setItem('currentWindow', JSON.stringify(this.windowForm.value));
+    } catch (e) { }
   }
-
   //Saving the form and closing window
   saveWindow() {
+    localStorage.removeItem('currentWindow');
     this.dialogRef.close();
     //Here is the form result to send to the API
     this.APIService.addWindowSingle(this.windowForm.value)
-      .subscribe(data => {
-        console.log(data)
-      });
+      .subscribe(data => { console.log(data) });
   }
-
   //Canceling the inputs and closing window
   onCancel(): void {
     this.dialogRef.close();
   }
 
- 
   ngOnInit(): void {
-  //Testing GET 
-  // this.APIService.getAllWindowSingle().subscribe(
-  //     data => {
-  //         console.log(data)
-  //     }
-  // );
-  //Testing GET by ID
-  // this.APIService.getWindowSingle(2).subscribe(
-  //   data => {
-  //     console.log(data)
-  //   }
-  // );
+    this.setValidators();
+    var windowCache = localStorage.getItem('currentWindow');
+    if (windowCache) {
+      const windowCacheP = JSON.parse(windowCache)
+      this.windowForm.setValue({
+        area: windowCacheP['area'],
+        name: windowCacheP['name'],
+        uValue: windowCacheP['uValue'],
+        uKnown: windowCacheP['uKnown'],
+        materials: windowCacheP['materials'],
+        protected: windowCacheP['protected'],
+        bridgeValue: windowCacheP['bridgeValue'],
+      });
+      if (windowCacheP['uKnown'] == 'true') { this.uCheck = true }
+      if (windowCacheP['uKnown'] !== null) { this.interaction = true }
+    }
+  }
+  //Conditional Validation
+  setValidators() {
+    let numberPattern = "^[0-9.]*";
+    const uKnownValid = this.windowForm.get('uKnown');
+    const uValueValid = this.windowForm.get('uValue');
+    const areaValid = this.windowForm.get('area');
+    const materialsValid = this.windowForm.get('materials');
+    this.windowForm.get('uKnown').valueChanges
+      .subscribe(uKnownValid => {
+        if (uKnownValid === 'true') {
+          uValueValid.setValidators([Validators.required, Validators.pattern(numberPattern)]);
+          areaValid.setValidators(null);
+          materialsValid.setValidators(null);
+        } else {
+          uValueValid.setValidators(null);
+          areaValid.setValidators([Validators.required, Validators.pattern(numberPattern)]);
+          materialsValid.setValidators([Validators.required]);
+        }
+        uValueValid.updateValueAndValidity();
+        areaValid.updateValueAndValidity();
+        materialsValid.updateValueAndValidity();
+      });
   }
 
 }

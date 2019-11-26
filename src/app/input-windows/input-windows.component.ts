@@ -30,7 +30,7 @@ export class InputWindowsComponent {
 
   //Input Dialogs 
   openWindowDialog(): void {
-    this.dialog.open(WindowsInputComponent, {});
+    this.dialog.open(WindowsInputComponent, {width: '350px', maxHeight: '550px'});
   }
   openDoorDialog(): void {
     this.dialog.open(DoorsInputComponent, {});
