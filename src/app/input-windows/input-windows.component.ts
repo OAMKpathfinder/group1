@@ -5,6 +5,7 @@ import { BridgeInputComponent } from '../bridge-input/bridge-input.component';
 import { GroundInputComponent } from '../ground-input/ground-input.component';
 import { WallInputComponent } from '../wall-input/wall-input.component';
 import { PropertyInputComponent } from '../property-input/property-input.component';
+import { RoofInputComponent } from "../roof-input/roof-input.component";
 import { OthersInputComponent } from '../others-input/others-input.component';
 import { MatDialog } from '@angular/material';
 
@@ -30,25 +31,28 @@ export class InputWindowsComponent {
 
   //Input Dialogs 
   openWindowDialog(): void {
-    this.dialog.open(WindowsInputComponent, {width: '350px', maxHeight: '550px'});
+    this.dialog.open(WindowsInputComponent, {width: '350px', maxHeight: '600px'});
   }
   openDoorDialog(): void {
-    this.dialog.open(DoorsInputComponent, {});
+    this.dialog.open(DoorsInputComponent, {width: '350px', maxHeight: '550px'});
   }
   openBridgeDialog(): void {
-    this.dialog.open(BridgeInputComponent, {});
+    this.dialog.open(BridgeInputComponent, {width: '350px', maxHeight: '550px'});
   }
   openGroundDialog(): void {
-    this.dialog.open(GroundInputComponent, {});
+    this.dialog.open(GroundInputComponent, {width: '350px', maxHeight: '550px'});
   }
   openWallDialog(): void {
-    this.dialog.open(WallInputComponent, {});
+    this.dialog.open(WallInputComponent, {width: '350px', maxHeight: '550px'});
   }
   openPropertyDialog(): void {
-    this.dialog.open(PropertyInputComponent, {});
+    this.dialog.open(PropertyInputComponent, {width: '350px', maxHeight: '550px'});
+  }
+  openRoofDialog(): void {
+    this.dialog.open(RoofInputComponent, {width: '350px', maxHeight: '550px'});
   }
   openOthersDialog(): void {
-    this.dialog.open(OthersInputComponent, {});
+    this.dialog.open(OthersInputComponent, {width: '350px', maxHeight: '550px'});
   }
 
 }

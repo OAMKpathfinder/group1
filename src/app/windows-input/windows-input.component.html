@@ -1,11 +1,7 @@
 <h4 mat-dialog-title>Add A New Window</h4>
 <mat-dialog-content [formGroup]="windowForm">
   <mat-form-field id="form-field" (change)="onChange(false, $event)">
-    <input
-      matInput
-      placeholder="Window Name"
-      formControlName="name"
-    />
+    <input matInput placeholder="Window Name" formControlName="name" />
   </mat-form-field>
 
   <p>Do you know the uValue?</p>
@@ -13,7 +9,6 @@
     <mat-radio-button id="yes-radio-1" value="true">Yes</mat-radio-button>
     <mat-radio-button value="false">No</mat-radio-button>
   </mat-radio-group>
-
   <br />
 
   <mat-form-field
@@ -52,14 +47,9 @@
     (change)="onChange(false, $event)"
     id="form-field"
   >
-    <input
-      matInput
-      placeholder="Bridge Value"
-      formControlName="bridgeValue"
-    />
+    <input matInput placeholder="Bridge Value" formControlName="bridgeValue" />
     <span matSuffix>W/m²K</span>
   </mat-form-field>
-
   <p *ngIf="interaction">Is this window listed/protected?</p>
   <mat-radio-group
     *ngIf="interaction"
@@ -71,7 +61,6 @@
   </mat-radio-group>
   <br />
 </mat-dialog-content>
-
 <mat-dialog-actions>
   <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
     Close
