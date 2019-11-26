@@ -14,6 +14,13 @@ export class BreadcrumbComponent implements OnInit {
   properties: any = [];
   private currentDiv: string = null;
   private extra: number = 30;
+  imgSrc: string = "";
+
+  private groundImgSrc: string = "../../assets/img/house-effected.gif";
+  private wallImgSrc: string = "../../assets/img/wall-effected.gif";
+  private doorImgSrc: string = "../../assets/img/door-effected.gif";
+  private windowImgSrc: string = "../../assets/img/window-effected.gif";
+  private roofImgSrc: string = "../../assets/img/roof-effected.gif";
 
   constructor() { }
 
@@ -33,8 +40,30 @@ export class BreadcrumbComponent implements OnInit {
     document.getElementById(id).classList.add("active-bc")
   }
 
-  ngOnInit() {
+  srcChange(phase:string): void{
+    switch(phase){
+      case "floor":
+        this.imgSrc = this.groundImgSrc;
+        break;
+      case "outerwall":
+        this.imgSrc = this.wallImgSrc;
+        break;
+      case "roof":
+        this.imgSrc = this.roofImgSrc;
+        break;
+      case "doors":
+        this.imgSrc = this.doorImgSrc;
+        break;
+      case "windows":
+        this.imgSrc = this.windowImgSrc;
+        break;
+      default:
+        this.imgSrc = "";
+    }
+  }
 
+  ngOnInit() {
+    
     for(let i = 0; i<this.ids.length; i++){
       this.properties.push({
         "id":this.ids[i],
@@ -52,6 +81,7 @@ export class BreadcrumbComponent implements OnInit {
     window.addEventListener("scroll", event =>{
       this.scrollToActive();
       this.activeClassOnly(this.currentDiv+"-id-class");
+      this.srcChange(this.currentDiv);
     });
     
   }

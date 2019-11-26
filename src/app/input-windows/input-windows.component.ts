@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { WindowsInputComponent } from '../windows-input/windows-input.component';
 import { DoorsInputComponent } from '../doors-input/doors-input.component';
 import { BridgeInputComponent } from '../bridge-input/bridge-input.component';
@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./input-windows.component.css'],
 })
 
-export class InputWindowsComponent {
+export class InputWindowsComponent{
 
   @Input() public properties: object[];
 
@@ -51,4 +51,43 @@ export class InputWindowsComponent {
     this.dialog.open(OthersInputComponent, {});
   }
 
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async effect(){
+    while(true){
+      if(document.getElementById("base-img")){
+        console.log("effect added");
+        document.getElementById("base-img").classList.add("effect");
+        await this.sleep(1000);
+        document.getElementById("base-img").classList.toggle("effect");
+        console.log("effect removed");
+        await this.sleep(1000);
+      }
+    }
+  }
+
+  showDesc(desc): void{
+    if(document.getElementById(desc)){
+      if(document.getElementById(desc).classList.contains("hidden")){
+        document.getElementById(desc).classList.toggle("visible");
+        document.getElementById(desc).classList.remove("hidden");
+      }
+      else{
+        document.getElementById(desc).classList.toggle("hidden");
+        document.getElementById(desc).classList.remove("visible");
+      }
+    }
+  }
+  hover(e){
+    document.getElementById("base-img").classList.add("effect");
+  }
+  hoverOut(e){
+    document.getElementById("base-img").classList.toggle("effect");
+  }
+
+  // ngOnInit(){
+  //     // this.effect();
+  // }
 }

@@ -111,3 +111,31 @@ span {
     vertical-align: middle;
     line-height: normal;
 }
+
+.img1{
+    z-index: -1;
+    width:300px;
+    height: 300px;
+    position: absolute;
+    opacity: 1;
+    transition: 0.5, ease;
+}
+.img2{
+    z-index: 2;
+    width:300px;
+    height: 300px;
+    position: absolute;
+    clip-path: inset(275px 20px 0px 40px);
+    opacity: 1;
+}
+
+.effect{
+    opacity: 0.5;
+    transition: .5s ease;
+}
+
+.gif1{
+    width: 13em;
+    margin-top: 1em;
+    padding-top: 7em;
+}

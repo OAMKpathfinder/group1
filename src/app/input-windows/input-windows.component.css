@@ -84,3 +84,35 @@
     position: relative;
     background-color: white;
 }
+
+.img1{
+    z-index: -1;
+    width:10em;
+    height: 10em;
+    opacity: 1;
+    transition: 0.5, ease;
+}
+.img1:hover{
+    cursor: pointer;
+}
+.img2{
+    z-index: 2;
+    width:10em;
+    height: 10em;
+    clip-path: inset(9.2em 0.5em 0em 1.2em);
+    opacity: 1;
+    margin-left: -10em;
+}
+
+.effect{
+    opacity: 0.5;
+    transition: .5s ease;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.visible{
+    visibility: visible;
+}

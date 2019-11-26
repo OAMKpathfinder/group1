@@ -70,19 +70,19 @@ export class MainpageComponent implements OnInit {
          "property": "property", "title": "location & era", "sub": "sub title", "desc": this.lorem, "type": "property", "id": "property-id"
       },
       {
-         "property": "ground", "title": "ground", "sub": "floor", "desc": this.lorem, "type": "ground", "id": "floor-id"
+         "property": "ground", "title": "ground", "sub": "floor", "desc": this.lorem, "type": "ground", "id": "floor-id", "imgSrc": "../../assets/img/house-infographic.jpg"
       },
       {
-         "property": "outerwall", "title": "outerwall", "sub": "sub title", "desc": this.lorem, "type": "outerwall", "id": "outerwall-id"
+         "property": "outerwall", "title": "outerwall", "sub": "sub title", "desc": this.lorem, "type": "outerwall", "id": "outerwall-id", "imgSrc": "../../assets/img/wall-effected.gif"
       },
       {
-         "property": "roof", "title": "roof", "sub": "sub title", "desc": this.lorem, "type": "roof", "id": "roof-id"
+         "property": "roof", "title": "roof", "sub": "sub title", "desc": this.lorem, "type": "roof", "id": "roof-id", "imgSrc": "../../assets/img/roof-effected.gif"
       },
       {
-         "property": "door", "title": "door", "sub": "sub title", "desc": this.lorem, "type": "door", "id": "doors-id"
+         "property": "door", "title": "door", "sub": "sub title", "desc": this.lorem, "type": "door", "id": "doors-id", "imgSrc": "../../assets/img/door-effected.gif"
       },
       {
-         "property": "window", "title": "window", "sub": "sub title", "desc": this.lorem, "type": "window", "id": "windows-id"
+         "property": "window", "title": "window", "sub": "sub title", "desc": this.lorem, "type": "window", "id": "windows-id", "imgSrc": "../../assets/img/window-effected.gif"
       },
       {
          "property": "others", "title": "others", "sub": "sub title", "desc": this.lorem, "type": "others", "id": "others-id"
