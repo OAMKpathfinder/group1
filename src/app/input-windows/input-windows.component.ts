@@ -111,4 +111,60 @@ export class InputWindowsComponent implements OnInit {
     this.pleaseOneDoorThanks()
   }
 
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async effect(){
+    while(true){
+      if(document.getElementById("base-img")){
+        console.log("effect added");
+        document.getElementById("base-img").classList.add("effect");
+        await this.sleep(1000);
+        document.getElementById("base-img").classList.toggle("effect");
+        console.log("effect removed");
+        await this.sleep(1000);
+      }
+    }
+  }
+
+  hover(e){
+    for(let i = 0; i < document.getElementsByName("base-img").length; i++){
+      document.getElementsByName("base-img")[i].classList.add("effect");
+    }
+  }
+  hoverOut(e){
+    for(let i = 0; i < document.getElementsByName("base-img").length; i++){
+      document.getElementsByName("base-img")[i].classList.toggle("effect");
+    }
+  }
+  openDialog(prop: string): any{
+    switch(prop){
+      case "ground":
+        this.openGroundDialog()
+        break;
+      case "roof":
+        this.openRoofDialog()
+        break;
+      case "door":
+        this.openDoorDialog()
+        break;
+      case "bridge":
+        this.openBridgeDialog()
+        break;
+      case "window":
+        this.openWindowDialog()
+        break;
+      case "outerwall":
+        this.openWallDialog()
+        break;
+      default:
+        return ;
+    }
+
+  }
+
+  // ngOnInit(){
+  //     // this.effect();
+  // }
 }
