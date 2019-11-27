@@ -1,24 +1,43 @@
-<mat-dialog-content [formGroup]="doorForm">
+<!--Can be deleted, just for testing-->
+<!-- <mat-dialog-content>
+  <p>Door <b>#{{fromPage}}</b></p>
+  <p>Name: <b>{{fromName}}</b></p>
+  <p>U Value: <b>{{fromUvalue}}</b></p>
+  <p>Bridge Value: <b>{{fromBridgeValue}}</b></p>
+  <p>Area: <b>{{fromArea}}</b></p>
+  <p>Materials: <b>{{fromMaterials}}</b></p>
+  <p>Protected: YESNO IDK</p>
+</mat-dialog-content> -->
+
+
+<mat-dialog-content [formGroup]="editForm">
   <mat-form-field>
+    <p>Editing Door #{{fromPage}}</p>
     <input mat-dialog-title matInput placeholder="Door Name" formControlName="name" />
   </mat-form-field>
 
-  <p>Do you know the uValue?</p>
+  <p>Change uValue</p>
 
-  <mat-radio-group formControlName="uKnown" (change)="onChange($event)">
+  <!-- <mat-radio-group formControlName="uKnown" (change)="onChange($event)">
     <mat-radio-button value="true">Yes</mat-radio-button>
     <mat-radio-button value="false">No</mat-radio-button>
-  </mat-radio-group>
+  </mat-radio-group> -->
 
   <br />
 
-  <mat-form-field *ngIf="uKnown && interaction">
+  <!-- <mat-form-field *ngIf="fromUvalue == null">
+    <p>Im null :3</p>
+  </mat-form-field> -->
+  <mat-form-field>
     <input matInput placeholder="uValue" formControlName="uValue" />
     <span matSuffix>W/m²K</span>
   </mat-form-field>
 
-  <mat-form-field *ngIf="!uKnown && interaction">
+  <br />
+
+  <mat-form-field>
     <mat-select placeholder="Material" formControlName="materials">
+      <mat-option value="{{fromMaterials}}">{{fromMaterials}}</mat-option>
       <mat-option value="standard">rEguLAR dOoR</mat-option>
       <mat-option value="fiberglass">fiberglass</mat-option>
       <mat-option value="titanium">Titanium</mat-option>
@@ -26,12 +45,14 @@
    </mat-select>
   </mat-form-field>
 
-  <mat-form-field *ngIf="!uKnown && interaction">
+  <br />
+
+  <mat-form-field>
     <input matInput placeholder="Area" formControlName="area" />
     <span matSuffix>m²</span>
   </mat-form-field>
   <br>
-  <mat-form-field *ngIf="interaction">
+  <mat-form-field>
     <input matInput placeholder="Bridge Value" formControlName="bridgeValue" />
     <span matSuffix>W/m²K</span>
   </mat-form-field>
@@ -46,10 +67,10 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
+  <button class="mat-raised-button mat-dialog-close">
     Close
   </button>
-  <button class="mat-raised-button mat-primary" (click)="saveDoor()" [disabled]="!doorForm.valid">
+  <button class="mat-raised-button mat-primary" (click)="editDoor()" [disabled]="!editForm.valid">
     Save
   </button>
 </mat-dialog-actions>
