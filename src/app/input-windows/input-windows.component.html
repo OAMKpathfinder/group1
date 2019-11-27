@@ -1,6 +1,6 @@
 <section *ngFor="let property of properties; let i = index; let l = count" class="one-page" id="{{ property.id }}">
     <div class="border">
-        <div *ngIf="property.title" class="margin-left-bit margin-top-bit title">
+        <div *ngIf="property.title" class="margin-left-bit margin-top-bit title text-uppercase">
             {{ property.title }}
         </div>
         <div class="margin-top-bit margin-bottom-bit">
@@ -9,19 +9,21 @@
                     {{ property.sub }}
                 </div>
                 <div class="row">
-                    <div id="{{property.imgSrc}}" class="col hidden" *ngIf="property.desc">
+                    <div id="{{property.imgSrc}}" class="col" *ngIf="property.desc">
                         <p>
                             {{ property.desc }}
                         </p>
                     </div>
-                    <div *ngIf="property.imgSrc" class="col">
-                        <img (mouseout)="hoverOut()" (mouseover)="hover($e)" (click)="showDesc(property.imgSrc)" id="base-img" src="{{property.imgSrc}}" class="img1" title="Image or some describtion??">
-                        <img id="effect-img" src="{{property.imgSrc}}" class="img2">
+                    <div *ngIf="property.imgSrc" (click)="openDialog(property.type)" (mouseout)="hoverOut()" (mouseover)="hover()" class="col box-img img-hover">
+                        <img id="{{property.title}}-img" name="base-img" src="{{property.imgSrc}}" class="img1">
+                        <img id="effect-img" src="{{property.imgSrc}}" class="{{property.title}}-img img-hover">
+                        <span class="tooltiptext"> {{ property.desc }} </span>
                     </div>
                 </div>
                 <div>
                     <button *ngIf=" property.type =='property' "  mat-raised-button (click)="openPropertyDialog()">Add a Property</button>
                     <button *ngIf=" property.type =='ground' "  mat-raised-button (click)="openGroundDialog()">Add a Ground</button>
+                    <button *ngIf=" property.type =='roof' "  mat-raised-button (click)="openRoofDialog()">Add a Roof</button>
                     <button *ngIf=" property.type =='door' " mat-raised-button (click)="openDoorDialog()">Add a Door</button>
                     <button *ngIf=" property.type =='bridge' " mat-raised-button (click)="openBridgeDialog()">Add a Bridge</button>
                     <button *ngIf=" property.type =='window' " mat-raised-button (click)="openWindowDialog()">Add an Window</button>

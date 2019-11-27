@@ -6,6 +6,7 @@ import { GroundInputComponent } from '../ground-input/ground-input.component';
 import { WallInputComponent } from '../wall-input/wall-input.component';
 import { PropertyInputComponent } from '../property-input/property-input.component';
 import { OthersInputComponent } from '../others-input/others-input.component';
+import { RoofInputComponent } from '../roof-input/roof-input.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
@@ -47,6 +48,9 @@ export class InputWindowsComponent{
   openPropertyDialog(): void {
     this.dialog.open(PropertyInputComponent, {});
   }
+  openRoofDialog(): void {
+    this.dialog.open(RoofInputComponent, {});
+  }
   openOthersDialog(): void {
     this.dialog.open(OthersInputComponent, {});
   }
@@ -68,23 +72,40 @@ export class InputWindowsComponent{
     }
   }
 
-  showDesc(desc): void{
-    if(document.getElementById(desc)){
-      if(document.getElementById(desc).classList.contains("hidden")){
-        document.getElementById(desc).classList.toggle("visible");
-        document.getElementById(desc).classList.remove("hidden");
-      }
-      else{
-        document.getElementById(desc).classList.toggle("hidden");
-        document.getElementById(desc).classList.remove("visible");
-      }
+  hover(e){
+    for(let i = 0; i < document.getElementsByName("base-img").length; i++){
+      document.getElementsByName("base-img")[i].classList.add("effect");
     }
   }
-  hover(e){
-    document.getElementById("base-img").classList.add("effect");
-  }
   hoverOut(e){
-    document.getElementById("base-img").classList.toggle("effect");
+    for(let i = 0; i < document.getElementsByName("base-img").length; i++){
+      document.getElementsByName("base-img")[i].classList.toggle("effect");
+    }
+  }
+  openDialog(prop: string): any{
+    switch(prop){
+      case "ground":
+        this.openGroundDialog()
+        break;
+      case "roof":
+        this.openRoofDialog()
+        break;
+      case "door":
+        this.openDoorDialog()
+        break;
+      case "bridge":
+        this.openBridgeDialog()
+        break;
+      case "window":
+        this.openWindowDialog()
+        break;
+      case "outerwall":
+        this.openWallDialog()
+        break;
+      default:
+        return ;
+    }
+
   }
 
   // ngOnInit(){

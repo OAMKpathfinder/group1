@@ -16,11 +16,11 @@ export class BreadcrumbComponent implements OnInit {
   private extra: number = 30;
   imgSrc: string = "";
 
-  private groundImgSrc: string = "../../assets/img/house-effected.gif";
-  private wallImgSrc: string = "../../assets/img/wall-effected.gif";
-  private doorImgSrc: string = "../../assets/img/door-effected.gif";
-  private windowImgSrc: string = "../../assets/img/window-effected.gif";
-  private roofImgSrc: string = "../../assets/img/roof-effected.gif";
+  private groundImgSrc: string = "../../assets/img/gif/floor.gif";
+  private wallImgSrc: string = "../../assets/img/gif/wall.gif";
+  private doorImgSrc: string = "../../assets/img/gif/door.gif";
+  private windowImgSrc: string = "../../assets/img/gif/window.gif";
+  private roofImgSrc: string = "../../assets/img/gif/roof.gif";
 
   constructor() { }
 
@@ -90,8 +90,6 @@ export class BreadcrumbComponent implements OnInit {
     let current = window.pageYOffset;
     let total = document.body.scrollHeight;
     for(let j = 0; j<this.ids.length;j++){
-      // console.log(document.getElementById(this.ids[j]).offsetTop);
-
       if( j == (this.ids.length-1) ){
         let top = document.getElementById(this.ids[j]).offsetTop;
         let nextTop = total

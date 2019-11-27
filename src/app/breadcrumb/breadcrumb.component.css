@@ -29,6 +29,11 @@
         min-width: 50px;
         vertical-align: middle;
     }
+    .gif1{
+        width: 13em;
+        margin-top: 1em;
+        padding-top: 7em;
+    }
 }
 @media (width:770px){
     .sticky{
@@ -49,6 +54,11 @@
         text-overflow: ellipsis;
         min-width: 50px;
         vertical-align: middle;
+    }
+    .gif1{
+        width: 13em;
+        margin-top: 1em;
+        padding-top: 7em;
     }
 }
 
@@ -74,6 +84,9 @@
         overflow: hidden;
         text-overflow: ellipsis;
         vertical-align: middle;
+    }
+    .gif1{
+        display: none;
     }
 }
 
@@ -132,10 +145,4 @@ span {
 .effect{
     opacity: 0.5;
     transition: .5s ease;
-}
-
-.gif1{
-    width: 13em;
-    margin-top: 1em;
-    padding-top: 7em;
 }
