@@ -1,45 +1,63 @@
+<h4 mat-dialog-title>Add A Roof</h4>
 <mat-dialog-content [formGroup]="roofForm">
-
   <p>Do you know the uValue?</p>
+  <mat-radio-group formControlName="uKnown" (change)="onChange(true, $event)">
+    <mat-radio-button id="yes-radio-1" value="true">Yes</mat-radio-button>
+    <mat-radio-button value="false">No</mat-radio-button> </mat-radio-group
+  ><br />
 
-  <mat-radio-group formControlName="uKnown" (change)="onChange($event)">
-    <mat-radio-button value="true">Yes</mat-radio-button>
-    <mat-radio-button value="false">No</mat-radio-button>
-  </mat-radio-group>
-
-  <br />
-
-  <mat-form-field *ngIf="uKnown && interaction">
+  <mat-form-field
+    *ngIf="uCheck && interaction"
+    (change)="onChange(false, $event)"
+    id="form-field"
+  >
     <input matInput placeholder="uValue" formControlName="uValue" />
     <span matSuffix>W/m²K</span>
   </mat-form-field>
 
-  <mat-form-field *ngIf="!uKnown && interaction">
+  <mat-form-field
+    *ngIf="!uCheck && interaction"
+    (selectionChange)="onChange(false, $event)"
+    id="form-field"
+  >
     <mat-select placeholder="Material" formControlName="materials">
-      <mat-option value="roof">roof</mat-option>
-      <mat-option value="roof">materials</mat-option>
-      <mat-option value="roof">here</mat-option>
+      <mat-option value="wood">wood</mat-option>
+      <mat-option value="glass">glass</mat-option>
+      <mat-option value="foo">foo</mat-option>
+      <mat-option value="bar">bar</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field *ngIf="!uKnown && interaction">
+  <mat-form-field
+    *ngIf="!uCheck && interaction"
+    (change)="onChange(false, $event)"
+    id="form-field"
+  >
     <input matInput placeholder="Area" formControlName="area" />
     <span matSuffix>m²</span>
   </mat-form-field>
 
   <p *ngIf="interaction">Is this roof listed/protected?</p>
-  <mat-radio-group *ngIf="interaction" formControlName="protected">
-    <mat-radio-button value="true">Yes</mat-radio-button>
-    <mat-radio-button value="false">No</mat-radio-button>
-  </mat-radio-group>
-  <br />
+  <mat-radio-group
+    *ngIf="interaction"
+    formControlName="protected"
+    (change)="onChange(false, $event)"
+  >
+    <mat-radio-button id="yes-radio-2" value="true">Yes</mat-radio-button>
+    <mat-radio-button value="false">No</mat-radio-button> </mat-radio-group
+  ><br />
 </mat-dialog-content>
 
 <mat-dialog-actions>
   <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
     Close
   </button>
-  <button class="mat-raised-button mat-primary" (click)="saveRoof()" [disabled]="!roofForm.valid">
-    Save
+  <button
+    class="mat-raised-button mat-primary"
+    id="saveButton"
+    (click)="saveRoof()"
+    [disabled]="!roofForm.valid"
+  >
+    Save Roof
   </button>
 </mat-dialog-actions>

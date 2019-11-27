@@ -11,12 +11,13 @@ import { APIService } from '../api-service.service'
 export class GroundInputComponent implements OnInit {
   //Initialising form variables
   groundForm: FormGroup;
-  uKnown: boolean = false;
+  uKnown: string;
   uValue: number;
   materials: string = '';
   area: string = '';
   protected: string = '';
   interaction: boolean = false;
+  uCheck: boolean;
 
   constructor(
     private APIService: APIService,
@@ -34,12 +35,18 @@ export class GroundInputComponent implements OnInit {
       });
     }
 
-  onChange(event: any) {
-    if (typeof event.source.name !== undefined &&
-      /mat-radio-group/i.test(event.source.name)) {
+  //Checking if radio button checked and showing valid options
+  onChange(uRadio: boolean, event: any) {
+    if (uRadio) {
       this.interaction = true;
-      this.uKnown = event.value == 'true' ? true : false;
+      this.uKnown = event.value;
+      this.uCheck = event.value == 'true' ? true : false
+      console.log(this.uKnown, this.uCheck)
     } else { }
+    try {
+      //Saving form state
+      localStorage.setItem('currentGround', JSON.stringify(this.groundForm.value));
+    } catch (e) { }
   }
   
   onCancel(): void {
@@ -47,6 +54,7 @@ export class GroundInputComponent implements OnInit {
   }
 
   saveGround(): void {
+    localStorage.removeItem('currentGround');
     let id = this.APIService.getPropertyId();
     let properties = {"properties": id}
     this.dialogRef.close();
@@ -57,6 +65,42 @@ export class GroundInputComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit() { this.setValidators();
+    var groundCache = localStorage.getItem('currentGround');
+    if (groundCache) {
+      const groundCacheP = JSON.parse(groundCache)
+      this.groundForm.setValue({
+        area: groundCacheP['area'],
+        uValue: groundCacheP['uValue'],
+        uKnown: groundCacheP['uKnown'],
+        materials: groundCacheP['materials'],
+        protected: groundCacheP['protected']
+      });
+      if (groundCacheP['uKnown'] == 'true') { this.uCheck = true }
+      if (groundCacheP['uKnown'] !== null) { this.interaction = true }
+    }
+  }
+  //Conditional Validation
+  setValidators() {
+    let numberPattern = "^[0-9.]*";
+    const uKnownValid = this.groundForm.get('uKnown');
+    const uValueValid = this.groundForm.get('uValue');
+    const areaValid = this.groundForm.get('area');
+    const materialsValid = this.groundForm.get('materials');
+    this.groundForm.get('uKnown').valueChanges
+      .subscribe(uKnownValid => {
+        if (uKnownValid === 'true') {
+          uValueValid.setValidators([Validators.required, Validators.pattern(numberPattern)]);
+          areaValid.setValidators(null);
+          materialsValid.setValidators(null);
+        } else {
+          uValueValid.setValidators(null);
+          areaValid.setValidators([Validators.required, Validators.pattern(numberPattern)]);
+          materialsValid.setValidators([Validators.required]);
+        }
+        uValueValid.updateValueAndValidity();
+        areaValid.updateValueAndValidity();
+        materialsValid.updateValueAndValidity();
+      });
   }
 }

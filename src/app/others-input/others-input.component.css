@@ -1,3 +1,1 @@
-::ng-deep .mat-radio-label-content {
-  margin-right: 15px;
-}
+@import '../windows-input/windows-input.component.css'

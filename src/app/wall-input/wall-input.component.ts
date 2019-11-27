@@ -11,12 +11,13 @@ import { APIService } from '../api-service.service'
 export class WallInputComponent implements OnInit {
   //Initialising form variables
   wallForm: FormGroup;
-  uKnown: boolean = false;
+  uKnown: string;
   uValue: number;
   materials: string = '';
   area: string = '';
   protected: string = '';
   interaction: boolean = false;
+  uCheck: boolean;
 
   constructor(
     private APIService: APIService,
@@ -34,14 +35,19 @@ export class WallInputComponent implements OnInit {
       });
     }
 
-  onChange(event: any) {
-    if (typeof event.source.name !== undefined &&
-      /mat-radio-group/i.test(event.source.name)) {
-      this.interaction = true;
-      this.uKnown = event.value == 'true' ? true : false;
-    } else { }
-  }
-  
+    //Checking if radio button checked and showing valid options
+    onChange(uRadio: boolean, event: any) {
+      if (uRadio) {
+        this.interaction = true;
+        this.uKnown = event.value;
+        this.uCheck = event.value == 'true' ? true : false
+      } else { }
+      try {
+        //Saving form state
+        localStorage.setItem('currentWall', JSON.stringify(this.wallForm.value));
+      } catch (e) { }
+    }
+
   onCancel(): void {
     this.dialogRef.close();
   }
@@ -55,6 +61,44 @@ export class WallInputComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.setValidators();
+    var wallCache = localStorage.getItem('currentWall');
+    if (wallCache) {
+      const wallCacheP = JSON.parse(wallCache)
+      this.wallForm.setValue({
+        uValue: wallCacheP['uValue'],
+        uKnown: wallCacheP['uKnown'],
+        area: wallCacheP['area'],      
+        materials: wallCacheP['materials'],
+        protected: wallCacheP['protected']
+      });
+      if (wallCacheP['uKnown'] == 'true') { this.uCheck = true }
+      if (wallCacheP['uKnown'] !== null) { this.interaction = true }
+    }
   }
+  //Conditional Validation
+  setValidators() {
+    let numberPattern = "^[0-9.]*";
+    const uKnownValid = this.wallForm.get('uKnown');
+    const uValueValid = this.wallForm.get('uValue');
+    const areaValid = this.wallForm.get('area');
+    const materialsValid = this.wallForm.get('materials');
+    this.wallForm.get('uKnown').valueChanges
+      .subscribe(uKnownValid => {
+        if (uKnownValid === 'true') {
+          uValueValid.setValidators([Validators.required, Validators.pattern(numberPattern)]);
+          areaValid.setValidators(null);
+          materialsValid.setValidators(null);
+        } else {
+          uValueValid.setValidators(null);
+          areaValid.setValidators([Validators.required, Validators.pattern(numberPattern)]);
+          materialsValid.setValidators([Validators.required]);
+        }
+        uValueValid.updateValueAndValidity();
+        areaValid.updateValueAndValidity();
+        materialsValid.updateValueAndValidity();
+      });
+  }
+  
 
 }
