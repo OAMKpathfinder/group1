@@ -68,8 +68,13 @@ h1 {
 .startBtn {
   height: 2em;
   width: 7em;
-  border: 1px solid black;
-  border-radius: 4px;
+  border: none;
+  border-bottom: 1px solid white;
+  margin-top: .5em;
+  margin-right: .5em;
+  float: right;
+  background-color: rgba(255, 255, 255, 0%);
+  color: white;
 }
 
 .startBtn:hover {
