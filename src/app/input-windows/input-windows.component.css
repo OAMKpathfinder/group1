@@ -5,6 +5,26 @@
     height: 100vh;
     /* overflow-y: scroll;
     overflow-x: hidden; */
+    /* background-image: url("https://picsum.photos/1200"); */
+}
+
+.bg-roof{
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2014/11/21/17/38/ruin-540835_1280.jpg");
+}
+.bg-ground{
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2016/07/20/22/55/floor-1531509_1280.jpg");
+}
+.bg-window{
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2015/09/15/19/26/window-941625_1280.jpg");
+}
+.bg-door{
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2013/11/21/21/48/door-215349_1280.jpg");
+}
+.bg-outerwall{
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2012/03/03/23/06/backdrop-21534_1280.jpg");
+}
+.bg-property,  .bg-bridge, .bg-others{
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2016/04/25/23/30/home-1353389_1280.jpg");
 }
 
 @media(max-width: 770px){

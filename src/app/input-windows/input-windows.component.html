@@ -1,4 +1,4 @@
-<section *ngFor="let property of properties; let i = index; let l = count" class="one-page" id="{{ property.id }}">
+<section *ngFor="let property of properties; let i = index; let l = count" class="one-page bg-{{property.type}}" id="{{ property.id }}">
     <div class="border">
         <div *ngIf="property.title" class="margin-left-bit margin-top-bit title text-uppercase">
             {{ property.title }}
