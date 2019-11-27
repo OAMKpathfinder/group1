@@ -6,13 +6,11 @@ import { GroundInputComponent } from '../ground-input/ground-input.component';
 import { WallInputComponent } from '../wall-input/wall-input.component';
 import { PropertyInputComponent } from '../property-input/property-input.component';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
-import { RoofInputComponent } from '../roof-input/roof-input.component';
 import { APIService } from '../api-service.service';
 import { EditDoorComponent } from '../edit-door/edit-door.component';
 import { Door } from '../api-service.service';
 import { RoofInputComponent } from "../roof-input/roof-input.component";
 import { OthersInputComponent } from '../others-input/others-input.component';
-import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-input-windows',
@@ -103,9 +101,6 @@ export class InputWindowsComponent implements OnInit {
   }
   openPropertyDialog(): void {
     this.dialog.open(PropertyInputComponent, {width: '350px', maxHeight: '550px'});
-  }
-  openRoofDialog(): void {
-    this.dialog.open(RoofInputComponent, {width: '350px', maxHeight: '550px'});
   }
   openOthersDialog(): void {
     this.dialog.open(OthersInputComponent, {width: '350px', maxHeight: '550px'});
