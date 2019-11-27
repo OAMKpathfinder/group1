@@ -6,7 +6,7 @@ const connection = new Pool({
     host:  "localhost",
     database: "DummyPF",
     password: "wasd",
-    port: "5432",
+    port: "5432"
 });
 
 module.exports = connection;

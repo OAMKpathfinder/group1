@@ -17,6 +17,18 @@
             {{ property.desc }}
           </p>
         </div>
+
+        <div class="margin-top-bit margin-bottom-bit">
+            <div class="container">
+                <div *ngIf="property.sub" class="subTitle">
+                    {{ property.sub }}
+                </div>
+                <div *ngIf="property.desc">
+                    <p>
+                        {{ property.desc }}
+                    </p>
+                </div>
+             
         <div>
           <button
             *ngIf="property.type == 'property'"
@@ -32,13 +44,13 @@
           >
             Add a Ground
           </button>
-          <button
-            *ngIf="property.type == 'door'"
-            mat-raised-button
-            (click)="openDoorDialog()"
-          >
-            Add a Door
-          </button>
+                <div class="doorContainer" *ngIf=" property.type =='door' ">
+                        <div *ngFor="let door of doors">
+                            <button id="{{door.id}}" mat-button color="primary" class="doorBtn" (click)="openEditDialog(door.id, door.doors, door.name, door.uValue,door.area, door.materials, door.bridgevalue, door.protected)">Door: {{door.id}}</button>
+                        <br>
+                        <hr>
+                        <button  mat-raised-button (click)="openDoorDialog()">Add a Door</button>
+                    </div>        
           <button
             *ngIf="property.type == 'bridge'"
             mat-raised-button

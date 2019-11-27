@@ -45,6 +45,17 @@ export class RoofInputComponent implements OnInit {
       //Saving form state
       localStorage.setItem('currentRoof', JSON.stringify(this.roofForm.value));
     } catch (e) { }
+
+  }
+
+  initArr() {
+    this.APIService.getRoofs().subscribe(
+      data => {
+        let ar = new Array(data)
+        // let vika = ar.pop()
+        console.log(ar.pop())
+      }
+    )
   }
 
   /**
@@ -57,7 +68,7 @@ export class RoofInputComponent implements OnInit {
       console.log(data);
     });
   }
-
+ 
   onCancel(): void {
     this.dialogRef.close();
   }

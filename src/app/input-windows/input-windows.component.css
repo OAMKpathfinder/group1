@@ -77,3 +77,11 @@
     position: relative;
     background-color: white;
 }
+
+.doorContainer div {
+    display: inline-block;
+}
+
+.doorBtn {
+    margin-right: 5px;
+}

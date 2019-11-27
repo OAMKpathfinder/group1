@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { APIService } from './api-service.service';
 import { PropertyInputComponent } from './property-input/property-input.component';
+import { EditDoorComponent } from './edit-door/edit-door.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { PropertyInputComponent } from './property-input/property-input.componen
     LandingComponent,
     LandingModalComponent,
     MainpageComponent,
-    PropertyInputComponent
+    PropertyInputComponent,
+    EditDoorComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ import { PropertyInputComponent } from './property-input/property-input.componen
     LandingComponent,
     LandingModalComponent,
     MainpageComponent,
-    PropertyInputComponent
+    PropertyInputComponent,
+    EditDoorComponent
   ],
   providers: [ APIService ],
   bootstrap: [AppComponent]
