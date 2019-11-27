@@ -1,53 +1,65 @@
+<h4 mat-dialog-title>Add Ground Floor</h4>
 <mat-dialog-content [formGroup]="groundForm">
-  
-   <label mat-dialog-title class="input-form-title">Ground Floor</label>
+  <p>Do you know the uValue?</p>
+  <mat-radio-group formControlName="uKnown" (change)="onChange(true, $event)">
+    <mat-radio-button id="yes-radio-1" value="true">Yes</mat-radio-button>
+    <mat-radio-button value="false">No</mat-radio-button> </mat-radio-group
+  ><br />
 
-   <br/>
-   <mat-label id="uValue-label">Do you know the uValue?</mat-label>
+  <mat-form-field
+    *ngIf="uCheck && interaction"
+    (change)="onChange(false, $event)"
+    id="form-field"
+  >
+    <input matInput placeholder="uValue" formControlName="uValue" />
+    <span matSuffix>W/m²K</span>
+  </mat-form-field>
 
-   <mat-radio-group class="mat-radio-group" aria-labelledby="uValue-label" formControlName="uKnown" (change)="onChange($event)">
-     <mat-radio-button class="mat-radio-btn" value="true">Yes</mat-radio-button>
-     <mat-radio-button class="mat-radio-btn" value="false">No</mat-radio-button>
-   </mat-radio-group>
- 
-   <br />
- 
-   <mat-form-field *ngIf="uKnown && interaction">
-     <input matInput placeholder="uValue" formControlName="uValue" />
-     <span matSuffix>W/m²K</span>
-   </mat-form-field>
- 
-   <mat-form-field *ngIf="!uKnown && interaction">
-     <mat-select placeholder="Material" formControlName="materials">
-       <mat-option value="matA">Material A</mat-option>
-       <mat-option value="matB">Material B</mat-option>
-       <mat-option value="wood">wood</mat-option>
-       <mat-option value="foo">foo</mat-option>
-       <mat-option value="bar">bar</mat-option>
-     </mat-select>
-   </mat-form-field>
- 
-   <mat-form-field *ngIf="!uKnown && interaction">
-     <input matInput placeholder="Area" formControlName="area" />
-     <span matSuffix>m²</span>
-   </mat-form-field>
- 
-   <br/>
+  <mat-form-field
+    *ngIf="!uCheck && interaction"
+    (selectionChange)="onChange(false, $event)"
+    id="form-field"
+  >
+    <mat-select placeholder="Material" formControlName="materials">
+      <mat-option value="matA">Material A</mat-option>
+      <mat-option value="matB">Material B</mat-option>
+      <mat-option value="wood">wood</mat-option>
+      <mat-option value="foo">foo</mat-option>
+      <mat-option value="bar">bar</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-   <label id="protected-label" class="" *ngIf="interaction">Is this ground floor listed/protected?</label>
-   <mat-radio-group aria-labelledby="protected-label" class="mat-radio-group" *ngIf="interaction" formControlName="protected">
-     <mat-radio-button class="mat-radio-btn" value="true">Yes</mat-radio-button>
-     <mat-radio-button class="mat-radio-btn" value="false">No</mat-radio-button>
-   </mat-radio-group>
-   <br />
- </mat-dialog-content>
- 
- <mat-dialog-actions>
-   <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
-     Close
-   </button>
-   <button class="mat-raised-button mat-primary" (click)="saveGround()" [disabled]="!groundForm.valid">
-     Save
-   </button>
- </mat-dialog-actions>
- 
+  <mat-form-field
+    *ngIf="!uCheck && interaction"
+    (change)="onChange(false, $event)"
+    id="form-field"
+  >
+    <input matInput placeholder="Area" formControlName="area" />
+    <span matSuffix>m²</span>
+  </mat-form-field>
+
+  <p *ngIf="interaction">Is this ground floor listed/protected?</p>
+  <mat-radio-group
+    (change)="onChange(false, $event)"
+    *ngIf="interaction"
+    formControlName="protected"
+  >
+    <mat-radio-button id="yes-radio-2" value="true">Yes</mat-radio-button>
+    <mat-radio-button value="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br />
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
+    Close
+  </button>
+  <button
+    class="mat-raised-button mat-primary"
+    id="saveButton"
+    (click)="saveGround()"
+    [disabled]="!groundForm.valid"
+  >
+    Save Ground Floor
+  </button>
+</mat-dialog-actions>

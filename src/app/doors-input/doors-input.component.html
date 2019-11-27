@@ -1,44 +1,63 @@
+<h4 mat-dialog-title>Add A New Door</h4>
 <mat-dialog-content [formGroup]="doorForm">
-  <mat-form-field>
-    <input mat-dialog-title matInput placeholder="Door Name" formControlName="name" />
+  <mat-form-field id="form-field" (change)="onChange(false, $event)">
+    <input matInput placeholder="Door Name" formControlName="name" />
   </mat-form-field>
 
   <p>Do you know the uValue?</p>
-
-  <mat-radio-group formControlName="uKnown" (change)="onChange($event)">
-    <mat-radio-button value="true">Yes</mat-radio-button>
+  <mat-radio-group formControlName="uKnown" (change)="onChange(true, $event)">
+    <mat-radio-button id="yes-radio-1" value="true">Yes</mat-radio-button>
     <mat-radio-button value="false">No</mat-radio-button>
   </mat-radio-group>
-
   <br />
 
-  <mat-form-field *ngIf="uKnown && interaction">
+  <mat-form-field
+    *ngIf="uCheck && interaction"
+    (change)="onChange(false, $event)"
+    id="form-field"
+  >
     <input matInput placeholder="uValue" formControlName="uValue" />
     <span matSuffix>W/m²K</span>
   </mat-form-field>
 
-  <mat-form-field *ngIf="!uKnown && interaction">
+  <mat-form-field
+    *ngIf="!uCheck && interaction"
+    (selectionChange)="onChange(false, $event)"
+    id="form-field"
+  >
     <mat-select placeholder="Material" formControlName="materials">
       <mat-option value="standard">rEguLAR dOoR</mat-option>
       <mat-option value="fiberglass">fiberglass</mat-option>
       <mat-option value="titanium">Titanium</mat-option>
       <mat-option value="plywood">plywood</mat-option>
-   </mat-select>
+    </mat-select>
   </mat-form-field>
 
-  <mat-form-field *ngIf="!uKnown && interaction">
+  <mat-form-field
+    *ngIf="!uCheck && interaction"
+    (change)="onChange(false, $event)"
+    id="form-field"
+  >
     <input matInput placeholder="Area" formControlName="area" />
     <span matSuffix>m²</span>
   </mat-form-field>
-  <br>
-  <mat-form-field *ngIf="interaction">
+
+  <mat-form-field
+    *ngIf="interaction"
+    (change)="onChange(false, $event)"
+    id="form-field"
+  >
     <input matInput placeholder="Bridge Value" formControlName="bridgeValue" />
     <span matSuffix>W/m²K</span>
   </mat-form-field>
 
   <p *ngIf="interaction">Is this door listed/protected?</p>
-  <mat-radio-group *ngIf="interaction" formControlName="protected">
-    <mat-radio-button value="true">Yes</mat-radio-button>
+  <mat-radio-group
+    *ngIf="interaction"
+    formControlName="protected"
+    (change)="onChange(false, $event)"
+  >
+    <mat-radio-button id="yes-radio-2" value="true">Yes</mat-radio-button>
     <mat-radio-button value="false">No</mat-radio-button>
   </mat-radio-group>
   <br />
@@ -49,7 +68,12 @@
   <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
     Close
   </button>
-  <button class="mat-raised-button mat-primary" (click)="saveDoor()" [disabled]="!doorForm.valid">
-    Save
+  <button
+    class="mat-raised-button mat-primary"
+    id="saveButton"
+    (click)="saveDoor()"
+    [disabled]="!doorForm.valid"
+  >
+    Save Door
   </button>
 </mat-dialog-actions>

@@ -1,4 +1,1 @@
-mat-dialog-content {
-  width: 500px;
-  height: 800px;
-}
+@import '../windows-input/windows-input.component.css'

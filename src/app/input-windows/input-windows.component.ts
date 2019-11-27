@@ -10,6 +10,9 @@ import { RoofInputComponent } from '../roof-input/roof-input.component';
 import { APIService } from '../api-service.service';
 import { EditDoorComponent } from '../edit-door/edit-door.component';
 import { Door } from '../api-service.service';
+import { RoofInputComponent } from "../roof-input/roof-input.component";
+import { OthersInputComponent } from '../others-input/others-input.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-input-windows',
@@ -23,10 +26,6 @@ export class InputWindowsComponent implements OnInit {
 
   id = 22;
   name: string;
-
-  // test
-  sendValue = "Placeholder data from input-windows";
-
   // door arrays
   doors: Door[];
   arryboi = [];
@@ -58,6 +57,7 @@ export class InputWindowsComponent implements OnInit {
         console.log(res)
       })
   }
+    
 
   //Smoothly scroll down to target div
   scrollToOther(index: number): void {
@@ -79,54 +79,36 @@ export class InputWindowsComponent implements OnInit {
         doorBridgeValue: bridgeValue,
         doorProtected: protecc
       }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ', result);
-    })
+    });  
   }
 
   //Input Dialogs 
   openWindowDialog(): void {
-    const dialogRef = this.dialog.open(WindowsInputComponent, {});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ', result);
-    });
+    this.dialog.open(WindowsInputComponent, {width: '350px', maxHeight: '600px'});
   }
   openDoorDialog(): void {
-    const dialogRef = this.dialog.open(DoorsInputComponent, {});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ', result);
-    });
+    this.dialog.open(DoorsInputComponent, {width: '350px', maxHeight: '550px'});
   }
   openRoofDialog(): void {
-    const dialogRef = this.dialog.open(RoofInputComponent, {});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ', result);
-    });
+    this.dialog.open(RoofInputComponent, {width: '350px', maxHeight: '550px'});
   }
   openBridgeDialog(): void {
-    const dialogRef = this.dialog.open(BridgeInputComponent, {});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ', result);
-    });
+    this.dialog.open(BridgeInputComponent, {width: '350px', maxHeight: '550px'});
   }
   openGroundDialog(): void {
-    const dialogRef = this.dialog.open(GroundInputComponent, {});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ', result);
-    });
+    this.dialog.open(GroundInputComponent, {width: '350px', maxHeight: '550px'});
   }
   openWallDialog(): void {
-    const dialogRef = this.dialog.open(WallInputComponent, {});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ', result);
-    });
+    this.dialog.open(WallInputComponent, {width: '350px', maxHeight: '550px'});
   }
   openPropertyDialog(): void {
-    const dialogRef = this.dialog.open(PropertyInputComponent, {});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ', result);
-    });
+    this.dialog.open(PropertyInputComponent, {width: '350px', maxHeight: '550px'});
+  }
+  openRoofDialog(): void {
+    this.dialog.open(RoofInputComponent, {width: '350px', maxHeight: '550px'});
+  }
+  openOthersDialog(): void {
+    this.dialog.open(OthersInputComponent, {width: '350px', maxHeight: '550px'});
   }
 
   ngOnInit() {

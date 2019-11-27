@@ -1,1 +1,33 @@
-<p>others-input works!</p>
+<h4 mat-dialog-title>Add Miscellaneous</h4>
+<mat-dialog-content [formGroup]="othersForm">
+  <mat-form-field (change)="onChange()" id="form-field">
+    <input matInput placeholder="Annual Heating Cost" formControlName="cost" />
+    <span matSuffix>€</span>
+  </mat-form-field>
+  <br />
+  <mat-form-field (change)="onChange()" id="form-field">
+    <input matInput placeholder="Hjoht" formControlName="hjoht" />
+    <span matSuffix>W/m²K</span>
+  </mat-form-field>
+
+  <p>Is there central heating/hot water?</p>
+  <mat-radio-group formControlName="pipe">
+    <mat-radio-button id="yes-radio-1" value="true">Yes</mat-radio-button>
+    <mat-radio-button value="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br />
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
+    Close
+  </button>
+  <button
+    class="mat-raised-button mat-primary"
+    (click)="saveOthers()"
+    [disabled]="!othersForm.valid"
+    id="saveButton"
+  >
+    Save Miscellaneous
+  </button>
+</mat-dialog-actions>

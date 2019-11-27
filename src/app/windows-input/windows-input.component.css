@@ -2,11 +2,40 @@
 
 /* Making space between radio buttons */
 ::ng-deep .mat-radio-label-content {
-   margin-right: 15px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
 }
 
+#yes-radio-1, #yes-radio-2{
+   margin-left: 85px;
+}
 
-/* TODO
- 1. Align buttons to bottom of modal
- 2. Align items in the center */
+::ng-deep .mat-dialog-title {
+  text-align: center;
+}
 
+::ng-deep .mat-dialog-actions {
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+#saveButton {
+  margin-left: 70px;
+}
+
+p {
+  text-align: center;
+}
+
+#form-field {
+
+  display: inherit;
+
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding-left: 5px;
+}
