@@ -20,14 +20,19 @@ export class OthersInputComponent {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<OthersInputComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-
-    //Initialising form and validation 
-    //TODO further validation  
+    let numberPattern = "^[0-9.]*";
     this.othersForm = fb.group({
-      'cost': [null, Validators.required],
-      'hjoht': [null, Validators.required],
+      'cost': [null, [Validators.required, Validators.pattern(numberPattern)]],
+      'hjoht': [null, [Validators.required, Validators.pattern(numberPattern)]],
       'pipe': [null, Validators.required]
     });
+  }
+
+  onChange() {
+    try {
+      //Saving form state
+      localStorage.setItem('currentDoor', JSON.stringify(this.othersForm.value));
+    } catch (e) { }
   }
 
   //Saving the form and closing window
@@ -45,4 +50,15 @@ export class OthersInputComponent {
     this.dialogRef.close();
   }
 
+  ngOnInit(): void {
+    var othersCache = localStorage.getItem('currentOther');
+    if (othersCache) {
+      const othersCacheP = JSON.parse(othersCache)
+      this.othersForm.setValue({
+        cost: othersCacheP['cost'],
+        pipe: othersCacheP['pipe'],
+        hjoht: othersCacheP['hjoht'],
+      });
+    }
+  }
 }

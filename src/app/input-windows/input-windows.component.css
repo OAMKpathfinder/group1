@@ -172,3 +172,10 @@
 .img-hover:hover{
     cursor: pointer;
 }
+.doorContainer div {
+    display: inline-block;
+}
+
+.doorBtn {
+    margin-right: 5px;
+}

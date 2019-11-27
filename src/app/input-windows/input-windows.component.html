@@ -24,7 +24,17 @@
                     <button *ngIf=" property.type =='property' "  mat-raised-button (click)="openPropertyDialog()">Add a Property</button>
                     <button *ngIf=" property.type =='ground' "  mat-raised-button (click)="openGroundDialog()">Add a Ground</button>
                     <button *ngIf=" property.type =='roof' "  mat-raised-button (click)="openRoofDialog()">Add a Roof</button>
-                    <button *ngIf=" property.type =='door' " mat-raised-button (click)="openDoorDialog()">Add a Door</button>
+                    <div class="doorContainer" *ngIf=" property.type =='door' ">
+                        <div *ngFor="let door of doors">
+                          <button id="{{door.id}}" mat-button color="primary" class="doorBtn"
+                            (click)="openEditDialog(door.id, door.doors, door.name, door.uValue,door.area, door.materials, door.bridgevalue, door.protected)">Door:
+                            {{door.id}}</button>
+                          <br>
+                          <hr>
+                        </div>
+                        <br>
+                        <button mat-raised-button (click)="openDoorDialog()">Add a Door</button>
+                    </div>
                     <button *ngIf=" property.type =='bridge' " mat-raised-button (click)="openBridgeDialog()">Add a Bridge</button>
                     <button *ngIf=" property.type =='window' " mat-raised-button (click)="openWindowDialog()">Add an Window</button>
                     <button *ngIf=" property.type =='outerwall' " mat-raised-button (click)="openWallDialog()">Add an Outer Wall</button>
@@ -33,6 +43,5 @@
             </div>
         </div>
     </div>
-    <div *ngIf="i != (l-1)" class="arrow" (click)="scrollToOther(i)"></div>
+  <div *ngIf="i != l - 1" class="arrow" (click)="scrollToOther(i)"></div>
 </section>
-
