@@ -5,8 +5,8 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 
 const routes: Routes = [
   {path: 'mainpage', component: MainpageComponent},
-  {path: 'landing', component: LandingComponent},
-  {path: '', redirectTo: '/landing', pathMatch: 'full'},
+  {path: '', component: LandingComponent},
+  // {path: '', redirectTo: '/landing', pathMatch: 'full'},
 ];
 
 @NgModule({

@@ -16,12 +16,14 @@ import { LandingComponent } from './landing/landing.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatIconModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatIconModule, MatSliderModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { APIService } from './api-service.service';
 import { PropertyInputComponent } from './property-input/property-input.component';
+import { PropertyInputsComponent } from './property-inputs/property-inputs.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,9 @@ import { PropertyInputComponent } from './property-input/property-input.componen
     LandingComponent,
     LandingModalComponent,
     MainpageComponent,
-    PropertyInputComponent
+    PropertyInputComponent,
+    PropertyInputsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,9 @@ import { PropertyInputComponent } from './property-input/property-input.componen
     MatSelectModule,
     MatIconModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    MatCheckboxModule,
+    MatSliderModule
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -71,7 +77,8 @@ import { PropertyInputComponent } from './property-input/property-input.componen
     LandingComponent,
     LandingModalComponent,
     MainpageComponent,
-    PropertyInputComponent
+    PropertyInputComponent,
+    PropertyInputsComponent
   ],
   providers: [ APIService ],
   bootstrap: [AppComponent]

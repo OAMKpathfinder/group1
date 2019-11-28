@@ -18,13 +18,9 @@
           </p>
         </div>
         <div>
-          <button
+          <app-property-inputs
             *ngIf="property.type == 'property'"
-            mat-raised-button
-            (click)="openPropertyDialog()"
-          >
-            Add a Property
-          </button>
+          ></app-property-inputs>
           <button
             *ngIf="property.type == 'ground'"
             mat-raised-button
