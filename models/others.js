@@ -15,8 +15,8 @@ var others = {
   },
 
 	add: (others, callback) => {
-		db.query('insert into others(properties,hjoht,cost,pipe) values($1,$2,$3,$4)',
-			[others.properties, others.hjoht, others.cost, others.pipe],
+		db.query('insert into others(properties,hjoht,cost,pipe,cond) values($1,$2,$3,$4,$5)',
+			[others.properties, others.hjoht, others.cost, others.pipe, others.cond],
 			callback
 		);
 	},
@@ -28,8 +28,8 @@ var others = {
   updateOthers: (id, others, callback) => {
     //TODO validation
     return db.query(
-      "update others set hjoht = $1, cost = $2, pipe = $3 where id = $4",
-      [others.hjoht, others.cost, others.pipe, id],
+      "update others set hjoht = $1, cost = $2, pipe = $3, cond = $4 where id = $5",
+      [others.hjoht, others.cost, others.pipe, others.cond, id],
       callback
     );
   },
