@@ -6,7 +6,7 @@ import { GroundInputComponent } from '../ground-input/ground-input.component';
 import { WallInputComponent } from '../wall-input/wall-input.component';
 import { PropertyInputComponent } from '../property-input/property-input.component';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
-import { APIService } from '../api-service.service';
+import { APIService, GroundFloor } from '../api-service.service';
 import { EditDoorComponent } from '../edit-door/edit-door.component';
 import { Door } from '../api-service.service';
 import { RoofInputComponent } from "../roof-input/roof-input.component";
@@ -25,11 +25,16 @@ export class InputWindowsComponent implements OnInit {
   id = 22;
   name: string;
   // door arrays
-  doors: Door[];
+  doors: Door[] = [];
   arryboi = [];
+
+  //ground arrays
+  grounds: GroundFloor[];
+  groundArr = [];
 
   constructor(public dialog: MatDialog, private APIservice: APIService) {
     this.doors = [];
+    this.grounds = [];
   }
 
   //door stuff
@@ -46,6 +51,15 @@ export class InputWindowsComponent implements OnInit {
         })
         console.log(this.arryboi)
       })
+  }
+
+  getGroundData() {
+    this.APIservice.getGroundFull()
+      .subscribe((grounds: GroundFloor) => {
+        this.groundArr.push(grounds)
+        this.grounds.push(grounds)
+      })
+      console.log(this.grounds)
   }
 
   //testing purposes
@@ -110,6 +124,7 @@ export class InputWindowsComponent implements OnInit {
 
   ngOnInit() {
     this.getDoorData()
+    this.getGroundData()
     this.pleaseOneDoorThanks()
   }
 

@@ -149,6 +149,12 @@ export class APIService {
       .pipe(catchError(this.handleError));
   }
 
+  getGroundFull() {
+    return this.http
+      .get(`${this.baseURL}/groundFloor/`)
+      .pipe(catchError(this.handleError));
+  }
+
   // POST METHODS
 
   //Inserts single window

@@ -18,14 +18,18 @@ export class GroundInputComponent implements OnInit {
   protected: string = '';
   interaction: boolean = false;
   uCheck: boolean;
+  title: string = "Edit Ground"
 
   constructor(
     private APIService: APIService,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<GroundInputComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any){
-      //Initialising form and validation 
-      //TODO further validation  
+      /**
+       * Init form and validation
+       */
+      let namePattern = '[a-zA-z0-9()_ -]*';
+      let numberPattern = "^[0-9.]*";
       this.groundForm = fb.group({
         'uKnown': [null, Validators.required],
         'uValue': [null],
@@ -45,7 +49,9 @@ export class GroundInputComponent implements OnInit {
     } else { }
     try {
       //Saving form state
-      localStorage.setItem('currentGround', JSON.stringify(this.groundForm.value));
+      if (this.data.ground == 0) {
+        localStorage.setItem('currentGround', JSON.stringify(this.groundForm.value));
+      }
     } catch (e) { }
   }
   
@@ -65,9 +71,10 @@ export class GroundInputComponent implements OnInit {
     });
   }
 
-  ngOnInit() { this.setValidators();
+  ngOnInit() { 
+    this.setValidators();
     var groundCache = localStorage.getItem('currentGround');
-    if (groundCache) {
+    if (groundCache && this.data.ground == 0) {
       const groundCacheP = JSON.parse(groundCache)
       this.groundForm.setValue({
         area: groundCacheP['area'],
@@ -78,6 +85,24 @@ export class GroundInputComponent implements OnInit {
       });
       if (groundCacheP['uKnown'] == 'true') { this.uCheck = true }
       if (groundCacheP['uKnown'] !== null) { this.interaction = true }
+    } else if (this.data.ground != 0) {
+      this.title = 'Edit Ground';
+      let editData = this.data.ground;
+      let uEdit = editData.uValue > 0 ? 'true' : 'false';
+      console.log(editData.protected)
+      this.groundForm.setValue({
+        area: editData.area,
+        uValue: editData.uValue.toString(),
+        uKnown: uEdit,
+        materials: editData.materials,
+        protected: editData.protected
+      });
+      if(uEdit) {
+        this.uCheck = true
+      }
+      if(uEdit !== null) {
+        this.interaction = true
+      }
     }
   }
   //Conditional Validation
