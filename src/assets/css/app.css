@@ -1,0 +1,21 @@
+.margin-top-bit{
+    margin-top: 0.5em;
+}
+.margin-bottom-bit{
+    margin-bottom: 0.5em;
+}
+.margin-left-bit{
+    margin-left: 0.5em;
+}
+.margin-right-bit{
+    margin-right: 0.5em;
+}
+
+.margin-bit-all{
+    margin: 0.5em 0.5em 0.5em 0.5em;
+}
+
+.bg-box{
+    background-color: white;
+    opacity: 0.7;
+}

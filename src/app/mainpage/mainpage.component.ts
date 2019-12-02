@@ -1,11 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { trigger, state, style, animate, transition } from "@angular/animations";
-import { MatDialog } from "@angular/material";
-import { WindowsInputComponent } from "../windows-input/windows-input.component";
-import { DoorsInputComponent } from "../doors-input/doors-input.component";
-import { BridgeInputComponent } from "../bridge-input/bridge-input.component";
-import { GroundInputComponent } from "../ground-input/ground-input.component";
-import { RoofInputComponent } from '../roof-input/roof-input.component';
 
 @Component({
    selector: "app-mainpage",
@@ -65,7 +59,7 @@ import { RoofInputComponent } from '../roof-input/roof-input.component';
       ]),
    ]
 })
-export class MainpageComponent {
+export class MainpageComponent implements OnInit {
    el2: string = "el2";
    el3: string = "el3";
 
@@ -76,19 +70,19 @@ export class MainpageComponent {
          "property": "property", "title": "location & era", "sub": "sub title", "desc": this.lorem, "type": "property", "id": "property-id"
       },
       {
-         "property": "ground", "title": "ground", "sub": "floor", "desc": this.lorem, "type": "ground", "id": "floor-id"
+         "property": "ground", "title": "ground", "sub": "floor", "desc": this.lorem, "type": "ground", "id": "floor-id", "imgSrc": "../../assets/img/structure/ex01.jpg"
       },
       {
-         "property": "outerwall", "title": "outerwall", "sub": "sub title", "desc": this.lorem, "type": "outerwall", "id": "outerwall-id"
+         "property": "outerwall", "title": "outerwall", "sub": "sub title", "desc": this.lorem, "type": "outerwall", "id": "outerwall-id", "imgSrc": "../../assets/img/structure/ex01.jpg"
       },
       {
-         "property": "roof", "title": "roof", "sub": "sub title", "desc": this.lorem, "type": "roof", "id": "roof-id"
+         "property": "roof", "title": "roof", "sub": "sub title", "desc": this.lorem, "type": "roof", "id": "roof-id", "imgSrc": "../../assets/img/structure/ex01.jpg"
       },
       {
-         "property": "door", "title": "door", "sub": "sub title", "desc": this.lorem, "type": "door", "id": "doors-id"
+         "property": "door", "title": "door", "sub": "sub title", "desc": this.lorem, "type": "door", "id": "doors-id", "imgSrc": "../../assets/img/structure/ex04.jpg"
       },
       {
-         "property": "window", "title": "window", "sub": "sub title", "desc": this.lorem, "type": "window", "id": "windows-id"
+         "property": "window", "title": "window", "sub": "sub title", "desc": this.lorem, "type": "window", "id": "windows-id", "imgSrc": "../../assets/img/structure/ex05.jpg"
       },
       {
          "property": "others", "title": "others", "sub": "sub title", "desc": this.lorem, "type": "others", "id": "others-id"
@@ -100,6 +94,39 @@ export class MainpageComponent {
    ids = ["property-id", "floor-id", "outerwall-id", "roof-id", "doors-id", "windows-id", "others-id"];
    phases = ["property", "floor", "outerwall", "roof", "doors", "windows", "others"];
 
-   constructor() { }
+   constructor(){
+   }
+   ngOnInit(){
+      window.addEventListener("load", e=>{
+         this.checkScreen();
+      });
+      window.addEventListener("mousemove", e=>{
+         this.checkScreen();
+      });
+      window.addEventListener("resize", e=>{
+         this.checkScreen();
+      });
+   }
+   checkScreen(): void{
+      let smallScreenId = "screen_sm";
+      let maxWidth = 770;
+      if( window.innerWidth <= maxWidth ){
+         if(document.getElementById(smallScreenId)){
+            if(document.getElementById(smallScreenId).classList.contains("col-sm-2")){
+               document.getElementById(smallScreenId).classList.remove("col-sm-2");
+               document.getElementById(smallScreenId).classList.add("col");
+            }
+         }
+      }
+      else{
+         if(document.getElementById(smallScreenId)){
+            if(document.getElementById(smallScreenId).classList.contains("col")){
+               document.getElementById(smallScreenId).classList.remove("col");
+               document.getElementById(smallScreenId).classList.add("col-sm-2");
+            }
+         }
+         
+      }
+   }
 
 };

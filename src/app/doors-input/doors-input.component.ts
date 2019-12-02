@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { APIService } from '../api-service.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: "app-doors-input",
@@ -19,6 +20,9 @@ export class DoorsInputComponent implements OnInit {
   bridgeValue: number;
   interaction: boolean = false;
   uCheck: boolean;
+
+  // init door array
+  // doors: FormArray;
 
   constructor(
     private APIService: APIService,
@@ -58,11 +62,12 @@ export class DoorsInputComponent implements OnInit {
     this.dialogRef.close();
     this.APIService.addDoor(this.doorForm.value)
       .subscribe(data => {
-        // for degubbing
+        // for debugging
+
         console.log(data);
       })
   }
-
+ 
   onCancel(): void {
     this.dialogRef.close();
   }

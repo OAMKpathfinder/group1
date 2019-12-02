@@ -1,15 +1,42 @@
 @import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+@import '../../assets/css/app.css';
 .one-page{
     width: 100%;
     height: 100vh;
     /* overflow-y: scroll;
     overflow-x: hidden; */
+    /* background-image: url("https://picsum.photos/1200"); */
+}
+
+.bg-roof{
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2014/11/21/17/38/ruin-540835_1280.jpg");
+}
+.bg-ground{
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2016/07/20/22/55/floor-1531509_1280.jpg");
+}
+.bg-window{
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2015/09/15/19/26/window-941625_1280.jpg");
+}
+.bg-door{
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2013/11/21/21/48/door-215349_1280.jpg");
+}
+.bg-outerwall{
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2012/03/03/23/06/backdrop-21534_1280.jpg");
+}
+.bg-property,  .bg-bridge, .bg-others{
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2016/04/25/23/30/home-1353389_1280.jpg");
+}
+
+@media(max-width: 770px){
+    /* .one-page{
+        height: 200vh;
+    } */
 }
 
 .border{
     border: solid black 1px;
-    margin-bottom: 1vw;
-    margin-top: 1vw;
+    margin-bottom: 1em;
+    margin-top: 1em;
 }
 
 .float-left{
@@ -29,20 +56,20 @@
 }
 
 .container{
-    margin: 2vw;
+    margin: 2em;
 }
 
 .margin-top-bit{
-    margin-top: 1vw;
+    margin-top: 0.5em;
 }
 .margin-bottom-bit{
-    margin-bottom: 1vw;
+    margin-bottom: 0.5em;
 }
 .margin-left-bit{
-    margin-left: 1vw;
+    margin-left: 0.5em;
 }
 .margin-right-bit{
-    margin-right: 1vw;
+    margin-right: 0.5em;
 }
 
 .be-center{
@@ -76,4 +103,99 @@
     height: 1em;
     position: relative;
     background-color: white;
+}
+
+.img1{
+    z-index: -1;
+    width:10em;
+    height: 10em;
+    opacity: 1;
+    transition: 0.5, ease;
+}
+.img1:hover{
+    cursor: pointer;
+}
+.ground-img{
+    z-index: 1;
+    width:10em;
+    height: 10em;
+    clip-path: inset(5em 0.5em 0em 1.2em);
+    opacity: 1;
+    margin-left: -10em;
+}
+.outerwall-img{
+    z-index: 2;
+    width:10em;
+    height: 10em;
+    clip-path: inset(2.2em 0.5em 5.2em 1.2em);
+    opacity: 1;
+    margin-left: -10em;
+}
+.roof-img{
+    z-index: 2;
+    width:10em;
+    height: 10em;
+    clip-path: inset(0em 0.5em 8em 1.2em);
+    opacity: 1;
+    margin-left: -10em;
+}
+.window-img{
+    z-index: 2;
+    width:10em;
+    height: 10em;
+    clip-path: inset(1em 1.5em 1em 1.5em);
+    opacity: 1;
+    margin-left: -10em;
+}
+.door-img{
+    z-index: 2;
+    width:10em;
+    height: 10em;
+    clip-path: inset(0em 0em 0em 4em);
+    opacity: 1;
+    margin-left: -10em;
+}
+
+.effect{
+    opacity: 0.5;
+    transition: .5s ease;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.visible{
+    visibility: visible;
+}
+
+.tooltiptext {
+    display: none;
+    /* width: 120px; */
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    margin-left: 1px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 10;
+}
+
+.box-img:hover .tooltiptext{
+    cursor: pointer;
+    display: inline;
+}
+
+.img-hover:hover{
+    cursor: pointer;
+}
+.doorContainer div {
+    display: inline-block;
+}
+
+.doorBtn {
+    margin-right: 5px;
 }

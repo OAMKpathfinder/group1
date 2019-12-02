@@ -5,7 +5,7 @@ import {
   HttpHeaders
 } from "@angular/common/http";
 import { throwError, Observable } from "rxjs";
-import { catchError } from "rxjs/operators";
+import { catchError, map } from "rxjs/operators";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -42,7 +42,7 @@ export interface OuterWall {
   protected: boolean
 }
 
-export interface door {
+export interface Door {
   name: string;
   id: number;
   doors: number;
@@ -61,15 +61,17 @@ export interface roofConstruction {
   protected: boolean;
 }
 export interface others {
-   id: number;
-   properties: number;
-   hjoht: number;
+  id: number;
+  properties: number;
+  hjoht: number;
   cost: number;
-   pipe: boolean;
-  }
+  pipe: boolean;
+}
 
 @Injectable()
 export class APIService {
+
+
   constructor(private http: HttpClient) { }
   private propertyId: number = null;
 
@@ -83,7 +85,6 @@ export class APIService {
 
 
   //GET METHODS
-
   getPropertyIdByName(name: string) {
     return this.http.get(this.propertyIdByNameUrl + name)
       .subscribe(res => {
@@ -111,7 +112,12 @@ export class APIService {
       .get(`${this.baseURL}/windowSingle`)
       .pipe(catchError(this.handleError));
   }
-
+  //Returns all single widows that match windowAll id
+  getAllSingles(id: number) {
+    return this.http
+      .get(`${this.baseURL}/windowAll/${id}/all`)
+      .pipe(catchError(this.handleError));
+  }
   //Returns single window with ID
   getWindowSingle(id: number) {
     return this.http
@@ -122,6 +128,12 @@ export class APIService {
   getDoors() {
     return this.http
       .get(`${this.baseURL}/doors`)
+      .pipe(catchError(this.handleError));
+  }
+
+  getDoorsFull() {
+    return this.http
+      .get(`${this.baseURL}/door`)
       .pipe(catchError(this.handleError));
   }
 
@@ -154,9 +166,9 @@ export class APIService {
       .pipe(catchError(this.handleError));
   }
 
-  addDoor(singleDoor: door): Observable<door> {
+  addDoor(singleDoor: Door): Observable<Door> {
     return this.http
-      .post<door>(`${this.baseURL}/door`, singleDoor, {
+      .post<Door>(`${this.baseURL}/door`, singleDoor, {
         headers: new HttpHeaders({
           "Content-Type": "application/json"
         })
@@ -188,12 +200,18 @@ export class APIService {
   }
 
   addOthers(Others: others): Observable<others> {
-       return this.http.post<others>(this.othersUrl, Others, httpOptions)
-         .pipe(
-           catchError(this.handleError)
-         );
-         }
+    return this.http.post<others>(this.othersUrl, Others, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   // UPDATE METHODS
+  updateDoor(singleDoor: Door, id: number) {
+    return this.http.put<Door>(`${this.baseURL}/door/${id}`, singleDoor, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
   // DELETE METHODS
 

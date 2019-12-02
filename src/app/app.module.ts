@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { APIService } from './api-service.service';
 import { PropertyInputComponent } from './property-input/property-input.component';
 import { PropertyInputsComponent } from './property-inputs/property-inputs.component';
+import { EditDoorComponent } from './edit-door/edit-door.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { PropertyInputsComponent } from './property-inputs/property-inputs.compo
     MainpageComponent,
     PropertyInputComponent,
     PropertyInputsComponent,
-
+    EditDoorComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +79,8 @@ import { PropertyInputsComponent } from './property-inputs/property-inputs.compo
     LandingModalComponent,
     MainpageComponent,
     PropertyInputComponent,
-    PropertyInputsComponent
+    PropertyInputsComponent,
+    EditDoorComponent
   ],
   providers: [ APIService ],
   bootstrap: [AppComponent]

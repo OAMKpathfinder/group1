@@ -21,7 +21,7 @@ export class WindowsInputComponent implements OnInit {
   bridgeValue: number;
   interaction: boolean = false;
   uCheck: boolean;
-
+  title: string = 'Add A New Window';
   constructor(
     private APIService: APIService,
     private fb: FormBuilder,
@@ -39,6 +39,7 @@ export class WindowsInputComponent implements OnInit {
       'bridgeValue': [null, [Validators.required, Validators.pattern(numberPattern)]],
       'protected': [null, Validators.required]
     });
+
   }
   //Checking if radio button checked and showing valid options
   onChange(uRadio: boolean, event: any) {
@@ -49,7 +50,9 @@ export class WindowsInputComponent implements OnInit {
     } else { }
     try {
       //Saving form state
-      localStorage.setItem('currentWindow', JSON.stringify(this.windowForm.value));
+      if (this.data.window == 0) {
+        localStorage.setItem('currentWindow', JSON.stringify(this.windowForm.value));
+      }
     } catch (e) { }
   }
   //Saving the form and closing window
@@ -57,8 +60,12 @@ export class WindowsInputComponent implements OnInit {
     localStorage.removeItem('currentWindow');
     this.dialogRef.close();
     //Here is the form result to send to the API
-    this.APIService.addWindowSingle(this.windowForm.value)
-      .subscribe(data => { console.log(data) });
+    if (this.data.window == 0) {
+      this.APIService.addWindowSingle(this.windowForm.value)
+        .subscribe(data => { console.log(data) });
+    }else {
+      //TODO update window
+    }
   }
   //Canceling the inputs and closing window
   onCancel(): void {
@@ -68,7 +75,7 @@ export class WindowsInputComponent implements OnInit {
   ngOnInit(): void {
     this.setValidators();
     var windowCache = localStorage.getItem('currentWindow');
-    if (windowCache) {
+    if (windowCache && this.data.window == 0) {
       const windowCacheP = JSON.parse(windowCache)
       this.windowForm.setValue({
         area: windowCacheP['area'],
@@ -81,6 +88,22 @@ export class WindowsInputComponent implements OnInit {
       });
       if (windowCacheP['uKnown'] == 'true') { this.uCheck = true }
       if (windowCacheP['uKnown'] !== null) { this.interaction = true }
+    } else if (this.data.window != 0) {
+      this.title = 'Edit Window';
+      let editData = this.data.window;
+      let uEdit = editData.uValue > 0 ? 'true' : 'false';
+      console.log(editData.protected)
+      this.windowForm.setValue({
+        area: editData.area,
+        name: editData.name,
+        uValue: editData.uvalue.toString(),
+        uKnown: uEdit,
+        materials: editData.materials,
+        protected: editData.protected.toString(),
+        bridgeValue: editData.bridgevalue,
+      });
+      if (uEdit) { this.uCheck = true }
+      if (uEdit !== null) { this.interaction = true }
     }
   }
   //Conditional Validation
