@@ -48,15 +48,15 @@ export class RoofInputComponent implements OnInit {
 
   }
 
-  initArr() {
-    this.APIService.getRoofs().subscribe(
-      data => {
-        let ar = new Array(data)
-        // let vika = ar.pop()
-        console.log(ar.pop())
-      }
-    )
-  }
+  // initArr() {
+  //   this.APIService.getRoofs().subscribe(
+  //     data => {
+  //       let ar = new Array(data)
+  //       // let vika = ar.pop()
+  //       console.log(ar.pop())
+  //     }
+  //   )
+  // }
 
   /**
    * Sending roof data into API

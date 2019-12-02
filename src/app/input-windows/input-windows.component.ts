@@ -33,7 +33,7 @@ export class InputWindowsComponent implements OnInit {
   }
 
   //door stuff
-  doorBoi() {
+  getDoorData() {
     this.APIservice.getDoorsFull()
       .subscribe((doors: Door[]) => {
         this.doors = doors
@@ -66,7 +66,9 @@ export class InputWindowsComponent implements OnInit {
 
   //Open edit dialog
   openEditDialog(id, doors, name, uValue, area, materials, bridgeValue, protecc): void {
-    const dialogRef = this.dialog.open(EditDoorComponent, {
+    this.dialog.open(EditDoorComponent, {
+      width: '500px',
+      maxHeight: '600px',
       data: {
         doorId: id,
         doorDoors: doors,
@@ -107,7 +109,7 @@ export class InputWindowsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.doorBoi()
+    this.getDoorData()
     this.pleaseOneDoorThanks()
   }
 

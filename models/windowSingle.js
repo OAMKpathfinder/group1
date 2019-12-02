@@ -16,9 +16,9 @@ var windowSingle = {
 
 	add: (windowSingle, callback) => {
 		return db.query('insert into windowSingle(windowAll,uValue,area, \
-            materials,bridgeValue,name,protected) values($1,$2,$3,$4,$5,$6,$7)',
+            materials,bridgeValue,name,protected,cond) values($1,$2,$3,$4,$5,$6,$7,$8)',
 			[windowSingle.windowAll, windowSingle.uValue, windowSingle.area,
-			windowSingle.materials, windowSingle.bridgeValue, windowSingle.name, windowSingle.protected],
+			windowSingle.materials, windowSingle.bridgeValue, windowSingle.name, windowSingle.protected, windowSingle.cond],
 			callback
 		);
 	},
@@ -30,7 +30,7 @@ var windowSingle = {
     //TODO validation
     return db.query(
       "update windowSingle set uValue = $1, area = $2, materials = $3, bridgeValue = $4, \
-      name = $5, protected = $6 where id = $7",
+      name = $5, protected = $6, cond = $7 where id = $8",
       [
         windowSingle.uValue,
         windowSingle.area,
@@ -38,6 +38,7 @@ var windowSingle = {
         windowSingle.bridgeValue,
         windowSingle.name,
         windowSingle.protected,
+        windowSingle.cond,
         id
       ],
       callback
