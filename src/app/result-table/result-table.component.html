@@ -1,0 +1,35 @@
+<div class="chart-flex"> 
+   <div class="chart-one">
+      <h4 class="chart-title">Improvements Based on Cost</h4>
+         <div style="width: 40%;">
+            <canvas
+               #baseChart
+               baseChart
+               [chartType]="'bar'"
+               [datasets]="barChartData"
+               [labels]="barChartLabels"
+               [options]="barChartOptions"
+               [legend]="true"
+               [colors]="barColors"
+               (chartClick)="onChartClick($event)"
+            >
+            </canvas>
+         </div>
+   </div>
+   <div class="chart-two">
+      <h4 class="chart-title">Energy Loss (W/m²K)</h4>
+         <div style="width: 40%;">
+            <canvas
+               baseChart
+               [chartType]="'doughnut'"
+               [datasets]="pieChartData"
+               [labels]="pieChartLabels"
+               [options]="pieChartOptions"
+               [legend]="true"
+               [colors]="pieColors"
+               (chartClick)="onChartClick($event)"
+            >
+            </canvas>
+         </div>
+   </div>
+</div>

@@ -1,16 +1,74 @@
-<h4>Time Period</h4>
-<div class="value">{{dateValue}}</div>
-<input (mouseup)="onUp()" (mousedown)="onDown()"(mousemove)="onMove($event)" type="range" min="1750" max="2010" step="10" value="1970">
-
-<h4>Location</h4>
-<img id="Image-Maps-Com-image-maps-2019-11-27-081109" src="../../assets/img/map/europeMap.png" width="505" height="445" orgWidth="505" orgHeight="445" usemap="#image-maps-2019-11-27-081109" alt="" />
-<map name="image-maps-2019-11-27-081109" id="ImageMapsCom-image-maps-2019-11-27-081109">
-<area  alt="" title="Scotland" href="#" shape="rect" coords="98,254,173,324" style="outline:none;" target="_self"     />
-<area  alt="" title="Northern Ireland"  href="#"  shape="rect" coords="73,317,113,356" style="outline:none;" target="_self"     />
-<area  alt="" title="Iceland"  href="#"  shape="rect" coords="4,49,106,132" style="outline:none;" target="_self"     />
-<area  alt="" title="Finland"  href="#"  shape="rect" coords="376,25,484,238" style="outline:none;" target="_self"     />
-<area shape="rect" coords="503,443,505,445" alt="Image Map" style="outline:none;" title="Image Map"  />
-</map>
-
-
-   
+<div class="property-flex">
+  <div  class="property-one">
+    <h4>Time Period</h4>
+    <div class="value">{{ dateValue }}</div>
+    <input
+      (mouseup)="onUp()"
+      (mousedown)="onDown()"
+      (mousemove)="onMove($event)"
+      type="range"
+      min="1750"
+      max="2010"
+      step="10"
+      value="1970"
+    />
+  </div>
+  <div  class="property-two">
+    <h4>Select Location</h4>
+    <img
+      id="Image-Maps-Com-image-maps-2019-12-02-030747"
+      src="../../assets/img/map/europeMap.png"
+      border="0"
+      width="200"
+      height="176"
+      orgWidth="200"
+      orgHeight="176"
+      usemap="#image-maps-2019-12-02-030747"
+      alt=""
+    />
+    <map
+      name="image-maps-2019-12-02-030747"
+      id="ImageMapsCom-image-maps-2019-12-02-030747"
+    >
+      <area
+        alt="Finland"
+        title="Finland"
+        shape="rect"
+        coords="146,10,200,98"
+        style="outline:none;"
+        target="_self"
+      />
+      <area
+        alt="Iceland"
+        title="Iceland"
+        shape="rect"
+        coords="0,17,50,55"
+        style="outline:none;"
+        target="_self"
+      />
+      <area
+        alt="Scotland"
+        title="Scotland"
+        shape="rect"
+        coords="42,96,75,132"
+        style="outline:none;"
+        target="_self"
+      />
+      <area
+        alt="Northern Ireland"
+        title="Northern Ireland"
+        shape="rect"
+        coords="22,121,50,145"
+        style="outline:none;"
+        target="_self"
+      />
+      <area
+        shape="rect"
+        coords="198,174,200,176"
+        alt="Image Map"
+        style="outline:none;"
+        title="Image Map"
+      />
+    </map>
+  </div>
+</div>

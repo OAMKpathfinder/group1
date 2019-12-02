@@ -21,7 +21,9 @@
                     </div>
                 </div>
                 <div>
-                    <button *ngIf=" property.type =='property' "  mat-raised-button (click)="openPropertyDialog()">Add a Property</button>
+                    <div *ngIf=" property.type =='property' ">
+                        <app-property-inputs></app-property-inputs>
+                    </div> 
                     <button *ngIf=" property.type =='ground' "  mat-raised-button (click)="openGroundDialog()">Add a Ground</button>
                     <button *ngIf=" property.type =='roof' "  mat-raised-button (click)="openRoofDialog()">Add a Roof</button>
                     <div class="doorContainer" *ngIf=" property.type =='door' ">
@@ -38,7 +40,9 @@
                     <button *ngIf=" property.type =='bridge' " mat-raised-button (click)="openBridgeDialog()">Add a Bridge</button>
                     <div *ngIf=" property.type =='window' ">
                       <div  *ngFor="let window of windows[0]">
-                        <button mat-raised-button color="primary" (click)="openWindowDialog(window)">Edit {{window.name}}</button>
+                        <button mat-raised-button (click)="openWindowDialog(window)"
+                        ng-style="{'background-color': (window.uvalue < 1) ? 'red' : 'blue' }"
+                        >Edit - {{window.name}} uValue:{{window.uvalue}}</button>
                       </div>
                       <button  mat-raised-button (click)="openWindowDialog(0)">Add an Window</button>
                     </div>
@@ -50,3 +54,4 @@
     </div>
   <div *ngIf="i != l - 1" class="arrow" (click)="scrollToOther(i)"></div>
 </section>
+<app-result-table></app-result-table>

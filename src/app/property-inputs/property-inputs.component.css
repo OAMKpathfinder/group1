@@ -1,9 +1,8 @@
-.value {  
-  font:500 20px/32px Roboto,"Helvetica Neue",sans-serif;
-  text-align: center;
-  font-size: 6em;
+.value {
+  font-size: 5em;
   line-height: 60px;
   margin: 40px auto;
+  margin-left: 60px;
   letter-spacing: -0.07em;
 }
 input[type="range"] {
@@ -13,7 +12,6 @@ input[type="range"] {
   width: 300px;
   height: 5px;
   border-radius: 5px;
-  margin: 0 auto;
   outline: 0;
 }
 input[type="range"]::-webkit-slider-thumb {
@@ -24,12 +22,23 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   border: 2px solid white;
   cursor: pointer;
-  transition: .3s ease-in-out;
-}​
-  input[type="range"]::-webkit-slider-thumb:hover {
-    background-color: white;
-    border: 2px solid #ffd740;
-  }
-  input[type="range"]::-webkit-slider-thumb:active {
-    transform: scale(1.6);
-  }
+  transition: 0.3s ease-in-out;
+}
+​ input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: white;
+  border: 2px solid #ffd740;
+}
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.6);
+}
+
+
+.property-flex{
+  display: flex;
+}
+.property-one {
+  flex: 0 0 65%;
+}
+.property-two {
+  flex: 1;
+}

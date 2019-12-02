@@ -24,6 +24,8 @@ import { APIService } from './api-service.service';
 import { PropertyInputComponent } from './property-input/property-input.component';
 import { PropertyInputsComponent } from './property-inputs/property-inputs.component';
 import { EditDoorComponent } from './edit-door/edit-door.component';
+import { ResultTableComponent } from './result-table/result-table.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { EditDoorComponent } from './edit-door/edit-door.component';
     MainpageComponent,
     PropertyInputComponent,
     PropertyInputsComponent,
-    EditDoorComponent
+    EditDoorComponent,
+    ResultTableComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import { EditDoorComponent } from './edit-door/edit-door.component';
     HttpClientModule,
     RouterModule,
     MatCheckboxModule,
-    MatSliderModule
+    MatSliderModule,
+    ChartsModule
   ],
   entryComponents: [
     WindowsInputComponent,
