@@ -25,10 +25,10 @@
 				<div>
 					<button *ngIf=" property.type =='property' " mat-raised-button (click)="openPropertyDialog()">Add a
 						Property</button>
-					<div *ngIf=" property.type =='ground' ">
+					<div *ngIf=" property.type =='ground' " class="doorContainer">
 						<div *ngFor="let ground of grounds[0]">
 							<button mat-raised-button (click)="openGroundDialog(ground)"
-								[ngStyle]="{ 'background-color': (ground.uValue < 1) ? 'red' : 'blue' }">
+								[ngStyle]="{'background-color': (ground.uvalue < 1) ? 'red' : 'blue' }">
 								Edit - {{ground.id}} uValue - {{ground.uValue}}
 							</button>
 						</div>

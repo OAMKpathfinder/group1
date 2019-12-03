@@ -109,8 +109,8 @@ export class InputWindowsComponent implements OnInit {
   openBridgeDialog(): void {
     this.dialog.open(BridgeInputComponent, {width: '350px', maxHeight: '550px'});
   }
-  openGroundDialog(): void {
-    this.dialog.open(GroundInputComponent, {width: '350px', maxHeight: '550px'});
+  openGroundDialog(ground): void {
+    this.dialog.open(GroundInputComponent, {data:{ground: ground}, width: '350px', maxHeight: '550px'});
   }
   openWallDialog(): void {
     this.dialog.open(WallInputComponent, {width: '350px', maxHeight: '550px'});
