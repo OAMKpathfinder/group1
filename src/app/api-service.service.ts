@@ -139,7 +139,7 @@ export class APIService {
 
   getRoofs() {
     return this.http
-      .get(`${this.baseURL}/roofConstruction`)
+      .get(`${this.baseURL}/roofConstruction/`)
       .pipe(catchError(this.handleError));
   }
 
@@ -214,6 +214,12 @@ export class APIService {
   }
 
   // DELETE METHODS
+  deleteDoor(id: number) {
+    return this.http.delete(`${this.baseURL}/door/${id}`, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
   //Error Handling
   private handleError(err: HttpErrorResponse) {

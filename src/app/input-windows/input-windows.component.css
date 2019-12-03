@@ -192,10 +192,10 @@
 .img-hover:hover{
     cursor: pointer;
 }
-.doorContainer div {
+.itemContainer div {
     display: inline-block;
 }
 
-.doorBtn {
+.itemBtn {
     margin-right: 5px;
 }

@@ -10,13 +10,14 @@ import { APIService } from "../api-service.service";
 })
 export class RoofInputComponent implements OnInit {
   roofForm: FormGroup;
-  uKnown: string = '';
+  uKnown: string;
   uValue: number;
   materials: string = "";
   area: string = "";
   protected: boolean = false;
   interaction: boolean = false;
   uCheck: boolean;
+  title: string = "Add a Roof"
 
   constructor(
     private APIService: APIService,
@@ -40,10 +41,14 @@ export class RoofInputComponent implements OnInit {
       this.interaction = true;
       this.uKnown = event.value;
       this.uCheck = event.value == 'true' ? true : false
-    } else { }
+    } else { 
+      console.log("blöt")
+    }
     try {
       //Saving form state
-      localStorage.setItem('currentRoof', JSON.stringify(this.roofForm.value));
+      if (this.data.roof == 0) {
+        localStorage.setItem('currentRoof', JSON.stringify(this.roofForm.value));
+      }
     } catch (e) { }
 
   }
@@ -62,30 +67,56 @@ export class RoofInputComponent implements OnInit {
    * Sending roof data into API
    */
   saveRoof() {
+    localStorage.removeItem('currentDoor');
     this.dialogRef.close();
-    this.APIService.addRoof(this.roofForm.value).subscribe(data => {
-      //for debugging
-      console.log(data);
-    });
+    if (this.data.roof == 0) {
+      this.APIService.addRoof(this.roofForm.value)
+        .subscribe(data => {
+        //for debugging
+        console.log(data);
+      }); 
+    } else {
+      console.log("Hmmmmm")
+    }
   }
- 
+
   onCancel(): void {
     this.dialogRef.close();
   }
 
-  ngOnInit() { this.setValidators();
+  ngOnInit() {
+    console.log(this.data)
+    this.setValidators();
     var roofCache = localStorage.getItem('currentRoof');
-    if (roofCache) {
+    if (roofCache && this.data.roof == 0) {
       const roofCacheP = JSON.parse(roofCache)
       this.roofForm.setValue({
         uValue: roofCacheP['uValue'],
         uKnown: roofCacheP['uKnown'],
-        area: roofCacheP['area'],      
+        area: roofCacheP['area'],
         materials: roofCacheP['materials'],
         protected: roofCacheP['protected']
       });
       if (roofCacheP['uKnown'] == 'true') { this.uCheck = true }
       if (roofCacheP['uKnown'] !== null) { this.interaction = true }
+    } else if (this.data.ground != 0) {
+      this.title = 'Edit Roof';
+      let editData = this.data.roof;
+      let uEdit = editData.uValue > 0 ? 'true' : 'false';
+      console.log(editData.protected)
+      this.roofForm.setValue({
+        area: editData.area,
+        uValue: editData.uvalue,
+        uKnown: uEdit,
+        materials: editData.materials,
+        protected: editData.protected.toString()
+      });
+      if (uEdit) {
+        this.uCheck = true
+      }
+      if (uEdit !== null) {
+        this.interaction = true
+      }
     }
   }
   //Conditional Validation

@@ -25,26 +25,36 @@
 				<div>
 					<button *ngIf=" property.type =='property' " mat-raised-button (click)="openPropertyDialog()">Add a
 						Property</button>
-					<div *ngIf=" property.type =='ground' " class="doorContainer">
+					<div class="itemContainer" *ngIf=" property.type =='ground' ">
 						<div *ngFor="let ground of grounds[0]">
 							<button mat-raised-button (click)="openGroundDialog(ground)"
 								[ngStyle]="{'background-color': (ground.uvalue < 1) ? 'red' : 'blue' }">
-								Edit - {{ground.id}} uValue - {{ground.uValue}}
+								Edit - {{ground.id}}
 							</button>
 						</div>
 						<button mat-raised-button (click)="openGroundDialog(0)">Add a Ground Floor</button>
 					</div>
-					<button *ngIf=" property.type =='roof' " mat-raised-button (click)="openRoofDialog()">Add a Roof</button>
-					<div class="doorContainer" *ngIf=" property.type =='door' ">
+					<div class="itemContainer" *ngIf=" property.type =='roof' ">
+						<div *ngFor="let roof of roofs[0]">
+							<button id="{{roof.id}}" mat-raised-button (click)="openRoofDialog(roof)"
+								[ngStyle]="{'background-color': (roof.uvalue < 1) ? 'red' : 'blue'}">
+								Edit - {{roof.id}}
+							</button>
+						</div>
+						<br>
+						<button mat-raised-button (click)="openRoofDialog(0)">Add a Roof</button>
+					</div>
+					<div class="itemContainer" *ngIf=" property.type =='door' ">
 						<div *ngFor="let door of doors">
-							<button id="{{door.id}}" mat-button color="primary" class="doorBtn"
-								(click)="openEditDialog(door.id, door.doors, door.name, door.uValue,door.area, door.materials, door.bridgevalue, door.protected)">Door:
-								{{door.id}}</button>
+							<button id="{{door.id}}" mat-button color="primary" class="itemBtn"
+								(click)="openDoorDialog(door)"
+								[ngStyle]="{'background-color': (door.uvalue < 1) ? 'red' : 'blue'}">
+								Edit - {{door.id}}</button><button (click)="deleteDoor(door.id)">DELETE</button>
 							<br>
 							<hr>
 						</div>
 						<br>
-						<button mat-raised-button (click)="openDoorDialog()">Add a Door</button>
+						<button mat-raised-button (click)="openDoorDialog(0)">Add a Door</button>
 					</div>
 					<button *ngIf=" property.type =='bridge' " mat-raised-button (click)="openBridgeDialog()">Add a
 						Bridge</button>

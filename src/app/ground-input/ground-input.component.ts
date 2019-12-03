@@ -18,24 +18,19 @@ export class GroundInputComponent implements OnInit {
   protected: string = '';
   interaction: boolean = false;
   uCheck: boolean;
-  title: string = "Edit Ground"
+  title: string = "Add a Floor"
 
   constructor(
     private APIService: APIService,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<GroundInputComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any){
-      /**
-       * Init form and validation
-       */
-      let namePattern = '[a-zA-z0-9()_ -]*';
-      let numberPattern = "^[0-9.]*";
       this.groundForm = fb.group({
-        'uKnown': [null, Validators.required],
-        'uValue': [null],
-        'materials': [null],
-        'area': [null],
-        'protected': [null, Validators.required]
+        uKnown: [null, Validators.required],
+        uValue: [null],
+        materials: [null],
+        area: [null],
+        protected: [null, Validators.required]
       });
     }
 
@@ -61,13 +56,14 @@ export class GroundInputComponent implements OnInit {
 
   saveGround(): void {
     localStorage.removeItem('currentGround');
-    // let id = this.APIService.getPropertyId();
-    // let properties = {"properties": id}
+    let id = this.APIService.getPropertyId();
+    let properties = {"properties": id}
     this.dialogRef.close();
-    // Object.assign(this.groundForm.value, properties)
+    Object.assign(this.groundForm.value, properties)
     if (this.data.window == 0) {
       this.APIService.addGroundFloor(this.groundForm.value)
       .subscribe(data => {
+        //debug
         console.log(data)
       });
     } else {
@@ -76,6 +72,7 @@ export class GroundInputComponent implements OnInit {
   }
 
   ngOnInit() { 
+    console.log(this.data)
     this.setValidators();
     var groundCache = localStorage.getItem('currentGround');
     if (groundCache && this.data.ground == 0) {
@@ -96,10 +93,10 @@ export class GroundInputComponent implements OnInit {
       console.log(editData.protected)
       this.groundForm.setValue({
         area: editData.area,
-        uValue: editData.uValue.toString(),
+        uValue: editData.uvalue.toString(),
         uKnown: uEdit,
         materials: editData.materials,
-        protected: editData.protected
+        protected: editData.protected.toString()
       });
       if(uEdit) {
         this.uCheck = true
