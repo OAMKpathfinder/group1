@@ -1,0 +1,74 @@
+<div class="property-flex">
+  <div  class="property-one">
+    <h4>Time Period</h4>
+    <div class="value">{{ dateValue }}</div>
+    <input
+      (mouseup)="onUp()"
+      (mousedown)="onDown()"
+      (mousemove)="onMove($event)"
+      type="range"
+      min="1750"
+      max="2010"
+      step="10"
+      value="1970"
+    />
+  </div>
+  <div  class="property-two">
+    <h4>Select Location</h4>
+    <img
+      id="Image-Maps-Com-image-maps-2019-12-02-030747"
+      src="../../assets/img/map/europeMap.png"
+      border="0"
+      width="200"
+      height="176"
+      orgWidth="200"
+      orgHeight="176"
+      usemap="#image-maps-2019-12-02-030747"
+      alt=""
+    />
+    <map
+      name="image-maps-2019-12-02-030747"
+      id="ImageMapsCom-image-maps-2019-12-02-030747"
+    >
+      <area
+        alt="Finland"
+        title="Finland"
+        shape="rect"
+        coords="146,10,200,98"
+        style="outline:none;"
+        target="_self"
+      />
+      <area
+        alt="Iceland"
+        title="Iceland"
+        shape="rect"
+        coords="0,17,50,55"
+        style="outline:none;"
+        target="_self"
+      />
+      <area
+        alt="Scotland"
+        title="Scotland"
+        shape="rect"
+        coords="42,96,75,132"
+        style="outline:none;"
+        target="_self"
+      />
+      <area
+        alt="Northern Ireland"
+        title="Northern Ireland"
+        shape="rect"
+        coords="22,121,50,145"
+        style="outline:none;"
+        target="_self"
+      />
+      <area
+        shape="rect"
+        coords="198,174,200,176"
+        alt="Image Map"
+        style="outline:none;"
+        title="Image Map"
+      />
+    </map>
+  </div>
+</div>

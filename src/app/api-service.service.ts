@@ -61,15 +61,17 @@ export interface roofConstruction {
   protected: boolean;
 }
 export interface others {
-   id: number;
-   properties: number;
-   hjoht: number;
+  id: number;
+  properties: number;
+  hjoht: number;
   cost: number;
-   pipe: boolean;
-  }
+  pipe: boolean;
+}
 
 @Injectable()
 export class APIService {
+
+
   constructor(private http: HttpClient) { }
   private propertyId: number = null;
 
@@ -83,7 +85,6 @@ export class APIService {
 
 
   //GET METHODS
-
   getPropertyIdByName(name: string) {
     return this.http.get(this.propertyIdByNameUrl + name)
       .subscribe(res => {
@@ -111,7 +112,12 @@ export class APIService {
       .get(`${this.baseURL}/windowSingle`)
       .pipe(catchError(this.handleError));
   }
-
+  //Returns all single widows that match windowAll id
+  getAllSingles(id: number) {
+    return this.http
+      .get(`${this.baseURL}/windowAll/${id}/all`)
+      .pipe(catchError(this.handleError));
+  }
   //Returns single window with ID
   getWindowSingle(id: number) {
     return this.http
@@ -194,17 +200,17 @@ export class APIService {
   }
 
   addOthers(Others: others): Observable<others> {
-       return this.http.post<others>(this.othersUrl, Others, httpOptions)
-         .pipe(
-           catchError(this.handleError)
-         );
-         }
+    return this.http.post<others>(this.othersUrl, Others, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   // UPDATE METHODS
   updateDoor(singleDoor: Door, id: number) {
     return this.http.put<Door>(`${this.baseURL}/door/${id}`, singleDoor, httpOptions)
-    .pipe(
-      catchError(this.handleError)
-    );
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   // DELETE METHODS

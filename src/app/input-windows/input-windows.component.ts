@@ -8,7 +8,7 @@ import { PropertyInputComponent } from '../property-input/property-input.compone
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { APIService } from '../api-service.service';
 import { EditDoorComponent } from '../edit-door/edit-door.component';
-import { Door } from '../api-service.service';
+import { Door, windowSingle } from '../api-service.service';
 import { RoofInputComponent } from "../roof-input/roof-input.component";
 import { OthersInputComponent } from '../others-input/others-input.component';
 
@@ -22,14 +22,18 @@ export class InputWindowsComponent implements OnInit {
 
   @Input() public properties: object[];
 
-  id = 22;
+  id = 1;
   name: string;
   // door arrays
   doors: Door[];
   arryboi = [];
 
+  windows: windowSingle[] = [];
+  windowsId: number = 1;
+
   constructor(public dialog: MatDialog, private APIservice: APIService) {
     this.doors = [];
+    this.windows = []; 
   }
 
   //door stuff
@@ -40,19 +44,18 @@ export class InputWindowsComponent implements OnInit {
         this.arryboi.push(doors)
         this.doors.forEach(i => {
           //testing
-          console.log(`${i.name}`)
           this.name = i.name;
           this.id = i.id;
         })
-        console.log(this.arryboi)
+        // console.log(this.arryboi)
       })
   }
 
-  //testing purposes
-  pleaseOneDoorThanks() {
-    this.APIservice.getDoor(22)
-      .subscribe(res => {
-        console.log(res)
+
+  getWindows() {
+      this.APIservice.getAllSingles(this.windowsId)
+      .subscribe((windows: windowSingle) => {
+        this.windows.push(windows);  
       })
   }
     
@@ -64,27 +67,9 @@ export class InputWindowsComponent implements OnInit {
     }
   }
 
-  //Open edit dialog
-  openEditDialog(id, doors, name, uValue, area, materials, bridgeValue, protecc): void {
-    this.dialog.open(EditDoorComponent, {
-      width: '500px',
-      maxHeight: '600px',
-      data: {
-        doorId: id,
-        doorDoors: doors,
-        doorName: name,
-        doorUvalue: uValue,
-        doorArea: area,
-        doorMaterials: materials,
-        doorBridgeValue: bridgeValue,
-        doorProtected: protecc
-      }
-    });  
-  }
-
   //Input Dialogs 
-  openWindowDialog(): void {
-    this.dialog.open(WindowsInputComponent, {width: '350px', maxHeight: '600px'});
+  openWindowDialog(window): void {
+    this.dialog.open(WindowsInputComponent, {data: {window : window}, width: '350px', maxHeight: '600px'});
   }
   openDoorDialog(): void {
     this.dialog.open(DoorsInputComponent, {width: '350px', maxHeight: '550px'});
@@ -106,11 +91,6 @@ export class InputWindowsComponent implements OnInit {
   }
   openOthersDialog(): void {
     this.dialog.open(OthersInputComponent, {width: '350px', maxHeight: '550px'});
-  }
-
-  ngOnInit() {
-    this.getDoorData()
-    this.pleaseOneDoorThanks()
   }
 
   sleep(ms) {
@@ -140,33 +120,12 @@ export class InputWindowsComponent implements OnInit {
       document.getElementsByName("base-img")[i].classList.toggle("effect");
     }
   }
-  openDialog(prop: string): any{
-    switch(prop){
-      case "ground":
-        this.openGroundDialog()
-        break;
-      case "roof":
-        this.openRoofDialog()
-        break;
-      case "door":
-        this.openDoorDialog()
-        break;
-      case "bridge":
-        this.openBridgeDialog()
-        break;
-      case "window":
-        this.openWindowDialog()
-        break;
-      case "outerwall":
-        this.openWallDialog()
-        break;
-      default:
-        return ;
-    }
 
+  ngOnInit() {
+    this.doorBoi();  
+    this.getDoorData()
+    this.getWindows();
   }
+ 
 
-  // ngOnInit(){
-  //     // this.effect();
-  // }
 }
