@@ -1,15 +1,71 @@
 .chart-title {
   text-align: center;
+} 
+.chart-flex{
+	width: 95%;
+	min-height: 300px;
+	margin: 0 auto;
+	display: -webkit-flex; 
+	display: flex; 
 }
-/* 
-.chart-flex {
-  display: flex;
+.chart-two, .chart-one {
+	padding: 10px;
+	background: #f3f3f5;
+	-webkit-flex: 1;
+	-ms-flex: 1; 
+	flex: 1;
 }
 
-.chart-one {
-  flex: 0 0 65%;
+table.results-table{
+  font-size: 20PX;
+   margin-top:40px;
+   margin-bottom:50px;
+   padding:10px;
+   width: 80%;
+   text-align: center;
+ }
+
+ .urgent1{
+  color: #fc0505;
+ }
+ .urgent2{
+  color: #fc6c05;
+ }
+ .urgent3{
+  color: #3afc05;
+ }
+
+ .grey{
+  color: #919191;
+ }
+
+ .percentage{
+   font-size: 12px;
+ }
+
+ .view-button{
+  font-size: 15px;
+ }
+
+
+ /* Mat Table */
+
+ .mat-sort-header-container {
+  align-items: center;
 }
 
-.chart-two {
-  flex: 1;
-} */
+table {
+  width: 95%;
+  margin-top:20px;
+  margin-bottom:20px;
+  margin-left:15px;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+  text-align: center;
+}
+
+.space{
+  width:10%;
+}
