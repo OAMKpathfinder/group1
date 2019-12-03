@@ -119,6 +119,8 @@ app.use('/windowAll', windowAllRouter);
 var windowSingleRouter = require('./routes/windowSingle');
 app.use('/windowSingle', windowSingleRouter);
 
+var defaults = require('./routes/defaults');
+app.use('/defaults', defaults);
 
 //Here we define URL path for front-end, static files, which is built with angular as wildcard
 app.use(express.static(path.join(__dirname, 'dist/PathFinder')));

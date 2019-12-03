@@ -17,8 +17,8 @@ var homeProperties = {
     return db.query(getIdByNameQuery, [name], callback);
   },
   add: (homeProperties, callback) => {
-    db.query('insert into homeProperties(owner,name) values($1,$2)',
-      [homeProperties.owner, homeProperties.name],
+    db.query('insert into homeProperties(owner,name,country) values($1,$2,$3)',
+      [homeProperties.owner, homeProperties.name, homeProperties.country],
       callback
     );
   },
@@ -31,10 +31,11 @@ var homeProperties = {
    updateHomeProperties: (id, homeProperties, callback) => {
      //TODO validation
      return db.query(
-       "update homeProperties set owner = $1, name = $2  where id = $3",
+       "update homeProperties set owner = $1, name = $2, country = $3 where id = $4",
        [
          homeProperties.owner,
          homeProperties.name,
+         homeProperties.country,
          id
        ],
        callback
