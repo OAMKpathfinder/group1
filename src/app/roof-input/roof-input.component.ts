@@ -19,6 +19,9 @@ export class RoofInputComponent implements OnInit {
   uCheck: boolean;
   title: string = "Add a Roof"
 
+  // ID parameter for edit function
+  id: number = this.data.roof.id;
+
   constructor(
     private APIService: APIService,
     private fb: FormBuilder,
@@ -53,16 +56,6 @@ export class RoofInputComponent implements OnInit {
 
   }
 
-  // initArr() {
-  //   this.APIService.getRoofs().subscribe(
-  //     data => {
-  //       let ar = new Array(data)
-  //       // let vika = ar.pop()
-  //       console.log(ar.pop())
-  //     }
-  //   )
-  // }
-
   /**
    * Sending roof data into API
    */
@@ -75,8 +68,11 @@ export class RoofInputComponent implements OnInit {
         //for debugging
         console.log(data);
       }); 
-    } else {
-      console.log("Hmmmmm")
+    } else if(this.data.roof != 0) {
+      this.APIService.updateRoof(this.roofForm.value, this.id)
+        .subscribe(res => {
+          console.log(res)
+        });
     }
   }
 
@@ -85,7 +81,7 @@ export class RoofInputComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.data)
+    console.log(this.data);
     this.setValidators();
     var roofCache = localStorage.getItem('currentRoof');
     if (roofCache && this.data.roof == 0) {
@@ -99,7 +95,7 @@ export class RoofInputComponent implements OnInit {
       });
       if (roofCacheP['uKnown'] == 'true') { this.uCheck = true }
       if (roofCacheP['uKnown'] !== null) { this.interaction = true }
-    } else if (this.data.ground != 0) {
+    } else if (this.data.ground !== 0) {
       this.title = 'Edit Roof';
       let editData = this.data.roof;
       let uEdit = editData.uValue > 0 ? 'true' : 'false';

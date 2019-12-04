@@ -20,6 +20,9 @@ export class GroundInputComponent implements OnInit {
   uCheck: boolean;
   title: string = "Add a Floor"
 
+  //ID parameter for edit function
+  id: number = this.data.ground.id;
+
   constructor(
     private APIService: APIService,
     private fb: FormBuilder,
@@ -66,8 +69,11 @@ export class GroundInputComponent implements OnInit {
         //debug
         console.log(data)
       });
-    } else {
-      console.log("Hmmmm")
+    } else if (this.data.groud != 0) {
+      this.APIService.updateGround(this.groundForm.value, this.id)
+        .subscribe(res => {
+          console.log(res)
+        })
     }
   }
 

@@ -3,8 +3,9 @@
   <p>Do you know the uValue?</p>
   <mat-radio-group formControlName="uKnown" (change)="onChange(true, $event)">
     <mat-radio-button id="yes-radio-1" value="true">Yes</mat-radio-button>
-    <mat-radio-button value="false">No</mat-radio-button> </mat-radio-group
-  ><br />
+    <mat-radio-button value="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br />
 
   <mat-form-field
     *ngIf="uCheck && interaction"

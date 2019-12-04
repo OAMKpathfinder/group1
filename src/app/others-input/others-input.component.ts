@@ -14,6 +14,7 @@ export class OthersInputComponent {
   cost: number;
   hjoht: number;
   pipe: boolean = false;
+  title: string = "Add Other Information"
 
   constructor(
     private APIService: APIService,
@@ -22,16 +23,18 @@ export class OthersInputComponent {
     @Inject(MAT_DIALOG_DATA) public data: any) {
     let numberPattern = "^[0-9.]*";
     this.othersForm = fb.group({
-      'cost': [null, [Validators.required, Validators.pattern(numberPattern)]],
-      'hjoht': [null, [Validators.required, Validators.pattern(numberPattern)]],
-      'pipe': [null, Validators.required]
+      cost: [null, [Validators.required, Validators.pattern(numberPattern)]],
+      hjoht: [null, [Validators.required, Validators.pattern(numberPattern)]],
+      pipe: [null, Validators.required]
     });
   }
 
   onChange() {
     try {
       //Saving form state
-      localStorage.setItem('currentDoor', JSON.stringify(this.othersForm.value));
+      if (this.data.others == 0) {
+        localStorage.setItem('currentOther', JSON.stringify(this.othersForm.value));
+      }
     } catch (e) { }
   }
 
@@ -50,14 +53,24 @@ export class OthersInputComponent {
     this.dialogRef.close();
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log(this.data)
+    console.log(this.data.cost)
     var othersCache = localStorage.getItem('currentOther');
-    if (othersCache) {
+    if (othersCache && this.data.others == 0) {
       const othersCacheP = JSON.parse(othersCache)
       this.othersForm.setValue({
         cost: othersCacheP['cost'],
         pipe: othersCacheP['pipe'],
         hjoht: othersCacheP['hjoht'],
+      });
+    } else if (this.data.others !== 0) {
+      this.title = "Edit Other Information";
+      let editData = this.data.others;
+      this.othersForm.setValue({
+        cost: editData.cost,
+        pipe: editData.pipe.toString(),
+        hjoht: editData.hjoht
       });
     }
   }

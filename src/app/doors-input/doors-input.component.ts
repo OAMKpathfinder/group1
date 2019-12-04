@@ -21,10 +21,12 @@ export class DoorsInputComponent implements OnInit {
   interaction: boolean = false;
   uCheck: boolean;
 
-  title: string = "Add a Door"
+  id: number = this.data.door.id;
 
-  // init door array
-  // doors: FormArray;
+  // switching between save & edit buttons
+  editAction: boolean = false;
+
+  title: string = "Add a Door"
 
   constructor(
     private APIService: APIService,
@@ -71,17 +73,27 @@ export class DoorsInputComponent implements OnInit {
         // for debugging
         console.log(data);
       })
-    } else {
-      console.log("Hmmmmmm")
+    } else if (this.data.door != 0) {
+      this.APIService.updateDoor(this.doorForm.value, this.id)
+        .subscribe(res => {
+          console.log(res)
+        })
     }
   }
+
+  // editDoor(id) {
+  //   this.APIService.updateDoor(this.doorForm.value, id)
+  //     .subscribe(res => {
+  //       console.log(res)
+  //     })
+  // }
 
   onCancel(): void {
     this.dialogRef.close();
   }
 
   ngOnInit() {
-    console.log(this.data)
+    console.log(this.data.door.id)
     this.setValidators();
     var doorCache = localStorage.getItem('currentDoor');
     if (doorCache && this.data.door == 0) {
@@ -101,6 +113,7 @@ export class DoorsInputComponent implements OnInit {
       this.title = "Edit Door";
       let editData = this.data.door;
       let uEdit = editData.uValue > 0 ? 'true' : 'false';
+      this.editAction = true;
       console.log(editData.protected);
       this.doorForm.setValue({
         area: editData.area,

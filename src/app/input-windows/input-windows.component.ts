@@ -6,7 +6,7 @@ import { GroundInputComponent } from '../ground-input/ground-input.component';
 import { WallInputComponent } from '../wall-input/wall-input.component';
 import { PropertyInputComponent } from '../property-input/property-input.component';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
-import { APIService, GroundFloor, roofConstruction } from '../api-service.service';
+import { APIService, GroundFloor, roofConstruction, OuterWall, others } from '../api-service.service';
 import { EditDoorComponent } from '../edit-door/edit-door.component';
 import { Door } from '../api-service.service';
 import { RoofInputComponent } from "../roof-input/roof-input.component";
@@ -29,20 +29,28 @@ export class InputWindowsComponent implements OnInit {
   doors: Door[] = [];
   arryboi = [];
 
-  //ground arrays
+  // ground arrays
   grounds: GroundFloor[] = [];
-  groundArr = [];
   groundsId: number = 1;
 
-  //roof arrays
+  // roof arrays
   roofs: roofConstruction[] = [];
-  roofsArr = [];
   roofsId: number = 1;
+
+  // wall arrays
+  walls: OuterWall[] = [];
+  wallsId: number = 1;
+
+  // others arrays
+  others: others[] = [];
+  othersId: number = 1;
 
   constructor(public dialog: MatDialog, private APIservice: APIService) {
     this.doors = [];
     this.grounds = [];
     this.roofs = [];
+    this.walls = [];
+    this.others = [];
   }
 
   //door stuff
@@ -64,7 +72,6 @@ export class InputWindowsComponent implements OnInit {
   getGroundData() {
     this.APIservice.getGroundFull()
       .subscribe((grounds: GroundFloor) => {
-        this.groundArr.push(grounds)
         this.grounds.push(grounds)
       })
       console.log(this.grounds)
@@ -73,10 +80,25 @@ export class InputWindowsComponent implements OnInit {
   getRoofsData() {
     this.APIservice.getRoofs()
       .subscribe((roofs: roofConstruction) => {
-        this.roofsArr.push(roofs)
         this.roofs.push(roofs)
       })
       console.log(this.roofs)
+  }
+
+  getWallsData() {
+    this.APIservice.getWallFull()
+      .subscribe((walls: OuterWall) => {
+        this.walls.push(walls)
+      })
+      console.log(this.walls)
+  }
+
+  getOthersData() {
+    this.APIservice.getOtherFull()
+      .subscribe((others: others) => {
+        this.others.push(others)
+      })
+      console.log(this.others)
   }
 
   //testing purposes
@@ -90,6 +112,10 @@ export class InputWindowsComponent implements OnInit {
   deleteDoor(doorId) {
     this.APIservice.deleteDoor(doorId)
     console.log(`Tried to delete door ${doorId}, but nothing happened.`)
+  }
+
+  todo() {
+    alert("Todo")
   }
 
   //Smoothly scroll down to target div
@@ -123,10 +149,10 @@ export class InputWindowsComponent implements OnInit {
     this.dialog.open(WindowsInputComponent, {width: '350px', maxHeight: '600px'});
   }
   openDoorDialog(door): void {
-    this.dialog.open(DoorsInputComponent, {data: {door:door}, width: '350px', maxHeight: '600px'});
+    this.dialog.open(DoorsInputComponent, {data: {door: door}, width: '350px', maxHeight: '600px'});
   }
   openRoofDialog(roof): void {
-    this.dialog.open(RoofInputComponent, {data: {roof:roof}, width: '350px', maxHeight: '600px'});
+    this.dialog.open(RoofInputComponent, {data: {roof: roof}, width: '350px', maxHeight: '600px'});
   }
   openBridgeDialog(): void {
     this.dialog.open(BridgeInputComponent, {width: '350px', maxHeight: '550px'});
@@ -134,20 +160,22 @@ export class InputWindowsComponent implements OnInit {
   openGroundDialog(ground): void {
     this.dialog.open(GroundInputComponent, {data:{ground: ground}, width: '350px', maxHeight: '550px'});
   }
-  openWallDialog(): void {
-    this.dialog.open(WallInputComponent, {width: '350px', maxHeight: '550px'});
+  openWallDialog(wall): void {
+    this.dialog.open(WallInputComponent, {data: {wall: wall}, width: '350px', maxHeight: '550px'});
   }
   openPropertyDialog(): void {
     this.dialog.open(PropertyInputComponent, {width: '350px', maxHeight: '550px'});
   }
-  openOthersDialog(): void {
-    this.dialog.open(OthersInputComponent, {width: '350px', maxHeight: '550px'});
+  openOthersDialog(other): void {
+    this.dialog.open(OthersInputComponent, {data:{other: other}, width: '350px', maxHeight: '550px'});
   }
 
   ngOnInit() {
     this.getDoorData()
     this.getGroundData()
     this.getRoofsData()
+    this.getWallsData()
+    this.getOthersData()
 
     //test
     this.pleaseOneDoorThanks()
