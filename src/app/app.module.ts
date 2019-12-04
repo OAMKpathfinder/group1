@@ -23,6 +23,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { APIService } from './api-service.service';
 import { PropertyInputComponent } from './property-input/property-input.component';
 import { EditDoorComponent } from './edit-door/edit-door.component';
+import { ResultTableComponent } from './result-table/result-table.component';
+import {MatTableModule} from '@angular/material/table';
+import { ModalWindowComponent } from './modal-window/modal-window.component';
+import { SuggestionComponent } from './suggestion/suggestion.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +44,10 @@ import { EditDoorComponent } from './edit-door/edit-door.component';
     LandingModalComponent,
     MainpageComponent,
     PropertyInputComponent,
-    EditDoorComponent
+    EditDoorComponent,
+    ResultTableComponent,
+    ModalWindowComponent,
+    SuggestionComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +66,8 @@ import { EditDoorComponent } from './edit-door/edit-door.component';
     MatSelectModule,
     MatIconModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    MatTableModule
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -74,7 +83,9 @@ import { EditDoorComponent } from './edit-door/edit-door.component';
     LandingModalComponent,
     MainpageComponent,
     PropertyInputComponent,
-    EditDoorComponent
+    EditDoorComponent,
+    ModalWindowComponent,
+    SuggestionComponent
   ],
   providers: [ APIService ],
   bootstrap: [AppComponent]

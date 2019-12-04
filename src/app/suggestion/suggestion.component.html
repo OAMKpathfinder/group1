@@ -1,0 +1,44 @@
+<div *ngFor="let thing of suggestion" class="row margin-bottom-bit">
+    <div class="col-1">
+        <span *ngIf='3 > thing.priority' class="badge badge-danger priority">
+            {{ thing.priority }}
+        </span>
+        <span *ngIf='thing.priority >=3 && thing.priority <=6' class="badge badge-warning priority">
+            {{ thing.priority }}
+        </span>
+        <span *ngIf='thing.priority > 6' class="badge badge-success priority">
+            {{ thing.priority }}
+        </span>
+    </div>
+
+    <div class="col-6">
+        <span class="badge badge-info part">
+            {{ thing.part }}
+        </span>
+        {{ lorem }}, Estimated Cost:
+        <span *ngIf="thing.cost>=10000" class="badge badge-danger cost">
+            {{ thing.cost }}€
+        </span>
+        <span *ngIf="thing.cost>=5000 && 10000 > thing.cost" class="badge badge-warning cost">
+            {{ thing.cost }}€
+        </span>
+        <span *ngIf="thing.cost>=2000 && 5000 > thing.cost" class="badge badge-info cost">
+            {{ thing.cost }}€
+        </span>
+        <span *ngIf=" 2000 > thing.cost" class="badge badge-secondary cost">
+            {{ thing.cost }}€
+        </span>
+    </div>
+
+    <div class="col-1">
+        <mat-icon class="right-arrow" svgIcon="right-arrow"></mat-icon>
+    </div>
+    <div class="col-1">
+        <mat-icon class="icons" svgIcon="grow"></mat-icon>
+    </div>
+    <div class="col-1">
+        <span class="badge badge-success percent">
+            {{ thing.percent }}%
+        </span>
+    </div>
+</div>

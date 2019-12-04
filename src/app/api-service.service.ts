@@ -76,6 +76,10 @@ export class APIService {
   //BaseURL will need updated when moving from Localhost
   baseURL = "http://localhost:3000"
   propertyUrl: string = this.baseURL + "/homeProperties";
+
+  //For thinking about, unique, search by name is not so good idea since name is not primary key so 
+  //there might need better idea to get just created homeProperties id, to insert foreign key in another tables
+
   propertyIdByNameUrl: string = this.propertyUrl + "/name/";
   groundUrl: string = this.baseURL + "/groundFloor";
   outerWallUrl: string = this.baseURL + "/outerWall";

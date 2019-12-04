@@ -1,0 +1,70 @@
+@import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+@import '../../assets/css/app.css';
+
+table {
+    width: 100%;
+}
+
+tr.detail-row {
+    height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+    background: #f5ece9;
+}
+
+tr.element-row:not(.expanded-row):active {
+    background: #efefef;
+}
+
+.element-row td {
+    border-bottom-width: 0;
+}
+  
+.element-detail {
+    overflow: hidden;
+    display: flex;
+}
+
+.element-description {
+    padding: 16px;
+    width: 100%
+}
+
+.element-description-attribution {
+    opacity: 0.5;
+}
+
+.img{
+    width: 20em;
+    height: 10em;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+.margin-bottom-tiny{
+    margin-bottom: 0.8em;
+}
+
+.padding-all-bit{
+    padding: 1em;
+}
+
+.btn-detail{
+    background-color:#556affdb;
+    color: white;
+}
+.btn-duplicate{
+    background-color:#09c566;
+    color: white;
+}
+.btn-compare{
+    background-color:#d235c6;
+    color: white;
+}
+.btn-delete{
+    background-color:#dc3545;
+    color: white;
+}

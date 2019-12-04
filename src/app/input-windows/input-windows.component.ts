@@ -1,11 +1,11 @@
-import { Component, Input, OnInit, Inject } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { WindowsInputComponent } from '../windows-input/windows-input.component';
 import { DoorsInputComponent } from '../doors-input/doors-input.component';
 import { BridgeInputComponent } from '../bridge-input/bridge-input.component';
 import { GroundInputComponent } from '../ground-input/ground-input.component';
 import { WallInputComponent } from '../wall-input/wall-input.component';
 import { PropertyInputComponent } from '../property-input/property-input.component';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { APIService } from '../api-service.service';
 import { EditDoorComponent } from '../edit-door/edit-door.component';
 import { Door } from '../api-service.service';
@@ -111,33 +111,6 @@ export class InputWindowsComponent implements OnInit {
     this.pleaseOneDoorThanks()
   }
 
-  sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
-  async effect(){
-    while(true){
-      if(document.getElementById("base-img")){
-        console.log("effect added");
-        document.getElementById("base-img").classList.add("effect");
-        await this.sleep(1000);
-        document.getElementById("base-img").classList.toggle("effect");
-        console.log("effect removed");
-        await this.sleep(1000);
-      }
-    }
-  }
-
-  hover(e){
-    for(let i = 0; i < document.getElementsByName("base-img").length; i++){
-      document.getElementsByName("base-img")[i].classList.add("effect");
-    }
-  }
-  hoverOut(e){
-    for(let i = 0; i < document.getElementsByName("base-img").length; i++){
-      document.getElementsByName("base-img")[i].classList.toggle("effect");
-    }
-  }
   openDialog(prop: string): any{
     switch(prop){
       case "ground":
@@ -163,8 +136,4 @@ export class InputWindowsComponent implements OnInit {
     }
 
   }
-
-  // ngOnInit(){
-  //     // this.effect();
-  // }
 }
