@@ -63,7 +63,7 @@ export class GroundInputComponent implements OnInit {
     let properties = {"properties": id}
     this.dialogRef.close();
     Object.assign(this.groundForm.value, properties)
-    if (this.data.window == 0) {
+    if (this.data.groud == 0) {
       this.APIService.addGroundFloor(this.groundForm.value)
       .subscribe(data => {
         //debug

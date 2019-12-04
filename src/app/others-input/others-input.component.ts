@@ -16,6 +16,9 @@ export class OthersInputComponent {
   pipe: boolean = false;
   title: string = "Add Other Information"
 
+  //ID parameter for edit function
+  id: number = this.data.others.id;
+
   constructor(
     private APIService: APIService,
     private fb: FormBuilder,
@@ -41,11 +44,18 @@ export class OthersInputComponent {
   //Saving the form and closing window
   saveOthers() {
     this.dialogRef.close();
-    //Here is the form result to send to the API
-    this.APIService.addOthers(this.othersForm.value)
-      .subscribe(data => {
-        console.log(data)
-      });
+    // This decided wheter the form is used for put or post
+    if (this.data.others == 0) {
+      this.APIService.addOthers(this.othersForm.value)
+        .subscribe(data => {
+          console.log(data)
+        });
+    } else if (this.data.others != 0) {
+      this.APIService.updateOthers(this.othersForm.value, this.id)
+        .subscribe(res => {
+          console.log(res)
+        });
+    }
   }
 
   //Canceling the inputs and closing window

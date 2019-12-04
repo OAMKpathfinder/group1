@@ -109,6 +109,12 @@ export class InputWindowsComponent implements OnInit {
       })
   }
     
+  /**
+   * 
+   * @param doorId 
+   * @todo
+   * Make the delete function to actually work
+   */
   deleteDoor(doorId) {
     this.APIservice.deleteDoor(doorId)
     console.log(`Tried to delete door ${doorId}, but nothing happened.`)
@@ -166,8 +172,8 @@ export class InputWindowsComponent implements OnInit {
   openPropertyDialog(): void {
     this.dialog.open(PropertyInputComponent, {width: '350px', maxHeight: '550px'});
   }
-  openOthersDialog(other): void {
-    this.dialog.open(OthersInputComponent, {data:{other: other}, width: '350px', maxHeight: '550px'});
+  openOthersDialog(others): void {
+    this.dialog.open(OthersInputComponent, {data:{others: others}, width: '350px', maxHeight: '550px'});
   }
 
   ngOnInit() {

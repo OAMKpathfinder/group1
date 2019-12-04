@@ -255,6 +255,14 @@ export class APIService {
       );
   }
 
+  updateOthers(other: others, id: number) {
+    return this.http 
+      .put<others>(`${this.baseURL}/others/${id}`, other, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   // DELETE METHODS
   deleteDoor(id: number) {
     return this.http
