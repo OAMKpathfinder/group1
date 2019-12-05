@@ -1,4 +1,4 @@
-<h4 mat-dialog-title>Add A New Window</h4>
+<h4 mat-dialog-title>{{title}}</h4>
 <mat-dialog-content [formGroup]="windowForm">
   <mat-form-field id="form-field" (change)="onChange(false, $event)">
     <input matInput placeholder="Window Name" formControlName="name" />
