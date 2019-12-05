@@ -71,7 +71,7 @@
 						</div>
 						<br>
 						<hr>
-						<button (click)="openWallDialog(0)">Add an Outer Wall</button>
+						<button mat-raised-button (click)="openWallDialog(0)">Add an Outer Wall</button>
 					</div>
 					<div *ngIf=" property.type =='others' " class="itemContainer">
 						<div *ngFor="let other of others[0]">

@@ -4,7 +4,7 @@
   <div class="titleContainer">
     <h1 class="landingTitle">{{title}}</h1>
     <br>
-    <div class="arrow"></div>
+    <div class="arrow" (click)="scroll(target)"></div>
   </div>
   <section class="infoContainer">
     <div class="descContainer">
@@ -33,7 +33,7 @@
   </section>
 </div>
 <div id="bottomPart">
-  <section class="infoGrid" id="gridderino">
+  <section class="infoGrid" id="gridderino" #target>
     <div>
       <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081"
         width="50%" alt="4house">
