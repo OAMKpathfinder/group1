@@ -16,7 +16,7 @@ import { LandingComponent } from './landing/landing.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatPaginatorModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatIconModule, MatSliderModule, MatTableModule, MatSortModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatIconModule, MatSliderModule, MatTableModule, MatSortModule, MatTooltipModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,6 +26,8 @@ import { PropertyInputsComponent } from './property-inputs/property-inputs.compo
 import { EditDoorComponent } from './edit-door/edit-door.component';
 import { ResultTableComponent } from './result-table/result-table.component';
 import { ChartsModule } from 'ng2-charts';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminEditComponent } from './admin-edit/admin-edit.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { ChartsModule } from 'ng2-charts';
     PropertyInputComponent,
     PropertyInputsComponent,
     EditDoorComponent,
-    ResultTableComponent
+    ResultTableComponent,
+    AdminPanelComponent,
+    AdminEditComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +73,8 @@ import { ChartsModule } from 'ng2-charts';
     MatSliderModule,
     ChartsModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatTooltipModule
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -86,7 +91,8 @@ import { ChartsModule } from 'ng2-charts';
     MainpageComponent,
     PropertyInputComponent,
     PropertyInputsComponent,
-    EditDoorComponent
+    EditDoorComponent,
+    AdminEditComponent
   ],
   providers: [ APIService ],
   bootstrap: [AppComponent]

@@ -109,7 +109,6 @@ export class InputWindowsComponent implements OnInit {
     this.dialog.open(OthersInputComponent, {width: '350px', maxHeight: '550px'});
   }
 
-
   sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
