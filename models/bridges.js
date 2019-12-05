@@ -16,14 +16,15 @@ var bridges = {
 	add: (bridges, callback) => {
 		return db.query('insert into bridges(properties, outerWallToOuterWall, \
             outerWallToRoof, outerWallToMiddleBasement, outerWallToGroundFloor, \
-            protected) values($1,$2,$3,$4,$5,$6)',
+            protected, cond) values($1,$2,$3,$4,$5,$6,$7)',
 			[
         bridges.properties,
         bridges.outerWallToOuterWall,
         bridges.outerWallToRoof,
         bridges.outerWallToMiddleBasement, 
         bridges.outerWallToGroundFloor, 
-        bridges.protected
+        bridges.protected,
+        bridges.cond
       ],
 			callback
 		);
@@ -37,13 +38,14 @@ var bridges = {
     //TODO validation
       return db.query(
         "update bridges set outerWallToOuterWall = $1, outerWallToRoof = $2, \
-        outerWallToMiddleBasement = $3, outerWallToGroundFloor = $4, protected = $5 where id = $6",
+        outerWallToMiddleBasement = $3, outerWallToGroundFloor = $4, protected = $5, cond = $6 where id = $7",
         [
           bridges.outerWallToOuterWall,
           bridges.outerWallToRoof,
           bridges.outerWallToMiddleBasement,
           bridges.outerWallToGroundFloor,
           bridges.protected,
+          bridges.cond,
           id
         ],
         callback
