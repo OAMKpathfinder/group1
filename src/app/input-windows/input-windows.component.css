@@ -57,6 +57,9 @@
 
 .container{
     margin: 2em;
+    background-color: rgba(255,255,255,0.8);
+    width: 95%;
+    border-radius: .5em;
 }
 
 .margin-top-bit{
@@ -192,10 +195,11 @@
 .img-hover:hover{
     cursor: pointer;
 }
-.doorContainer div {
+.itemContainer div {
     display: inline-block;
 }
 
-.doorBtn {
-    margin-right: 5px;
+.itemBtn {
+    margin-right: .5em;
+    margin-bottom: .5em;
 }

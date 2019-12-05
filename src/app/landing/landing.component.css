@@ -87,3 +87,21 @@ h1 {
   padding: 5px;
   margin: 5px;
 }
+
+.arrow{
+  margin: auto;    
+  box-sizing: border-box;
+  height: 4vw;
+  width: 4vw;
+  border-style: solid;
+  border-color: gray;
+  border-width: 0px 4px 4px 0px;
+  transform: rotate(45deg);
+}
+
+.arrow:hover {
+  border-color: lightgrey;
+  border-bottom-width: 5px;
+  border-right-width: 5px;
+  cursor: pointer;
+}

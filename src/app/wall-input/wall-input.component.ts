@@ -18,6 +18,10 @@ export class WallInputComponent implements OnInit {
   protected: string = '';
   interaction: boolean = false;
   uCheck: boolean;
+  title: string = "Add an Outer Wall"
+
+  // ID parameter for edit function
+  id: number = this.data.wall.id;
 
   constructor(
     private APIService: APIService,
@@ -27,11 +31,11 @@ export class WallInputComponent implements OnInit {
       //Initialising form and validation 
       //TODO further validation  
       this.wallForm = fb.group({
-        'uKnown': [null, Validators.required],
-        'uValue': [null],
-        'materials': [null],
-        'area': [null],
-        'protected': [null, Validators.required]
+        uKnown: [null, Validators.required],
+        uValue: [null],
+        materials: [null],
+        area: [null],
+        protected: [null, Validators.required]
       });
     }
 
@@ -44,7 +48,9 @@ export class WallInputComponent implements OnInit {
       } else { }
       try {
         //Saving form state
-        localStorage.setItem('currentWall', JSON.stringify(this.wallForm.value));
+        if (this.data.wall == 0) {
+          localStorage.setItem('currentWall', JSON.stringify(this.wallForm.value));
+        }
       } catch (e) { }
     }
 
@@ -54,16 +60,25 @@ export class WallInputComponent implements OnInit {
 
   saveWall(): void {
     this.dialogRef.close();
-    this.APIService.addOuterWall(this.wallForm.value)
+    if (this.data.wall == 0) {
+      this.APIService.addOuterWall(this.wallForm.value)
       .subscribe(data => {
+        // for debugging
         console.log(data)
       });
+    } else if (this.data.wall != 0) {
+      this.APIService.updateWall(this.wallForm.value, this.id)
+        .subscribe(res => {
+          console.log(res)
+        });
+    }
   }
   
   ngOnInit() {
+    console.log(this.data);
     this.setValidators();
     var wallCache = localStorage.getItem('currentWall');
-    if (wallCache) {
+    if (wallCache && this.data.wall == 0) {
       const wallCacheP = JSON.parse(wallCache)
       this.wallForm.setValue({
         uValue: wallCacheP['uValue'],
@@ -74,6 +89,24 @@ export class WallInputComponent implements OnInit {
       });
       if (wallCacheP['uKnown'] == 'true') { this.uCheck = true }
       if (wallCacheP['uKnown'] !== null) { this.interaction = true }
+    } else if (this.data.wall !== 0) {
+      this.title = "Edit Outer Wall";
+      let editData = this.data.wall;
+      let uEdit = editData.uValue > 0 ? 'true' : 'false';
+      console.log(editData.protected);
+      this.wallForm.setValue({
+        area: editData.area,
+        uValue: editData.uvalue,
+        uKnown: uEdit,
+        materials: editData.materials,
+        protected: editData.protected.toString()
+      });
+      if (uEdit) {
+        this.uCheck == true
+      }
+      if (uEdit !== null) {
+        this.interaction = true
+      }
     }
   }
   //Conditional Validation

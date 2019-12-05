@@ -18,20 +18,22 @@ export class GroundInputComponent implements OnInit {
   protected: string = '';
   interaction: boolean = false;
   uCheck: boolean;
+  title: string = "Add a Floor"
+
+  //ID parameter for edit function
+  id: number = this.data.ground.id;
 
   constructor(
     private APIService: APIService,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<GroundInputComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any){
-      //Initialising form and validation 
-      //TODO further validation  
       this.groundForm = fb.group({
-        'uKnown': [null, Validators.required],
-        'uValue': [null],
-        'materials': [null],
-        'area': [null],
-        'protected': [null, Validators.required]
+        uKnown: [null, Validators.required],
+        uValue: [null],
+        materials: [null],
+        area: [null],
+        protected: [null, Validators.required]
       });
     }
 
@@ -45,7 +47,9 @@ export class GroundInputComponent implements OnInit {
     } else { }
     try {
       //Saving form state
-      localStorage.setItem('currentGround', JSON.stringify(this.groundForm.value));
+      if (this.data.ground == 0) {
+        localStorage.setItem('currentGround', JSON.stringify(this.groundForm.value));
+      }
     } catch (e) { }
   }
   
@@ -59,15 +63,25 @@ export class GroundInputComponent implements OnInit {
     let properties = {"properties": id}
     this.dialogRef.close();
     Object.assign(this.groundForm.value, properties)
-    this.APIService.addGroundFloor(this.groundForm.value)
-    .subscribe(data => {
-      console.log(data)
-    });
+    if (this.data.groud == 0) {
+      this.APIService.addGroundFloor(this.groundForm.value)
+      .subscribe(data => {
+        //debug
+        console.log(data)
+      });
+    } else if (this.data.groud != 0) {
+      this.APIService.updateGround(this.groundForm.value, this.id)
+        .subscribe(res => {
+          console.log(res)
+        })
+    }
   }
 
-  ngOnInit() { this.setValidators();
+  ngOnInit() { 
+    console.log(this.data)
+    this.setValidators();
     var groundCache = localStorage.getItem('currentGround');
-    if (groundCache) {
+    if (groundCache && this.data.ground == 0) {
       const groundCacheP = JSON.parse(groundCache)
       this.groundForm.setValue({
         area: groundCacheP['area'],
@@ -78,6 +92,24 @@ export class GroundInputComponent implements OnInit {
       });
       if (groundCacheP['uKnown'] == 'true') { this.uCheck = true }
       if (groundCacheP['uKnown'] !== null) { this.interaction = true }
+    } else if (this.data.ground != 0) {
+      this.title = 'Edit Ground';
+      let editData = this.data.ground;
+      let uEdit = editData.uValue > 0 ? 'true' : 'false';
+      console.log(editData.protected)
+      this.groundForm.setValue({
+        area: editData.area,
+        uValue: editData.uvalue.toString(),
+        uKnown: uEdit,
+        materials: editData.materials,
+        protected: editData.protected.toString()
+      });
+      if(uEdit) {
+        this.uCheck = true
+      }
+      if(uEdit !== null) {
+        this.interaction = true
+      }
     }
   }
   //Conditional Validation

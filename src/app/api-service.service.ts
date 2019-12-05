@@ -86,7 +86,8 @@ export class APIService {
 
   //GET METHODS
   getPropertyIdByName(name: string) {
-    return this.http.get(this.propertyIdByNameUrl + name)
+    return this.http
+      .get(this.propertyIdByNameUrl + name)
       .subscribe(res => {
         console.log("get ID", res);
         if (res["error"]) {
@@ -145,13 +146,31 @@ export class APIService {
 
   getRoofs() {
     return this.http
-      .get(`${this.baseURL}/roofConstruction`)
+      .get(`${this.baseURL}/roofConstruction/`)
       .pipe(catchError(this.handleError));
   }
 
   getRoof(id: number) {
     return this.http
       .get(`${this.baseURL}/roofConstruction/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  getGroundFull() {
+    return this.http
+      .get(`${this.baseURL}/groundFloor/`)
+      .pipe(catchError(this.handleError));
+  }
+
+  getWallFull() {
+    return this.http
+      .get(`${this.baseURL}/outerWall/`)
+      .pipe(catchError(this.handleError));
+  }
+
+  getOtherFull() {
+    return this.http
+      .get(`${this.baseURL}/others/`)
       .pipe(catchError(this.handleError));
   }
 
@@ -186,14 +205,17 @@ export class APIService {
 
   //Inserts property
   addProperty(property: Property): Observable<Property> {
-    return this.http.post<Property>(this.propertyUrl, property, httpOptions)
+    return this.http
+      .post<Property>(this.propertyUrl, property, httpOptions)
   }
 
   addGroundFloor(groundFloor: GroundFloor): Observable<GroundFloor> {
-    return this.http.post<GroundFloor>(this.groundUrl, groundFloor, httpOptions)
+    return this.http
+      .post<GroundFloor>(this.groundUrl, groundFloor, httpOptions)
   }
   addOuterWall(outerWall: OuterWall): Observable<OuterWall> {
-    return this.http.post<OuterWall>(this.outerWallUrl, outerWall, httpOptions)
+    return this.http
+      .post<OuterWall>(this.outerWallUrl, outerWall, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
@@ -213,7 +235,46 @@ export class APIService {
       );
   }
 
+  updateRoof(roof: roofConstruction, id: number) {
+    return this.http
+      .put<roofConstruction>(`${this.baseURL}/roofConstruction/${id}`, roof, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  updateWall(wall: OuterWall, id: number) {
+    return this.http
+      .put<OuterWall>(`${this.baseURL}/outerWall/${id}`, wall, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  updateGround(ground: GroundFloor, id: number) {
+    return this.http
+      .put<GroundFloor>(`${this.baseURL}/groundFloor/${id}`, ground, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  updateOthers(other: others, id: number) {
+    return this.http 
+      .put<others>(`${this.baseURL}/others/${id}`, other, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   // DELETE METHODS
+  deleteDoor(id: number) {
+    return this.http
+      .delete(`${this.baseURL}/door/${id}`, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
   //Error Handling
   private handleError(err: HttpErrorResponse) {
