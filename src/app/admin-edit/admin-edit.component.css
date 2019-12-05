@@ -1,0 +1,25 @@
+/* input:first-of-type {
+   display: none;
+ }
+  */
+@import "../windows-input/windows-input.component.css";
+
+::ng-deep .mat-form-field-wrapper {
+  text-transform: capitalize;
+}
+
+:-webkit-input-placeholder {
+  text-transform: capitalize;
+}
+
+:-moz-placeholder {
+  text-transform: capitalize;
+}
+
+::-moz-placeholder {
+  text-transform: capitalize;
+}
+
+:-ms-input-placeholder {
+  text-transform: capitalize;
+}

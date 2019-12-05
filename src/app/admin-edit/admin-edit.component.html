@@ -1,0 +1,20 @@
+<h4 mat-dialog-title>{{ title }}</h4>
+
+<mat-dialog-content [formGroup]="adminEditForm">
+  <mat-form-field *ngFor="let field of elKeys" id="form-field">
+    <input matInput placeholder="{{ field }}" formControlName="{{ field }}" />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button mat-dialog-close"  (click)="onCancel()">
+    Close
+  </button>
+  <button
+    class="mat-raised-button mat-primary"
+    id="saveButton"
+    (click)="onSave()"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

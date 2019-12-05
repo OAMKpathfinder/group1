@@ -1,0 +1,345 @@
+<h1 class="title">Administration</h1>
+<div class="parent">
+  <button
+    class="column"
+    mat-raised-button
+    (click)="viewChange(0)"
+    [ngStyle]="{ background: show == 0 ? 'grey' : 'white' }"
+  >
+    Users
+  </button>
+  <button
+    class="column"
+    mat-raised-button
+    (click)="viewChange(1)"
+    [ngStyle]="{ background: show == 1 ? 'grey' : 'white' }"
+  >
+    Properties
+  </button>
+  <button
+    class="column"
+    mat-raised-button
+    (click)="viewChange(2)"
+    [ngStyle]="{ background: show == 2 ? 'grey' : 'white' }"
+  >
+    Materials
+  </button>
+  <button
+    class="column"
+    mat-raised-button
+    (click)="viewChange(3)"
+    [ngStyle]="{ background: show == 3 ? 'grey' : 'white' }"
+  >
+    Defaults
+  </button>
+  <button
+    class="column"
+    mat-raised-button
+    (click)="viewChange(4)"
+    [ngStyle]="{ background: show == 4 ? 'grey' : 'white' }"
+  >
+    Downloads
+  </button>
+</div>
+
+<!-- User Table -->
+<div [hidden]="show != 0 ? true : false">
+  <table mat-table [dataSource]="userSource" #sorter0="matSort" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">{{ el.id }}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.firstName }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.lastName }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.email }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="password">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Password</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.password }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="onNew(userDisplayedColumns)"
+        >
+          Add New User
+        </button>
+      </td>
+    </ng-container>
+    <tr
+      mat-header-row
+      *matHeaderRowDef="userDisplayedColumns; sticky: true"
+    ></tr>
+    <tr
+      matTooltip="Click to edit"
+      matTooltipPosition="before"
+      mat-row
+      *matRowDef="let row; columns: userDisplayedColumns"
+    ></tr>
+    <tr
+      mat-footer-row
+      *matFooterRowDef="userDisplayedColumns; sticky: true"
+    ></tr>
+  </table>
+</div>
+
+<!-- Property Table  -->
+<div [hidden]="show != 1 ? true : false">
+  <table mat-table [dataSource]="propSource" #sorter1="matSort" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.id }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="owner">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Owner Name</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.owner }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Property Name</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.name }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.country }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="era">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Era</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.era }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="onNew(propDisplayedColumns)"
+        >
+          Add New Property
+        </button>
+      </td>
+    </ng-container>
+    <tr
+      mat-header-row
+      *matHeaderRowDef="propDisplayedColumns; sticky: true"
+    ></tr>
+    <tr
+      matTooltip="Click to edit"
+      matTooltipPosition="before"
+      mat-row
+      *matRowDef="let row; columns: propDisplayedColumns"
+    ></tr>
+    <tr
+      mat-footer-row
+      *matFooterRowDef="propDisplayedColumns; sticky: true"
+    ></tr>
+  </table>
+</div>
+<!-- Materials Table -->
+<div [hidden]="show != 2 ? true : false">
+  <table mat-table [dataSource]="materialSource" #sorter2="matSort" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">{{ el.id }}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="material">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Material</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.material }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="thickness">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Thickness</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.thickness }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="application">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Application</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.application }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="onNew(materialDisplayedColumns)"
+        >
+          Add New Material
+        </button>
+      </td>
+    </ng-container>
+    <tr
+      mat-header-row
+      *matHeaderRowDef="materialDisplayedColumns; sticky: true"
+    ></tr>
+    <tr
+      matTooltip="Click to edit"
+      matTooltipPosition="before"
+      mat-row
+      *matRowDef="let row; columns: materialDisplayedColumns"
+    ></tr>
+    <tr
+      mat-footer-row
+      *matFooterRowDef="materialDisplayedColumns; sticky: true"
+    ></tr>
+  </table>
+</div>
+<!-- Defaults Table -->
+<div [hidden]="show != 3 ? true : false">
+  <table mat-table [dataSource]="defaultSource" #sorter3="matSort" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">{{ el.id }}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="part">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Part</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.part }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="materials">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Materials</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.materials }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.country }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="era">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Era</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.era }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="values">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Values</th>
+      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+        {{ el.values }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="onNew(defaultDisplayedColumns)"
+        >
+          Add New Default
+        </button>
+      </td>
+    </ng-container>
+    <tr
+      mat-header-row
+      *matHeaderRowDef="defaultDisplayedColumns; sticky: true"
+    ></tr>
+    <tr
+      matTooltip="Click to edit"
+      matTooltipPosition="before"
+      mat-row
+      *matRowDef="let row; columns: defaultDisplayedColumns"
+    ></tr>
+    <tr
+      mat-footer-row
+      *matFooterRowDef="defaultDisplayedColumns; sticky: true"
+    ></tr>
+  </table>
+</div>
+<!-- Download Table -->
+<div [hidden]="show != 4 ? true : false">
+  <table mat-table [dataSource]="downloadsSource" #sorter4="matSort" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let el">{{ el.id }}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>User's Name</th>
+      <td mat-cell *matCellDef="let el">
+        {{ el.user }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="property">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Property Name</th>
+      <td mat-cell *matCellDef="let el">
+        {{ el.property }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="download">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Download</th>
+      <td mat-cell *matCellDef="let el">
+        <button mat-raised-button>Download {{ el.download }}</button>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td mat-cell *matCellDef="let el">
+        <button mat-raised-button>Email {{ el.email }}</button>
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="onNew(downloadsDisplayedColumns)"
+        >
+          Add New Download
+        </button>
+      </td>
+    </ng-container>
+    <tr
+      mat-header-row
+      *matHeaderRowDef="downloadsDisplayedColumns; sticky: true"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: downloadsDisplayedColumns"
+    ></tr>
+    <tr
+      mat-footer-row
+      *matFooterRowDef="downloadsDisplayedColumns; sticky: true"
+    ></tr>
+  </table>
+</div>
