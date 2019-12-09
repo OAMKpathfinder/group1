@@ -85,6 +85,12 @@ export class BreadcrumbComponent implements OnInit {
     });
     
   }
+
+  ngAfterViewInit(){
+    document.getElementById(this.phases[0]).classList.add("active");
+    this.currentDiv = this.phases[0];
+    this.activeClassOnly(this.currentDiv+"-id-class");
+  }
   
   scrollToActive(): void{
     let current = window.pageYOffset;

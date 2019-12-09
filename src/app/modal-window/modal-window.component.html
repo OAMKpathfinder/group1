@@ -1,0 +1,57 @@
+<h4 mat-dialog-title>{{ Title }}</h4>
+<div *ngIf="isUValue">
+  <mat-dialog-content *ngFor="let el of elements" [formGroup]="propertyForm">
+
+    <mat-form-field
+      id="form-field"
+    >
+      <input matInput value="{{el.value}}" placeholder="{{el.part}}" formControlName="value" />
+      <span matSuffix>W/m²K</span>
+    </mat-form-field>
+  
+    <br />
+  </mat-dialog-content>
+</div>
+<div *ngIf="!isUValue">
+  <mat-dialog-content *ngFor="let el of elements" [formGroup]="propertyForm">
+    <mat-form-field
+      *ngIf="el.part == 'Hjoht'"
+      id="form-field"
+    >
+        <input matInput value="{{el.value}}" placeholder="{{el.part}}" formControlName="value" />
+        <span  matSuffix>W/m²K</span>
+    </mat-form-field>
+    <mat-form-field
+      *ngIf="el.part == 'Cost'"
+      id="form-field"
+    >
+        <input matInput value="{{el.value}}" placeholder="{{el.part}}" formControlName="value" />
+        <span  matSuffix>€</span>
+    </mat-form-field>
+    <mat-form-field
+      *ngIf="el.part == 'Piped'"
+      id="form-field"
+    >
+        <p>Is there central heating/hot water?</p>
+        <mat-radio-group value="{{el.value}}">
+            <mat-radio-button id="yes-radio-1" value="true">Yes</mat-radio-button>
+            <mat-radio-button value="false">No</mat-radio-button>
+        </mat-radio-group>
+    </mat-form-field>
+    <br />
+  </mat-dialog-content>  
+</div>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
+    Close
+  </button>
+  <button
+    class="mat-raised-button mat-primary"
+    id="saveButton"
+    (click)="save()"
+    [disabled]="!propertyForm.valid"
+  >
+    Save
+  </button>
+</mat-dialog-actions>
