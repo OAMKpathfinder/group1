@@ -150,9 +150,9 @@ let dummy_data: ResultElement[] = [
 
 
 @Component({
-  selector: 'app-result-table',
-  templateUrl: './result-table.component.html',
-  styleUrls: ['./result-table.component.css'],
+  selector: 'app-result-whole-private',
+  templateUrl: './result-whole-private.component.html',
+  styleUrls: ['./result-whole-private.component.css'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0'})),
@@ -182,7 +182,7 @@ let dummy_data: ResultElement[] = [
   ],
 })
 
-export class ResultTableComponent{
+export class ResultWholePrivateComponent{
 
   //To refresh table/re-render, required to have element which is accessible
   @ViewChild(MatTable,{static:true}) table: MatTable<any>;

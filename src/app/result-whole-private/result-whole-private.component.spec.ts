@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResultTableComponent } from './result-table.component';
+import { ResultWholePrivateComponent } from './result-whole-private.component';
 
-describe('ResultTableComponent', () => {
-  let component: ResultTableComponent;
-  let fixture: ComponentFixture<ResultTableComponent>;
+describe('ResultWholePrivateComponent', () => {
+  let component: ResultWholePrivateComponent;
+  let fixture: ComponentFixture<ResultWholePrivateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResultTableComponent ]
+      declarations: [ ResultWholePrivateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResultTableComponent);
+    fixture = TestBed.createComponent(ResultWholePrivateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

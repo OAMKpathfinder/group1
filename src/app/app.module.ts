@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { APIService } from './api-service.service';
 import { PropertyInputComponent } from './property-input/property-input.component';
 import { EditDoorComponent } from './edit-door/edit-door.component';
-import { ResultTableComponent } from './result-table/result-table.component';
+import { ResultWholePrivateComponent } from './result-whole-private/result-whole-private.component';
 import {MatTableModule} from '@angular/material/table';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
@@ -48,7 +48,7 @@ import { ChartsModule } from 'ng2-charts';
     MainpageComponent,
     PropertyInputComponent,
     EditDoorComponent,
-    ResultTableComponent,
+    ResultWholePrivateComponent,
     ModalWindowComponent,
     SuggestionComponent,
     ChartModalComponent
