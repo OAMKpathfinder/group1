@@ -225,6 +225,8 @@ export class ResultWholePrivateComponent{
       this.selected = 'select';
     }
     else{
+      this.selection.clear();
+      this.checkedToCompare.length = 0;
       this.select_col = true;
       this.selected = 'compare';
     }
@@ -232,13 +234,35 @@ export class ResultWholePrivateComponent{
 
   onCheck($event, row){
     $event.stopPropagation();
-    this.checkedToCompare.push(row);
+    const numSelected = this.selection.selected.length;
+    
+    if(this.checkedToCompare.length != 2 && numSelected != 2 ){
+      this.checkedToCompare.push(row);
+    }
+    else if (this.checkedToCompare.length >= 3 && numSelected >= 3 ){
+      window.alert("Currently comparing only 2 properties supports!");
+      this.selection.clear();
+    }
   }
-
+  
   compare(){
-    this.openChartDialog(this.checkedToCompare);
-    this.bringSelect();
-    console.log(this.checkedToCompare);
+    const numSelected = this.selection.selected.length;
+
+    if(this.checkedToCompare.length == 2  && numSelected == 2 ){
+      this.openChartDialog(this.checkedToCompare);
+      this.bringSelect();
+      this.selection.clear();
+    }
+    else if(this.checkedToCompare.length == 0  && numSelected == 0 ){
+      this.bringSelect();
+      this.selection.clear();
+      this.checkedToCompare.length = 0;
+    }
+    else{
+      window.alert("Required to have two selected for comparing");
+      this.selection.clear();
+      this.checkedToCompare.length = 0;
+    }
   }
 
   
@@ -251,8 +275,10 @@ export class ResultWholePrivateComponent{
     this.table.renderRows();
   }
   delete(i:number){
-    this.dataSource.data.splice(i,1);
-    this.table.renderRows();
+    if(window.confirm("Are you sure to delete selected property?")){
+      this.dataSource.data.splice(i,1);
+      this.table.renderRows();
+    }
   }
 
   openDialog(property:string, id:number, data:object[], IsUValue:boolean, e): void{
