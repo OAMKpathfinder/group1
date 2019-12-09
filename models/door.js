@@ -9,7 +9,7 @@ var door = {
   getAll: callback => {
     return db.query("select * from door", callback);
   },
-
+  
   add: (door, callback) => {
     return db.query('insert into door(doors,uValue,area,materials,bridgeValue, \
       name,protected,cond) values($1,$2,$3,$4,$5,$6,$7,$8)',

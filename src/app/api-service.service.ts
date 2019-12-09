@@ -4,7 +4,7 @@ import {
   HttpErrorResponse,
   HttpHeaders
 } from "@angular/common/http";
-import { throwError, Observable } from "rxjs";
+import { throwError, Observable, pipe } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 
 const httpOptions = {
@@ -246,6 +246,14 @@ export class APIService {
   updateWall(wall: OuterWall, id: number) {
     return this.http
       .put<OuterWall>(`${this.baseURL}/outerWall/${id}`, wall, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  updateWindow(window: windowSingle, id: number) {
+    return this.http
+      .put<windowSingle>(`${this.baseURL}/windowSingle/${id}`, window, httpOptions)
       .pipe(
         catchError(this.handleError)
       );

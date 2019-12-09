@@ -7,9 +7,6 @@ var doors = {
   getAll: callback => {
     return db.query("select * from doors", callback);
   },
-  delete: (id, callback) => {
-      return db.query(deleteQuery, [id], callback);
-  },
   getAllSingles: (doors_id, callback) => {
     return db.query(
       "SELECT door.* FROM doors FULL OUTER JOIN door ON \
