@@ -110,6 +110,13 @@ export class ResultTableComponent {
     this.pieChartData = [{ data: result }];
 
     el.scrollIntoView();
+
+    
+  }
+
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   onClear(): void {

@@ -61,6 +61,15 @@ export class AdminPanelComponent {
     this.dialog.open(AdminEditComponent, { data: { fields, type, id }, width: '350px', maxHeight: '600px' });
   }
 
+  applyFilter(filterValue: string) {
+    this.userSource.filter = filterValue.trim().toLowerCase();
+    this.propSource.filter = filterValue.trim().toLowerCase();
+    this.materialSource.filter = filterValue.trim().toLowerCase();
+    this.defaultSource.filter = filterValue.trim().toLowerCase();
+    this.downloadsSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
 }
 //TODO Get real data from API
 /* Static data  */

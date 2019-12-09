@@ -24,10 +24,16 @@ import { APIService } from './api-service.service';
 import { PropertyInputComponent } from './property-input/property-input.component';
 import { PropertyInputsComponent } from './property-inputs/property-inputs.component';
 import { EditDoorComponent } from './edit-door/edit-door.component';
-import { ResultTableComponent } from './result-table/result-table.component';
+import { ResultWholePrivateComponent } from './result-whole-private/result-whole-private.component';
+import { ModalWindowComponent } from './modal-window/modal-window.component';
+import { SuggestionComponent } from './suggestion/suggestion.component';
+import { ChartModalComponent } from './chart-modal/chart-modal.component';
 import { ChartsModule } from 'ng2-charts';
+import { ResultTableComponent } from './result-table/result-table.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -45,11 +51,18 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
     LandingModalComponent,
     MainpageComponent,
     PropertyInputComponent,
+    EditDoorComponent,
+    ResultWholePrivateComponent,
+    ModalWindowComponent,
+    SuggestionComponent,
+    ChartModalComponent,
     PropertyInputsComponent,
     EditDoorComponent,
     ResultTableComponent,
     AdminPanelComponent,
-    AdminEditComponent
+    AdminEditComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -69,10 +82,10 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
     MatIconModule,
     HttpClientModule,
     RouterModule,
-    MatCheckboxModule,
-    MatSliderModule,
-    ChartsModule,
     MatTableModule,
+    MatCheckboxModule,
+    ChartsModule,
+    MatSliderModule,
     MatSortModule,
     MatTooltipModule
   ],
@@ -90,8 +103,11 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
     LandingModalComponent,
     MainpageComponent,
     PropertyInputComponent,
-    PropertyInputsComponent,
     EditDoorComponent,
+    ModalWindowComponent,
+    SuggestionComponent,
+    ChartModalComponent,
+    PropertyInputsComponent,
     AdminEditComponent
   ],
   providers: [ APIService ],

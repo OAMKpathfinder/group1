@@ -1,0 +1,33 @@
+.priority{
+    font-size: 2em;
+    text-align: center;
+}
+
+
+.part{
+    font-size: 2em;    
+    text-align: center;
+}
+
+.percent{
+    font-size: 3em;
+    text-align: center;
+}
+
+.cost{
+    font-size: 1em;
+    text-align: center;
+}
+
+.margin-bottom-bit{
+    margin-bottom: 1em;
+}
+
+.right-arrow{
+    width: 5em;
+    height: 4em;
+}
+.icons{
+    width: 5em;
+    height: 4em;
+}

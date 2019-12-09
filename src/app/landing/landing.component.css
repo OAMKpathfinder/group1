@@ -8,10 +8,9 @@ h1 {
 }
 
 .landingContainer {
-  height: 100%;
-  background-image: url('https://cn.opendesktop.org/img/9/f/a/2/212c15ff6f9c7ea433330f629e4618469949.jpg');
-  background-position: center;
-  background-size: 100%;
+  width:100%; 
+  height:100%; 
+  background:url('https://cn.opendesktop.org/img/9/f/a/2/212c15ff6f9c7ea433330f629e4618469949.jpg') center center no-repeat;
 }
 
 .landingTitle {
