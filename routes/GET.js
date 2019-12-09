@@ -42,4 +42,15 @@ module.exports = class GET{
             }
         });
     }
+    getPassByEmail(model, req, res){
+        model.getPassByEmail(req.params.email,(err, rows) => {
+            if(err){
+                console.log(err);
+                res.json(err);
+            }
+            else{
+                res.json(rows.rows);
+            }
+        });
+    }
 };
