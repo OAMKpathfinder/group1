@@ -10,6 +10,10 @@
             [chartType]="barChartType">
         </canvas>
         </div>
-        <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+        <div *ngFor="let suggest of data.data ;let i = index">
+            <button mat-button mat-raised-button color="primary" (click)="randomize(i)">Suggestion {{ i + 1 }}</button>
+            <br/>
+            <br/>
+        </div>
     </div>
 </div>
