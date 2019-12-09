@@ -61,10 +61,15 @@ tr.element-row:not(.expanded-row):active {
     color: white;
 }
 .btn-compare{
-    background-color:#d235c6;
+    background-color:#c61ee4;
     color: white;
+    font-size: 1.1em;
 }
 .btn-delete{
     background-color:#dc3545;
     color: white;
+}
+
+.mat-column-select {
+    overflow: initial;
 }

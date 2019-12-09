@@ -27,6 +27,9 @@ import { ResultTableComponent } from './result-table/result-table.component';
 import {MatTableModule} from '@angular/material/table';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ChartModalComponent } from './chart-modal/chart-modal.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,8 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
     EditDoorComponent,
     ResultTableComponent,
     ModalWindowComponent,
-    SuggestionComponent
+    SuggestionComponent,
+    ChartModalComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,9 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
     MatIconModule,
     HttpClientModule,
     RouterModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule,
+    ChartsModule
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -85,7 +91,8 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
     PropertyInputComponent,
     EditDoorComponent,
     ModalWindowComponent,
-    SuggestionComponent
+    SuggestionComponent,
+    ChartModalComponent
   ],
   providers: [ APIService ],
   bootstrap: [AppComponent]

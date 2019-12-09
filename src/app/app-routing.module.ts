@@ -7,7 +7,7 @@ import { ResultTableComponent } from './result-table/result-table.component';
 const routes: Routes = [
   {path: 'mainpage', component: MainpageComponent},
   {path: 'landing', component: LandingComponent},
-  {path: 'result', component: ResultTableComponent},
+  {path: 'private_page', component: ResultTableComponent},
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
 ];
 

@@ -2,6 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MatDialog, MatTable } from '@angular/material';
 import { ModalWindowComponent } from '../modal-window/modal-window.component'; 
+import {MatTableDataSource} from '@angular/material/table';
+import {SelectionModel} from '@angular/cdk/collections';
+import { ChartModalComponent } from '../chart-modal/chart-modal.component';
 
 export interface ResultElement {
   property: string,
@@ -19,7 +22,7 @@ export interface ResultElement {
 
 export class TableExpandableRows {
   dataSource = dummy_data;
-  columnsToDisplay = ['property', 'img', 'date','modal','window','door','other','function'];
+  columnsToDisplay: string[] = ['property', 'img', 'date','modal','window','door','other','function'];
   expandedElement: ResultElement | null;
 }
 
@@ -41,7 +44,7 @@ function getRandomBoolean(){
 
 let lorem = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 
-const actions = ['detail' ,'duplicate','compare','delete'];
+const actions = ['detail' ,'duplicate','delete'];
 
 let dataObj = [
   {
@@ -156,6 +159,26 @@ let dummy_data: ResultElement[] = [
       state('expanded', style({height: '*'})),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
+    trigger("selectAnimation", [
+      // this defines the "resting" styles for the "visible" state
+      // (i.e., what styles the message element has when visible)
+      state(
+         "visible",
+         style({ opacity: 0.9, display: "table-cell" })
+        ),        
+        // this defines the "resting" styles for the "hidden" state.
+        // (i.e., what styles the message element has when hidden)
+      state(
+          "hidden",
+          style({ opacity: 0, display: "table-cell"})
+      ),
+
+      // transition from "hidden" to "visible" states using an animation
+      transition("hidden => visible", animate("300ms ease-in")),
+
+      // transition from "visible" to "hidden" similarly
+      transition('visible => hidden', animate('300ms ease-out'))
+   ]),
   ],
 })
 
@@ -163,38 +186,71 @@ export class ResultTableComponent{
 
   //To refresh table/re-render, required to have element which is accessible
   @ViewChild(MatTable,{static:true}) table: MatTable<any>;
-
-  dataSource = dummy_data;
-  columnsToDisplay : string[] = ['property', 'img', 'date','modal','window','door','other','function'];
+  
+  dataSource = new MatTableDataSource(dummy_data);
+  // dataSource = dummy_data;
+  columnsToDisplay : string[] = ['select','property', 'img', 'date','modal','window','door','other','function'];
   expandedElement: ResultElement | null;
+
+  selection = new SelectionModel<ResultElement>(true, []);
+
+  select_col: boolean = false;
+
+  selected: string = 'select';
+
+  checkedToCompare = [];
 
   constructor(public dialog: MatDialog){
   }
 
-  expandable(e){
-    console.log("expandable clicked", e);
-  }
-
   actionTo(el:string, e:any, i:number): void {
     e.stopPropagation();
-     if(el === 'duplicate'){
+    if(el === 'duplicate'){
       this.duplicate(i);
     }
-     if(el === 'delete'){
+    else if(el === 'delete'){
       this.delete(i);
+    }
+    else if(el === 'compare'){
+      this.compare()
+    }
+    else if(el === 'select'){
+      this.bringSelect();
     }
   }
 
+  bringSelect(){
+    if(this.select_col){
+      this.select_col = false;
+      this.selected = 'select';
+    }
+    else{
+      this.select_col = true;
+      this.selected = 'compare';
+    }
+  }
+
+  onCheck($event, row){
+    $event.stopPropagation();
+    this.checkedToCompare.push(row);
+  }
+
+  compare(){
+    this.openChartDialog(this.checkedToCompare);
+    this.bringSelect();
+  }
+
+  
   duplicate(i:number){
     //method 1. duplicating selected rows and refresh the table
     //Introduced in Angular Material 7/8, required to have dependencies - ViewChild, MatTable
     let duplicate = this.deepCopy(dummy_data[i]);
     duplicate.property = duplicate.property + " Copy " + this.checkNumber(duplicate.property);
-    this.dataSource.push(duplicate);
+    this.dataSource.data.push(duplicate);
     this.table.renderRows();
   }
   delete(i:number){
-    this.dataSource.splice(i,1);
+    this.dataSource.data.splice(i,1);
     this.table.renderRows();
   }
 
@@ -206,7 +262,11 @@ export class ResultTableComponent{
     e.stopPropagation();
     this.dialog.open(ModalWindowComponent, {data:{'data':data, 'property':property, 'id':id, isUValue: IsUValue},width: '350px', maxHeight: '550px'});
   }
+  openChartDialog(data): void{
+    this.dialog.open(ChartModalComponent, {data: {'data':data} ,width: '400px', maxHeight: '400px'});
+  }
 
+  //Here is for the duplicating the object to insert rows
   deepCopy(targetObj): ResultElement{
     let clone: ResultElement = {
       property: targetObj.property, img: targetObj.img, date: targetObj.date, 
@@ -216,12 +276,14 @@ export class ResultTableComponent{
     return clone;
   }
 
+  //For renaming the duplicated rows property
+  //check original property name, renamed number and then add the number series
   checkNumber(property:string){
     let result = [];
     let filtered = [];
-    for(let i = 0; i<this.dataSource.length; i++){
-      if(this.dataSource[i].property.includes(property)){
-        result.push(this.dataSource[i].property)
+    for(let i = 0; i<this.dataSource.data.length; i++){
+      if(this.dataSource.data[i].property.includes(property)){
+        result.push(this.dataSource.data[i].property)
       }
     }
     if(result.length>0){
@@ -230,8 +292,8 @@ export class ResultTableComponent{
       }
       else{
         for(let j = 0; j < result.length; j++){
-          if(this.hasNumber(result[j])){
-            let numberGot = result[j].replace(/[^0-9]/g,'');
+          if(this.hasNumber(result[j][result[j].length-2,result[j].length-1])){
+            let numberGot = result[j][result[j].length-2,result[j].length-1].replace(/[^0-9]/g,'');
             filtered.push(numberGot);
           }
         }
@@ -262,7 +324,13 @@ export class ResultTableComponent{
 
   }
 
+  //Check the given string include number or not
   hasNumber(string):boolean {
     return /\d/.test(string);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: ResultElement): string {
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.modal + 1}`;
   }
 }
