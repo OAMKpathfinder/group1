@@ -49,3 +49,4 @@ Thumbs.db
 #Private
 
 .env
+.database.js
