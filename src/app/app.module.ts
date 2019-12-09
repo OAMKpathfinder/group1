@@ -16,20 +16,22 @@ import { LandingComponent } from './landing/landing.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatIconModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatIconModule, MatSliderModule, MatTableModule, MatSortModule, MatTooltipModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { APIService } from './api-service.service';
 import { PropertyInputComponent } from './property-input/property-input.component';
+import { PropertyInputsComponent } from './property-inputs/property-inputs.component';
 import { EditDoorComponent } from './edit-door/edit-door.component';
 import { ResultWholePrivateComponent } from './result-whole-private/result-whole-private.component';
-import {MatTableModule} from '@angular/material/table';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ChartModalComponent } from './chart-modal/chart-modal.component';
 import { ChartsModule } from 'ng2-charts';
+import { ResultTableComponent } from './result-table/result-table.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminEditComponent } from './admin-edit/admin-edit.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,12 @@ import { ChartsModule } from 'ng2-charts';
     ResultWholePrivateComponent,
     ModalWindowComponent,
     SuggestionComponent,
-    ChartModalComponent
+    ChartModalComponent,
+    PropertyInputsComponent,
+    EditDoorComponent,
+    ResultTableComponent,
+    AdminPanelComponent,
+    AdminEditComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +80,10 @@ import { ChartsModule } from 'ng2-charts';
     RouterModule,
     MatTableModule,
     MatCheckboxModule,
-    ChartsModule
+    ChartsModule,
+    MatSliderModule,
+    MatSortModule,
+    MatTooltipModule
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -92,7 +102,9 @@ import { ChartsModule } from 'ng2-charts';
     EditDoorComponent,
     ModalWindowComponent,
     SuggestionComponent,
-    ChartModalComponent
+    ChartModalComponent,
+    PropertyInputsComponent,
+    AdminEditComponent
   ],
   providers: [ APIService ],
   bootstrap: [AppComponent]

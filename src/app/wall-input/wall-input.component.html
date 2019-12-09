@@ -1,4 +1,4 @@
-<h4 mat-dialog-title>Add Outer Wall</h4>
+<h4 mat-dialog-title>{{title}}</h4>
 <mat-dialog-content [formGroup]="wallForm">
   <p>Do you know the uValue?</p>
   <mat-radio-group formControlName="uKnown" (change)="onChange(true, $event)">

@@ -14,6 +14,10 @@ export class OthersInputComponent {
   cost: number;
   hjoht: number;
   pipe: boolean = false;
+  title: string = "Add Other Information"
+
+  //ID parameter for edit function
+  id: number = this.data.others.id;
 
   constructor(
     private APIService: APIService,
@@ -22,27 +26,36 @@ export class OthersInputComponent {
     @Inject(MAT_DIALOG_DATA) public data: any) {
     let numberPattern = "^[0-9.]*";
     this.othersForm = fb.group({
-      'cost': [null, [Validators.required, Validators.pattern(numberPattern)]],
-      'hjoht': [null, [Validators.required, Validators.pattern(numberPattern)]],
-      'pipe': [null, Validators.required]
+      cost: [null, [Validators.required, Validators.pattern(numberPattern)]],
+      hjoht: [null, [Validators.required, Validators.pattern(numberPattern)]],
+      pipe: [null, Validators.required]
     });
   }
 
   onChange() {
     try {
       //Saving form state
-      localStorage.setItem('currentDoor', JSON.stringify(this.othersForm.value));
+      if (this.data.others == 0) {
+        localStorage.setItem('currentOther', JSON.stringify(this.othersForm.value));
+      }
     } catch (e) { }
   }
 
   //Saving the form and closing window
   saveOthers() {
     this.dialogRef.close();
-    //Here is the form result to send to the API
-    this.APIService.addOthers(this.othersForm.value)
-      .subscribe(data => {
-        console.log(data)
-      });
+    // This decided wheter the form is used for put or post
+    if (this.data.others == 0) {
+      this.APIService.addOthers(this.othersForm.value)
+        .subscribe(data => {
+          console.log(data)
+        });
+    } else if (this.data.others != 0) {
+      this.APIService.updateOthers(this.othersForm.value, this.id)
+        .subscribe(res => {
+          console.log(res)
+        });
+    }
   }
 
   //Canceling the inputs and closing window
@@ -50,14 +63,24 @@ export class OthersInputComponent {
     this.dialogRef.close();
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log(this.data)
+    console.log(this.data.cost)
     var othersCache = localStorage.getItem('currentOther');
-    if (othersCache) {
+    if (othersCache && this.data.others == 0) {
       const othersCacheP = JSON.parse(othersCache)
       this.othersForm.setValue({
         cost: othersCacheP['cost'],
         pipe: othersCacheP['pipe'],
         hjoht: othersCacheP['hjoht'],
+      });
+    } else if (this.data.others !== 0) {
+      this.title = "Edit Other Information";
+      let editData = this.data.others;
+      this.othersForm.setValue({
+        cost: editData.cost,
+        pipe: editData.pipe.toString(),
+        hjoht: editData.hjoht
       });
     }
   }

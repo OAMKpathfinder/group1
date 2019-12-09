@@ -48,8 +48,6 @@ h1 {
 }
 
 .infoGrid div {
-  border: 1px solid black;
-  border-radius: 10px;
   margin: 5%;
 }
 
@@ -68,8 +66,13 @@ h1 {
 .startBtn {
   height: 2em;
   width: 7em;
-  border: 1px solid black;
-  border-radius: 4px;
+  border: none;
+  border-bottom: 1px solid white;
+  margin-top: .5em;
+  margin-right: .5em;
+  float: right;
+  background-color: rgba(255, 255, 255, 0%);
+  color: white;
 }
 
 .startBtn:hover {
@@ -83,4 +86,22 @@ h1 {
   text-decoration: none;
   padding: 5px;
   margin: 5px;
+}
+
+.arrow{
+  margin: auto;    
+  box-sizing: border-box;
+  height: 4vw;
+  width: 4vw;
+  border-style: solid;
+  border-color: gray;
+  border-width: 0px 4px 4px 0px;
+  transform: rotate(45deg);
+}
+
+.arrow:hover {
+  border-color: lightgrey;
+  border-bottom-width: 5px;
+  border-right-width: 5px;
+  cursor: pointer;
 }

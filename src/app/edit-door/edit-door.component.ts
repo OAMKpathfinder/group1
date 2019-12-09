@@ -3,6 +3,18 @@ import { Door, APIService } from '../api-service.service';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+/**
+ * D
+ *  E
+ *   P
+ *    R
+ *     E
+ *     C
+ *    A
+ *   T
+ *  E
+ * D
+ */
 
 @Component({
   selector: 'app-edit-door',

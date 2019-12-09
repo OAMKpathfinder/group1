@@ -15,9 +15,9 @@ var roofConstruction = {
 
 	add: (roofConstruction, callback) => {
 		return db.query('insert into roofconstruction(properties,uValue,area, \
-            materials,protected) values($1,$2,$3,$4,$5,$6)',
-			[roofConstruction.properties, roofConstruction.uValue,
-			roofConstruction.area, roofConstruction.materials, roofConstruction.protected],
+            materials,protected,cond) values($1,$2,$3,$4,$5,$6)',
+      [roofConstruction.properties, roofConstruction.uValue,roofConstruction.area,
+       roofConstruction.materials, roofConstruction.protected, roofConstruction.cond],
 			callback
 		);
 	},
@@ -31,12 +31,13 @@ var roofConstruction = {
     //TODO validation
     return db.query(
       "update roofConstruction set uValue = $1, area = $2, materials = $3, \
-        protected = $4 where id = $5",
+        protected = $4, cond = $5 where id = $6",
       [
         roofConstruction.uValue,
         roofConstruction.area,
         roofConstruction.materials,
         roofConstruction.protected,
+        roofConstruction.cond,
         id
       ],
       callback

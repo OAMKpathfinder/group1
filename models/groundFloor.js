@@ -16,9 +16,9 @@ var groundFloor = {
 
   add: (groundFloor, callback) => {
     db.query('insert into groundFloor(properties,uValue,area,materials, \
-            protected) values($1,$2,$3,$4,$5)',
+            protected,cond) values($1,$2,$3,$4,$5,$6)',
       [groundFloor.properties, groundFloor.uValue, groundFloor.area,
-      groundFloor.materials, groundFloor.protected],
+      groundFloor.materials, groundFloor.protected,groundFloor.cond],
       callback
     );
   },
@@ -32,12 +32,13 @@ var groundFloor = {
      //TODO validation
      return db.query(
        "update groundFloor set uValue = $1, area = $2, materials = $3, \
-        protected = $4 where id = $5",
+        protected = $4, cond = $5 where id = $6",
        [
          groundFloor.uValue,
          groundFloor.area,
          groundFloor.materials,
          groundFloor.protected,
+         groundFloor.cond,
          id
        ],
        callback

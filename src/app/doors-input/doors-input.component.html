@@ -1,9 +1,8 @@
-<h4 mat-dialog-title>Add A New Door</h4>
+<h4 mat-dialog-title>{{title}}</h4>
 <mat-dialog-content [formGroup]="doorForm">
   <mat-form-field id="form-field" (change)="onChange(false, $event)">
     <input matInput placeholder="Door Name" formControlName="name" />
   </mat-form-field>
-
   <p>Do you know the uValue?</p>
   <mat-radio-group formControlName="uKnown" (change)="onChange(true, $event)">
     <mat-radio-button id="yes-radio-1" value="true">Yes</mat-radio-button>
@@ -61,7 +60,6 @@
     <mat-radio-button value="false">No</mat-radio-button>
   </mat-radio-group>
   <br />
-
 </mat-dialog-content>
 
 <mat-dialog-actions>

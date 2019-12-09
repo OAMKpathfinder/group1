@@ -20,5 +20,11 @@ export class LandingComponent implements OnInit {
     this.dialog.open(LandingModalComponent);
   }
 
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+
   ngOnInit() {}
 }
