@@ -27,16 +27,14 @@ export class AdminEditComponent implements OnInit {
       this.elID = this.data.el.id;
       this.title = "Edit " + (this.types[this.data.type]) + ": ID: " + this.elID;
       this.elKeys = Object.keys(this.data.el).map(i => i)
-      this.elValues = Object.keys(this.data.el).map(i => this.data.el[i])
-      //TODO Hide, remove ID or make readonly
-      // this.elKeys.splice(0, 1);
+      this.elValues = Object.keys(this.data.el).map(i => this.data.el[i]);
       this.elKeys.forEach((i) => {
         const fc = new FormControl('');
         this.adminEditForm.addControl(i, fc)
       })
       this.adminEditForm.setValue(this.data.el);
     }
-     //Check if new and adding form controls
+    //Check if new and adding form controls
     else if (this.data.id == -1) {
       this.title = "Add New " + (this.types[this.data.type]);
       this.elKeys = this.data.fields;
@@ -60,7 +58,4 @@ export class AdminEditComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  ///
-  // this.elKeys = this.elKeys.map(i => i.charAt(0).toUpperCase() + i.slice(1))
-  ///
 }

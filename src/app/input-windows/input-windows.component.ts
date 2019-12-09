@@ -1,13 +1,12 @@
-import { Component, Input, OnInit, Inject, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { WindowsInputComponent } from '../windows-input/windows-input.component';
 import { DoorsInputComponent } from '../doors-input/doors-input.component';
 import { BridgeInputComponent } from '../bridge-input/bridge-input.component';
 import { GroundInputComponent } from '../ground-input/ground-input.component';
 import { WallInputComponent } from '../wall-input/wall-input.component';
 import { PropertyInputComponent } from '../property-input/property-input.component';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { APIService, GroundFloor, roofConstruction, OuterWall, others } from '../api-service.service';
-import { EditDoorComponent } from '../edit-door/edit-door.component';
 import { Door, windowSingle } from '../api-service.service';
 import { RoofInputComponent } from "../roof-input/roof-input.component";
 import { OthersInputComponent } from '../others-input/others-input.component';
@@ -70,7 +69,7 @@ export class InputWindowsComponent implements OnInit {
         })
         // console.log(this.arryboi)
       })
-  }
+    }
 
   getGroundData() {
     this.APIservice.getGroundFull()
@@ -109,6 +108,8 @@ export class InputWindowsComponent implements OnInit {
     this.APIservice.getDoor(this.doorId)
       .subscribe((doors: Door) => {
         this.doors.push(doors);
+      })
+    }
 
   getWindows() {
       this.APIservice.getAllSingles(this.windowsId)
@@ -193,12 +194,12 @@ export class InputWindowsComponent implements OnInit {
     }
   }
 
-  hover(e){
+  hover(){
     for(let i = 0; i < document.getElementsByName("base-img").length; i++){
       document.getElementsByName("base-img")[i].classList.add("effect");
     }
   }
-  hoverOut(e){
+  hoverOut(){
     for(let i = 0; i < document.getElementsByName("base-img").length; i++){
       document.getElementsByName("base-img")[i].classList.toggle("effect");
     }

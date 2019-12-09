@@ -47,33 +47,33 @@
   <table mat-table [dataSource]="userSource" #sorter0="matSort" matSort>
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">{{ el.id }}</td>
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">{{ el.id }}</td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="firstname">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.firstName }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="lastname">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.lastName }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.email }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="password">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Password</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.password }}
       </td>
       <td mat-footer-cell *matFooterCellDef>
@@ -108,35 +108,35 @@
   <table mat-table [dataSource]="propSource" #sorter1="matSort" matSort>
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.id }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="owner">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Owner Name</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.owner }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Property Name</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.name }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="country">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.country }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="era">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Era</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.era }}
       </td>
       <td mat-footer-cell *matFooterCellDef>
@@ -170,26 +170,26 @@
   <table mat-table [dataSource]="materialSource" #sorter2="matSort" matSort>
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">{{ el.id }}</td>
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">{{ el.id }}</td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="material">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Material</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.material }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="thickness">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Thickness</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.thickness }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="application">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Application</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.application }}
       </td>
       <td mat-footer-cell *matFooterCellDef>
@@ -223,40 +223,40 @@
   <table mat-table [dataSource]="defaultSource" #sorter3="matSort" matSort>
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">{{ el.id }}</td>
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">{{ el.id }}</td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="part">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Part</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.part }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="materials">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Materials</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.materials }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="country">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.country }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="era">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Era</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.era }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="values">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Values</th>
-      <td (click)="dataClick(el)" mat-cell *matCellDef="let el">
+      <td (click)="onEdit(el)" mat-cell *matCellDef="let el">
         {{ el.values }}
       </td>
       <td mat-footer-cell *matFooterCellDef>
