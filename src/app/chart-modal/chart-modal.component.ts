@@ -1,9 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { APIService } from '../api-service.service'
-
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-
 import { Label } from 'ng2-charts';
 
 @Component({
@@ -15,7 +13,6 @@ export class ChartModalComponent implements OnInit {
 
   public barChartOptions: ChartOptions = {
     responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
     scales: { xAxes: [{}], yAxes: [{ id:'A', position: 'left'}] },
     plugins: {
       datalabels: {
@@ -29,14 +26,7 @@ export class ChartModalComponent implements OnInit {
   public barChartLegend = true;
   public barChartPlugins;
 
-  // public barChartData: ChartDataSets[] = [
-  //   { data: [65, 59, 80, 81, 56, 55, 40], label: 'A', yAxisID: 'A' },
-  //   { data: [-28, -48, -40, -19, -86, -27, -90], label: 'A', yAxisID: 'A' }
-  // ];
-  public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'A', yAxisID: 'A' },
-    { data: [-28, -48, -40, -19, -86, -27, -90], label: 'B', yAxisID: 'A' }
-  ];
+  public barChartData: ChartDataSets[] = [];
 
 
   constructor(
@@ -45,10 +35,20 @@ export class ChartModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,){
       this.data = data;
   }
-
+  
   ngOnInit() {
-    
-    
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'A', yAxisID: 'A' },
+    { data: [-28, -48, -40, -19, -86, -27, -90], label: 'B', yAxisID: 'A' }
+    for(let i = 0; i<this.data.length; i++){
+      this.barChartData.push(
+        {
+          label: this.data[i].property,
+          data: [
+            this.data[i].suggestion[0]
+          ]
+        }
+      )      
+    }
   }
   onCancel(): void {
     console.log("Cancel clicked");

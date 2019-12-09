@@ -238,6 +238,7 @@ export class ResultTableComponent{
   compare(){
     this.openChartDialog(this.checkedToCompare);
     this.bringSelect();
+    console.log(this.checkedToCompare);
   }
 
   
