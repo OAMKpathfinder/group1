@@ -5,6 +5,7 @@ import { ModalWindowComponent } from '../modal-window/modal-window.component';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import { ChartModalComponent } from '../chart-modal/chart-modal.component';
+import { Router } from '@angular/router';
 
 export interface ResultElement {
   property: string,
@@ -119,14 +120,14 @@ let suggestionObj = [
   {
     'priority':3,
     'part':"Window",
-    'percent':40,
-    'cost':2000
+    'percent':5.42,
+    'cost':20000
   },
   {
     'priority':2,
     'part':"Window",
-    'percent':10,
-    'cost':1000
+    'percent':7.53,
+    'cost':10000
   },
 ]
 
@@ -200,7 +201,9 @@ export class ResultWholePrivateComponent{
 
   checkedToCompare = [];
 
-  constructor(public dialog: MatDialog){
+  constructor(
+    public dialog: MatDialog,
+    private router: Router,){
   }
 
   actionTo(el:string, e:any, i:number): void {
@@ -290,7 +293,7 @@ export class ResultWholePrivateComponent{
     this.dialog.open(ModalWindowComponent, {data:{'data':data, 'property':property, 'id':id, isUValue: IsUValue},width: '350px', maxHeight: '550px'});
   }
   openChartDialog(data): void{
-    this.dialog.open(ChartModalComponent, {data: {'data':data} ,width: '400px', maxHeight: '400px'});
+    this.dialog.open(ChartModalComponent, {data: {'data':data} , width: '30em', height: '30em'});
   }
 
   //Here is for the duplicating the object to insert rows
@@ -359,5 +362,10 @@ export class ResultWholePrivateComponent{
   /** The label for the checkbox on the passed row */
   checkboxLabel(row?: ResultElement): string {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.modal + 1}`;
+  }
+
+  //Navigate to main page for creating new property
+  createNewProperty(): void{
+    this.router.navigate(['/mainpage']);
   }
 }

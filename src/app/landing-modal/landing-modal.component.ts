@@ -6,14 +6,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-landing-modal',
   templateUrl: './landing-modal.component.html',
-  providers: [Location, ],
   styleUrls: ['./landing-modal.component.css']
 })
 export class LandingModalComponent implements OnInit { 
 
   public message: string;
-  location: Location;
-
+  
   constructor(
     private APIService: APIService,
     private dialogRef: MatDialogRef<LandingModalComponent>,

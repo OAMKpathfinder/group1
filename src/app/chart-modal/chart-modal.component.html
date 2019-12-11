@@ -11,9 +11,14 @@
         </canvas>
         </div>
         <div *ngFor="let suggest of data.data ;let i = index">
-            <button mat-button mat-raised-button color="primary" (click)="randomize(i)">Suggestion {{ i + 1 }}</button>
+            <button mat-button mat-raised-button color="primary" (click)="affect(i)">Suggestion {{ i + 1 }}</button>
+            ex) Priority: {{ suggest.suggestion[i].priority }}, Part: {{ suggest.suggestion[i].part }}, Efficiency: {{ suggest.suggestion[i].percent }}% might improve,
+            {{ suggest.suggestion[i].cost }}€ might cost
             <br/>
             <br/>
+        </div>
+        <div>
+            <button mat-button mat-raised-button color="warning" (click)="reset()">Reset</button>
         </div>
     </div>
 </div>

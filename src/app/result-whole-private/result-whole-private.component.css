@@ -73,3 +73,20 @@ tr.element-row:not(.expanded-row):active {
 .mat-column-select {
     overflow: initial;
 }
+
+.plus{
+    font-size: 5em;
+    width: 1em;
+    height: 1em;
+    color: lightgray;
+    margin: auto;
+}
+
+.plus:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.text-center{
+    text-align: center;
+}
