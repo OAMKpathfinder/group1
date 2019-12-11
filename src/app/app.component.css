@@ -1,1 +1,6 @@
 @import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+
+.nav-top-right{
+    float: right;
+    color: black;
+}

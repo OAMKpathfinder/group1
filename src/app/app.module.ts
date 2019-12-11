@@ -16,7 +16,7 @@ import { LandingComponent } from './landing/landing.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatIconModule, MatSliderModule, MatTableModule, MatSortModule, MatTooltipModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatIconModule, MatSliderModule, MatTableModule, MatSortModule, MatTooltipModule, MatMenuModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,6 +32,7 @@ import { ChartsModule } from 'ng2-charts';
 import { ResultTableComponent } from './result-table/result-table.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
     EditDoorComponent,
     ResultTableComponent,
     AdminPanelComponent,
-    AdminEditComponent
+    AdminEditComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +85,8 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
     ChartsModule,
     MatSliderModule,
     MatSortModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMenuModule
   ],
   entryComponents: [
     WindowsInputComponent,

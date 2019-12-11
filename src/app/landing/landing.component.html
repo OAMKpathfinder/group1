@@ -1,6 +1,6 @@
 <!-- [ngStyle]="{'background': getUrl()}" -->
 <div class="landingContainer">
-  <button class="startBtn" id="startBtn" for="modal1" (click)="openDialog()">Login</button>
+  <button *ngIf="!auth.getLogin()" class="startBtn" id="startBtn" for="modal1" (click)="openDialog()">Login</button>
   <div class="titleContainer">
     <h1 class="landingTitle">{{title}}</h1>
     <br>

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material'
 import { APIService } from '../api-service.service';
 import { Router } from '@angular/router';
+import { AuthHelperService } from '../auth-helper.service'; 
 
 @Component({
   selector: 'app-landing-modal',
@@ -11,11 +12,13 @@ import { Router } from '@angular/router';
 export class LandingModalComponent implements OnInit { 
 
   public message: string;
-  
+
   constructor(
     private APIService: APIService,
     private dialogRef: MatDialogRef<LandingModalComponent>,
     private router: Router,
+    //It is better to be private so that handle more stictly
+    private auth: AuthHelperService,
   ){
   }
 
@@ -47,10 +50,13 @@ export class LandingModalComponent implements OnInit {
               if(email.value === admin){
                 this.onCancel();
                 this.router.navigate(['/admin']);
+                this.auth.login();
+                this.auth.setAdmin(false);
               }
               else{
                 this.onCancel();
                 this.router.navigate(['/private_page']);
+                this.auth.login();
               }
             }
             else{
