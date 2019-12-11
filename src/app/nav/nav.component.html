@@ -3,6 +3,13 @@
 </button>
 <mat-menu #menu="matMenu">
   <button (click)="toHome()" mat-menu-item>Home</button>
+  <!-- Possible options to be icon for nav -->
+  <button mat-menu-item>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+  </button>
   <button (click)="toOwn()" *ngIf="auth.isLoggedIn" mat-menu-item>Own</button>
   <button (click)="toCreate()" *ngIf="auth.isLoggedIn" mat-menu-item>Make a New</button>
   <!-- currently log in is not necessary but for the future development, in case
