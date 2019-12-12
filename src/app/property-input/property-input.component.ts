@@ -19,6 +19,7 @@ export class PropertyInputComponent implements OnInit {
   name: string = '';
   country: string = '';
   era: number ;
+  img: string = '';
   constructor(
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
@@ -32,6 +33,7 @@ export class PropertyInputComponent implements OnInit {
       'name': [null, Validators.required],
       'country': [null, Validators.required],
       'era': [null, Validators.required],
+      'img': [null, Validators.required]
     });
     this.iconRegistry.addSvgIcon(
       'flag-fin',
@@ -73,6 +75,26 @@ export class PropertyInputComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onFileSelected(): void {
+    //Currently, Angular Material does not support file type input
+    //So, button to open hidden input file type click is handling it
+    //and below workaround, might handle to show/save image file
+     
+    const inputNode: any = document.querySelector('#file');
+    const inputDisplay: HTMLElement = (<HTMLElement>document.getElementById('fileName'));
+
+    if (typeof (FileReader) !== 'undefined') {
+      const reader = new FileReader();
+  
+      reader.onload = (e: any) => {
+        console.log(e.target.result);
+      };
+  
+      reader.readAsArrayBuffer(inputNode.files[0])
+      inputDisplay.innerHTML = inputNode.value;
+    }
   }
 
 }
