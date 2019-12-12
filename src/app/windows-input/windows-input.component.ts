@@ -22,6 +22,7 @@ export class WindowsInputComponent implements OnInit {
   interaction: boolean = false;
   uCheck: boolean;
   title: string = 'Add A New Window';
+  condition: number;
   
   //ID parameter for update function
   id: number = this.data.window.id;
@@ -41,7 +42,8 @@ export class WindowsInputComponent implements OnInit {
       'materials': [null],
       'area': [null],
       'bridgeValue': [null, [Validators.required, Validators.pattern(numberPattern)]],
-      'protected': [null, Validators.required]
+      'protected': [null, Validators.required],
+      'condition': [null],
     });
 
   }

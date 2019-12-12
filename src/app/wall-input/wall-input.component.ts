@@ -18,7 +18,8 @@ export class WallInputComponent implements OnInit {
   protected: string = '';
   interaction: boolean = false;
   uCheck: boolean;
-  title: string = "Add an Outer Wall"
+  title: string = "Add an Outer Wall";
+  condition: number;
 
   // ID parameter for edit function
   id: number = this.data.wall.id;
@@ -35,7 +36,8 @@ export class WallInputComponent implements OnInit {
         uValue: [null],
         materials: [null],
         area: [null],
-        protected: [null, Validators.required]
+        protected: [null, Validators.required],
+        condition: [null]
       });
     }
 
