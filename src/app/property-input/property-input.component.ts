@@ -33,7 +33,7 @@ export class PropertyInputComponent implements OnInit {
       'name': [null, Validators.required],
       'country': [null, Validators.required],
       'era': [null, Validators.required],
-      'img': [null, Validators.required]
+      'img': [null]
     });
     this.iconRegistry.addSvgIcon(
       'flag-fin',

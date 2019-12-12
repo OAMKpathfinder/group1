@@ -20,7 +20,11 @@ import { OthersInputComponent } from '../others-input/others-input.component';
 
 export class InputWindowsComponent implements OnInit {
 
+  
   @Input() public properties: object[];
+
+  //used for below openDialog, passing parameter of width
+  private dialogBoxWidth: string = "350px";
 
   id = 1;
   name: string;
@@ -143,28 +147,28 @@ export class InputWindowsComponent implements OnInit {
 
   //Input Dialogs 
   openWindowDialog(window): void {
-    this.dialog.open(WindowsInputComponent, {data: {window : window}, width: '350px', maxHeight: '600px'});
+    this.dialog.open(WindowsInputComponent, {data: {window : window}, width: this.dialogBoxWidth, maxHeight: '600px'});
   }
   openDoorDialog(door): void {
-    this.dialog.open(DoorsInputComponent, {data: {door: door}, width: '350px', maxHeight: '600px'});
+    this.dialog.open(DoorsInputComponent, {data: {door: door}, width: this.dialogBoxWidth, maxHeight: '600px'});
   }
   openRoofDialog(roof): void {
-    this.dialog.open(RoofInputComponent, {data: {roof: roof}, width: '350px', maxHeight: '600px'});
+    this.dialog.open(RoofInputComponent, {data: {roof: roof}, width: this.dialogBoxWidth, maxHeight: '600px'});
   }
   openBridgeDialog(): void {
-    this.dialog.open(BridgeInputComponent, {width: '350px', maxHeight: '550px'});
+    this.dialog.open(BridgeInputComponent, {width: this.dialogBoxWidth, maxHeight: '550px'});
   }
   openGroundDialog(ground): void {
-    this.dialog.open(GroundInputComponent, {data:{ground: ground}, width: '350px', maxHeight: '550px'});
+    this.dialog.open(GroundInputComponent, {data:{ground: ground}, width: this.dialogBoxWidth, maxHeight: '550px'});
   }
   openWallDialog(wall): void {
-    this.dialog.open(WallInputComponent, {data: {wall: wall}, width: '350px', maxHeight: '550px'});
+    this.dialog.open(WallInputComponent, {data: {wall: wall}, width: this.dialogBoxWidth, maxHeight: '550px'});
   }
   openPropertyDialog(): void {
-    this.dialog.open(PropertyInputComponent, {width: '350px', maxHeight: '550px'});
+    this.dialog.open(PropertyInputComponent, {width: this.dialogBoxWidth, maxHeight: '550px'});
   }
   openOthersDialog(others): void {
-    this.dialog.open(OthersInputComponent, {data:{others: others}, width: '350px', maxHeight: '550px'});
+    this.dialog.open(OthersInputComponent, {data:{others: others}, width: this.dialogBoxWidth, maxHeight: '550px'});
   }
 
   ngOnInit() {

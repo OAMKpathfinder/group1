@@ -17,7 +17,8 @@ export class RoofInputComponent implements OnInit {
   protected: boolean = false;
   interaction: boolean = false;
   uCheck: boolean;
-  title: string = "Add a Roof"
+  title: string = "Add a Roof";
+  condition: number;
 
   // ID parameter for edit function
   id: number = this.data.roof.id;
@@ -34,7 +35,8 @@ export class RoofInputComponent implements OnInit {
       uValue: [null],
       materials: [null],
       area: [null],
-      protected: [null, Validators.required]
+      protected: [null, Validators.required],
+      condition: [null]
     });
   }
 
