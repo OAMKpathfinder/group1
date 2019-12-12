@@ -108,3 +108,7 @@ h1 {
   border-right-width: 5px;
   cursor: pointer;
 }
+
+.toWhite{
+  color: white;
+}

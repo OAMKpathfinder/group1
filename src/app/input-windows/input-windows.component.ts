@@ -106,7 +106,7 @@ export class InputWindowsComponent implements OnInit {
       .subscribe((doors: Door) => {
         this.doors.push(doors);
       })
-    }
+  }
 
   getWindows() {
       this.APIservice.getAllSingles(this.windowsId)

@@ -1,0 +1,27 @@
+.title {
+  text-align: center;
+}
+
+.parent {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.column {
+  flex: 1 1 0px;
+  /* color: white; */
+  font: bold;
+  outline: none;
+}
+
+table {
+  width: 95%;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 10px;
+}
