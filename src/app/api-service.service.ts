@@ -174,6 +174,12 @@ export class APIService {
       .pipe(catchError(this.handleError));
   }
 
+  getPropertyName() {
+    return this.http
+      .get(`${this.baseURL}/homeProperties`)
+      .pipe(catchError(this.handleError))
+  }
+
   // POST METHODS
 
   //Inserts single window

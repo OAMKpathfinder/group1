@@ -80,12 +80,15 @@ h1 {
 }
 
 .linkStart {
-  border: 1px;
-  border-bottom: 1px solid black;
-  color: black;
+  padding: .5em;
+  border-radius: 10px;
+  background-color: rgb(102, 255, 51);
   text-decoration: none;
-  padding: 5px;
-  margin: 5px;
+  color: white;
+}
+
+.linkStart:hover {
+  color: grey;
 }
 
 .arrow{
