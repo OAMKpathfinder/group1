@@ -23,6 +23,10 @@ export class WindowsInputComponent implements OnInit {
   uCheck: boolean;
   title: string = 'Add A New Window';
   condition: number;
+  
+  //ID parameter for update function
+  id: number = this.data.window.id;
+
   constructor(
     private APIService: APIService,
     private fb: FormBuilder,
@@ -65,8 +69,9 @@ export class WindowsInputComponent implements OnInit {
     if (this.data.window == 0) {
       this.APIService.addWindowSingle(this.windowForm.value)
         .subscribe(data => { console.log(data) });
-    }else {
-      //TODO update window
+    } else if (this.data.window != 0) {
+      this.APIService.updateWindow(this.windowForm.value,this.id)
+        .subscribe(data => { console.log(data) })
     }
   }
   //Canceling the inputs and closing window

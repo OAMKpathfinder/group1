@@ -1,10 +1,22 @@
 <div class="container-fluid bg" [@simpleFadeAnimation]="'in'">
-  <div id="screen" class="row">
-      <div id="screen_sm" class="col-sm-2">
-          <app-breadcrumb [ids]="ids" [phases]="phases"></app-breadcrumb>
-      </div>
-      <main id="screen_lg" class="col-md-9 margin-top-bit">
-          <app-input-windows class="content" [properties] = "properties" ></app-input-windows>
-      </main>
-  </div>
+    <div id="screen" class="row">
+        <div id="screen_sm" class="col-sm-2">
+            <app-breadcrumb [ids]="ids" [phases]="phases"></app-breadcrumb>
+        </div>
+        <main id="screen_lg" class="col-md-9 margin-top-bit">
+            <app-input-windows class="content" [properties]="properties"></app-input-windows>
+        </main>
+    </div>
+    <div *ngIf="visible">
+        <h1 style="text-align: center; margin-top: 1em;">Results</h1>
+        <div class="result-section">
+            <span class="head-span">
+                <h4>{{houseName}}</h4>
+            </span>
+            <span class="link-span">
+                <a [routerLink]="['/results']" (click)="removeName()">See the results </a>
+                <fa-icon [icon]="faArrowRight"></fa-icon>
+            </span>
+        </div>
+    </div>
 </div>

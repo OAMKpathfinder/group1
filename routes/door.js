@@ -28,7 +28,6 @@ router.get("/:door_id?", function(req, res, next) {
     });
   }
 });
-
 router.post("/", (req, res) => {
   door.add(req.body, (err, count) => {
     if (err) {
