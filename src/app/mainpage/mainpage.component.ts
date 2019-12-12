@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges } from "@angular/core";
 import { trigger, state, style, animate, transition } from "@angular/animations";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { AuthHelperService } from '../auth-helper.service';
 
 @Component({
 	selector: "app-mainpage",
@@ -134,9 +135,10 @@ export class MainpageComponent implements OnInit {
 
 	constructor() {
 	}
+
 	ngOnInit() {
-        window.scrollTo(0, 0);
-        this.checkScreen();
+    window.scrollTo(0, 0);
+    this.checkScreen();
 		this.getHouseName();
 		this.showHide();
 		window.addEventListener("load", e => {

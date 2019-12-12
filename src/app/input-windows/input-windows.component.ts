@@ -11,6 +11,7 @@ import { EditDoorComponent } from '../edit-door/edit-door.component';
 import { Door, windowSingle } from '../api-service.service';
 import { RoofInputComponent } from "../roof-input/roof-input.component";
 import { OthersInputComponent } from '../others-input/others-input.component';
+import { AuthHelperService } from '../auth-helper.service';
 
 @Component({
   selector: 'app-input-windows',
@@ -50,7 +51,7 @@ export class InputWindowsComponent implements OnInit {
 
   uvalueArr = [];
 
-  constructor(public dialog: MatDialog, private APIservice: APIService) {
+  constructor(public dialog: MatDialog, private APIservice: APIService, public authService: AuthHelperService) {
     this.doors = [];
     this.grounds = [];
     this.roofs = [];
