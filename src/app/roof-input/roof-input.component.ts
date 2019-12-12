@@ -36,7 +36,6 @@ export class RoofInputComponent implements OnInit {
       materials: [null],
       area: [null],
       protected: [null, Validators.required],
-      condition: [null]
     });
   }
 

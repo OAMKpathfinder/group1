@@ -43,7 +43,6 @@ export class WindowsInputComponent implements OnInit {
       'area': [null],
       'bridgeValue': [null, [Validators.required, Validators.pattern(numberPattern)]],
       'protected': [null, Validators.required],
-      'condition': [null],
     });
 
   }
