@@ -62,8 +62,6 @@ import { AuthHelperService } from '../auth-helper.service';
 	]
 })
 export class MainpageComponent implements OnInit {
-	el2: string = "el2";
-	el3: string = "el3";
 
 	faArrowRight = faArrowRight;
 	houseName: string;
@@ -133,7 +131,9 @@ export class MainpageComponent implements OnInit {
 	ids = ["property-id", "floor-id", "outerwall-id", "roof-id", "doors-id", "windows-id", "others-id"];
 	phases = ["property", "floor", "outerwall", "roof", "doors", "windows", "others"];
 
-	constructor() {
+	constructor(
+		public auth: AuthHelperService
+	){
 	}
 
 	ngOnInit() {
@@ -143,13 +143,34 @@ export class MainpageComponent implements OnInit {
 		this.showHide();
 		window.addEventListener("load", e => {
 			this.checkScreen();
+			this.scrollMov(e);
 		});
 		window.addEventListener("mousemove", e => {
 			this.checkScreen();
 		});
+		window.addEventListener('scroll', e => {
+			this.scrollMov(e);
+		});
 		window.addEventListener("resize", e => {
 			this.checkScreen();
 		});
+	}
+
+	scrollMov(e: any): void {
+		//To show result div which including result component
+		//scroll event is used, but for the platform supports
+		//and other event oriented, then must be other control
+		let resultDiv : HTMLElement = (<HTMLElement> document.getElementById('result-div'));
+		let top = resultDiv.offsetTop;
+		let height = document.body.scrollHeight;
+		let current = window.pageYOffset;
+
+		if( (top - 200) < current && (height > current) ){
+			this.auth.setResult(true);
+		}
+		else{
+			this.auth.setResult(false);
+		}
 	}
 
 	checkScreen(): void {

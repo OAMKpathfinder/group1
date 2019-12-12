@@ -7,16 +7,7 @@
             <app-input-windows class="content" [properties]="properties"></app-input-windows>
         </main>
     </div>
-    <div *ngIf="visible">
-        <h1 style="text-align: center; margin-top: 1em;">Results</h1>
-        <div class="result-section">
-            <span class="head-span">
-                <h4>{{houseName}}</h4>
-            </span>
-            <span class="link-span">
-                <a [routerLink]="['/results']" (click)="removeName()">See the results </a>
-                <fa-icon [icon]="faArrowRight"></fa-icon>
-            </span>
-        </div>
+    <div id='result-div'>
+        <app-result-table *ngIf="auth.getResult()"></app-result-table>
     </div>
 </div>

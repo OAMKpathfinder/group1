@@ -12,10 +12,12 @@ export class AuthHelperService {
   //In principle, better to be private so to be unaccessable
   public isLoggedIn: boolean ;
   public isAdmin: boolean ;
+  private result: boolean;
 
   constructor(){
-    this.isLoggedIn = true;
+    this.isLoggedIn = false;
     this.isAdmin = false;
+    this.result = false;
   }
 
 
@@ -47,5 +49,13 @@ export class AuthHelperService {
   }
   public getAdmin(): boolean{
     return this.isAdmin;
+  }
+
+  public getResult(): boolean{
+    return this.result;
+  }
+
+  public setResult(result: boolean): void{
+    this.result = result;
   }
 }
