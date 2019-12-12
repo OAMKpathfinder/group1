@@ -28,6 +28,9 @@ router.get('/:id?', (req,res,next) => {
     get.getAll(users,req,res);
   }
 });
+router.get('/email/:email', (req,res,next) => {
+  get.getPassByEmail(users,req,res);
+});
 
 router.put("/:user_id", function(req, res, next) {
   users.updateUser(req.params.user_id, req.body, function(err, rows) {

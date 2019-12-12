@@ -3,6 +3,9 @@ var db = require('../database');
 let deleteQuery = 'DELETE FROM users where id = $1';
 let getAllQuery = 'SELECT * FROM users';
 let getByIdQuery = 'SELECT * FROM users where id=$1';
+let getPassByEmailQuery = 'SELECT password FROM users where email=$1';
+
+
 var users = {
 
   //Get request model, all the rows and by id is defined here
@@ -12,7 +15,9 @@ var users = {
   getById:(id, callback) => {
     return db.query(getByIdQuery, [id], callback);
   },
-
+  getPassByEmail:(email, callback) => {
+    return db.query(getPassByEmailQuery, [email], callback);
+  },
 	add: (users, callback) => {
 		db.query('insert into users(email, password) values($1,$2)',
 			[users.email, users.password],

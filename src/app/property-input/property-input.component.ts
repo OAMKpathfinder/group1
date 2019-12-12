@@ -20,7 +20,7 @@ export class PropertyInputComponent implements OnInit {
   country: string = '';
   era: number ;
   constructor(
-    private iconRegistry: MatIconRegistry, 
+    private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
     private APIService: APIService,
     private fb: FormBuilder,

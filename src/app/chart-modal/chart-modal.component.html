@@ -10,10 +10,26 @@
             [chartType]="barChartType">
         </canvas>
         </div>
-        <div *ngFor="let suggest of data.data ;let i = index">
-            <button mat-button mat-raised-button color="primary" (click)="randomize(i)">Suggestion {{ i + 1 }}</button>
-            <br/>
-            <br/>
+        <div *ngFor="let dataSet of data.data; let i = index">
+                <div *ngFor="let suggest of dataSet.suggestion; let j = index">
+                    <div *ngIf="i==0">
+                        <button  mat-button mat-raised-button color="primary" (click)="affect(j, 1)">A, Suggestion {{ j + 1 }}</button>
+                        ex) Priority: {{ suggest.priority }}, Part: {{ suggest.part }}, Efficiency: {{ suggest.percent }}% might improve,
+                        {{ suggest.cost }}€ might cost
+                        <br/>
+                        <br/>
+                    </div>
+                    <div *ngIf="i==1">
+                        <button  mat-button mat-raised-button color="primary" (click)="affect(j, 0)">B, Suggestion {{ j + 1 }}</button>
+                        ex) Priority: {{ suggest.priority }}, Part: {{ suggest.part }}, Efficiency: {{ suggest.percent }}% might improve,
+                        {{ suggest.cost }}€ might cost
+                        <br/>
+                        <br/>
+                    </div>
+                </div>
+        </div>
+        <div>
+            <button mat-button mat-raised-button color="warning" (click)="reset()">Reset</button>
         </div>
     </div>
 </div>

@@ -1,11 +1,11 @@
-<section *ngFor="let property of properties; let i = index; let l = count" class="one-page bg-{{property.type}}"
+<section *ngFor="let property of properties; let i = index; let l = count" class="one-page bg-{{property.type}} padding-top-tiny"
 	id="{{ property.id }}">
-	<div class="border">
+	<div class="border container">
 		<div *ngIf="property.title" class="margin-left-bit margin-top-bit title text-uppercase">
 			{{ property.title }}
 		</div>
 		<div class="margin-top-bit margin-bottom-bit">
-			<div class="container">
+			<div class="">
 				<div *ngIf="property.sub" class="subTitle col">
 					{{ property.sub }}
 				</div>
