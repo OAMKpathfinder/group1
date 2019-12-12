@@ -48,6 +48,8 @@ export class InputWindowsComponent implements OnInit {
   windows: windowSingle[] = [];
   windowsId: number = 1;
 
+  uvalueArr = [];
+
   constructor(public dialog: MatDialog, private APIservice: APIService) {
     this.doors = [];
     this.grounds = [];
@@ -55,20 +57,15 @@ export class InputWindowsComponent implements OnInit {
     this.walls = [];
     this.others = [];
     this.windows = []; 
+    this.uvalueArr = [];
   }
 
-  //door stuff
   getDoorData() {
     this.APIservice.getDoorsFull()
       .subscribe((doors: Door[]) => {
         this.doors = doors
         this.arryboi.push(doors)
-        this.doors.forEach(i => {
-          //testing
-          this.name = i.name;
-          this.id = i.id;
-        })
-        // console.log(this.arryboi)
+
       })
   }
 
@@ -77,7 +74,6 @@ export class InputWindowsComponent implements OnInit {
       .subscribe((grounds: GroundFloor) => {
         this.grounds.push(grounds)
       })
-      console.log(this.grounds)
   }
 
   getRoofsData() {
@@ -130,9 +126,6 @@ export class InputWindowsComponent implements OnInit {
     console.log(`Tried to delete door ${doorId}, but nothing happened.`)
   }
 
-  todo() {
-    alert("Todo")
-  }
 
   //Smoothly scroll down to target div
   scrollToOther(index: number): void {
@@ -173,6 +166,7 @@ export class InputWindowsComponent implements OnInit {
     this.getRoofsData()
     this.getWallsData()
     this.getOthersData()
+    this.getWindows()
 
     //test
     this.pleaseOneDoorThanks()
