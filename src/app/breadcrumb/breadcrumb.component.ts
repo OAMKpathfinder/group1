@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { AuthHelperService } from '../auth-helper.service';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -22,7 +22,9 @@ export class BreadcrumbComponent implements OnInit {
   private windowImgSrc: string = "../../assets/img/gif/window.gif";
   private roofImgSrc: string = "../../assets/img/gif/roof.gif";
 
-  constructor() { }
+  constructor(
+    public auth: AuthHelperService
+  ) { }
 
   scrollTo(id:string): void{
     if(document.getElementById(id)){

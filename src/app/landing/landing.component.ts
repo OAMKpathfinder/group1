@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, SimpleChange } from '@angular/core';
 import { faLeaf, faHome, faCalculator } from '@fortawesome/free-solid-svg-icons';
 import { LandingModalComponent } from '../landing-modal/landing-modal.component';
 import { MatDialog } from '@angular/material';
