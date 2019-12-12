@@ -135,9 +135,10 @@ export class MainpageComponent implements OnInit {
 		public auth: AuthHelperService
 	){
 	}
+
 	ngOnInit() {
-        window.scrollTo(0, 0);
-        this.checkScreen();
+    window.scrollTo(0, 0);
+    this.checkScreen();
 		this.getHouseName();
 		this.showHide();
 		window.addEventListener("load", e => {

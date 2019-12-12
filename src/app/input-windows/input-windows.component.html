@@ -1,5 +1,5 @@
-<section *ngFor="let property of properties; let i = index; let l = count" class="one-page bg-{{property.type}} padding-top-tiny"
-	id="{{ property.id }}">
+<section *ngFor="let property of properties; let i = index; let l = count"
+	class="one-page bg-{{property.type}} padding-top-tiny" id="{{ property.id }}">
 	<div class="border container">
 		<div *ngIf="property.title" class="margin-left-bit margin-top-bit title text-uppercase">
 			{{ property.title }}
@@ -26,38 +26,44 @@
 					<button *ngIf=" property.type =='property' " mat-raised-button (click)="openPropertyDialog()">Add a
 						Property</button>
 					<div class="itemContainer" *ngIf=" property.type =='ground' ">
-						<div *ngFor="let ground of grounds[0]">
-							<button id="{{ground.id}}" class="itemBtn" mat-raised-button (click)="openGroundDialog(ground)" [ngStyle]="{'background-color': ground.uvalue < 0.5 ? 'green'
+						<div *ngIf="authService.getLogin()">
+							<div *ngFor="let ground of grounds[0]">
+								<button id="{{ground.id}}" class="itemBtn" mat-raised-button (click)="openGroundDialog(ground)"
+									[ngStyle]="{'background-color': ground.uvalue < 0.5 ? 'green'
 																							: ground.uvalue <= 1.0 ? 'orange'
 																							: ground.uvalue > 1.0 ? 'red':''}">
-								Edit - {{ground.id}} uValue:{{ground.uvalue}}
-							</button>
+									Edit - {{ground.id}} uValue:{{ground.uvalue}}
+								</button>
+							</div>
 						</div>
 						<button mat-raised-button (click)="openGroundDialog(0)">Add a Ground Floor</button>
 					</div>
 					<div *ngIf=" property.type =='roof' " class="itemContainer">
-						<div *ngFor="let roof of roofs[0]">
-							<button id="{{roof.id}}" class="itemBtn" mat-raised-button (click)="openRoofDialog(roof)" [ngStyle]="{'background-color': roof.uvalue < 0.5 ? 'green'
+						<div *ngIf="authService.getLogin()">
+							<div *ngFor="let roof of roofs[0]">
+								<button id="{{roof.id}}" class="itemBtn" mat-raised-button (click)="openRoofDialog(roof)" [ngStyle]="{'background-color': roof.uvalue < 0.5 ? 'green'
 																							: roof.uvalue <= 1.0 ? 'orange'
 																							: roof.uvalue > 1.0 ? 'red':''}">
-								Edit - {{roof.id}} uValue:{{roof.uvalue}}
-							</button>
+									Edit - {{roof.id}} uValue:{{roof.uvalue}}
+								</button>
+							</div>
 						</div>
 						<br>
 						<button mat-raised-button (click)="openRoofDialog(0)">Add a Roof</button>
 					</div>
 					<div *ngIf=" property.type =='door' " class="itemContainer">
-						<div *ngFor="let door of doors">
-							<button id="{{door.id}}" mat-raised-button class="itemBtn" (click)="openDoorDialog(door)" [ngStyle]="{'background-color': door.uvalue < 0.5 ? 'green'
+						<div *ngIf="authService.getLogin()">
+							<div *ngFor="let door of doors">
+								<button id="{{door.id}}" mat-raised-button class="itemBtn" (click)="openDoorDialog(door)" [ngStyle]="{'background-color': door.uvalue < 0.5 ? 'green'
 																							: door.uvalue <= 1.0 ? 'orange'
 																							: door.uvalue > 1.0 ? 'red':''}">
-								Edit - {{door.name}} uValue:{{door.uvalue}}</button>
-							<!-- <button (click)="deleteDoor(door.id)">DELETE</button> -->
-							<br>
-							<!-- [ngStyle]="{ color: element.energy < 360 ? 'red'
+									Edit - {{door.name}} uValue:{{door.uvalue}}</button>
+								<!-- <button (click)="deleteDoor(door.id)">DELETE</button> -->
+								<br>
+								<!-- [ngStyle]="{ color: element.energy < 360 ? 'red'
     					:  element.energy <= 500  ? 'orange'
     					: element.energy > 500  ? 'green':''}" -->
-							<hr>
+							</div>
 						</div>
 						<br>
 						<button mat-raised-button (click)="openDoorDialog(0)">Add a Door</button>
@@ -65,36 +71,39 @@
 					<button *ngIf=" property.type =='bridge' " mat-raised-button (click)="openBridgeDialog()">Add a
 						Bridge</button>
 					<div *ngIf=" property.type =='window' " class="itemContainer">
-						<div *ngFor="let window of windows[0]">
-							<button mat-raised-button mat-raised-button class="itemBtn" (click)="openWindowDialog(window)" ng-style="{'background-color': window.uvalue < 0.5 ? 'green'
+						<div *ngIf="authService.getLogin()">
+							<div *ngFor="let window of windows[0]">
+								<button mat-raised-button mat-raised-button class="itemBtn" (click)="openWindowDialog(window)" ng-style="{'background-color': window.uvalue < 0.5 ? 'green'
 																						 : window.uvalue <= 1.0 ? 'orange'
 																						 : window.uvalue > 1.0 ? 'red':''}">Edit - {{window.name}}
-								uValue:{{window.uvalue}}</button>
+									uValue:{{window.uvalue}}</button>
+							</div>
 						</div>
-						<hr>
 						<br>
 						<button mat-raised-button (click)="openWindowDialog(0)">Add an Window</button>
 					</div>
 					<div *ngIf=" property.type =='outerwall' " class="itemContainer">
-						<div *ngFor="let wall of walls[0]">
-							<button id="{{wall.id}}" mat-raised-button class="itemBtn" (click)="openWallDialog(wall)" [ngStyle]="{'background-color': wall.uvalue < 0.5 ? 'green'
+						<div *ngIf="authService.getLogin()">
+							<div *ngFor="let wall of walls[0]">
+								<button id="{{wall.id}}" mat-raised-button class="itemBtn" (click)="openWallDialog(wall)" [ngStyle]="{'background-color': wall.uvalue < 0.5 ? 'green'
 																							: wall.uvalue <= 1.0 ? 'orange'
 																							: wall.uvalue > 1.0 ? 'red':''}">
-								Edit - {{wall.id}} uValue:{{wall.uvalue}}
-							</button>
+									Edit - {{wall.id}} uValue:{{wall.uvalue}}
+								</button>
+							</div>
 						</div>
 						<br>
-						<hr>
 						<button mat-raised-button (click)="openWallDialog(0)">Add an Outer Wall</button>
 					</div>
 					<div *ngIf=" property.type =='others' " class="itemContainer">
-						<div *ngFor="let other of others[0]">
-							<button id="{{other.id}}" mat-raised-button class="itemBtn" (click)="openOthersDialog(other)">
-								Edit - {{other.id}}
-							</button>
+						<div *ngIf="authService.getLogin()">
+							<div *ngFor="let other of others[0]">
+								<button id="{{other.id}}" mat-raised-button class="itemBtn" (click)="openOthersDialog(other)">
+									Edit - {{other.id}}
+								</button>
+							</div>
 						</div>
 						<br>
-						<hr>
 						<button mat-raised-button (click)="openOthersDialog(0)">Enter Other Information</button>
 					</div>
 				</div>
