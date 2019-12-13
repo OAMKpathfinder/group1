@@ -33,6 +33,7 @@ export class NavComponent implements OnInit {
   }
 
   public logout(): void{
+    localStorage.clear();
     this.auth.setLogin(false);
     if(this.auth.getAdmin()){
       this.auth.setAdmin(false);
