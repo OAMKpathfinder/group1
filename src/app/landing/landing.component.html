@@ -12,49 +12,46 @@
         <span>
           <fa-icon [icon]="faHome"></fa-icon>
           <h4>Information</h4>
-          <p>Let us know the details of your building</p>
+          <p>Simply input your building's details</p>
         </span>
       </div>
       <div class="singleDesc">
         <span>
           <fa-icon [icon]="faCalculator"></fa-icon>
           <h4>Calculations</h4>
-          <p>Just input the values and we do the calculations for you</p>
+          <p>We'll do all the efficiency calculations</p>
         </span>
       </div>
       <div class="singleDesc">
         <span>
           <fa-icon [icon]="faLeaf"></fa-icon>
           <h4>Efficiency</h4>
-          <p>Get suggestions on how to increase energy efficiency based on your building</p>
+          <p>Check out our suggestions for improving energy efficiency</p>
         </span>
       </div>
     </div>
   </section>
 </div>
 <div id="bottomPart">
-  <section class="infoGrid" id="gridderino" #target>
+  <section class="infoGrid" id="gridderino">
     <div>
-      <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081"
-        width="50%" alt="4house">
+      <img class=image-one>
     </div>
     <div>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-        aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-        enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-        qui ratione voluptatem sequi nesciunt.</p>
+      <p>This PathFinder application was designed with energy efficiency as the number one priority. The calculations we make based upon your
+        inputs are inline with industry standards. The suggestions generate by our algorithm are state of the art and have the end user in mind. 
+        Our suggestions are based on a number of key factors including location, era and many others.
+      </p>
     </div>
     <div>
-      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
-        corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
-        officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+      <p>The default values we hold for all types of building are determined by many critical factors. Our systems are updated regularly to maintain
+        a high level of accuracy in our results and suggestions.  </p>
     </div>
     <div>
-      <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081g"
-        width="50%">
+      <img class="image-two">
     </div>
   </section>
   <div style="text-align:center;margin-bottom: 20px;">
-    <a [routerLink]="['/mainpage']" routerLinkActive="router-link-active" class="linkStart">Start</a>
+    <a [routerLink]="['/mainpage']" routerLinkActive="router-link-active" class="linkStart"  #target>Start</a>
   </div>
 </div>

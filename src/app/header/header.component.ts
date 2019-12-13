@@ -21,7 +21,6 @@ export class HeaderComponent {
             this.header = i;
           }
         })
-
         switch (this.header) {
           case 'admin':
             this.header = 'Administration'
@@ -38,12 +37,7 @@ export class HeaderComponent {
           default:
             this.header = 'Header to be updated'
             break;
-
         }
-
-
-
-
 
       }
     });
