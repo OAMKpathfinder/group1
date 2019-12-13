@@ -4,7 +4,7 @@ import {
   HttpErrorResponse,
   HttpHeaders
 } from "@angular/common/http";
-import { throwError, Observable } from "rxjs";
+import { throwError, Observable, pipe } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 
 const httpOptions = {
@@ -78,11 +78,13 @@ export class APIService {
   //BaseURL will need updated when moving from Localhost
   baseURL = "http://localhost:3000"
   propertyUrl: string = this.baseURL + "/homeProperties";
+  usersUrl: string = this.baseURL + "/users";
 
   //For thinking about, unique, search by name is not so good idea since name is not primary key so 
   //there might need better idea to get just created homeProperties id, to insert foreign key in another tables
 
   propertyIdByNameUrl: string = this.propertyUrl + "/name/";
+  passByEmailUrl: string = this.usersUrl + "/email/";
   groundUrl: string = this.baseURL + "/groundFloor";
   outerWallUrl: string = this.baseURL + "/outerWall";
   othersUrl: string = this.baseURL + "/others";
@@ -93,7 +95,6 @@ export class APIService {
     return this.http
       .get(this.propertyIdByNameUrl + name)
       .subscribe(res => {
-        console.log("get ID", res);
         if (res["error"]) {
           console.log(res["error"])
         }
@@ -101,6 +102,11 @@ export class APIService {
           this.setPropertyId(res[0].id);
         }
       })
+  }
+  getPassByEmail(email: string) {
+    return this.http
+      .get(this.passByEmailUrl + email)
+      .pipe(catchError(this.handleError));
   }
 
   getPropertyId(): number {
@@ -178,6 +184,12 @@ export class APIService {
       .pipe(catchError(this.handleError));
   }
 
+  getPropertyName() {
+    return this.http
+      .get(`${this.baseURL}/homeProperties`)
+      .pipe(catchError(this.handleError))
+  }
+
   // POST METHODS
 
   //Inserts single window
@@ -250,6 +262,14 @@ export class APIService {
   updateWall(wall: OuterWall, id: number) {
     return this.http
       .put<OuterWall>(`${this.baseURL}/outerWall/${id}`, wall, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  updateWindow(window: windowSingle, id: number) {
+    return this.http
+      .put<windowSingle>(`${this.baseURL}/windowSingle/${id}`, window, httpOptions)
       .pipe(
         catchError(this.handleError)
       );

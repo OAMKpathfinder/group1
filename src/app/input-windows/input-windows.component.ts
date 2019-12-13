@@ -10,6 +10,7 @@ import { APIService, GroundFloor, roofConstruction, OuterWall, others } from '..
 import { Door, windowSingle } from '../api-service.service';
 import { RoofInputComponent } from "../roof-input/roof-input.component";
 import { OthersInputComponent } from '../others-input/others-input.component';
+import { AuthHelperService } from '../auth-helper.service';
 
 @Component({
   selector: 'app-input-windows',
@@ -19,7 +20,11 @@ import { OthersInputComponent } from '../others-input/others-input.component';
 
 export class InputWindowsComponent implements OnInit {
 
+  
   @Input() public properties: object[];
+
+  //used for below openDialog, passing parameter of width
+  private dialogBoxWidth: string = "350px";
 
   id = 1;
   name: string;
@@ -47,27 +52,24 @@ export class InputWindowsComponent implements OnInit {
   windows: windowSingle[] = [];
   windowsId: number = 1;
 
-  constructor(public dialog: MatDialog, private APIservice: APIService) {
+  uvalueArr = [];
+
+  constructor(public dialog: MatDialog, private APIservice: APIService, public authService: AuthHelperService) {
     this.doors = [];
     this.grounds = [];
     this.roofs = [];
     this.walls = [];
     this.others = [];
     this.windows = []; 
+    this.uvalueArr = [];
   }
 
-  //door stuff
   getDoorData() {
     this.APIservice.getDoorsFull()
       .subscribe((doors: Door[]) => {
         this.doors = doors
         this.arryboi.push(doors)
-        this.doors.forEach(i => {
-          //testing
-          this.name = i.name;
-          this.id = i.id;
-        })
-        // console.log(this.arryboi)
+
       })
     }
 
@@ -76,7 +78,6 @@ export class InputWindowsComponent implements OnInit {
       .subscribe((grounds: GroundFloor) => {
         this.grounds.push(grounds)
       })
-      console.log(this.grounds)
   }
 
   getRoofsData() {
@@ -129,41 +130,37 @@ export class InputWindowsComponent implements OnInit {
     console.log(`Tried to delete door ${doorId}, but nothing happened.`)
   }
 
-  todo() {
-    alert("Todo")
-  }
-
   //Smoothly scroll down to target div
   scrollToOther(index: number): void {
     if (document.getElementById(this.properties[index + 1]["id"])) {
-      document.getElementById(this.properties[index + 1]["id"]).scrollIntoView({ block: 'end', behavior: 'smooth' });
+      document.getElementById(this.properties[index + 1]["id"]).scrollIntoView({ /*block: 'end',*/ behavior: 'smooth' });
     }
   }
 
   //Input Dialogs 
   openWindowDialog(window): void {
-    this.dialog.open(WindowsInputComponent, {data: {window : window}, width: '350px', maxHeight: '600px'});
+    this.dialog.open(WindowsInputComponent, {data: {window : window}, width: this.dialogBoxWidth, maxHeight: '600px'});
   }
   openDoorDialog(door): void {
-    this.dialog.open(DoorsInputComponent, {data: {door: door}, width: '350px', maxHeight: '600px'});
+    this.dialog.open(DoorsInputComponent, {data: {door: door}, width: this.dialogBoxWidth, maxHeight: '600px'});
   }
   openRoofDialog(roof): void {
-    this.dialog.open(RoofInputComponent, {data: {roof: roof}, width: '350px', maxHeight: '600px'});
+    this.dialog.open(RoofInputComponent, {data: {roof: roof}, width: this.dialogBoxWidth, maxHeight: '600px'});
   }
   openBridgeDialog(): void {
-    this.dialog.open(BridgeInputComponent, {width: '350px', maxHeight: '550px'});
+    this.dialog.open(BridgeInputComponent, {width: this.dialogBoxWidth, maxHeight: '550px'});
   }
   openGroundDialog(ground): void {
-    this.dialog.open(GroundInputComponent, {data:{ground: ground}, width: '350px', maxHeight: '550px'});
+    this.dialog.open(GroundInputComponent, {data:{ground: ground}, width: this.dialogBoxWidth, maxHeight: '550px'});
   }
   openWallDialog(wall): void {
-    this.dialog.open(WallInputComponent, {data: {wall: wall}, width: '350px', maxHeight: '550px'});
+    this.dialog.open(WallInputComponent, {data: {wall: wall}, width: this.dialogBoxWidth, maxHeight: '550px'});
   }
   openPropertyDialog(): void {
-    this.dialog.open(PropertyInputComponent, {width: '350px', maxHeight: '550px'});
+    this.dialog.open(PropertyInputComponent, {width: this.dialogBoxWidth, maxHeight: '550px'});
   }
   openOthersDialog(others): void {
-    this.dialog.open(OthersInputComponent, {data:{others: others}, width: '350px', maxHeight: '550px'});
+    this.dialog.open(OthersInputComponent, {data:{others: others}, width: this.dialogBoxWidth, maxHeight: '550px'});
   }
 
   ngOnInit() {
@@ -172,7 +169,7 @@ export class InputWindowsComponent implements OnInit {
     this.getRoofsData()
     this.getWallsData()
     this.getOthersData()
-
+    this.getWindows()
     //test
     this.pleaseOneDoorThanks()
   }
@@ -204,30 +201,6 @@ export class InputWindowsComponent implements OnInit {
       document.getElementsByName("base-img")[i].classList.toggle("effect");
     }
   }
-  // openDialog(prop: string): any{
-  //   switch(prop){
-  //     case "ground":
-  //       this.openGroundDialog()
-  //       break;
-  //     case "roof":
-  //       this.openRoofDialog()
-  //       break;
-  //     case "door":
-  //       this.openDoorDialog()
-  //       break;
-  //     case "bridge":
-  //       this.openBridgeDialog()
-  //       break;
-  //     case "window":
-  //       this.openWindowDialog()
-  //       break;
-  //     case "outerwall":
-  //       this.openWallDialog()
-  //       break;
-  //     default:
-  //       return ;
-  //   }
 
-  // }
 
 }

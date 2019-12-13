@@ -1,10 +1,10 @@
 <div class="container-fluid bg" [@simpleFadeAnimation]="'in'">
-  <div id="screen" class="row">
-      <div id="screen_sm" class="col-sm-2">
-          <app-breadcrumb [ids]="ids" [phases]="phases"></app-breadcrumb>
-      </div>
-      <main id="screen_lg" class="col-md-9 margin-top-bit">
-          <app-input-windows class="content" [properties] = "properties" ></app-input-windows>
-      </main>
-  </div>
+    <div id="screen" class="row">
+        <div id="screen_sm" class="col-sm-2">
+            <app-breadcrumb [ids]="ids" [phases]="phases"></app-breadcrumb>
+        </div>
+        <main id="screen_lg" class="col-md-9 margin-top-bit">
+            <app-input-windows class="content" [properties]="properties"></app-input-windows>
+        </main>
+    </div>
 </div>

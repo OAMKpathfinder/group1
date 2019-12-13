@@ -18,6 +18,7 @@ export class DoorsInputComponent implements OnInit {
   area: string = "";
   protected: boolean = false;
   bridgeValue: number;
+  condition: number;
   interaction: boolean = false;
   uCheck: boolean;
 
@@ -43,7 +44,8 @@ export class DoorsInputComponent implements OnInit {
       materials: [null],
       area: [null],
       bridgeValue: [null, [Validators.required, Validators.pattern(numberPattern)]],
-      protected: [null, Validators.required]
+      protected: [null, Validators.required],
+      condition: [null]
     });
   }
   //Checking if radio button checked and showing valid options

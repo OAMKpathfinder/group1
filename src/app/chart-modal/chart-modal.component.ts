@@ -13,7 +13,7 @@ export class ChartModalComponent implements OnInit {
 
   public barChartOptions: ChartOptions = {
     responsive: true,
-    scales: { xAxes: [{}], yAxes: [{ id:'A', position: 'left'}] },
+    scales: { xAxes: [{}], yAxes: [{ id:'A', position: 'left', display:true}] },
     plugins: {
       datalabels: {
         anchor: 'end',
@@ -21,13 +21,15 @@ export class ChartModalComponent implements OnInit {
       }
     },
   };
-  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: Label[] = [];
   public barChartType: ChartType = 'horizontalBar';
   public barChartLegend = true;
   public barChartPlugins;
 
+  //Push to barChartData, used for modifying the chart as interactive
+  //Designed to push in order, total E %, total cost, -> suggest E, suggest cost
   public barChartData: ChartDataSets[] = [];
-
+  private originalDataSet: any[] = [];
 
   constructor(
     private APIService: APIService,
@@ -35,20 +37,60 @@ export class ChartModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,){
       this.data = data;
   }
+  ngOnInit(){
+    console.log(this.data.data)
+    this.initData();
+  }
   
-  ngOnInit() {
-    // { data: [65, 59, 80, 81, 56, 55, 40], label: 'A', yAxisID: 'A' },
-    // { data: [-28, -48, -40, -19, -86, -27, -90], label: 'B', yAxisID: 'A' }
-    for(let i = 0; i<this.data.length; i++){
-      this.barChartData.push(
-        {
-          label: this.data[i].property,
-          data: [
-            this.data[i].suggestion[0]
-          ]
+  initData() {
+    let dataToPush = [];
+    let labelToPush = [];
+    for(let i = 0; i<this.data.data.length; i++){
+      let solution = [];
+      for(let j = 0; j<this.data.data[i].suggestion.length; j++){
+        if(i == 0){
+          solution.push(
+            this.data.data[i].suggestion[j].percent,
+            (this.data.data[i].suggestion[j].cost/1000) )
         }
-      )      
+        else{
+          solution.push(
+            this.data.data[i].suggestion[j].percent,
+            (this.data.data[i].suggestion[j].cost/1000) )
+        }
+      }
+      dataToPush.push(
+        {
+          label: this.data.data[i].property,
+          yAxisID: "A",
+          data: solution
+        }
+      )
+      labelToPush.push(
+        'Suggest '+ (i+1) + '\nEstimated Improvement (%)',
+        'Suggest '+ (i+1) + '\nEstimated Cost (K/€)'
+      )
     }
+    for(let i in dataToPush){
+      this.barChartData.push(dataToPush[i]);    
+    }
+    for(let j in labelToPush){
+      this.barChartLabels.push(labelToPush[j]);    
+    }
+    this.barChartData[0].data.push(40,0)
+    dataToPush[0].data.push(40,0);
+    this.barChartData[1].data.push(35,0)
+    dataToPush[1].data.push(35,0);
+
+    for(let i in dataToPush){
+      let dataSet = [];
+      for(let j in dataToPush[i].data){
+        dataSet.push(dataToPush[i].data[j])
+      }
+      this.originalDataSet.push(dataSet);
+    }
+
+    this.barChartLabels.push('Total E (%)', 'Total E cost (k/€)');
   }
   onCancel(): void {
     console.log("Cancel clicked");
@@ -67,18 +109,57 @@ export class ChartModalComponent implements OnInit {
     public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
       console.log(event, active);
     }
+
+    /**
+     * 
+     * @param - index for dataset of suggestions, isA for dataset of target
+     * 
+     */
   
-    public randomize(): void {
-      // Only Change 3 values
-      const data = [
-        Math.round(Math.random() * 100),
-        59,
-        80,
-        (Math.random() * 100),
-        56,
-        (Math.random() * 100),
-        40];
-      this.barChartData[0].data = data;
+    public affect(index:number, isA:boolean): void {
+
+      let cost = 2 * (index - 1) + 3 ;
+      let efficiency = cost - 1  ;
+
+      let dataSet = this.barChartData;
+      for(let i = 0; i<dataSet.length; i++){
+        if(isA && i == 0){
+          let affectedPercent: number = ( <number> (dataSet[i].data[(dataSet[i].data.length - 2)]) ) - ( <number> (dataSet[i].data[efficiency]) );
+          let affectedCost: number = (<number> (dataSet[i].data[(dataSet[i].data.length - 1)]) ) + ( <number> (dataSet[i].data[cost]) );
+
+          const dataTem: number[] = [
+            efficiency == 0 ? 0 : (<number> dataSet[i].data[0]) ,
+            cost == 1 ? 0 : (<number> dataSet[i].data[1]) ,
+            efficiency == 2 ? 0 : (<number> dataSet[i].data[2]) ,
+            cost == 3 ? 0 : (<number> dataSet[i].data[3]) ,
+            affectedPercent >= 0 ? affectedPercent: 0,
+            affectedCost,
+          ]
+          this.barChartData[i].data = dataTem;
+        }
+        else if(!isA && i == 1){
+          let affectedPercent: number = ( <number> (dataSet[i].data[(dataSet[i].data.length - 2)]) ) - ( <number> (dataSet[i].data[efficiency]) );
+          let affectedCost: number = (<number> (dataSet[i].data[(dataSet[i].data.length - 1)]) ) + ( <number> (dataSet[i].data[cost]) );
+  
+          const dataTem: number[] = [
+            efficiency == 0 ? 0: (<number> dataSet[i].data[0]),
+            cost == 1 ? 0: (<number> dataSet[i].data[1]),
+            efficiency == 2 ? 0: (<number> dataSet[i].data[2]),
+            cost == 3 ? 0: (<number> dataSet[i].data[3]),
+            affectedPercent >= 0 ? affectedPercent: 0,
+            affectedCost,
+          ]
+          this.barChartData[i].data = dataTem;
+        }
+      }
+    }
+
+    public reset(): void{
+      this.barChartData[0].data.length = 0;
+      this.barChartData[0].data = this.originalDataSet[0] ;
+
+      this.barChartData[1].data.length = 0;
+      this.barChartData[1].data = this.originalDataSet[0] ;
     }
 
 }

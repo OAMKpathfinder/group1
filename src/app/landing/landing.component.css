@@ -80,11 +80,15 @@ h1 {
 }
 
 .linkStart {
-  border: 1px;
-  border-bottom: 1px solid black;
-  color: black;
+  padding: .5em;
+  border-radius: 10px;
+  background-color: rgb(102, 255, 51);
   text-decoration: none;
-  padding: 5px;
+  color: white;
+}
+
+.linkStart:hover {
+  color: grey;
 }
 
 .arrow{
@@ -105,19 +109,6 @@ h1 {
   cursor: pointer;
 }
 
-.image-one{
-  width:100%; 
-  height:100%; 
-  background:url('http://windowplacecorp.com/img/energy-efficient.jpg') center center no-repeat;
-}
-
-.image-two{
-  width:100%; 
-  height:100%; 
-  background:url('http://windowplacecorp.com/img/energy-efficient.jpg') center center no-repeat;
-}
-
-#bottomPart
-{
-  height: 75%;
+.toWhite{
+  color: white;
 }

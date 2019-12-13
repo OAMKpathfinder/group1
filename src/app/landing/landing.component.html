@@ -1,6 +1,6 @@
 <!-- [ngStyle]="{'background': getUrl()}" -->
 <div class="landingContainer">
-  <button class="startBtn" id="startBtn" for="modal1" (click)="openDialog()">Login</button>
+  <button *ngIf="!auth.getLogin()" class="startBtn" id="startBtn" for="modal1" (click)="openDialog()">Login</button>
   <div class="titleContainer">
     <h1 class="landingTitle">{{title}}</h1>
     <br>
@@ -33,25 +33,44 @@
   </section>
 </div>
 <div id="bottomPart">
+  <section style="text-align: center; padding: 1em;" #target>
+    <h2>Getting Started</h2>
+  </section>
   <section class="infoGrid" id="gridderino">
     <div>
-      <img class=image-one>
+      <p>Our application uses a simple and straight forward step-by-step approach. We will guide you through in inserting all the necessary values and materials.</p>
     </div>
     <div>
-      <p>This PathFinder application was designed with energy efficiency as the number one priority. The calculations we make based upon your
-        inputs are inline with industry standards. The suggestions generate by our algorithm are state of the art and have the end user in mind. 
-        Our suggestions are based on a number of key factors including location, era and many others.
+      <img src="assets/img/landing/steps.PNG" width="40%">
+    </div>
+    <div>
+      <img src="assets/img/landing/input.png" width="50%">
+    </div>
+    <div>
+      <p>
+        Inputting the values is easy. Open a form from "Add a component", then just simply input values and materials.
+        If you dont know some value of a component, dont worry! You can just choose a default material.
       </p>
     </div>
     <div>
-      <p>The default values we hold for all types of building are determined by many critical factors. Our systems are updated regularly to maintain
-        a high level of accuracy in our results and suggestions.  </p>
+      <p>After inputting your values, our application does the calculations for you and suggests possible improvements
+        in energy efficiency.
+      </p>
     </div>
     <div>
-      <img class="image-two">
+      <img src="assets/img/landing/result.PNG" width="50%">
+    </div>
+    <div>
+      <img src="assets/img/landing/result_pay.PNG" width="50%">
+    </div>
+    <div>
+      <p>
+        Our custom made measurement system will also provide you with information about how much the improvement will
+        pay you back.
+      </p>
     </div>
   </section>
   <div style="text-align:center;margin-bottom: 20px;">
-    <a [routerLink]="['/mainpage']" routerLinkActive="router-link-active" class="linkStart"  #target>Start</a>
+    <a [routerLink]="['/mainpage']" routerLinkActive="router-link-active" class="linkStart">Get Started</a>
   </div>
 </div>

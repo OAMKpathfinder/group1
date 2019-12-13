@@ -50,6 +50,40 @@
     <input matInput placeholder="Bridge Value" formControlName="bridgeValue" />
     <span matSuffix>W/m²K</span>
   </mat-form-field>
+
+  <mat-form-field *ngIf="interaction" id="form-field">
+      <mat-label>Condition</mat-label>
+      <mat-select formControlName="condition" [(value)]="selected">
+        <mat-option value="1">
+            <mat-icon name="condition-1" style="color:green">sentiment_very_satisfied</mat-icon>
+            Very Good
+        </mat-option>
+        <mat-option value="2">
+            <mat-icon name="condition-2" style="color:yellowgreen">sentiment_satisfied</mat-icon>
+            Good
+        </mat-option>
+        <mat-option value="3">
+            <mat-icon name="condition-3">sentiment_satisfied</mat-icon>
+            Fine
+        </mat-option>
+        <mat-option value="4">
+            <mat-icon name="condition-4" style="color:rgb(219, 219, 87)">sentiment_dissatisfied</mat-icon>
+            Bad
+        </mat-option>
+        <mat-option value="5">
+            <mat-icon name="condition-4" style="color:red">sentiment_very_dissatisfied</mat-icon>
+            Very Bad
+        </mat-option>
+        <mat-select-trigger>
+            <mat-icon *ngIf="selected == '1'" value="1" name="condition-1" style="color:green">sentiment_very_satisfied</mat-icon>
+            <mat-icon *ngIf="selected == '2'" value="2" name="condition-2" style="color:yellowgreen">sentiment_satisfied</mat-icon>
+            <mat-icon *ngIf="selected == '3'" value="3" name="condition-3">sentiment_satisfied</mat-icon>
+            <mat-icon *ngIf="selected == '4'" value="4" name="condition-4" style="color:rgb(219, 219, 87)">sentiment_dissatisfied</mat-icon>
+            <mat-icon *ngIf="selected == '5'" value="5" name="condition-5" style="color:red">sentiment_very_dissatisfied</mat-icon>
+        </mat-select-trigger>
+      </mat-select>
+    </mat-form-field>
+
   <p *ngIf="interaction">Is this window listed/protected?</p>
   <mat-radio-group
     *ngIf="interaction"

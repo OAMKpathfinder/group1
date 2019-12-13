@@ -16,14 +16,13 @@ import { LandingComponent } from './landing/landing.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatIconModule, MatSliderModule, MatTableModule, MatSortModule, MatTooltipModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatIconModule, MatSliderModule, MatTableModule, MatSortModule, MatTooltipModule, MatMenuModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { APIService } from './api-service.service';
 import { PropertyInputComponent } from './property-input/property-input.component';
 import { PropertyInputsComponent } from './property-inputs/property-inputs.component';
-import { EditDoorComponent } from './edit-door/edit-door.component';
 import { ResultWholePrivateComponent } from './result-whole-private/result-whole-private.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
@@ -34,6 +33,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -51,18 +51,17 @@ import { FooterComponent } from './footer/footer.component';
     LandingModalComponent,
     MainpageComponent,
     PropertyInputComponent,
-    EditDoorComponent,
     ResultWholePrivateComponent,
     ModalWindowComponent,
     SuggestionComponent,
     ChartModalComponent,
     PropertyInputsComponent,
-    EditDoorComponent,
     ResultTableComponent,
     AdminPanelComponent,
     AdminEditComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +86,8 @@ import { FooterComponent } from './footer/footer.component';
     ChartsModule,
     MatSliderModule,
     MatSortModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMenuModule
   ],
   entryComponents: [
     WindowsInputComponent,
@@ -103,7 +103,6 @@ import { FooterComponent } from './footer/footer.component';
     LandingModalComponent,
     MainpageComponent,
     PropertyInputComponent,
-    EditDoorComponent,
     ModalWindowComponent,
     SuggestionComponent,
     ChartModalComponent,

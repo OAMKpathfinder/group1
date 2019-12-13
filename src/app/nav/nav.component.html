@@ -1,0 +1,23 @@
+<button id="nav-icon" class="navbar-toggler-right" mat-button [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
+  <!-- possible other icons to represent menu -->
+    <!-- <mat-icon svgIcon="apps"></mat-icon> -->
+    <!-- <mat-icon>dialpad</mat-icon> -->
+</button>
+<mat-menu #menu="matMenu">
+  <button (click)="toHome()" mat-menu-item>Home</button>
+  <!-- Possible options to be icon for nav -->
+  <!-- <button mat-menu-item>
+    <mat-icon svgIcon="apps"></mat-icon>
+  </button>
+  <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+  </button> -->
+  <button (click)="toOwn()" *ngIf="auth.isLoggedIn" mat-menu-item>Own</button>
+  <button (click)="toCreate()" mat-menu-item>Create New Property</button>
+  <!-- currently log in is not necessary but for the future development, in case
+  leaving example -->
+  <button (click)="login()" *ngIf="!auth.isLoggedIn" mat-menu-item>Log In</button>
+  <button (click)="logout()" *ngIf="auth.isLoggedIn" mat-menu-item>Log Out</button>
+  <button (click)="toAdmin()" *ngIf="auth.isAdmin" mat-menu-item>Admin</button>
+</mat-menu>

@@ -1,5 +1,6 @@
 @import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
 @import '../../assets/css/app.css';
+
 .one-page{
     width: 100%;
     height: 100vh;
@@ -8,23 +9,30 @@
     /* background-image: url("https://picsum.photos/1200"); */
 }
 
+
 .bg-roof{
-    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2014/11/21/17/38/ruin-540835_1280.jpg");
+    /* background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2014/11/21/17/38/ruin-540835_1280.jpg"); */
+    background-image: url("https://cdn.pixabay.com/photo/2014/11/21/17/38/ruin-540835_1280.jpg");
 }
 .bg-ground{
-    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2016/07/20/22/55/floor-1531509_1280.jpg");
+    /* background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2016/07/20/22/55/floor-1531509_1280.jpg"); */
+    background-image:url("https://cdn.pixabay.com/photo/2016/07/20/22/55/floor-1531509_1280.jpg");
 }
 .bg-window{
-    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2015/09/15/19/26/window-941625_1280.jpg");
+    /* background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2015/09/15/19/26/window-941625_1280.jpg"); */
+    background-image:url("https://cdn.pixabay.com/photo/2015/09/15/19/26/window-941625_1280.jpg");
 }
 .bg-door{
-    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2013/11/21/21/48/door-215349_1280.jpg");
+    /* background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2013/11/21/21/48/door-215349_1280.jpg"); */
+    background-image: url("https://cdn.pixabay.com/photo/2013/11/21/21/48/door-215349_1280.jpg");
 }
 .bg-outerwall{
-    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2012/03/03/23/06/backdrop-21534_1280.jpg");
+    /* background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2012/03/03/23/06/backdrop-21534_1280.jpg"); */
+    background-image: url("https://cdn.pixabay.com/photo/2012/03/03/23/06/backdrop-21534_1280.jpg");
 }
 .bg-property,  .bg-bridge, .bg-others{
-    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2016/04/25/23/30/home-1353389_1280.jpg");
+    /* background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://cdn.pixabay.com/photo/2016/04/25/23/30/home-1353389_1280.jpg"); */
+    background-image: url("https://cdn.pixabay.com/photo/2016/04/25/23/30/home-1353389_1280.jpg");
 }
 
 @media(max-width: 770px){
@@ -34,7 +42,7 @@
 }
 
 .border{
-    border: solid black 1px;
+    /* border: solid black 1px; */
     margin-bottom: 1em;
     margin-top: 1em;
 }
@@ -56,10 +64,14 @@
 }
 
 .container{
+    padding: 1em;
     margin: 2em;
     background-color: rgba(255,255,255,0.8);
     width: 95%;
     border-radius: .5em;
+}
+.padding-top-tiny{
+    padding-top: 0.05em;
 }
 
 .margin-top-bit{
@@ -86,7 +98,7 @@
     height: 4vw;
     width: 4vw;
     border-style: solid;
-    border-color: gray;
+    border-color: white;
     border-width: 0px 4px 4px 0px;
     transform: rotate(45deg);
 }
@@ -100,7 +112,7 @@
 
 .round-border{
     margin: auto;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 50%;
     width: 1em;
     height: 1em;
@@ -202,4 +214,21 @@
 .itemBtn {
     margin-right: .5em;
     margin-bottom: .5em;
+}
+
+
+.one-page:last-of-type {
+    height: 50vh;
+}
+
+.results-center{
+    margin-top: 0vh;
+    margin-left: 275px;
+}
+
+.results-btn{
+    color: white;
+    background: #673ab7;
+    font-size: 2em;
+    padding: 1em;
 }

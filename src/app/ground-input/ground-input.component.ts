@@ -16,6 +16,7 @@ export class GroundInputComponent implements OnInit {
   materials: string = '';
   area: string = '';
   protected: string = '';
+  condition: number;
   interaction: boolean = false;
   uCheck: boolean;
   title: string = "Add a Floor"
@@ -33,7 +34,8 @@ export class GroundInputComponent implements OnInit {
         uValue: [null],
         materials: [null],
         area: [null],
-        protected: [null, Validators.required]
+        protected: [null, Validators.required],
+        condition: [null]
       });
     }
 

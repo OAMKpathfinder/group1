@@ -5,6 +5,7 @@ import { ModalWindowComponent } from '../modal-window/modal-window.component';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import { ChartModalComponent } from '../chart-modal/chart-modal.component';
+import { Router } from '@angular/router';
 
 export interface ResultElement {
   property: string,
@@ -119,14 +120,14 @@ let suggestionObj = [
   {
     'priority':3,
     'part':"Window",
-    'percent':40,
-    'cost':2000
+    'percent':5.42,
+    'cost':20000
   },
   {
     'priority':2,
     'part':"Window",
-    'percent':10,
-    'cost':1000
+    'percent':7.53,
+    'cost':10000
   },
 ]
 
@@ -200,7 +201,9 @@ export class ResultWholePrivateComponent{
 
   checkedToCompare = [];
 
-  constructor(public dialog: MatDialog){
+  constructor(
+    public dialog: MatDialog,
+    private router: Router,){
   }
 
   actionTo(el:string, e:any, i:number): void {
@@ -225,6 +228,8 @@ export class ResultWholePrivateComponent{
       this.selected = 'select';
     }
     else{
+      this.selection.clear();
+      this.checkedToCompare.length = 0;
       this.select_col = true;
       this.selected = 'compare';
     }
@@ -232,13 +237,35 @@ export class ResultWholePrivateComponent{
 
   onCheck($event, row){
     $event.stopPropagation();
-    this.checkedToCompare.push(row);
+    const numSelected = this.selection.selected.length;
+    
+    if(this.checkedToCompare.length != 2 && numSelected != 2 ){
+      this.checkedToCompare.push(row);
+    }
+    else if (this.checkedToCompare.length >= 3 && numSelected >= 3 ){
+      window.alert("Currently comparing only 2 properties supports!");
+      this.selection.clear();
+    }
   }
-
+  
   compare(){
-    this.openChartDialog(this.checkedToCompare);
-    this.bringSelect();
-    console.log(this.checkedToCompare);
+    const numSelected = this.selection.selected.length;
+
+    if(this.checkedToCompare.length == 2  && numSelected == 2 ){
+      this.openChartDialog(this.checkedToCompare);
+      this.bringSelect();
+      this.selection.clear();
+    }
+    else if(this.checkedToCompare.length == 0  && numSelected == 0 ){
+      this.bringSelect();
+      this.selection.clear();
+      this.checkedToCompare.length = 0;
+    }
+    else{
+      window.alert("Required to have two selected for comparing");
+      this.selection.clear();
+      this.checkedToCompare.length = 0;
+    }
   }
 
   
@@ -251,8 +278,10 @@ export class ResultWholePrivateComponent{
     this.table.renderRows();
   }
   delete(i:number){
-    this.dataSource.data.splice(i,1);
-    this.table.renderRows();
+    if(window.confirm("Are you sure to delete selected property?")){
+      this.dataSource.data.splice(i,1);
+      this.table.renderRows();
+    }
   }
 
   openDialog(property:string, id:number, data:object[], IsUValue:boolean, e): void{
@@ -264,7 +293,7 @@ export class ResultWholePrivateComponent{
     this.dialog.open(ModalWindowComponent, {data:{'data':data, 'property':property, 'id':id, isUValue: IsUValue},width: '350px', maxHeight: '550px'});
   }
   openChartDialog(data): void{
-    this.dialog.open(ChartModalComponent, {data: {'data':data} ,width: '400px', maxHeight: '400px'});
+    this.dialog.open(ChartModalComponent, {data: {'data':data} , width: '30em', height: '30em'});
   }
 
   //Here is for the duplicating the object to insert rows
@@ -333,5 +362,10 @@ export class ResultWholePrivateComponent{
   /** The label for the checkbox on the passed row */
   checkboxLabel(row?: ResultElement): string {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.modal + 1}`;
+  }
+
+  //Navigate to main page for creating new property
+  createNewProperty(): void{
+    this.router.navigate(['/mainpage']);
   }
 }
