@@ -142,9 +142,9 @@ export class APIService {
       .pipe(catchError(this.handleError));
   }
 
-  getDoorsFull() {
+  getDoorsFull(): Observable<Door[]> {
     return this.http
-      .get(`${this.baseURL}/door`)
+      .get<Door[]>(`${this.baseURL}/door`)
       .pipe(catchError(this.handleError));
   }
 

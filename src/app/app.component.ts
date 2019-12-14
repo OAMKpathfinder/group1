@@ -14,6 +14,5 @@ export class AppComponent {
     private router: Router,
   ){
   }
-
 }
 

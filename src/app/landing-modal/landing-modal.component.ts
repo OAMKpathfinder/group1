@@ -12,6 +12,8 @@ import { AuthHelperService } from '../auth-helper.service';
 export class LandingModalComponent implements OnInit { 
 
   public message: string;
+  public emailString: any;
+  public passwordString: any;
 
   constructor(
     private APIService: APIService,
@@ -20,11 +22,6 @@ export class LandingModalComponent implements OnInit {
     //It is better to be private so that handle more stictly
     private auth: AuthHelperService,
   ){
-  }
-
-  nope() {
-    this.message = "Nope";
-    alert(this.message);
   }
 
   ngOnInit() {
@@ -39,6 +36,9 @@ export class LandingModalComponent implements OnInit {
     const admin = "admin";
     let email = (<HTMLInputElement>document.getElementById("email"));
     let password = (<HTMLInputElement>document.getElementById("password"));
+    this.emailString = email;
+    this.passwordString = password;
+
     if(email){
       this.APIService.getPassByEmail(email.value)
       .subscribe( res => {
@@ -55,6 +55,7 @@ export class LandingModalComponent implements OnInit {
               }
               else{
                 this.onCancel();
+                localStorage.setItem(this.emailString, this.passwordString)
                 this.router.navigate(['/private_page']);
                 this.auth.login();
               }
