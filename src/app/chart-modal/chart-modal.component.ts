@@ -38,7 +38,6 @@ export class ChartModalComponent implements OnInit {
       this.data = data;
   }
   ngOnInit(){
-    console.log(this.data.data)
     this.initData();
   }
   
@@ -96,10 +95,6 @@ export class ChartModalComponent implements OnInit {
     console.log("Cancel clicked");
     this.dialogRef.close();
   }
-  save(): void{
-    console.log("Save clicked");
-    this.dialogRef.close();
-  }
 
     // events
     public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
@@ -155,11 +150,16 @@ export class ChartModalComponent implements OnInit {
     }
 
     public reset(): void{
-      this.barChartData[0].data.length = 0;
-      this.barChartData[0].data = this.originalDataSet[0] ;
-
-      this.barChartData[1].data.length = 0;
-      this.barChartData[1].data = this.originalDataSet[0] ;
+      this.barChartData[0].data = this.deepCopy(this.originalDataSet)[0];
+      this.barChartData[1].data = this.deepCopy(this.originalDataSet)[0];
+    }
+    
+    private deepCopy(data:number[]): any[]{
+      let result: number[] = [];
+      for(let i in data){
+        result.push(data[i]);
+      }
+      return result;
     }
 
 }

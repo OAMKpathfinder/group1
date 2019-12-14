@@ -293,7 +293,7 @@ export class ResultWholePrivateComponent{
     this.dialog.open(ModalWindowComponent, {data:{'data':data, 'property':property, 'id':id, isUValue: IsUValue},width: '350px', maxHeight: '550px'});
   }
   openChartDialog(data): void{
-    this.dialog.open(ChartModalComponent, {data: {'data':data} , width: '30em', height: '30em'});
+    this.dialog.open(ChartModalComponent, {data: {'data':data} , width: '34em', height: '36em'});
   }
 
   //Here is for the duplicating the object to insert rows

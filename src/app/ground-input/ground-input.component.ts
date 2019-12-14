@@ -35,7 +35,6 @@ export class GroundInputComponent implements OnInit {
         materials: [null],
         area: [null],
         protected: [null, Validators.required],
-        condition: [null]
       });
     }
 
