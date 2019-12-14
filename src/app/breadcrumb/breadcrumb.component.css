@@ -150,3 +150,11 @@ span {
 .liveResult{
     margin-left: 10px;
 }
+
+.hidden{
+    visibility: hidden;
+}
+
+.visible{
+    visibility: visible;
+}

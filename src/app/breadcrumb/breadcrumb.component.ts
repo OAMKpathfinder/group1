@@ -13,7 +13,7 @@ export class BreadcrumbComponent implements OnInit {
 
   properties: any = [];
   private currentDiv: string = null;
-  private extra: number = 30;
+  private extra: number = 300;
   imgSrc: string = "";
 
   private groundImgSrc: string = "../../assets/img/gif/floor.gif";
@@ -23,6 +23,8 @@ export class BreadcrumbComponent implements OnInit {
   private roofImgSrc: string = "../../assets/img/gif/roof.gif";
 
   private liveResult: string = 'A';
+  private resultDiv: HTMLElement = null;
+  private resultNavDiv: HTMLElement = null;
 
   constructor(
     public auth: AuthHelperService
@@ -87,7 +89,6 @@ export class BreadcrumbComponent implements OnInit {
       this.activeClassOnly(this.currentDiv+"-id-class");
       this.srcChange(this.currentDiv);
     });
-    
   }
 
   ngAfterViewInit(){
@@ -109,6 +110,7 @@ export class BreadcrumbComponent implements OnInit {
             if(j==k){
               document.getElementById(this.phases[k]).classList.add("active");
               this.currentDiv = this.phases[k];
+              this.auth.setResultView('visible');
             }
             else{
               document.getElementById(this.phases[k]).classList.remove("active");

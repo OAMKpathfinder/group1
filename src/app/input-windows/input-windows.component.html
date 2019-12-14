@@ -204,10 +204,10 @@
               Enter Other Information
             </button>
           </div>
-		  </div>
-		  <div *ngIf="property.type == 'results'" class="itemContainer results-center">
-			   <button mat-raised-button  class="results-btn"  align="end" [routerLink]="['/results']" routerLinkActive="router-link-active">Get Results</button>
-		  </div>
+      </div>
+        <div *ngIf="property.type == 'results'" class="itemContainer results-center {{ authService.getResultView() }}">
+           <button mat-raised-button  class="results-btn"  align="end" [routerLink]="['/results']" routerLinkActive="router-link-active">Get Results</button>
+        </div>
       </div>
     </div>
   </div>
