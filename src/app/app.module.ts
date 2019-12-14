@@ -33,6 +33,7 @@ import { ResultTableComponent } from './result-table/result-table.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
 import { NavComponent } from './nav/nav.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { NavComponent } from './nav/nav.component';
     MatSliderModule,
     MatSortModule,
     MatTooltipModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTabsModule
   ],
   entryComponents: [
     WindowsInputComponent,
