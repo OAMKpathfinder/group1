@@ -27,8 +27,8 @@ export class TableExpandableRows {
   expandedElement: ResultElement | null;
 }
 
-function getRandom(){
-  return Math.floor(Math.random() * (10 - 0) + 0) / 10;
+function getRandom(from:number, to:number, decimal:number): number{
+  return Math.floor(Math.random() * (from - to) + to) / decimal;
 }
 function getBigRandom(){
   return Math.floor(Math.random() * (50000 - 30000) + 30000) / 10;
@@ -47,59 +47,61 @@ let lorem = "Lorem Ipsum is simply dummy text of the printing and typesetting in
 
 const actions = ['detail' ,'duplicate','delete'];
 
+//In this section, dummy data is just generated directly here supposed to be handled in service
+
 let dataObj = [
   {
     'part': "Floor",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   },
   {
     'part':"Wall",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   },
   {
     'part':"Roof",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   }
 ]
 
 let doorObj = [
   {
     'part':"Main door, brown, black handle",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   },
   {
     'part':"Back door, white",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   },
   {
     'part':"Side door, on the left",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   },
 ]
 let windowObj = [
   {
     'part':"Main Window, on the enterance, left",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   },
   {
     'part':"Kitchen, double sized",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   },
   {
     'part':"Living room, center of the main wall A",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   },
   {
     'part':"Living room, center of the main wall B",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   },
   {
     'part':"Living room, center of the main wall C",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   },
   {
     'part':"Living room, center of the main wall D",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   },
 ]
 let otherObj = [
@@ -109,7 +111,7 @@ let otherObj = [
   },
   {
     'part':"Hjoht",
-    'value': getRandom()
+    'value': getRandom(10,2,10)
   },
   {
     'part':"Piped",
@@ -118,34 +120,86 @@ let otherObj = [
 ]
 let suggestionObj = [
   {
-    'priority':3,
-    'part':"Window",
-    'percent':5.42,
-    'cost':20000
+    'priority':getRandom(10,1,1),
+    'part':windowObj[ getRandom(5,0,1).toFixed(0) ].part,
+    'percent':getRandom(1000,300,100),
+    'cost':getBigRandom()
   },
   {
-    'priority':2,
-    'part':"Window",
-    'percent':7.53,
-    'cost':10000
+    'priority':getRandom(10,1,1),
+    'part':windowObj[ getRandom(5,0,1).toFixed(0) ].part,
+    'percent':getRandom(1000,300,100),
+    'cost':getBigRandom()
   },
 ]
+
+function getRandomSuggestion(index:number): object[]{
+  let result = [];
+  let used = [];
+  for(let i = 0; i<index; i++){
+    let num = getRandom(5,0,1).toFixed(0);
+    if(!used.includes(num)){
+      let obj = {
+        'priority':getRandom(10,1,1),
+        'part':windowObj[num].part,
+        'percent':getRandom(1000,300,100),
+        'cost':getBigRandom()
+      }
+      result.push(obj);
+    }
+  }
+  return result;
+}
+function getRandomDoorSuggestion(index:number): object[]{
+  let result = [];
+  let used = [];
+  for(let i = 0; i<index; i++){
+    let num = getRandom(2,0,1).toFixed(0);
+    if(!used.includes(num)){
+      let obj = {
+        'priority':getRandom(10,1,1),
+        'part':doorObj[num].part,
+        'percent':getRandom(1000,300,100),
+        'cost':getBigRandom()
+      }
+      result.push(obj);
+    }
+  }
+  return result;
+}
+function getRandomOtherSuggestion(index:number): object[]{
+  let result = [];
+  let used = [];
+  for(let i = 0; i<index; i++){
+    let num = getRandom(2,0,1).toFixed(0);
+    if(!used.includes(num)){
+      let obj = {
+        'priority':getRandom(10,1,1),
+        'part':dataObj[num].part,
+        'percent':getRandom(1000,300,100),
+        'cost':getBigRandom()
+      }
+      result.push(obj);
+    }
+  }
+  return result;
+}
 
 let dummy_data: ResultElement[] = [
   {
     property: 'Old Building A', img: 'building_img_A', date: '27/11/2019', 
     modal: 1, window: windowObj, door: doorObj, other: otherObj, function: actions,
-    description: lorem, data:dataObj, suggestion: suggestionObj
+    description: lorem, data:dataObj, suggestion: getRandomSuggestion(3)
   },
   {
     property: 'Old Building B', img: 'building_img_B', date: '2/12/2019', 
     modal: 2, window: windowObj, door: doorObj, other: otherObj, function: actions,
-    description: lorem, data:dataObj, suggestion: suggestionObj
+    description: lorem, data:dataObj, suggestion: getRandomDoorSuggestion(2)
   },
   {
     property: 'Old Building C', img: 'building_img_C', date: '1/12/2019', 
     modal: 3, window: windowObj, door: doorObj, other: otherObj, function: actions,
-    description: lorem, data:dataObj, suggestion: suggestionObj
+    description: lorem, data:dataObj, suggestion: getRandomOtherSuggestion(2)
   },
 ]
 
@@ -220,6 +274,9 @@ export class ResultWholePrivateComponent{
     else if(el === 'select'){
       this.bringSelect();
     }
+    else if(el === 'detail'){
+      this.detail();
+    }
   }
 
   bringSelect(){
@@ -246,6 +303,10 @@ export class ResultWholePrivateComponent{
       window.alert("Currently comparing only 2 properties supports!");
       this.selection.clear();
     }
+  }
+
+  detail(): void{
+    this.router.navigate(['/mainpage']);
   }
   
   compare(){
