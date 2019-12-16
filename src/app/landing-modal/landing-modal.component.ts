@@ -19,7 +19,7 @@ export class LandingModalComponent implements OnInit {
     private APIService: APIService,
     private dialogRef: MatDialogRef<LandingModalComponent>,
     private router: Router,
-    //It is better to be private so that handle more stictly
+    //It is better to be private so that handle more strictly
     private auth: AuthHelperService,
   ){
   }

@@ -109,7 +109,13 @@ export class ResultTableComponent {
     let result = base.map(x => x / baseT).map(x => x * 100).map(x => Math.floor(x));
     this.pieChartData = [{ data: result }];
 
-    el.scrollIntoView({behavior: "smooth"});
+    el.scrollIntoView({ behavior: "smooth" });
+
+  }
+
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   onClear(): void {

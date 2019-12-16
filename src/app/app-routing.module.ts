@@ -10,6 +10,7 @@ const routes: Routes = [
   {path: 'mainpage', component: MainpageComponent},
   {path: 'admin', component: AdminPanelComponent},
   {path: 'private_page', component: ResultWholePrivateComponent},
+  {path: 'results', component: ResultTableComponent},
   {path: '', component: LandingComponent},
 ];
 

@@ -13,11 +13,13 @@ export class AuthHelperService {
   public isLoggedIn: boolean ;
   public isAdmin: boolean ;
   private result: boolean;
+  private resultView: string;
 
   constructor(){
     this.isLoggedIn = false;
     this.isAdmin = false;
     this.result = false;
+    this.resultView = 'hidden';
   }
 
 
@@ -57,5 +59,12 @@ export class AuthHelperService {
 
   public setResult(result: boolean): void{
     this.result = result;
+  }
+
+  public getResultView(): string{
+    return this.resultView;
+  }
+  public setResultView(view:string): void{
+    this.resultView = view;
   }
 }

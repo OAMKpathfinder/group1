@@ -1,13 +1,12 @@
-import { Component, Input, OnInit, Inject, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { WindowsInputComponent } from '../windows-input/windows-input.component';
 import { DoorsInputComponent } from '../doors-input/doors-input.component';
 import { BridgeInputComponent } from '../bridge-input/bridge-input.component';
 import { GroundInputComponent } from '../ground-input/ground-input.component';
 import { WallInputComponent } from '../wall-input/wall-input.component';
 import { PropertyInputComponent } from '../property-input/property-input.component';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { APIService, GroundFloor, roofConstruction, OuterWall, others } from '../api-service.service';
-import { EditDoorComponent } from '../edit-door/edit-door.component';
 import { Door, windowSingle } from '../api-service.service';
 import { RoofInputComponent } from "../roof-input/roof-input.component";
 import { OthersInputComponent } from '../others-input/others-input.component';
@@ -194,6 +193,8 @@ export class InputWindowsComponent implements OnInit {
     });
   }
 
+  
+
   ensureLogin() {
     /**
      * Most advanced login security implementation in the whole WWW
@@ -249,29 +250,5 @@ export class InputWindowsComponent implements OnInit {
       document.getElementsByName("base-img")[i].classList.toggle("effect");
     }
   }
-  // openDialog(prop: string): any{
-  //   switch(prop){
-  //     case "ground":
-  //       this.openGroundDialog()
-  //       break;
-  //     case "roof":
-  //       this.openRoofDialog()
-  //       break;
-  //     case "door":
-  //       this.openDoorDialog()
-  //       break;
-  //     case "bridge":
-  //       this.openBridgeDialog()
-  //       break;
-  //     case "window":
-  //       this.openWindowDialog()
-  //       break;
-  //     case "outerwall":
-  //       this.openWallDialog()
-  //       break;
-  //     default:
-  //       return ;
-  //   }
 
-  // }
 }

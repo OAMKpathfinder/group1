@@ -1,6 +1,4 @@
-.chart-title {
-  text-align: center;
-} 
+
 .chart-flex{
 	width: 95%;
 	min-height: 300px;
@@ -15,15 +13,6 @@
 	-ms-flex: 1; 
 	flex: 1;
 }
-
-table.results-table{
-  font-size: 20PX;
-   margin-top:40px;
-   margin-bottom:50px;
-   padding:10px;
-   width: 80%;
-   text-align: center;
- }
 
  .urgent1{
   color: #fc0505;
@@ -47,6 +36,12 @@ table.results-table{
   font-size: 15px;
  }
 
+ .search{
+  margin-left:35px;
+  margin-top: 10px;
+}
+
+
 
  /* Mat Table */
 
@@ -56,9 +51,11 @@ table.results-table{
 
 table {
   width: 95%;
-  margin-top:20px;
-  margin-bottom:20px;
-  margin-left:15px;
+  margin: 0 auto;
+
+  margin-top: 10px;
+  padding: 10px;
+  border: 2px solid lightgrey;
 }
 
 th.mat-sort-header-sorted {
@@ -68,4 +65,17 @@ th.mat-sort-header-sorted {
 
 .space{
   width:10%;
+}
+
+
+.mat-row:hover {
+  background-color: rgb(241, 239, 239);
+}
+
+.mat-column{
+  background-color: rgb(241, 239, 239);
+}
+
+.mat-header-cell {
+  background-color: lightgray
 }

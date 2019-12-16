@@ -1,6 +1,12 @@
+<div class="prop-name">
+  <mat-form-field id="form-field" (change)="onChange(event)">
+    <input matInput placeholder="Property Name" />
+  </mat-form-field>
+</div>
+
 <div class="property-flex">
   <div  class="property-one">
-    <h4>Time Period</h4>
+    <h6>Time Period</h6>
     <div class="value">{{ dateValue }}</div>
     <input
       (mouseup)="onUp()"
@@ -14,7 +20,7 @@
     />
   </div>
   <div  class="property-two">
-    <h4>Select Location</h4>
+    <h6>Select Location{{location}}</h6>
     <img
       id="Image-Maps-Com-image-maps-2019-12-02-030747"
       src="../../assets/img/map/europeMap.png"
@@ -36,6 +42,7 @@
         shape="rect"
         coords="146,10,200,98"
         style="outline:none;"
+        (click)="mapClick(0)"
         target="_self"
       />
       <area
@@ -44,6 +51,7 @@
         shape="rect"
         coords="0,17,50,55"
         style="outline:none;"
+        (click)="mapClick(1)"
         target="_self"
       />
       <area
@@ -52,6 +60,7 @@
         shape="rect"
         coords="42,96,75,132"
         style="outline:none;"
+        (click)="mapClick(2)"
         target="_self"
       />
       <area
@@ -60,6 +69,7 @@
         shape="rect"
         coords="22,121,50,145"
         style="outline:none;"
+        (click)="mapClick(3)"
         target="_self"
       />
       <area
@@ -72,3 +82,4 @@
     </map>
   </div>
 </div>
+<button class="prop-save" mat-raised-button>Add Property</button>

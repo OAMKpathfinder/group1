@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSort, MatTableDataSource, MatDialog } from '@angular/material';
-import { WindowsInputComponent } from '../windows-input/windows-input.component';
 import { AdminEditComponent } from '../admin-edit/admin-edit.component';
 
 @Component({
@@ -30,6 +29,7 @@ export class AdminPanelComponent {
   @ViewChild('sorter2', { static: true }) sort2: MatSort;
   @ViewChild('sorter3', { static: true }) sort3: MatSort;
   @ViewChild('sorter4', { static: true }) sort4: MatSort;
+
   show: number = 0;
   elValues: any[];
   elKeys: any[];
@@ -49,8 +49,7 @@ export class AdminPanelComponent {
     this.show = id;
   }
 
-  dataClick(el: any): void {
-    //TODO remove id from object here or in Edit Component
+  onEdit(el: any): void {
     let type = this.show;
     let id = el.id;
     this.dialog.open(AdminEditComponent, { data: { el, type, id }, width: '350px', maxHeight: '600px' });
@@ -61,6 +60,15 @@ export class AdminPanelComponent {
     let type = this.show;
     this.dialog.open(AdminEditComponent, { data: { fields, type, id }, width: '350px', maxHeight: '600px' });
   }
+
+  applyFilter(filterValue: string) {
+    this.userSource.filter = filterValue.trim().toLowerCase();
+    this.propSource.filter = filterValue.trim().toLowerCase();
+    this.materialSource.filter = filterValue.trim().toLowerCase();
+    this.defaultSource.filter = filterValue.trim().toLowerCase();
+    this.downloadsSource.filter = filterValue.trim().toLowerCase();
+  }
+
 
 }
 //TODO Get real data from API

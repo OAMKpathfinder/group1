@@ -14,7 +14,7 @@
       <mat-icon>dialpad</mat-icon>
   </button> -->
   <button (click)="toOwn()" *ngIf="auth.isLoggedIn" mat-menu-item>Own</button>
-  <button (click)="toCreate()" mat-menu-item>Make a New</button>
+  <button (click)="toCreate()" mat-menu-item>Create New Property</button>
   <!-- currently log in is not necessary but for the future development, in case
   leaving example -->
   <button (click)="login()" *ngIf="!auth.isLoggedIn" mat-menu-item>Log In</button>
