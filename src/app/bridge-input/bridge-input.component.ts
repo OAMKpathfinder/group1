@@ -38,7 +38,10 @@ export class BridgeInputComponent implements OnInit {
   saveBridge() { 
     this.dialogRef.close();
     //Here goes for api post to save bridges
-    // this.apiService
+    this.apiService.addBridge(this.bridgeForm.value)
+    .subscribe(data => {
+      console.log(data)
+    });
   }
   //Canceling the inputs and closing window
   onCancel(): void {

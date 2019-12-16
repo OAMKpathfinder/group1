@@ -35,6 +35,13 @@ export interface GroundFloor {
   materials: string,
   protected: boolean
 }
+export interface Bridge {
+  outerWalltoOuterWall: number,
+  outerWalltoRoof: number,
+  outerWalltoMiddleBasement: number,
+  outerWalltoGroundFloor: number,
+}
+
 export interface OuterWall {
   uValue: number,
   area: number,
@@ -88,6 +95,7 @@ export class APIService {
   groundUrl: string = this.baseURL + "/groundFloor";
   outerWallUrl: string = this.baseURL + "/outerWall";
   othersUrl: string = this.baseURL + "/others";
+  bridgeUrl: string = this.baseURL + "/bridges";
 
 
   //GET METHODS
@@ -239,6 +247,12 @@ export class APIService {
 
   addOthers(Others: others): Observable<others> {
     return this.http.post<others>(this.othersUrl, Others, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  addBridge(bridge: Bridge): Observable<Bridge> {
+    return this.http.post<Bridge>(this.bridgeUrl, bridge, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
