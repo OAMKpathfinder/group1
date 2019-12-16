@@ -90,6 +90,7 @@ export class MainpageComponent implements OnInit {
 	propertyText = `Here you need to specify the era when your building was built and the country where it is located. Also give your building a name.`;
 	floorText = `Ground floor is the flooring of the house. In more modern houses, floors are usually covered with laminate. It is common to have different materials across the house, such as laminate, tiles and so on. Usual uValue of flooring is around 0.13 in domestic buildings.`;
 	wallText = `Outer walls are the outside walls of the house. The outer walls can be made out of for example; wood, bricks, concrete or even plastic in some old houses. Usual uValue of outer walls is 0.18 in domestic buildings.`;
+	bridgeText = `A thermal bridge (sometimes referred to as thermal bridging, a cold bridge or thermal bypass) describes a situation in a building where there is a direct connection between the inside and outside through one or more elements that are more thermally conductive than the rest of the building envelope.` 
 	roofText = `The house roofs can be made out of for example; different kinds of tiles, asphalt shingles, metal, aluminum, rubber slate. The usual uValue of roofs is 0.13 in domestic buildings.`;
 	doorsText = `The house doors can be made out of for example; wood, fiberglass, vinyl and aluminum. The usual uValue of a glazed door is 1.4 in domestic buildings.`;
 	windowsText = `The house windows can be either single or double glazed windows. The materials of windows can also vary, they can be for example; glass, fiberglass, aluminum and vinyl. The usual uValue of single glazed window is from 4 to 5, and double glazing about 1.2`;
@@ -98,6 +99,7 @@ export class MainpageComponent implements OnInit {
 	// tooltip text
 	groundTip = "The Ground Floor";
 	wallTip = "The Outer Wall";
+	bridgeTip = "Termal Bridges"
 	roofTip = "The Roof";
 	doorTip = "The Doors";
 	windowTip = "The Windows";
@@ -110,7 +112,7 @@ export class MainpageComponent implements OnInit {
 			"property": "ground", "title": "ground", "sub": "Floors Information", "desc": this.floorText, "type": "ground", "id": "floor-id", "imgSrc": "../../assets/img/structure/ex01.jpg", "tooltip": this.groundTip
 		},
 		{
-			"property": "bridge", "title": "bridge", "sub": "Bridge Values", "desc": this.lorem, "type": "bridge", "id": "bridge-id", "imgSrc": "", "tooltip": this.lorem
+			"property": "bridge", "title": "bridge", "sub": "Bridge Values", "desc": this.bridgeText, "type": "bridge", "id": "bridge-id", "imgSrc": "", "tooltip": this.bridgeTip
 		},
 		{
 			"property": "outerwall", "title": "outerwall", "sub": "Outer Walls Information", "desc": this.wallText, "type": "outerwall", "id": "outerwall-id", "imgSrc": "../../assets/img/structure/ex01.jpg", "tooltip": this.wallTip
