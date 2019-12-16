@@ -19,9 +19,10 @@
     <div *ngIf="liveResult" class="liveResult">
       Efficiency Rating:
       <span
+      class="liveResultSpan"
         [ngStyle]="{
           color:
-            liveResult == 'A' ? 'green' : liveResult == B ? 'orange' : 'red'
+            liveResult == 'A' ? 'green' : liveResult == 'B' ? 'orange' : liveResult == 'C' ? 'orange' : 'red'
         }"
         >{{ liveResult }}
       </span>

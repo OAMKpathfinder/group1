@@ -41,7 +41,7 @@
 
     <mat-form-field *ngIf="interaction" id="form-field">
       <mat-label>Condition</mat-label>
-      <mat-select formControlName="condition" [(value)]="selected">
+      <mat-select [(value)]="selected">
         <mat-option value="1">
             <mat-icon name="condition-1" style="color:green">sentiment_very_satisfied</mat-icon>
             Very Good

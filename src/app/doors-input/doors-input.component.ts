@@ -45,7 +45,6 @@ export class DoorsInputComponent implements OnInit {
       area: [null],
       bridgeValue: [null, [Validators.required, Validators.pattern(numberPattern)]],
       protected: [null, Validators.required],
-      condition: [null]
     });
   }
   //Checking if radio button checked and showing valid options

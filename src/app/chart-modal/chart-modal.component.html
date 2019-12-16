@@ -10,26 +10,45 @@
             [chartType]="barChartType">
         </canvas>
         </div>
-        <div *ngFor="let dataSet of data.data; let i = index">
-                <div *ngFor="let suggest of dataSet.suggestion; let j = index">
-                    <div *ngIf="i==0">
-                        <button  mat-button mat-raised-button color="primary" (click)="affect(j, 1)">A, Suggestion {{ j + 1 }}</button>
-                        ex) Priority: {{ suggest.priority }}, Part: {{ suggest.part }}, Efficiency: {{ suggest.percent }}% might improve,
-                        {{ suggest.cost }}€ might cost
-                        <br/>
-                        <br/>
-                    </div>
-                    <div *ngIf="i==1">
-                        <button  mat-button mat-raised-button color="primary" (click)="affect(j, 0)">B, Suggestion {{ j + 1 }}</button>
-                        ex) Priority: {{ suggest.priority }}, Part: {{ suggest.part }}, Efficiency: {{ suggest.percent }}% might improve,
-                        {{ suggest.cost }}€ might cost
-                        <br/>
-                        <br/>
-                    </div>
+        <mat-tab-group *ngFor="let dataSet of data.data; let i = index">
+            <mat-tab *ngFor="let suggest of dataSet.suggestion; let j = index">
+                <ng-template mat-tab-label>
+                <mat-icon>thumb_up</mat-icon>
+                {{ dataSet.property }}, Suggestion {{ j + 1 }}
+                </ng-template>
+                <div *ngIf="i==0">
+                    <mat-icon title="Rated as {{ suggest.priority }} for priority to fix" *ngIf="2>=suggest.priority" style="color:red">priority_high</mat-icon>
+                    <mat-icon title="Rated as {{ suggest.priority }} for priority to fix" *ngIf="suggest.priority>2 &&  4>=suggest.priority" style="color:yellowgreen">priority_high</mat-icon>
+                    <mat-icon title="Rated as {{ suggest.priority }} for priority to fix" *ngIf="suggest.priority>4" style="color:green">priority_high</mat-icon>
+                    
+                    <mat-icon title="Component {{ suggest.part }} where recommended to improve for energy efficiency" style="color:rgb(30, 202, 214)">apartment</mat-icon>
+                    {{ suggest.part }}
+                    <mat-icon title="{{ suggest.percent }} might improve" style="color:green">trending_up</mat-icon>
+                    {{ suggest.percent }}%
+                    <mat-icon title="{{ suggest.cost }} might cost" style="color:#a5a539">attach_money</mat-icon>
+                    {{ suggest.cost }}€
+                    <br>
+                    <button (click)="affect(j, 1)" mat-button>Apply</button>
+                    <button (click)="reset()" mat-button>Reset</button>
                 </div>
-        </div>
-        <div>
-            <button mat-button mat-raised-button color="warning" (click)="reset()">Reset</button>
-        </div>
+                <div *ngIf="i==1">
+                    <mat-icon title="Rated as {{ suggest.priority }} for priority to fix" *ngIf="2>=suggest.priority" style="color:red">priority_high</mat-icon>
+                    <mat-icon title="Rated as {{ suggest.priority }} for priority to fix" *ngIf="suggest.priority>2 &&  4>=suggest.priority" style="color:yellowgreen">priority_high</mat-icon>
+                    <mat-icon title="Rated as {{ suggest.priority }} for priority to fix" *ngIf="suggest.priority>4" style="color:green">priority_high</mat-icon>
+                   
+                    <mat-icon title="Component {{ suggest.part }} where recommended to improve for energy efficiency" style="color:rgb(30, 202, 214)">apartment</mat-icon>
+                    {{ suggest.part }}
+                    <mat-icon title="{{ suggest.percent }} might improve" style="color:green">trending_up</mat-icon>
+                    {{ suggest.percent }}%
+                    <mat-icon title="{{ suggest.cost }} might cost" style="color:#a5a539">attach_money</mat-icon>
+                    {{ suggest.cost }}€
+                    <br>
+                    <button (click)="affect(j, 0)" mat-button>Apply</button>
+                    <button (click)="reset()" mat-button>Reset</button>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+        <br>
+        <button (click)="onCancel()" mat-button>Cancel</button>
     </div>
 </div>

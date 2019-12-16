@@ -34,6 +34,7 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { NavComponent } from './nav/nav.component';
     MatSliderModule,
     MatSortModule,
     MatTooltipModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTabsModule
   ],
   entryComponents: [
     WindowsInputComponent,

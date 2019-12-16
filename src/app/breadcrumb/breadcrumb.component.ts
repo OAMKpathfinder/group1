@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { AuthHelperService } from '../auth-helper.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { AuthHelperService } from '../auth-helper.service';
   styleUrls: ['./breadcrumb.component.css'],
 })
 export class BreadcrumbComponent implements OnInit {
-  
+
   @Input() ids: string[] = [];
   @Input() phases: string[] = [];
 
@@ -22,30 +22,40 @@ export class BreadcrumbComponent implements OnInit {
   private windowImgSrc: string = "../../assets/img/gif/window.gif";
   private roofImgSrc: string = "../../assets/img/gif/roof.gif";
 
-  private liveResult: string = 'A';
+  private liveResult: string;
 
   constructor(
     public auth: AuthHelperService
   ) { }
 
-  scrollTo(id:string): void{
-    if(document.getElementById(id)){
-      this.activeClassOnly(id+"-class")
-      document.getElementById(id).scrollIntoView({ block: 'start',  behavior: 'smooth' });
+
+  //Live updating the efficiency indicator on save
+  @HostListener('document:click', ['$event'])
+  click(event: any): void {
+    if (event.target.id === 'saveButton') {
+      var ratings = 'ABCDEF';
+      this.liveResult = ratings.charAt(Math.floor(Math.random() * ratings.length));
     }
   }
 
-  activeClassOnly(id: string): void{
-    for(let i = 0; i < this.ids.length; i++){
-      if(document.getElementById(this.ids[i]+"-class").classList.contains("active-bc")){
-        document.getElementById(this.ids[i]+"-class").classList.remove("active-bc")
+  scrollTo(id: string): void {
+    if (document.getElementById(id)) {
+      this.activeClassOnly(id + "-class")
+      document.getElementById(id).scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
+  }
+
+  activeClassOnly(id: string): void {
+    for (let i = 0; i < this.ids.length; i++) {
+      if (document.getElementById(this.ids[i] + "-class").classList.contains("active-bc")) {
+        document.getElementById(this.ids[i] + "-class").classList.remove("active-bc")
       }
     }
     document.getElementById(id).classList.add("active-bc")
   }
 
-  srcChange(phase:string): void{
-    switch(phase){
+  srcChange(phase: string): void {
+    switch (phase) {
       case "floor":
         this.imgSrc = this.groundImgSrc;
         break;
@@ -67,70 +77,70 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   ngOnInit() {
-    
-    for(let i = 0; i<this.ids.length; i++){
+
+    for (let i = 0; i < this.ids.length; i++) {
       this.properties.push({
-        "id":this.ids[i],
-        "phase":this.phases[i],
-        "phaseToUpperCase":this.phases[i].toUpperCase(),
-        "numbering": i+1
+        "id": this.ids[i],
+        "phase": this.phases[i],
+        "phaseToUpperCase": this.phases[i].toUpperCase(),
+        "numbering": i + 1
       });
     }
 
     window.addEventListener("load", e => {
       this.scrollToActive();
-      this.activeClassOnly(this.currentDiv+"-id-class");
+      this.activeClassOnly(this.currentDiv + "-id-class");
     });
-    
-    window.addEventListener("scroll", event =>{
+
+    window.addEventListener("scroll", event => {
       this.scrollToActive();
-      this.activeClassOnly(this.currentDiv+"-id-class");
+      this.activeClassOnly(this.currentDiv + "-id-class");
       this.srcChange(this.currentDiv);
     });
-    
+
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     document.getElementById(this.phases[0]).classList.add("active");
     this.currentDiv = this.phases[0];
-    this.activeClassOnly(this.currentDiv+"-id-class");
+    this.activeClassOnly(this.currentDiv + "-id-class");
   }
-  
-  scrollToActive(): void{
+
+  scrollToActive(): void {
     let current = window.pageYOffset;
     let total = document.body.scrollHeight;
-    for(let j = 0; j<this.ids.length;j++){
-      if( j == (this.ids.length-1) ){
+    for (let j = 0; j < this.ids.length; j++) {
+      if (j == (this.ids.length - 1)) {
         let top = document.getElementById(this.ids[j]).offsetTop;
         let nextTop = total
         let height = nextTop - top;
-        if(current >= top-this.extra && current <= (top + height ) ){
-          for(let k = 0; k<this.phases.length;k++){
-            if(j==k){
+        if (current >= top - this.extra && current <= (top + height)) {
+          for (let k = 0; k < this.phases.length; k++) {
+            if (j == k) {
               document.getElementById(this.phases[k]).classList.add("active");
               this.currentDiv = this.phases[k];
             }
-            else{
+            else {
               document.getElementById(this.phases[k]).classList.remove("active");
             }
           }
         }
       }
-      else{
+      else {
         let top = document.getElementById(this.ids[j]).offsetTop;
-        let nextTop = document.getElementById(this.ids[j+1]).offsetTop;
+        let nextTop = document.getElementById(this.ids[j + 1]).offsetTop;
         let height = nextTop - top;
-        if(current >= top-this.extra && current <= (top + height ) ){
-          for(let k = 0; k<this.phases.length;k++){
-            if(j==k){
+        if (current >= top - this.extra && current <= (top + height)) {
+          for (let k = 0; k < this.phases.length; k++) {
+            if (j == k) {
               document.getElementById(this.phases[k]).classList.add("active");
               this.currentDiv = this.phases[k];
             }
-            else{
+            else {
               document.getElementById(this.phases[k]).classList.remove("active");
             }
           }
-        }   
+        }
       }
     }
   }

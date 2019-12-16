@@ -150,3 +150,6 @@ span {
 .liveResult{
     margin-left: 10px;
 }
+.liveResultSpan{
+    margin-bottom: 4px;
+}
