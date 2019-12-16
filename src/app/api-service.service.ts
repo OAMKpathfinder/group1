@@ -68,6 +68,12 @@ export interface others {
   pipe: boolean;
 }
 
+export interface User {
+  id: number;
+  email: string;
+  password: string;
+}
+
 @Injectable()
 export class APIService {
 
@@ -243,6 +249,14 @@ export class APIService {
         catchError(this.handleError)
       );
   }
+
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.baseURL}/users`, user, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   // UPDATE METHODS
   updateDoor(singleDoor: Door, id: number) {
     return this.http.put<Door>(`${this.baseURL}/door/${id}`, singleDoor, httpOptions)

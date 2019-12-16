@@ -16,7 +16,7 @@ import { LandingComponent } from './landing/landing.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatIconModule, MatSliderModule, MatTableModule, MatSortModule, MatTooltipModule, MatMenuModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSlideToggleModule, MatInputModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatIconModule, MatSliderModule, MatTableModule, MatSortModule, MatTooltipModule, MatMenuModule, MatSnackBarModule} from '@angular/material';
 import { LandingModalComponent } from './landing-modal/landing-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -89,7 +89,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSortModule,
     MatTooltipModule,
     MatMenuModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     WindowsInputComponent,
