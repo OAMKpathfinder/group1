@@ -153,3 +153,11 @@ span {
 .liveResultSpan{
     margin-bottom: 4px;
 }
+
+.hidden{
+    visibility: hidden;
+}
+
+.visible{
+    visibility: visible;
+}

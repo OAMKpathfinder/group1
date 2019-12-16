@@ -144,34 +144,39 @@ export class MainpageComponent implements OnInit {
 		this.showHide();
 		window.addEventListener("load", e => {
 			this.checkScreen();
-			this.scrollMov(e);
+			// this.resultControl(e);
 		});
 		window.addEventListener("mousemove", e => {
 			this.checkScreen();
 		});
 		window.addEventListener('scroll', e => {
-			this.scrollMov(e);
+			// this.resultControl(e);
 		});
 		window.addEventListener("resize", e => {
 			this.checkScreen();
 		});
 	}
 
-	scrollMov(e: any): void {
+	resultControl(e:any): void {
 		//To show result div which including result component
 		//scroll event is used, but for the platform supports
 		//and other event oriented, then must be other control
-		let resultDiv : HTMLElement = (<HTMLElement> document.getElementById('result-div'));
-		let top = resultDiv.offsetTop;
+		let result = this.phases[this.phases.length-1]
+		let resultBefore = this.phases[this.phases.length-2]
+
+		let resultDiv : HTMLElement = (<HTMLElement> document.getElementById(result));
+		let resultBeforeDiv : HTMLElement = (<HTMLElement> document.getElementById(resultBefore));
+
+		let resultTop = resultDiv.offsetTop;
+		let resultBeforeTop = resultBeforeDiv.offsetTop;
+
 		let height = document.body.scrollHeight;
 		let current = window.pageYOffset;
 
-		if( (top - 200) < current && (height > current) ){
-			this.auth.setResult(true);
-		}
-		else{
-			this.auth.setResult(false);
-		}
+		console.log("result Top", resultTop)
+		console.log("result before Top", resultBeforeTop)
+		console.log("page height", height, "current",current)
+		console.log(e)
 	}
 
 	checkScreen(): void {
