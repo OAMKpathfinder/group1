@@ -46,7 +46,6 @@
           <div *ngIf="property.type == 'property'">
             <app-property-inputs></app-property-inputs>
           </div>
-
           <div class="itemContainer" *ngIf="property.type == 'ground'">
             <div *ngIf="authService.getLogin()">
               <div *ngFor="let ground of grounds[0]">

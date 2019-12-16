@@ -11,7 +11,6 @@ import { Door, windowSingle } from '../api-service.service';
 import { RoofInputComponent } from "../roof-input/roof-input.component";
 import { OthersInputComponent } from '../others-input/others-input.component';
 import { AuthHelperService } from '../auth-helper.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: "app-input-windows",
