@@ -75,6 +75,12 @@ export interface others {
   pipe: boolean;
 }
 
+export interface User {
+  id: number;
+  email: string;
+  password: string;
+}
+
 @Injectable()
 export class APIService {
 
@@ -253,10 +259,18 @@ export class APIService {
   }
   addBridge(bridge: Bridge): Observable<Bridge> {
     return this.http.post<Bridge>(this.bridgeUrl, bridge, httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.baseURL}/users`, user, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
   }
+
   // UPDATE METHODS
   updateDoor(singleDoor: Door, id: number) {
     return this.http.put<Door>(`${this.baseURL}/door/${id}`, singleDoor, httpOptions)
