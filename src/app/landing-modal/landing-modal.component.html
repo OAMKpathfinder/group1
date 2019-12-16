@@ -1,37 +1,37 @@
 <form>
   <h2 mat-dialog-title>Login</h2>
-  <mat-dialog-content>
-    <mat-form-field  id="form-field">
-      <input
-        matInput
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Email"
-      />
+  <mat-dialog-content [formGroup]="authForm">
+
+    <mat-form-field id="form-field">
+      <input matInput type="email" name="email" id="email" placeholder="Email" formControlName="email" />
     </mat-form-field>
   </mat-dialog-content>
-  <mat-dialog-content>
-    <mat-form-field  id="form-field">
-      <input
-        matInput
-        name="password"
-        id="password"
-        type="password"
-        placeholder="Password"
-      />
+  <mat-dialog-content [formGroup]="authForm">
+    <mat-form-field id="form-field">
+      <input matInput name="password" id="password" type="password" placeholder="Password" formControlName="password" />
     </mat-form-field>
   </mat-dialog-content>
+
   <mat-dialog-actions>
-    <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
-      Close
-    </button>
-    <button
-      class="mat-raised-button mat-primary"
-      id="saveButton"
-      (click)="login()"
-    >
-      Login
-    </button>
+    <div *ngIf="register">
+      <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
+        Close
+      </button>
+      <button class="mat-raised-button mat-primary" id="saveButton" (click)="registerUser()">
+        Register
+      </button>
+    </div>
+    <div *ngIf="!register">
+      <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
+        Close
+      </button>
+      <button class="mat-raised-button mat-primary" id="saveButton" (click)="login()">
+        Login
+      </button>
+    </div>
   </mat-dialog-actions>
+  <br>
+  <div style="text-align: center; font-weight: 600;">
+    <a (click)="setMode()">{{mode}}</a>
+  </div>
 </form>
