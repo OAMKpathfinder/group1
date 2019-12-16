@@ -110,6 +110,9 @@ export class MainpageComponent implements OnInit {
 			"property": "ground", "title": "ground", "sub": "Floors Information", "desc": this.floorText, "type": "ground", "id": "floor-id", "imgSrc": "../../assets/img/structure/ex01.jpg", "tooltip": this.groundTip
 		},
 		{
+			"property": "bridge", "title": "bridge", "sub": "Bridge Values", "desc": this.lorem, "type": "bridge", "id": "bridge-id", "imgSrc": "", "tooltip": this.lorem
+		},
+		{
 			"property": "outerwall", "title": "outerwall", "sub": "Outer Walls Information", "desc": this.wallText, "type": "outerwall", "id": "outerwall-id", "imgSrc": "../../assets/img/structure/ex01.jpg", "tooltip": this.wallTip
 		},
 		{
@@ -129,8 +132,8 @@ export class MainpageComponent implements OnInit {
 
 	//breadcrumb required 2 Inputs, id for referring the div "height" (from top and next div top?)
 	//phase for used to name the breadcrumb and referring the li to assign/remove active class
-	ids = ["property-id", "floor-id", "outerwall-id", "roof-id", "doors-id", "windows-id", "others-id", "results-id"];
-	phases = ["property", "floor", "outerwall", "roof", "doors", "windows", "others", "results"];
+	ids = ["property-id", "floor-id", 'bridge-id', "outerwall-id", "roof-id", "doors-id", "windows-id", "others-id", "results-id"];
+	phases = ["property", "floor", 'bridge', "outerwall", "roof", "doors", "windows", "others", "results"];
 
 	constructor(
 		public auth: AuthHelperService

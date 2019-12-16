@@ -1,10 +1,40 @@
-<h2 mat-dialog-title>Bridge Inputs</h2>
+<h4 mat-dialog-title>{{title}}</h4>
+<mat-dialog-content [formGroup]="bridgeForm">
+  
+   <mat-form-field
+   id="form-field"
+    >
+      <input matInput placeholder="Outer Wall to Outer Wall" formControlName="outerWalltoOuterWall" />
+      <span matSuffix>W/m²K</span>
+   </mat-form-field>
 
-<mat-dialog-content>
-   <p>This is where the inputs are</p>
+   <mat-form-field
+   id="form-field"
+    >
+      <input matInput placeholder="Outer Wall to Roof" formControlName="outerWalltoRoof" />
+      <span matSuffix>W/m²K</span>
+   </mat-form-field>
+
+   <mat-form-field
+   id="form-field"
+    >
+      <input matInput placeholder="Outer Wall to Middle Basement" formControlName="outerWalltoMiddleBasement" />
+      <span matSuffix>W/m²K</span>
+   </mat-form-field>
+
+   <mat-form-field
+   id="form-field"
+    >
+      <input matInput placeholder="Outer Wall to Ground Floor" formControlName="outerWalltoGroundFloor" />
+      <span matSuffix>W/m²K</span>
+   </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-   <button mat-button mat-dialog-close>Cancel</button>
-   <button mat-raised-button (click)="saveBridge()">Save</button>
+  <button class="mat-raised-button mat-dialog-close" (click)="onCancel()">
+    Close
+  </button>
+  <button class="mat-raised-button mat-primary" id="saveButton" (click)="saveBridge()" [disabled]="!bridgeForm.valid">
+    Save
+  </button>
 </mat-dialog-actions>
