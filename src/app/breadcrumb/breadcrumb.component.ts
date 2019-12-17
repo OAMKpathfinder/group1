@@ -13,7 +13,7 @@ export class BreadcrumbComponent implements OnInit {
 
   properties: any = [];
   private currentDiv: string = null;
-  private extra: number = 300;
+  private extra: number = 400;
   imgSrc: string = "";
 
   private groundImgSrc: string = "../../assets/img/gif/floor.gif";
