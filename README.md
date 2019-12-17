@@ -1,8 +1,8 @@
 # PathFinder
 
+Online Toolkit, with suggestions, recommendations and instructions for retrofitting and maintaining historical buildings.
 
-
-# Project env.
+# ENV
 
 Angular CLI: 8.3.17
 
@@ -10,13 +10,24 @@ Node: 10.15.1
 
 Angular: 8.2.13
 
-## Description
+## TODO
 
-Entry point - app.js
-1. Required to be installed dependencies with "npm install"
-2. Then build the frontend with corresponding commands such as "ng build"
+1. "npm install", Install dependencies
+2. "ng build", build the sources
+3. Set ".env" file values
+* If API path differ then modify URL in "./src/app/api-service"
+- Entry point - app.js
 
-## Contact
-t7buja00@students.oamk.fi
-t7laja02@students.oamk.fi
-t7haki01@students.oamk.fi
+## DEPLOY
+https://path-finder-group-01.herokuapp.com/
+
+- ADMIN
+admin:adminpass
+- USER A
+test1@email.com:password1
+* Or via registration 
+
+## Contribute
+- t7buja00@students.oamk.fi
+- t7laja02@students.oamk.fi
+- t7haki01@students.oamk.fi
